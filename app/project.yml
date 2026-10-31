@@ -18,6 +18,11 @@ packages:
   argmax-oss-swift:
     url: https://github.com/argmaxinc/argmax-oss-swift
     revision: 1bbc57cb7fe6410248a685b1c5a3c6d56adc2ed4
+  # llama.cpp as upstream's prebuilt llama.xcframework (release b12020), wrapped in
+  # a local package because llama.cpp no longer ships a Package.swift. See
+  # LlamaBinary/Package.swift for the pin and checksum.
+  LlamaBinary:
+    path: LlamaBinary
 
 targets:
   EgyptTalk:
@@ -29,6 +34,10 @@ targets:
     dependencies:
       - package: argmax-oss-swift
         product: WhisperKit
+      # Dynamic framework from a binary target: Xcode links it and embeds it in
+      # EgyptTalk.app/Frameworks. The workflow checks that it is there.
+      - package: LlamaBinary
+        product: llama
     info:
       path: EgyptTalk/Info.plist
       properties:

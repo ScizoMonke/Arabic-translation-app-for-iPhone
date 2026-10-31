@@ -21,7 +21,9 @@ defaults:
 jobs:
   build:
     runs-on: macos-26
-    timeout-minutes: 60
+    # llama.cpp arrives prebuilt (llama.xcframework, about 70 MB), so the build grows
+    # by a download, not a ggml compile; the extra minutes are headroom for it.
+    timeout-minutes: 75
     env:
       SCHEME: EgyptTalk
       PROJECT: app/EgyptTalk.xcodeproj
@@ -56,6 +58,13 @@ jobs:
             -project "$PROJECT" -scheme "$SCHEME" \
             -clonedSourcePackagesDirPath "$BUILD_DIR/spm" \
             2>&1 | tee "$BUILD_DIR/resolve.log"
+          # Proof for the first-run checklist: the llama binary target was fetched,
+          # checksum-verified and unpacked to an xcframework with an iOS slice.
+          # Informational only (the artifacts layout is Xcode's business); the hard
+          # gate is the embedded-framework check in the packaging step.
+          find "$BUILD_DIR/spm" -name "llama.xcframework" -print || true
+          find "$BUILD_DIR/spm" -path "*ios-arm64/llama.framework/Headers/llama.h" -print | grep -q . \
+            || echo "WARNING: llama.xcframework (ios-arm64) not found under $BUILD_DIR/spm after resolve"
 
       - name: Archive (unsigned, Release, iphoneos)
         run: |
@@ -82,6 +91,17 @@ jobs:
           ls -l EgyptTalk.ipa
           # Proof for the first-run checklist: the plist keys the phone depends on.
           plutil -p Payload/EgyptTalk.app/Info.plist | grep -E "CFBundleIdentifier|CFBundleDisplayName|NSMicrophoneUsageDescription|MinimumOSVersion"
+          # llama.framework is dynamic: if Xcode did not embed it, the app dies in
+          # dyld at launch on the phone. Fail here instead.
+          test -f Payload/EgyptTalk.app/Frameworks/llama.framework/llama \
+            || { echo "llama.framework is not embedded in EgyptTalk.app/Frameworks"; ls -la Payload/EgyptTalk.app/Frameworks || true; exit 1; }
+          ls Payload/EgyptTalk.app/Frameworks
+          # The phrasebook is optional (D22); say whether this build carries one.
+          if [ -f Payload/EgyptTalk.app/phrasebook.json ]; then
+            echo "phrasebook.json bundled ($(wc -c < Payload/EgyptTalk.app/phrasebook.json) bytes)"
+          else
+            echo "phrasebook.json not bundled: every sentence goes to the model"
+          fi
           du -sh Payload/EgyptTalk.app
 
       - name: Upload .ipa
