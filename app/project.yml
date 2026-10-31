@@ -1,0 +1,64 @@
+# XcodeGen spec. The runner runs `xcodegen generate` in this folder and gets
+# EgyptTalk.xcodeproj; no .pbxproj is ever written by hand (no Mac exists here).
+name: EgyptTalk
+
+options:
+  bundleIdPrefix: com.a2e
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+
+packages:
+  # The WhisperKit repo moved to argmax-oss-swift at v1.0.0. Pinned by revision,
+  # not by version: the package's Package@swift-6.2.swift gives the WhisperKit and
+  # ArgmaxCore targets unsafeFlags (-enable-library-evolution), and SwiftPM refuses
+  # unsafe-flag products from version-pinned dependencies but allows them from
+  # branch- or revision-pinned ones (Workspace+Manifests.swift, unsafeAllowedPackages).
+  # This revision is the commit tagged v1.1.1 (2026-10-08).
+  argmax-oss-swift:
+    url: https://github.com/argmaxinc/argmax-oss-swift
+    revision: 1bbc57cb7fe6410248a685b1c5a3c6d56adc2ed4
+
+targets:
+  EgyptTalk:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: EgyptTalk
+    dependencies:
+      - package: argmax-oss-swift
+        product: WhisperKit
+    info:
+      path: EgyptTalk/Info.plist
+      properties:
+        CFBundleDisplayName: Egypt Talk
+        CFBundleShortVersionString: "0.1"
+        CFBundleVersion: "1"
+        LSRequiresIPhoneOS: true
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIRequiresFullScreen: true
+        NSMicrophoneUsageDescription: Egypt Talk listens to the conversation around you and turns it into English text on this phone. Nothing leaves the phone.
+        # Lets the session log in Documents show up in the Files app under
+        # On My iPhone > Egypt Talk, so it can be shared after the trip.
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.a2e.egypttalk
+        PRODUCT_NAME: EgyptTalk
+        # Swift 5 language mode: WhisperKit and TranslationSession are not Sendable,
+        # and in Swift 6 mode those crossings are errors. Here they are warnings.
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_PREVIEWS: NO
+        CODE_SIGN_STYLE: Manual
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_IDENTITY: ""
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGNING_ALLOWED: NO
