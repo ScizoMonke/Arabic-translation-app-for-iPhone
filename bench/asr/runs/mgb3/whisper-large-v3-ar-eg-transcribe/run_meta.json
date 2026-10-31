@@ -1,0 +1,18 @@
+{
+  "model_id": "Dr-AliGomaa/whisper-large-v3-ar-eg",
+  "task": "transcribe",
+  "dataset": "mgb3",
+  "n_clips": 30,
+  "audio_s": 747.02,
+  "wall_s": 235.48,
+  "audio_s_per_wall_s": 3.17,
+  "settings": {
+    "backend": "transformers 5.5.0",
+    "dtype": "float16",
+    "language": "arabic",
+    "num_beams": 5
+  },
+  "python": "3.11.0",
+  "gpu_before_load_mem_util": "3664 MiB, 82 %",
+  "command": "asr_bench.py Dr-AliGomaa/whisper-large-v3-ar-eg transcribe mgb3"
+}
