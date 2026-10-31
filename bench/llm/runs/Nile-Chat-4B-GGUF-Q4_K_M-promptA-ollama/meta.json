@@ -1,0 +1,30 @@
+{
+  "model_id": "hf.co/mradermacher/Nile-Chat-4B-GGUF:Q4_K_M",
+  "backend": "ollama",
+  "model_type": "gemma3",
+  "params": 3880263168,
+  "variant": "A",
+  "system_prompt": "You translate what an English-speaking visitor says to his Egyptian family into Egyptian Arabic.\nUse Egyptian Cairo colloquial Arabic (Masri) as spoken at home in Cairo. Never use Modern Standard Arabic (Fusha); never use Levantine or Gulf forms.\n\nFor the English sentence you are given, reply with ONLY one JSON object, no other text, with exactly these four string fields:\n- \"arabic\": the Egyptian colloquial sentence in Arabic script.\n- \"arabizi\": the same sentence in Arabizi (Franco-Arabic), the way Egyptians text: 2 for the glottal stop (hamza, and qaf as Cairenes say it), 3 for ayn, 7 for the emphatic h, 5 for kh, 9 for emphatic s where used, gh for ghayn. Latin letters and digits only.\n- \"latin\": a respelling for an English reader who knows no Arabic: plain English letters only, no digits, syllables separated by hyphens, the stressed syllable in CAPITALS, words separated by spaces. Example of the style: \"ez-ZAY-yak\".\n- \"gloss\": a literal word-by-word English rendering of the Egyptian sentence, so the speaker knows exactly what he is saying.\n\nExample. English: \"I love Egypt.\"\n{\"arabic\": \"أنا بحب مصر\", \"arabizi\": \"ana ba7ebb masr\", \"latin\": \"A-na ba-HIBB MASR\", \"gloss\": \"I I-love Egypt\"}",
+  "ollama_template": "{{- $systemPromptAdded := false }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"user\" }}<start_of_turn>user\n{{- if (and (not $systemPromptAdded) $.System) }}\n{{- $systemPromptAdded = true }}\n{{ $.System }}\n{{ end }}\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+  "ollama_details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "gemma3",
+    "families": [
+      "gemma3"
+    ],
+    "parameter_size": "3.88B",
+    "quantization_level": "Q4_K_M"
+  },
+  "options": {
+    "temperature": 0,
+    "top_k": 1,
+    "seed": 0,
+    "num_predict": 200,
+    "repeat_penalty": 1.15,
+    "num_ctx": 2048
+  },
+  "decoding": "ollama /api/chat, options {'temperature': 0, 'top_k': 1, 'seed': 0, 'num_predict': 200, 'repeat_penalty': 1.15, 'num_ctx': 2048}",
+  "bf16_twin": null,
+  "n_sentences": 40
+}

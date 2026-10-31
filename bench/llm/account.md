@@ -71,3 +71,62 @@ Qwen3-4B prompt B: same picture, plus #25 "Yes" -> "bla"/gloss "no", #20 latin "
 ## Gated / licenses
 - UBC-NLP/NileChat-3B: gated (auto-approve after login); no HF token here -> not run. License qwen-research (ledger) / "other" (HF API).
 - Nile-Chat-4B: Gemma terms. Qwen3-4B: Apache-2.0.
+
+
+# Continuation (2026-10-31): Q4_K_M reality check, prompt C, respelling
+
+## Step 1: Q4_K_M via Ollama
+`ollama pull hf.co/mradermacher/Nile-Chat-4B-GGUF:Q4_K_M` -> exit 0, "success" (2.5 GB; /api/show: format gguf, family gemma3, 3.88B, Q4_K_M, general.license gemma). Log: runs/ollama_pull.log.
+Ollama's chat template (from the GGUF) renders <start_of_turn>user ... <end_of_turn> <start_of_turn>model, the same layout as the HF Gemma 3 template. The driver folds the system prompt into the single user message (system + blank line + English: "..."), exactly as the HF template does, so both backends see the same text.
+Options per call: temperature 0, top_k 1, seed 0, num_predict 200, repeat_penalty 1.15, num_ctx 2048 (Ollama default repeat_last_n 64 left as is). Seconds are wall clock per /api/chat; sentence 1 of the first Ollama run (67 s) includes loading the model, which inflates that run's mean (2.45 s; about 0.6 s per sentence after load).
+
+## Step 2: Prompt C (verbatim)
+```
+You translate what an English-speaking visitor says to his Egyptian family into Egyptian Arabic.
+Use Egyptian Cairo colloquial Arabic (Masri) as spoken at home in Cairo. Never use Modern Standard Arabic (Fusha); never use Levantine or Gulf forms.
+
+For the English sentence you are given, reply with ONLY one JSON object, no other text, with exactly these two string fields:
+- "arabic": the Egyptian colloquial sentence in Arabic script.
+- "arabizi": the same Egyptian sentence in Arabizi (Franco-Arabic), the way Egyptians text: 2 for the glottal stop (hamza, and qaf as Cairenes say it), 3 for ayn, 7 for the emphatic h, 5 for kh, 9 for emphatic s where used, gh for ghayn. Latin letters and digits only, never Arabic script.
+
+Examples.
+English: "The car is outside."
+{"arabic": "العربية برة", "arabizi": "el 3arabeyya barra"}
+English: "My phone is dead."
+{"arabic": "موبايلي فاصل شحن", "arabizi": "mobayli fasel sha7n"}
+```
+Runs: bf16 transformers with repetition_penalty 1.15 (runs/Nile-Chat-4B-promptC-rp1.15) and Q4_K_M via Ollama with repeat_penalty 1.15 (runs/Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama). Plus one diagnostic not asked for: Q4_K_M, prompt C, repeat_penalty 1.0 (runs/Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0), run because the 1.15 run broke.
+
+The two penalties are not the same operation: HF repetition_penalty penalizes every token already in the sequence including the whole prompt; llama.cpp repeat_penalty applies only to the last 64 tokens (repeat_last_n default). So "comparable" is approximate.
+
+### Q4_K_M + prompt C + repeat_penalty 1.15 collapses
+- 21/40 raw outputs write the arabic field as literal JSON escape text (\u064a\u0651\u2039...), which decodes to junk letters plus stacked diacritics; in some rows arabizi decodes to cuneiform/hieroglyph/lone-surrogate code points (#8, #11, #17, #20). Rows with escape text: 5, 7, 8, 10, 11, 12, 14, 15, 17, 18, 20, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40.
+- Parse failures 3/40 (#5, #36, #40: 200-token runaway).
+- The worked example "el 3arabiya barra" is copied as the answer on #18, #34, #38, #39 (and "el 3arabiya ghalia awi" on #32).
+- My reading, not proven: with a 64-token window the penalty lands on the Arabic tokens just written (example tail and the arabic field), and the cheapest escape the model finds is spelling Arabic as escape text. The rp 1.0 run has none of this (0 escape rows, 0 example copies, 1 parse failure).
+- The Arabic-script leak metric does not count those non-Arabic junk code points; read the rows.
+
+### Numbers (from runs/compare.md)
+| run | parse fail | Arabic chars in arabizi (rows) | mean tok | s/sent | arabic differs vs bf16 C rp1.15, exact | loose* |
+|---|---|---|---|---|---|---|
+| bf16 C rp1.15 (transformers) | 0/40 | 44 (7, 23, 24, 25) | 22.5 | 2.98 | - | - |
+| Q4 C rp1.15 (Ollama) | 3/40 | 43 (3, 12, 23, 25) | 63.1 | 0.76 | 30/40 | 30/40 |
+| Q4 C rp1.0 (Ollama, diagnostic) | 1/40 (#25 loop) | 33 (7, 23, 35) | 20.5 | 0.44 | 28/40 | 22/40 |
+| Q4 A rp1.15 (Ollama) | 0/40 | 0 | 43.2 | 2.45 (load-inflated) | - | - |
+
+*loose = strip diacritics, punctuation and spaces, fold ta marbuta/ha, alef maqsura/ya, hamza-alef variants (scratch script, not in compare.md). Exact = string identity after strip, the column the brief asked for; a parse failure on either side counts as differing.
+Q4 rp1.0 #25 "Yes": arabizi loops to the cap; Ollama reported eval_count 0 for that row (likely a reporting quirk on a length stop), so its token count is wrong.
+bf16 C rp1.15 still says "lef yemeen" for "Turn left" (#34) and "etfaddalo law sama7to" for "Stop here" (#36); Q4 rp1.0 gets #34 right ("lef shemal") and gives "matsh" for #36. Q4 A rp1.15 also gets #34 right.
+
+## Step 3: respell.py
+Pure function per the brief's rule; also lowercases. Word-initial apostrophe dropped after start, space, hyphen, paren or quote. Applied to every prompt C arabizi field (three runs) in the last section of compare.md. Arabic-script or junk arabizi passes through unchanged, which is visible in the table.
+Fixed inputs (runs/respell_fixed.txt):
+```
+'ma3 el salama' -> "ma' el salama"
+'3andi soda3' -> "andi soda'"
+'te2olha tany' -> "te'olha tany"
+'el7amdulellah' -> 'elhamdulellah'
+'5alas' -> 'khalas'
+'ba3den' -> "ba'den"
+'9aba7 el 5eir' -> 'sabah el kheir'
+```

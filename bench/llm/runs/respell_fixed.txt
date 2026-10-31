@@ -1,0 +1,7 @@
+'ma3 el salama' -> "ma' el salama"
+'3andi soda3' -> "andi soda'"
+'te2olha tany' -> "te'olha tany"
+'el7amdulellah' -> 'elhamdulellah'
+'5alas' -> 'khalas'
+'ba3den' -> "ba'den"
+'9aba7 el 5eir' -> 'sabah el kheir'
