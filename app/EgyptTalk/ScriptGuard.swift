@@ -1,7 +1,7 @@
 import Foundation
 
 /// D5: no Arabic script is ever shown. This is the ONE place that enforces it.
-/// AppModel.showTop / AppModel.showBottom pass every string through `clean`
+/// AppModel.showTop / showBottom / showStatus pass every string through `clean`
 /// before it is stored for a view or written to the session log, so no other
 /// code path can put Arabic letters on screen.
 enum ScriptGuard {

@@ -65,8 +65,8 @@ struct TheirHalf: View {
                             let isNewest = line.id == lines.last?.id
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(line.english)
-                                    .font(isNewest ? .title2.weight(.semibold) : .body)
-                                    .foregroundStyle(isNewest ? .primary : .secondary)
+                                    .font(isNewest ? Font.title2.weight(.semibold) : Font.body)
+                                    .foregroundStyle(isNewest ? Color.primary : Color.secondary)
                                 if let note = line.note {
                                     Text(note)
                                         .font(.caption)
@@ -112,7 +112,7 @@ struct MyHalf: View {
                                     .foregroundStyle(.secondary)
                                 Text(line.latin)
                                     .font(.system(size: isNewest ? 34 : 22, weight: .bold))
-                                    .foregroundStyle(isNewest ? .primary : .secondary)
+                                    .foregroundStyle(isNewest ? Color.primary : Color.secondary)
                                 Text("Means: \(line.gloss)")
                                     .font(.callout)
                                     .italic()

@@ -14,9 +14,9 @@ struct Heard: Sendable {
     let text: String
 }
 
-enum TranscriberError: Error, CustomStringConvertible {
+enum TranscriberError: LocalizedError {
     case notLoaded
-    var description: String { "The speech model is not loaded yet." }
+    var errorDescription: String? { "The speech model is not downloaded or not loaded yet." }
 }
 
 /// Owns WhisperKit: the one-time model download on home Wi-Fi, loading it from
