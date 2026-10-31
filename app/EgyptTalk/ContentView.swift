@@ -23,7 +23,7 @@ struct ConversationView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            TheirHalf(lines: model.topLines)
+            TheirHalf(lines: model.topLines, tail: model.liveTail, mode: model.topMode)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             StatusBar(showingPackSheet: $showingPackSheet)
             MyHalf()
@@ -47,41 +47,57 @@ struct ConversationView: View {
     }
 }
 
-/// Top half: English for what is said around him.
+/// Top half: English for what is said around him (D43). Settled lines never
+/// change once shown; the live tail under them is what is still being said,
+/// replaced at every decode, and drawn lighter and in italics so changing text
+/// is never mistaken for settled text. The lines of the stretch of speech in
+/// progress are larger than older ones; all settled text stays full colour, so
+/// "lighter" means one thing only: still changing.
 struct TheirHalf: View {
     let lines: [TopLine]
+    let tail: String
+    let mode: TopMode?
+
+    private static let tailID = "live-tail"
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("THEY SAID")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(.horizontal)
-                .padding(.top, 8)
+            HStack(spacing: 6) {
+                Text("THEY SAID")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                if let mode, mode != .live {
+                    Text(mode.label)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.top, 8)
             ScrollViewReader { proxy in
                 ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 10) {
+                    LazyVStack(alignment: .leading, spacing: 8) {
                         ForEach(lines) { line in
-                            let isNewest = line.id == lines.last?.id
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(line.english)
-                                    .font(isNewest ? Font.title2.weight(.semibold) : Font.body)
-                                    .foregroundStyle(isNewest ? Color.primary : Color.secondary)
-                                if let note = line.note {
-                                    Text(note)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .id(line.id)
+                            let isCurrent = line.utterance == lines.last?.utterance
+                            Text(line.english)
+                                .font(isCurrent ? Font.title3.weight(.semibold) : Font.body)
+                                .foregroundStyle(Color.primary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .id(line.id)
                         }
+                        Text(tail.isEmpty ? " " : tail + " ...")
+                            .font(Font.title3.italic())
+                            .foregroundStyle(Color.secondary.opacity(0.75))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .id(Self.tailID)
                     }
                     .padding()
                 }
-                .onChange(of: lines.last?.id) { _, newID in
-                    guard let newID else { return }
-                    withAnimation { proxy.scrollTo(newID, anchor: .bottom) }
+                .onChange(of: lines.last?.id) { _, _ in
+                    withAnimation { proxy.scrollTo(Self.tailID, anchor: .bottom) }
+                }
+                .onChange(of: tail) { _, _ in
+                    proxy.scrollTo(Self.tailID, anchor: .bottom)
                 }
             }
         }
@@ -296,7 +312,7 @@ struct SetupView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Egypt Talk")
                     .font(.largeTitle.bold())
-                Text("One-time setup, at home on Wi-Fi. Two downloads: the speech model (about 950 MB) and the Egyptian model (about 2.5 GB). Both stay on the phone, and after setup the app needs no internet. Keep the app open and the screen on until it says it is ready. If a download stops, tap Try again: it carries on from where it stopped. The Egyptian model downloads only over Wi-Fi, never mobile data.")
+                Text("One-time setup, at home on Wi-Fi. Three downloads: the live speech model (\(SpeechModel.live.sizeLabel)), a backup speech model (\(SpeechModel.full.sizeLabel)) used only if Apple's Arabic pack is ever missing, and the Egyptian model (about 2.5 GB). Then Apple's Arabic pack, which the top half needs. Everything stays on the phone, and after setup the app needs no internet. Keep the app open and the screen on until it says it is ready. If a download stops, tap Try again: it carries on from where it stopped. The Egyptian model downloads only over Wi-Fi, never mobile data.")
                     .font(.body)
 
                 switch model.phase {
@@ -306,7 +322,7 @@ struct SetupView: View {
                     Button {
                         Task { await model.downloadModels() }
                     } label: {
-                        Label("Download the two models", systemImage: "arrow.down.circle")
+                        Label("Download the three models", systemImage: "arrow.down.circle")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
@@ -315,6 +331,8 @@ struct SetupView: View {
                     ProgressView(value: fraction) {
                         Text("\(label): \(Int(fraction * 100))%")
                     }
+                case .needsArabicPack:
+                    ArabicPackGate()
                 case .preparing(let message):
                     ProgressView(message)
                 case .failed(let message):
@@ -336,9 +354,11 @@ struct SetupView: View {
     }
 }
 
-/// Optional second engine: Apple's on-device Arabic to English pack, used when
-/// Whisper answers in Arabic, and later as the gloss engine. Downloading it uses
-/// Apple's own prompt, so it must also be done at home on Wi-Fi.
+/// Apple's on-device Arabic to English pack (D43: required). It gives the
+/// top half its English while people are still talking, and the meaning check
+/// under each Egyptian sentence. Downloading it uses Apple's own prompt, so it
+/// must also be done at home on Wi-Fi. Shown on the setup screen and in the
+/// gear sheet.
 struct TranslationPackSection: View {
     @EnvironmentObject private var model: AppModel
     @State private var configuration: TranslationSession.Configuration?
@@ -355,9 +375,9 @@ struct TranslationPackSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Apple Arabic pack (needed for the meaning check)")
+            Text("Apple Arabic pack (required)")
                 .font(.headline)
-            Text("Under each Egyptian sentence, Egypt Talk shows what it means in English, translated back by Apple on this phone. Without this pack that line says the check is unavailable.")
+            Text("Apple translates on this phone: it turns the Arabic around you into English while people are still talking, and it writes the meaning under each Egyptian sentence. Without this pack the top half only shows English after each pause, and more slowly.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Text(statusText)
@@ -387,5 +407,31 @@ struct TranslationPackSection: View {
             await model.refreshTranslationStatus()
         }
         .task { await model.refreshTranslationStatus() }
+    }
+}
+
+/// D43 gate: setup stops here, in plain words, until the pack is installed.
+/// The download button is in the pack section below it; when Apple finishes,
+/// the app carries on by itself.
+struct ArabicPackGate: View {
+    @EnvironmentObject private var model: AppModel
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("One more step: Apple's Arabic pack.")
+                .font(.headline)
+            if model.translationStatus == .unsupported {
+                Text("Apple says this phone cannot get the Arabic pack. Egypt Talk can still work, but the top half will show English only after each pause, a few seconds late.")
+                    .font(.callout)
+                Button("Continue without it") {
+                    Task { await model.continueWithoutPack() }
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Text("Tap \"Download Apple Arabic pack\" below and accept Apple's prompt. The top half needs it to show English while people are still talking. Egypt Talk continues by itself when the pack is installed.")
+                    .font(.callout)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

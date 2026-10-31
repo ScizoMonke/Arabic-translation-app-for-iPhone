@@ -5,11 +5,13 @@ import SwiftUI
 import Translation
 import UIKit
 
-/// One line in the top half: English for what was said around him.
+/// One settled line in the top half: English for something said around him.
+/// Never changes once made (D43). `utterance` groups the lines of one stretch
+/// of speech, so the view can make the current one larger.
 struct TopLine: Identifiable {
     let id = UUID()
     let english: String
-    let note: String?
+    let utterance: Int
 }
 
 /// One card in the bottom half (D13): what he said, what to say, what it means,
@@ -30,6 +32,36 @@ struct MySentence: Sendable {
     let heardFinalAt: Date
 }
 
+/// How the top half turns Arabic into English this session, chosen at load.
+enum TopMode: Equatable, Sendable {
+    /// D43: turbo transcribes a rolling window about every second; Apple
+    /// translates. Needs the Apple Arabic pack.
+    case live
+    /// R31: turbo would not load, so large-v3 transcribes the rolling window,
+    /// every two seconds because it is about three times slower.
+    case liveSlow
+    /// Pack missing: today's path, large-v3 translates each utterance after
+    /// the speaker pauses (D16, D36).
+    case perUtterance
+
+    /// Seconds of new audio between decodes of the rolling window.
+    var tick: Double {
+        switch self {
+        case .live: return 1.0
+        case .liveSlow: return 2.0
+        case .perUtterance: return 0
+        }
+    }
+
+    var label: String {
+        switch self {
+        case .live: return "live"
+        case .liveSlow: return "live, slower model"
+        case .perUtterance: return "after each pause (Apple Arabic pack missing)"
+        }
+    }
+}
+
 /// D34: the top half listens all the time and treats everything as Arabic; the
 /// bottom half works only while he presses and holds it. Who is speaking is
 /// never guessed.
@@ -39,6 +71,8 @@ final class AppModel: ObservableObject {
         case checking
         case needsDownload
         case downloading(String, Double)
+        /// D43: setup stops here until Apple's Arabic pack is installed.
+        case needsArabicPack
         case preparing(String)
         case ready
         case failed(String)
@@ -46,6 +80,7 @@ final class AppModel: ObservableObject {
 
     @Published private(set) var phase: Phase = .checking
     @Published private(set) var micState: MicState = .off
+    /// True while today's path (per utterance) works on a sentence.
     @Published private(set) var isWorking = false
     /// True while the Egyptian model works on one of his sentences.
     @Published private(set) var isComposing = false
@@ -58,6 +93,11 @@ final class AppModel: ObservableObject {
     /// Why holding cannot work right now (permission, offline English), or nil.
     @Published private(set) var englishProblem: String?
     @Published private(set) var topLines: [TopLine] = []
+    /// D43: English for what is still being said, replaced at every decode
+    /// and shown lighter than the settled lines. Transient: what it becomes is
+    /// settled and logged.
+    @Published private(set) var liveTail = ""
+    @Published private(set) var topMode: TopMode?
     @Published private(set) var bottomLines: [BottomLine] = []
     @Published private(set) var statusMessage: String?
     @Published private(set) var translationStatus: LanguageAvailability.Status?
@@ -86,6 +126,20 @@ final class AppModel: ObservableObject {
     /// partial result is used instead.
     static let finalResultTimeout: Duration = .seconds(2)
 
+    /// D43 settle rule (see `settleCount`). Measured on the PC with a Python
+    /// twin of this loop and faster-whisper turbo on 30 Egyptian clips: 209
+    /// settle points, 2 with the boundary word repeated, word error against the
+    /// reference 0.40 streamed versus 0.43 for one offline pass.
+    static let settleAgeSeconds: Float = 4.0
+    static let settleForceWindowSeconds: Float = 24.0
+    /// Today's path: an utterance this long is taken without waiting for a pause.
+    static let utteranceCutSeconds = 25
+    private static let idlePoll: Duration = .milliseconds(100)
+
+    /// D43 gate, first setup only: once passed, a pack that later goes
+    /// missing sends the top half to today's path instead of locking him out.
+    private static let packGateKey = "arabicPackGatePassed"
+
     /// His sentences wait here for the Egyptian model, so a slow generation
     /// never holds up Whisper or the top half: a conversation does not wait.
     private let mySentences: AsyncStream<MySentence>
@@ -93,6 +147,8 @@ final class AppModel: ObservableObject {
 
     /// Keeps the views fast over a long day; the session log keeps everything.
     private let maxLinesOnScreen = 300
+    /// Counts stretches of speech in the top half, for TopLine.utterance.
+    private var utteranceNumber = 0
 
     init() {
         let translator = AppleTranslator()
@@ -106,27 +162,32 @@ final class AppModel: ObservableObject {
     // MARK: Setup
 
     private var everythingDownloaded: Bool {
-        Transcriber.localModelFolder() != nil && ModelDownloader.localModelFile() != nil
+        SpeechModel.allCases.allSatisfy { Transcriber.localModelFolder($0) != nil }
+            && ModelDownloader.localModelFile() != nil
     }
 
     func launch() async {
         await refreshTranslationStatus()
         guard phase == .checking else { return }
         if everythingDownloaded {
-            await prepareModels()
+            await passPackGateOrWait()
         } else {
             phase = .needsDownload
         }
     }
 
-    /// Whatever is missing, in order: Whisper (about 950 MB), then the Egyptian
-    /// model (about 2.5 GB). Each resumes where it stopped when tapped again.
+    /// Whatever is missing, in order: the live speech model, the full speech
+    /// model, then the Egyptian model. Each resumes where it stopped when
+    /// tapped again (the speech models file by file, the Egyptian one by byte).
     func downloadModels() async {
-        if Transcriber.localModelFolder() == nil {
-            let label = "Speech model (1 of 2, about 950 MB)"
+        let steps: [(SpeechModel, String)] = [
+            (.live, "Live speech model (1 of 3, \(SpeechModel.live.sizeLabel))"),
+            (.full, "Backup speech model (2 of 3, \(SpeechModel.full.sizeLabel))"),
+        ]
+        for (model, label) in steps where Transcriber.localModelFolder(model) == nil {
             phase = .downloading(label, 0)
             do {
-                try await transcriber.download { fraction in
+                try await transcriber.download(model) { fraction in
                     Task { @MainActor in self.reportDownload(label, fraction) }
                 }
             } catch {
@@ -135,7 +196,7 @@ final class AppModel: ObservableObject {
             }
         }
         if ModelDownloader.localModelFile() == nil {
-            let label = "Egyptian model (2 of 2, about 2.5 GB)"
+            let label = "Egyptian model (3 of 3, about 2.5 GB)"
             phase = .downloading(label, 0)
             do {
                 try await nileDownloader.download { fraction in
@@ -146,7 +207,7 @@ final class AppModel: ObservableObject {
                 return
             }
         }
-        await prepareModels()
+        await passPackGateOrWait()
     }
 
     /// Progress callbacks can arrive after a download returned; only the phase
@@ -167,18 +228,71 @@ final class AppModel: ObservableObject {
         }
     }
 
-    /// R10/R13: the two models load one after the other, never at once, with a
+    /// D43: the first setup does not reach the split screen without Apple's
+    /// Arabic pack. The setup screen's download button finishes the gate
+    /// through `refreshTranslationStatus`.
+    private func passPackGateOrWait() async {
+        if translationStatus == .installed {
+            UserDefaults.standard.set(true, forKey: Self.packGateKey)
+        }
+        if UserDefaults.standard.bool(forKey: Self.packGateKey) {
+            await prepareModels()
+        } else {
+            phase = .needsArabicPack
+        }
+    }
+
+    /// Offered only when Apple says the pack does not exist for this phone:
+    /// the app then runs today's slower top half instead of never opening.
+    func continueWithoutPack() async {
+        guard phase == .needsArabicPack, translationStatus == .unsupported else { return }
+        UserDefaults.standard.set(true, forKey: Self.packGateKey)
+        await prepareModels()
+    }
+
+    /// R10/R13: the models load one after the other, never at once, with a
     /// memory line in the log after each, so a spike can be told apart from a
-    /// steady state.
+    /// steady state. Only one Whisper model is loaded, chosen by the pack.
     private func prepareModels() async {
         phase = .preparing("Preparing the speech model for this phone. The first time can take several minutes.")
+        let packInstalled = await translator.status() == .installed
+        translationStatus = packInstalled ? .installed : translationStatus
+
+        // If iOS killed the app while turbo loaded last time (memory, R10/R31),
+        // the marker is still set: use large-v3 this once, so a model that
+        // cannot load never locks him out. The next launch tries turbo again.
+        let liveMarker = "liveWhisperLoadInProgress"
+        var mode: TopMode = .perUtterance
+        var note = ""
         do {
-            let promptNote = try await transcriber.load()
-            logDiagnostic("Whisper loaded, \(promptNote)")
+            if !packInstalled {
+                note = try await transcriber.load(.full)
+                mode = .perUtterance
+            } else if UserDefaults.standard.bool(forKey: liveMarker) {
+                UserDefaults.standard.set(false, forKey: liveMarker)
+                logDiagnostic("\(Transcriber.liveVariant) skipped: loading it ended the app last time")
+                note = try await transcriber.load(.full)
+                mode = .liveSlow
+            } else {
+                UserDefaults.standard.set(true, forKey: liveMarker)
+                do {
+                    note = try await transcriber.load(.live)
+                    mode = .live
+                } catch {
+                    // R31: WhisperKit refused turbo on this phone.
+                    logDiagnostic("\(Transcriber.liveVariant) did not load (\(error.localizedDescription)); using large-v3")
+                    note = try await transcriber.load(.full)
+                    mode = .liveSlow
+                }
+                UserDefaults.standard.set(false, forKey: liveMarker)
+            }
         } catch {
+            UserDefaults.standard.set(false, forKey: liveMarker)
             phase = .failed("Could not load the speech model. (\(error.localizedDescription))")
             return
         }
+        topMode = mode
+        logDiagnostic("Whisper: \(note); top half: \(mode.label)")
         logMemory("after Whisper load")
 
         do {
@@ -213,8 +327,8 @@ final class AppModel: ObservableObject {
         }
 
         phase = .ready
-        showStatus("Ready. Speech: \(Transcriber.modelVariant). Egyptian: \(ModelDownloader.fileName).")
-        startPipelineIfNeeded()
+        showStatus("Ready. Top half: \(mode.label). Egyptian: \(ModelDownloader.fileName).")
+        startPipelineIfNeeded(mode)
         let granted = await AVAudioApplication.requestRecordPermission()
         if !granted {
             showStatus("Microphone is off for Egypt Talk. Turn it on in Settings > Apps > Egypt Talk.")
@@ -237,8 +351,24 @@ final class AppModel: ObservableObject {
         logDiagnostic("English recognizer: \(readiness)")
     }
 
+    /// Also finishes the D43 gate: when the pack arrives while setup waits for
+    /// it, loading continues by itself.
     func refreshTranslationStatus() async {
-        translationStatus = await translator.status()
+        let status = await translator.status()
+        translationStatus = status
+        if status == .installed {
+            if phase == .needsArabicPack {
+                UserDefaults.standard.set(true, forKey: Self.packGateKey)
+                // Callers are view tasks that SwiftUI cancels when the setup
+                // screen goes away; the minutes-long load must not belong to
+                // them. The phase changes first, so a second call cannot start
+                // a second load.
+                phase = .preparing("Preparing the speech model for this phone. The first time can take several minutes.")
+                Task { await self.prepareModels() }
+            } else if phase == .ready, topMode == .perUtterance {
+                showStatus("Apple Arabic pack installed. Close and reopen Egypt Talk for the live top half.")
+            }
+        }
     }
 
     // MARK: Lifecycle
@@ -280,7 +410,7 @@ final class AppModel: ObservableObject {
         }
     }
 
-    private func startPipelineIfNeeded() {
+    private func startPipelineIfNeeded(_ mode: TopMode) {
         guard !pipelineStarted else { return }
         pipelineStarted = true
         Task {
@@ -289,10 +419,10 @@ final class AppModel: ObservableObject {
             }
         }
         Task {
-            // One utterance at a time through Whisper; the stream buffers while
-            // Whisper is busy.
-            for await utterance in mic.utterances {
-                await handleTheirs(utterance)
+            if mode == .perUtterance {
+                await runUtteranceTop()
+            } else {
+                await runLiveTop(tick: mode.tick)
             }
         }
         Task {
@@ -327,6 +457,8 @@ final class AppModel: ObservableObject {
             mic.beginHold { _ in }
             showStatus(listener.problem ?? "English recognition is not available this moment. Let go and try again.")
         }
+        // The window under the tail was just emptied; its English goes too.
+        liveTail = ""
         isHolding = true
         holdStartedAt = Date()
         liveHeard = ""
@@ -382,59 +514,225 @@ final class AppModel: ObservableObject {
         }
     }
 
-    // MARK: Pipeline
+    // MARK: Top half, live (D43)
 
-    /// D36: Whisper translate with the English prompt; if the output is not
-    /// English, Whisper transcribe plus Apple Translation; otherwise nothing is
-    /// shown. The top half shows English or nothing.
-    private func handleTheirs(_ utterance: Utterance) async {
+    /// The rolling window loop. Each pass: snapshot the window; when due,
+    /// transcribe it, settle a prefix of Whisper's segments, advance the window
+    /// past them, translate the settled Arabic (appended for good) and the
+    /// rest (the lighter live tail). One decode at a time: a pass that would
+    /// fall while a decode runs simply does not happen, nothing queues. The
+    /// microphone only appends to the window and never waits on this loop.
+    private func runLiveTop(tick: Double) async {
+        let window = mic.window
+        let rate = Segmenter.sampleRate
+        let tickSamples = Int(tick * Double(rate))
+        let minimumSamples = Int(Transcriber.minimumDecodeSeconds * Float(rate))
+        var generation = -1
+        var lastDecodeAppended = 0
+        /// The previous decode of this same window (same start), for the
+        /// two-decode agreement.
+        var previous: [HeardSegment] = []
+        /// The stretch of speech the window is on: its start (also its key),
+        /// seconds already settled and cut from it, and when English for it
+        /// first reached the screen.
+        var speechStart: Date?
+        var settledSeconds: Double = 0
+        var firstLiveAt: Date?
+
+        while true {
+            guard let snap = window.snapshot() else {
+                try? await Task.sleep(for: Self.idlePoll)
+                continue
+            }
+            if snap.generation != generation {
+                generation = snap.generation
+                previous = []
+                lastDecodeAppended = 0
+            }
+            if snap.speechStartedAt != speechStart {
+                speechStart = snap.speechStartedAt
+                settledSeconds = 0
+                firstLiveAt = nil
+                previous = []
+                utteranceNumber += 1
+            }
+            let due = snap.closed
+                || (snap.loudSamples >= Segmenter.minSpeechSamples
+                    && snap.samples.count >= minimumSamples
+                    && snap.appended - lastDecodeAppended >= tickSamples)
+            guard due else {
+                try? await Task.sleep(for: Self.idlePoll)
+                continue
+            }
+            lastDecodeAppended = snap.appended
+
+            let segments: [HeardSegment]
+            do {
+                segments = try await transcriber.transcribeSegments(snap.samples)
+            } catch {
+                showStatus("Could not process what was said. (\(error.localizedDescription))")
+                if snap.closed {
+                    // Retrying the same closed audio would loop on the same error.
+                    _ = window.advance(by: snap.samples.count, generation: snap.generation)
+                    logTopFailure(outcome: "error: \(error.localizedDescription)", speechStart: snap.speechStartedAt)
+                }
+                try? await Task.sleep(for: .seconds(1))
+                continue
+            }
+
+            let windowSeconds = Float(snap.samples.count) / Float(rate)
+            var settle = snap.closed ? segments.count
+                : Self.settleCount(current: segments, previous: previous, windowSeconds: windowSeconds)
+            var cut = snap.samples.count
+            if !snap.closed && settle > 0 {
+                // Cut where the first unsettled segment starts, never before the
+                // end of the last settled one, so no settled audio is decoded twice.
+                let boundary = max(segments[settle - 1].end, segments[settle].start)
+                cut = min(snap.samples.count, Int((boundary * Float(rate)).rounded()))
+                if cut <= 0 {
+                    settle = 0   // timestamps that cut nothing would settle words twice
+                }
+            }
+            if snap.closed || settle > 0 {
+                guard window.advance(by: cut, generation: snap.generation) else { continue }
+            } else if !window.isCurrent(snap.generation) {
+                continue
+            }
+
+            let cutSeconds = Double(cut) / Double(rate)
+            let settledBase = settledSeconds
+            if snap.closed {
+                previous = []
+            } else if settle > 0 {
+                let shift = Float(cutSeconds)
+                previous = segments[settle...].map {
+                    HeardSegment(text: $0.text, start: $0.start - shift, end: $0.end - shift)
+                }
+                settledSeconds += cutSeconds
+            } else {
+                previous = segments
+            }
+
+            for segment in segments[..<settle] {
+                let english = await translator.toEnglish(segment.text)
+                let spokenEnd = snap.speechStartedAt.addingTimeInterval(settledBase + Double(segment.end))
+                settleTop(arabic: segment.text, english: english, speechStart: snap.speechStartedAt,
+                          spokenEnd: spokenEnd, firstLiveAt: &firstLiveAt)
+            }
+
+            let tailArabic = snap.closed ? "" : segments[settle...].map(\.text).joined(separator: " ")
+            if tailArabic.isEmpty {
+                liveTail = ""
+            } else {
+                let english = await translator.toEnglish(tailArabic)
+                // Checked after Apple answers: a hold may have emptied the
+                // window meanwhile, and its tail must not come back.
+                if !window.isCurrent(snap.generation) || isHolding {
+                    liveTail = ""
+                } else if let english, let shown = Self.displayableEnglish(english) {
+                    liveTail = shown
+                    if firstLiveAt == nil { firstLiveAt = Date() }
+                } else if settle > 0 {
+                    // The old tail would repeat words that just settled above it.
+                    liveTail = ""
+                }
+            }
+            if snap.closed {
+                if segments.isEmpty && settledBase == 0 {
+                    // R29: a stretch of speech that settled nothing still gets a TIME line.
+                    logTopFailure(outcome: "no speech", speechStart: snap.speechStartedAt)
+                }
+                logMemory("after their speech")
+            }
+        }
+    }
+
+    /// D43 settle rule. Never the last segment of a decode (it may end inside a
+    /// word). The others settle, oldest first and only as an unbroken prefix,
+    /// when one of these holds:
+    ///   - its text (letters only) is what the previous decode of the same
+    ///     window had at the same position;
+    ///   - it ended `settleAgeSeconds` or more before the newest audio;
+    ///   - the window has reached `settleForceWindowSeconds` (Whisper sees 30 s).
+    /// A closed utterance settles everything, without this function.
+    static func settleCount(current: [HeardSegment], previous: [HeardSegment], windowSeconds: Float) -> Int {
+        var count = 0
+        for index in 0..<max(0, current.count - 1) {
+            let segment = current[index]
+            let stable = index < previous.count && letters(previous[index].text) == letters(segment.text)
+            let old = windowSeconds - segment.end >= settleAgeSeconds
+            let forced = windowSeconds >= settleForceWindowSeconds
+            guard stable || old || forced else { break }
+            count = index + 1
+        }
+        return count
+    }
+
+    /// Punctuation and spacing wobble between decodes of the same audio.
+    private static func letters(_ text: String) -> String {
+        String(text.filter { $0.isLetter || $0.isNumber })
+    }
+
+    /// English that may be shown: Arabic script removed (D5), letters left, and
+    /// not a known hallucination (checked after translation on every path).
+    private static func displayableEnglish(_ english: String) -> String? {
+        let text = ScriptGuard.clean(english)
+        guard Transcriber.isText(text), !Transcriber.isKnownHallucination(text) else { return nil }
+        return text
+    }
+
+    // MARK: Top half, per utterance (pack missing)
+
+    /// Today's path, kept for a phone without Apple's Arabic pack: wait for the
+    /// speaker to pause (or 25 s), then Whisper large-v3 translates the
+    /// utterance with the English prompt, and NaturalLanguage must call the
+    /// result English (D36). Utterances that ended before a hold are still
+    /// handled during it (their speech, D42).
+    private func runUtteranceTop() async {
+        let window = mic.window
+        let cutSamples = Self.utteranceCutSeconds * Segmenter.sampleRate
+        while true {
+            guard let snap = window.snapshot(), snap.closed || snap.samples.count >= cutSamples else {
+                try? await Task.sleep(for: Self.idlePoll)
+                continue
+            }
+            let endedAt = Date()
+            guard window.advance(by: snap.samples.count, generation: snap.generation) else { continue }
+            utteranceNumber += 1
+            await handleTheirs(snap.samples, speechStart: snap.speechStartedAt, endedAt: endedAt)
+        }
+    }
+
+    private func handleTheirs(_ samples: [Float], speechStart: Date, endedAt: Date) async {
         isWorking = true
         defer { isWorking = false }
 
         let translated: String?
         do {
-            translated = try await transcriber.translate(utterance.samples)
+            translated = try await transcriber.translate(samples)
         } catch {
             showStatus("Could not process that sentence. (\(error.localizedDescription))")
+            logTopFailure(outcome: "error: \(error.localizedDescription)", speechStart: speechStart, utteranceEnd: endedAt)
             return
         }
-        guard let translated else { return }   // Whisper judged it non-speech
-
-        let first = Self.englishCheck(translated)
-        if first.isEnglish {
-            showTop(english: translated, note: nil, path: "translate", utteranceEnd: utterance.endedAt)
-            logMemory("after their sentence")
+        guard let translated else {
+            // Whisper judged it non-speech (R29: still a TIME line).
+            logTopFailure(outcome: "no speech", speechStart: speechStart, utteranceEnd: endedAt)
             return
         }
-
-        var reason = "translate output is \(first.label)"
-        var arabic: String?
-        if await translator.status() == .installed {
-            do {
-                arabic = try await transcriber.transcribeArabic(utterance.samples)
-                if arabic == nil { reason += "; Arabic pass heard no speech" }
-            } catch {
-                reason += "; Arabic pass failed (\(error.localizedDescription))"
-            }
-            if let arabic {
-                if let english = await translator.toEnglish(arabic) {
-                    let second = Self.englishCheck(english)
-                    if second.isEnglish {
-                        logDiagnostic("\(reason); translate raw \"\(ScriptGuard.escapeForLog(translated))\"; recovered by Apple Translate")
-                        showTop(english: english, note: "via Apple Translate", path: "fallback-apple",
-                                utteranceEnd: utterance.endedAt)
-                        logMemory("after their sentence")
-                        return
-                    }
-                    reason += "; Apple output is \(second.label)"
-                } else {
-                    reason += "; Apple Translate returned nothing"
-                }
-            }
-        } else {
-            reason += "; Apple Arabic pack not installed"
+        let check = Self.englishCheck(translated)
+        guard check.isEnglish, let english = Self.displayableEnglish(translated) else {
+            let reason = check.isEnglish ? "nothing left after the script guard or a known hallucination"
+                : "translate output is \(check.label)"
+            logDroppedTop(reason: reason, raw: translated, speechStart: speechStart, utteranceEnd: endedAt)
+            return
         }
-        logDroppedTop(reason: reason, translated: translated, arabic: arabic, utteranceEnd: utterance.endedAt)
+        appendTopLine(english)
+        let shownAt = Date()
+        log.append("THEM: \(english) [translate]")
+        log.append("TIME them: speech-start \(log.clock(speechStart)) | utterance-end \(log.clock(endedAt)) | line \(log.clock(shownAt)) "
+            + "(+\(Self.milliseconds(endedAt, shownAt)) ms after utterance-end) [translate]")
+        logMemory("after their sentence")
     }
 
     /// English is what Apple's NaturalLanguage framework calls English, with no
@@ -448,6 +746,8 @@ final class AppModel: ObservableObject {
         }
         return (language == .english, "language \(language.rawValue)")
     }
+
+    // MARK: Bottom half
 
     private func deliverMine(_ sentence: MySentence) async {
         isComposing = true
@@ -478,28 +778,43 @@ final class AppModel: ObservableObject {
     }
 
     // MARK: Render paths
-    // The only four ways text reaches the screen. Each cleans with ScriptGuard
-    // (D5); the three lasting ones log exactly what they show. The live heard
-    // line is transient: it becomes the card's "You:" line, which is logged.
-    // The log-only helpers below them write lines that are never shown, also
-    // cleaned.
+    // The only ways text reaches the screen. Each cleans with ScriptGuard (D5);
+    // the lasting ones log exactly what they show. The live heard line and the
+    // live tail are transient: what they become (his card, a settled line) is
+    // logged. The log-only helpers below them write lines that are never
+    // shown, also cleaned, with Arabic escaped.
 
-    private func showTop(english: String, note: String?, path: String, utteranceEnd: Date) {
-        let text = ScriptGuard.clean(english)
-        let cleanNote = note.map { ScriptGuard.clean($0) }
-        guard !text.isEmpty else {
-            logDroppedTop(reason: "nothing left after the script guard", translated: english, arabic: nil,
-                          utteranceEnd: utteranceEnd)
-            return
+    /// One settled segment of the live top half: shown for good if Apple's
+    /// English passes, logged either way with the Arabic escaped, so the pairs
+    /// can be graded later (R30).
+    private func settleTop(arabic: String, english: String?, speechStart: Date, spokenEnd: Date,
+                           firstLiveAt: inout Date?) {
+        let settledAt = Date()
+        let escaped = ScriptGuard.escapeForLog(arabic)
+        let outcome: String
+        if let english, let shown = Self.displayableEnglish(english) {
+            appendTopLine(shown)
+            if firstLiveAt == nil { firstLiveAt = settledAt }
+            log.append(ScriptGuard.clean("THEM: \(shown) | ar \"\(escaped)\" [live]"))
+            outcome = "live"
+        } else if let english {
+            log.append(ScriptGuard.clean("THEM dropped: Apple output not shown | ar \"\(escaped)\" | en \"\(ScriptGuard.escapeForLog(english))\""))
+            outcome = "dropped"
+        } else {
+            // R29: a translate that returns nothing still gets its TIME line.
+            log.append(ScriptGuard.clean("THEM untranslated: Apple Translate returned nothing | ar \"\(escaped)\""))
+            outcome = "untranslated"
         }
-        topLines.append(TopLine(english: text, note: cleanNote))
+        let firstLive = firstLiveAt.map { "\(log.clock($0)) (+\(Self.milliseconds(speechStart, $0)) ms)" } ?? "none"
+        log.append("TIME them: speech-start \(log.clock(speechStart)) | first-live \(firstLive) | settle \(log.clock(settledAt)) "
+            + "(+\(Self.milliseconds(speechStart, settledAt)) ms; \(Self.milliseconds(spokenEnd, settledAt)) ms after its words) [\(outcome)]")
+    }
+
+    private func appendTopLine(_ english: String) {
+        topLines.append(TopLine(english: english, utterance: utteranceNumber))
         if topLines.count > maxLinesOnScreen {
             topLines.removeFirst(topLines.count - maxLinesOnScreen)
         }
-        let shownAt = Date()
-        log.append("THEM: \(text)" + (cleanNote.map { "  (\($0))" } ?? "") + " [\(path)]")
-        log.append("TIME them: utterance-end \(log.clock(utteranceEnd)) | line \(log.clock(shownAt)) "
-            + "(+\(Self.milliseconds(utteranceEnd, shownAt)) ms) [\(path)]")
     }
 
     private func showBottom(_ rendering: Rendering) {
@@ -529,17 +844,20 @@ final class AppModel: ObservableObject {
         log.append("STATUS: \(text)")
     }
 
-    /// D36 "dropped" path: nothing is shown; the raw outputs go to the log with
-    /// Arabic script escaped (D5), so R27 can be counted afterwards.
-    private func logDroppedTop(reason: String, translated: String, arabic: String?, utteranceEnd: Date) {
-        let droppedAt = Date()
-        var line = "THEM dropped: \(reason) | translate raw \"\(ScriptGuard.escapeForLog(translated))\""
-        if let arabic {
-            line += " | arabic raw \"\(ScriptGuard.escapeForLog(arabic))\""
-        }
-        log.append(ScriptGuard.clean(line))
-        log.append("TIME them: utterance-end \(log.clock(utteranceEnd)) | dropped \(log.clock(droppedAt)) "
-            + "(+\(Self.milliseconds(utteranceEnd, droppedAt)) ms) [dropped]")
+    /// Today's path, "dropped": nothing is shown; the raw output goes to the
+    /// log with Arabic script escaped (D5), so R27 can be counted afterwards.
+    private func logDroppedTop(reason: String, raw: String, speechStart: Date, utteranceEnd: Date) {
+        log.append(ScriptGuard.clean("THEM dropped: \(reason) | translate raw \"\(ScriptGuard.escapeForLog(raw))\""))
+        logTopFailure(outcome: "dropped", speechStart: speechStart, utteranceEnd: utteranceEnd)
+    }
+
+    /// R29: every top-half attempt ends in a TIME line, including the ones
+    /// that show nothing.
+    private func logTopFailure(outcome: String, speechStart: Date, utteranceEnd: Date? = nil) {
+        let at = Date()
+        let end = utteranceEnd.map { " | utterance-end \(log.clock($0))" } ?? ""
+        log.append(ScriptGuard.clean("TIME them: speech-start \(log.clock(speechStart))\(end) | \(outcome) \(log.clock(at)) "
+            + "(+\(Self.milliseconds(speechStart, at)) ms) [\(outcome)]"))
     }
 
     private func logDiagnostic(_ message: String) {

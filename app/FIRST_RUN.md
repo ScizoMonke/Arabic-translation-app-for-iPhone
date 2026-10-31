@@ -310,3 +310,85 @@ today's file). Times are the phone's clock with milliseconds.
 each), how many `THEM:` lines were `translate`, `fallback-apple` and `dropped`
 (R27), and as before the largest `peak` and smallest `headroom` from the `MEM`
 lines.
+
+## 8. This build (wave app-5): the top half is live
+
+Install it exactly like the last one (section 3). It installs over the old app
+and keeps what is already downloaded, but this time **the setup screen comes
+back once**, because there is a new model to fetch. Do it at home on Wi-Fi.
+
+**Setup, once.** The button now says "Download the three models":
+1. Live speech model, about 650 MB (new: Whisper turbo, which writes the
+   Arabic down quickly; it cannot translate by itself).
+2. Backup speech model, about 950 MB (the one you already have, so this step
+   is skipped on your phone). It is used only if Apple's Arabic pack is ever
+   missing.
+3. Egyptian model, about 2.5 GB (already on your phone, skipped).
+
+Then setup **stops at "One more step: Apple's Arabic pack"** if the pack is not
+on the phone. It is now required: Apple turns the Arabic into English while
+people are still talking. Tap "Download Apple Arabic pack", accept Apple's
+prompt, and the app carries on by itself. Your phone already has the pack, so
+you should not see this step. Only if Apple says the phone cannot get the
+pack is there a "Continue without it" button (the top half then works the old
+way, after each pause). The first launch of the new speech model can again
+take several minutes ("Preparing the speech model"); keep the app open.
+
+**What changed on screen (top half).**
+- English appears **while they are still talking**, updating about every
+  second.
+- The last line, in **lighter grey italics ending in "..."**, is still
+  changing: it is replaced at each update and may be wrong.
+- Lines in **full black** are settled: they never change again. The lines of
+  the person still talking are larger; older ones shrink.
+- The English is rough ("Kevin English"): Apple translates short pieces of
+  Egyptian speech one at a time, and it was trained mostly on formal Arabic.
+- If the top half label says "after each pause (Apple Arabic pack missing)" or
+  "live, slower model", it is not in live mode; see below.
+- Holding the bottom half still seals your voice off: the grey line vanishes
+  the moment you press, the top half hears nothing while you hold, and it
+  starts fresh half a second after you let go. Arabic that was still grey
+  when you pressed is dropped; what was already black stays.
+
+**Checks for this build.**
+1. Someone speaks Arabic for 10 seconds or more without stopping: grey English
+   appears within about 2 seconds of them starting and keeps changing while
+   they talk; black lines appear above it every few seconds, before they stop.
+2. Black lines never change, and no word appears twice in a row across two
+   black lines (one repeat now and then is Whisper itself; several per minute
+   is a bug to report).
+3. No Arabic letters and no Arabic in Latin letters (like "ana mesh 3aref")
+   anywhere in the top half.
+4. While holding, someone speaks Arabic: nothing new lands in the top half.
+
+**Reading the new timing lines** (same log file as before). For every black
+line there are two log lines:
+- `THEM: Where are you going? | ar "\u{0631}\u{0627}..." [live]`
+  The English as shown, then the Arabic Whisper heard, written as codes so the
+  file shows no Arabic letters. These pairs are kept so the translations can be
+  graded later.
+- `TIME them: speech-start 14:02:01.000 | first-live 14:02:02.450 (+1450 ms) | settle 14:02:05.100 (+4100 ms; 1300 ms after its words) [live]`
+  - `speech-start`: when the app heard them start (the start of the stretch of
+    speech, not of this line).
+  - `first-live` +ms: how long until the first English of that stretch showed
+    up. **This is the number to watch: the target is about 2000 ms or less.**
+  - `settle`: when this line turned black; the second number is how long after
+    its own last word that happened.
+- The tag in brackets: `live` (shown), `untranslated` (Apple returned nothing;
+  the line above starts `THEM untranslated:`), `dropped` (Apple's English was
+  thrown out as junk; `THEM dropped:` above keeps it), `no speech` or `error`.
+- Near the top of the day, a `diag:` line names the speech model that loaded
+  and how long it took, and the top-half mode, e.g.
+  `Whisper: openai_whisper-large-v3-v20240930_turbo_632MB loaded in 4.2 s; ... top half: live`.
+
+**What to report after a session.**
+- The `diag: Whisper:` line (which model loaded, load seconds, mode). If it
+  says `large-v3_947MB` with `live, slower model`, turbo did not load on this
+  phone (R31): send the `did not load` diag line above it.
+- **If the top half lags**: five or six `TIME them` lines, especially the
+  `first-live` numbers, plus the `MEM` lines around them.
+- **If it repeats words**: the `THEM:` lines where it happened (with their `ar`
+  codes) and roughly how often it happens per minute of talk.
+- **If English seems wrong**: nothing to do on the spot; the `THEM:` lines with
+  their `ar` codes are exactly what is needed to check Apple's translation later.
+- As before, the largest `peak` and smallest `headroom` from the `MEM` lines.
