@@ -1,0 +1,18 @@
+{
+  "model_id": "large-v3",
+  "task": "transcribe",
+  "dataset": "mgb3",
+  "n_clips": 30,
+  "audio_s": 747.02,
+  "wall_s": 117.58,
+  "audio_s_per_wall_s": 6.35,
+  "settings": {
+    "backend": "faster-whisper 1.2.1",
+    "compute_type": "float16",
+    "language": "ar",
+    "beam_size": 5,
+    "vad_filter": false
+  },
+  "python": "3.11.0",
+  "command": "asr_bench.py large-v3 transcribe mgb3"
+}
