@@ -97,7 +97,9 @@ ENTRIES: list[tuple[str, str, list[str], str, str, str]] = [
     # --- family words ---
     ("fam-uncle-paternal", "family", ["uncle", "my uncle", "my father's brother", "dad's brother", "paternal uncle"],
      "عمي", "3ammi", "my uncle (father's brother); also what you call him"),
-    ("fam-aunt-paternal", "family", ["aunt", "auntie", "my aunt", "my father's sister", "dad's sister"],
+    ("fam-tant", "family", ["aunt", "auntie", "my aunt", "tant", "this is my aunt"],
+     "طنط", "tant", "auntie (the everyday Egyptian word for any aunt or older woman, from French tante; works for either side)"),
+    ("fam-aunt-paternal", "family", ["my father's sister", "dad's sister", "paternal aunt", "my aunt on my father's side"],
      "عمتي", "3ammeti", "my aunt (father's sister); also what you call her"),
     ("fam-uncle-maternal", "family", ["my mother's brother", "mom's brother", "maternal uncle", "my uncle on my mother's side"],
      "خالي", "5ali", "my uncle (mother's brother)"),

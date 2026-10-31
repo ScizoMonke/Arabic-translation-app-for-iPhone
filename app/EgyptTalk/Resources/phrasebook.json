@@ -624,13 +624,29 @@
    ]
   },
   {
-   "id": "fam-aunt-paternal",
+   "id": "fam-tant",
    "english": [
     "aunt",
     "auntie",
     "my aunt",
+    "tant",
+    "this is my aunt"
+   ],
+   "arabic": "طنط",
+   "arabizi": "tant",
+   "respelling": "tant",
+   "gloss": "auntie (the everyday Egyptian word for any aunt or older woman, from French tante; works for either side)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-aunt-paternal",
+   "english": [
     "my father's sister",
-    "dad's sister"
+    "dad's sister",
+    "paternal aunt",
+    "my aunt on my father's side"
    ],
    "arabic": "عمتي",
    "arabizi": "3ammeti",
