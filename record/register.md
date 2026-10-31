@@ -29,3 +29,5 @@ R23 (2026-10-31, open) Whether Metal's buffers over the memory-mapped GGUF count
 R24 (2026-10-31, open) Apple's translator can now receive two requests at once (top-half fallback and the gloss); behaviour under concurrency is unverified. Owner: next app wave, serialize if the log shows errors.
 R25 (2026-10-31, open) Agent downloads left outside any worktree at C:\VScode\a2e-wt\_src and C:\VScode\a2e-wt\_data (llama.cpp sources, xcframework zip, GGUF header probe). Redownloadable; delete after the first phone run succeeds. Owner: orchestrator.
 R19 (closed 2026-10-31 by D30).
+R26 (2026-10-31, open) With a free Apple ID and no laptop, the app stops opening on day 8 after its last refresh on this PC. Trip length unknown. If the trip exceeds 7 days the only free on-phone refresh route is SideStore, which the ledger reports broken on current iOS; otherwise the user accepts the app dying on day 8. Owner: user ruling on trip length.
+R11 (closed 2026-10-31 by D31: repository exists and is public).
