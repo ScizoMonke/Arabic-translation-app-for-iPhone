@@ -4,15 +4,17 @@
   "dataset": "mgb3",
   "n_clips": 30,
   "audio_s": 747.02,
-  "wall_s": 27.7,
-  "audio_s_per_wall_s": 26.97,
+  "wall_s": 47.33,
+  "audio_s_per_wall_s": 15.78,
   "settings": {
     "backend": "faster-whisper 1.2.1",
     "compute_type": "float16",
     "language": "ar",
     "beam_size": 5,
-    "vad_filter": false
+    "vad_filter": false,
+    "temperature_fallback": "faster-whisper default, ctranslate2 seed 0"
   },
   "python": "3.11.0",
+  "gpu_before_load_mem_util": "8662 MiB, 14 %",
   "command": "asr_bench.py deepdml/faster-whisper-large-v3-turbo-ct2 transcribe mgb3"
 }
