@@ -1,0 +1,273 @@
+id	english	arabic	back_translation
+greet-hello	hello	أهلا	Hello
+greet-welcome	welcome	أهلا وسهلا	Hello there / Hello there
+greet-salam	peace be upon you	السلام عليكم	Peace be upon you
+greet-salam-reply	and peace be upon you	وعليكم السلام	And peace be upon you.
+greet-morning	good morning	صباح الخير	Good morning
+greet-morning-reply	good morning to you too	صباح النور	Good morning, the light of the day / Good morning, the light of the day
+greet-evening	good evening	مساء الخير	Good evening /no translation needed
+greet-evening-reply	good evening to you too	مساء النور	Good evening
+greet-how-are-you	how are you	إزيك	How are you?
+greet-how-are-you-all	how is everyone	إزيكم	How are you?
+greet-fine	i'm fine	أنا كويس الحمد لله	I'm fine, praise be to God.
+greet-fine-and-you	i'm fine and you	الحمد لله، وانت؟ / وانتي؟	Praise be to God, and you? / and you?
+greet-whats-new	what's up	إيه الأخبار؟	What's new?
+intro-whats-your-name	what's your name	اسمك إيه؟	What's your name?
+intro-my-name-is	my name is	اسمي ...	My name is ...
+intro-nice-to-meet	nice to meet you	اتشرفنا	It's an honor for us
+intro-pleasure-mine	the pleasure is mine	الشرف ليا	My honor is mine
+intro-son-of	i'm the son of	أنا ابن ...	I am the son of ...
+intro-his-son	i'm his son	أنا ابنه	I'm his son
+intro-this-is-dad	this is my father	ده بابا	That's dad
+intro-brothers-son	i'm your brother's son	أنا ابن أخوك / أخوكي	I'm your uncle's son / your uncle's son
+intro-grandson	i'm your grandson	أنا حفيدك	I'm your grandson
+intro-from-abroad	i came from abroad	أنا جاي من بره	I'm coming from the village / I'm coming from the countryside
+intro-first-time	this is my first time here	دي أول مرة أجي مصر	This is the first time I'm coming to Egypt.
+intro-happy-here	i'm happy to be here	أنا مبسوط إني هنا	I'm happy to be here
+intro-happy-see-you	i'm so happy to see you	أنا مبسوط أوي إني شفتكم	I'm really happy to see you all / I'm really happy to see you all
+intro-wanted-to-meet	i've always wanted to meet you	كان نفسي أشوفكم من زمان	I've been wanting to see you guys for a long time.
+intro-dad-says-hi	my father says hello	بابا بيسلم عليكم	May your father greet you / May your father greet you
+intro-dad-misses	my father misses you	بابا مشتاقلكم أوي	Dad misses you a lot
+intro-thanks-welcome	thank you for having me	متشكر أوي على الاستقبال الجميل ده	Thanks a lot for the nice welcome
+intro-gift	i brought you a gift	دي هدية بسيطة عشانك	This is a simple gift for you / for you
+intro-your-light	that's your light	ده نورك	That's your light / That's your light
+intro-age	how old are you	عندك كام سنة؟	How old are you?
+intro-what-work	what do you do	بتشتغل إيه؟ / بتشتغلي إيه؟	What are you doing?
+intro-married	are you married	انت متجوز؟ / انتي متجوزة؟	Are you married?
+intro-not-married	i'm not married	لسه مش متجوز	Still not married
+intro-not-yet	not yet	لسه	Still
+intro-soon-inshallah	soon god willing	قريب إن شاء الله	It's close to God willing /no translation needed
+fam-uncle-paternal	uncle	عمي	I'm blind / I'm blind
+fam-aunt-paternal	aunt	عمتي	Auntie
+fam-uncle-maternal	my mother's brother	خالي	Uncle
+fam-aunt-maternal	my mother's sister	خالتي	Auntie
+fam-grandma	grandma	تيتة	You're a girl / You're a woman
+fam-grandpa	grandpa	جدو	Grandpa
+fam-cousin	cousin	ابن عمي	My son is blind
+fam-cousin-f	my female cousin	بنت عمي	My daughter is blind / My son is blind
+fam-cousin-aunt	my aunt's son	ابن عمتي	My cousin's son / My cousin's daughter
+fam-cousin-maternal-uncle	my mother's brother's son	ابن خالي	My father's son / My mother's son
+fam-cousin-maternal-aunt	my mother's sister's son	ابن خالتي	My uncle's son / My aunt's son
+fam-father	my father	بابا	Dad
+fam-mother	my mother	ماما	Mom
+fam-brother	my brother	أخويا	Brother
+fam-sister	my sister	أختي	My sister
+fam-family	my family	عيلتي	My family
+fam-who-is-this	who is this	مين ده؟ / مين دي؟	Who's that?
+fam-how-related	how are we related	إحنا قرايب إزاي؟	We're almost there, how?
+fam-children	do you have children	عندك ولاد؟	Do you have kids?
+fam-look-like-dad	you look like my father	انت شبه بابا / انتي شبه بابا	You're almost like a father / You're almost like a father
+fam-everyone-here	is everyone here	الكل هنا؟	Is everyone here?
+st-day-nice	how was your day	يومك كان حلو؟	Was your day nice?
+st-flight-long	the flight was long	الرحلة كانت طويلة أوي	The trip was long, yeah /no translation needed
+st-little-tired	i'm a little tired	أنا تعبان شوية	I'm a bit tired
+st-no-sleep-plane	i didn't sleep on the plane	منمتش في الطيارة	I didn't get on the plane / I didn't get on the plane
+st-hot	the weather is hot	الجو حر أوي	The weather is hot, yeah
+st-nice-weather	the weather is nice	الجو حلو	The weather is nice.
+st-cold-weather	it's cold	الجو برد	It's cold /no translation needed
+st-egypt-beautiful	egypt is beautiful	مصر حلوة أوي	Egypt is sweet, yeah
+st-love-egypt	i love egypt	أنا بحب مصر	I love Egypt
+st-traffic	there's so much traffic	الزحمة صعبة أوي	The traffic is really tough.
+st-all-good	everything is fine	كله تمام	Everything's fine /no translation needed
+st-family-news	how is the family	أخبار العيلة إيه؟	What's new with the family?
+st-what-this	what is this	إيه ده؟	What's that?
+st-really	really	بجد؟	Seriously?
+st-dont-know	i don't know	مش عارف	Don't know / Don't know
+st-i-know	i know	عارف	I know
+st-beautiful	that's beautiful	حلو أوي	You're so sweet / You're so sweet
+st-i-like-it	i like it	عاجبني أوي	I'm so tired
+st-me-too	me too	وأنا كمان	I'm here too /I'm here too
+st-good-one	that's funny	حلوة دي	You're sweet / You're sweet
+st-missed-all	i missed you all	وحشتوني	I'm scared of you / I'm scared of you
+st-where-live	where do you live	ساكن فين؟ / ساكنة فين؟	Where are you staying?
+st-what-doing	what are you doing	بتعمل إيه؟ / بتعملي إيه؟	What are you doing?
+st-football-team	who do you support	بتشجع مين؟ / بتشجعي مين؟	Who are you encouraging?
+st-ahly-zamalek	ahly or zamalek	أهلي ولا زمالك؟	How are you, my dear and my friend?
+st-egyptian-food	i love egyptian food	الأكل المصري حلو أوي	Egyptian food is really sweet / really tasty
+hosp-thanks-full	thank you i'm full	شكرا، شبعت والله	Thank you, I'm full by God
+hosp-full	i'm full	الحمد لله، شبعت	Praise be to God, I'm full /no translation needed
+hosp-swear	i swear	والله	By God / By God
+hosp-cant-eat-more	i really can't eat any more	والله مش قادر آكل تاني	I swear I can't eat another bite
+hosp-just-little	just a little	شوية بس	Just a bit /no translation needed
+hosp-delicious	it's delicious	الأكل حلو أوي	The food is sweet, yeah
+hosp-bless-hands	god bless your hands	تسلم إيدك	Peace be upon you
+hosp-bon-appetit	bon appetit	بالهنا والشفا	May you be healthy and safe / May you be healthy and safe
+hosp-no-sugar	no sugar	من غير سكر	without sugar
+hosp-little-sugar	a little sugar	سكر خفيف	Light sugar / no sugar
+hosp-with-milk	with milk	بلبن	Go to Lebanon / Go to Lebanon
+hosp-tea-milk	tea with milk	شاي بلبن	Tea with milk / Tea with milk
+hosp-more-tea	more tea please	ممكن كمان شاي؟	Can I have some tea too?
+hosp-tea	tea please	ممكن شاي؟	Can I have some tea?
+hosp-coffee	coffee please	ممكن قهوة؟	Can I have a coffee?
+hosp-coffee-medium	coffee with medium sugar	قهوة مظبوط	strong coffee
+hosp-water	can i have water	ممكن مية؟	Can I have some water?
+hosp-no-thanks	no thank you	لأ، شكرا	You're welcome /no translation needed
+hosp-yes-please	yes please	أيوه، ياريت	Yeah, I'd like to...
+hosp-dont-trouble	don't go to any trouble	متتعبش نفسك / متتعبيش نفسك	Don't overwork yourself / Don't overexert yourself
+hosp-dish-name	what is this dish	الأكلة دي اسمها إيه؟	What's the name of this dish?
+hosp-want-taste	i want to try it	عايز أدوق	I want to go
+hosp-house-beautiful	your home is beautiful	البيت حلو أوي	The house is sweet, yeah
+hosp-enough	that's enough	كفاية كده، شكرا	That's enough, thanks
+hosp-help	can i help	ممكن أساعد؟	Can I help?
+hosp-bread	can you pass the bread	ممكن العيش؟	Can I live?
+hosp-salt	can you pass the salt	ممكن الملح؟	Can I have some salt?
+rel-alhamdulillah	thank god	الحمد لله	Praise be to God.
+rel-inshallah	god willing	إن شاء الله	God willing / God willing
+rel-mashallah	mashallah	ما شاء الله	What a blessing / What a blessing
+rel-bless-you	god bless you	الله يبارك فيك / فيكي	May God bless you / you (plural) /
+rel-keep-you	may god keep you	ربنا يخليك / يخليكي	May God make you healthy / may God make you healthy
+rel-safe-reply	may god keep you safe	الله يسلمك	May God preserve you / May God preserve you
+rel-sneeze	bless you	يرحمكم الله	May God have mercy on you.
+rel-rip-m	may he rest in peace	الله يرحمه	May God have mercy on him / May God have mercy on her
+rel-rip-f	may she rest in peace	الله يرحمها	May God have mercy on her
+rel-bismillah	in the name of god	بسم الله	In the name of God /no translation
+rel-god-generous	god is generous	ربنا كريم	May God be kind to you /no translation needed
+rel-reward-you	may god reward you	ربنا يكرمك	May God honor you / May God honor you
+rel-protect-you	may god protect you	ربنا يحفظك	May God protect you
+rel-god-with-you	god be with you	ربنا معاك / معاكي	God be with you / you (plural)
+pol-thanks	thank you	شكرا	Thank you
+pol-thanks-very	thank you so much	متشكر أوي	Thanks a lot
+pol-welcome	you're welcome	العفو	Forgive me / no offense
+pol-no-problem	no problem	مفيش مشكلة	No problem / No problem
+pol-excuse-me	excuse me	لو سمحت / لو سمحتي	If you don't mind / If you don't mind (for a woman)
+pol-excuse-pass	excuse me can i pass	عن إذنك	By your permission / By your permission
+pol-sorry	sorry	آسف	Sorry
+pol-never-mind	never mind	معلش	You're welcome / You're welcome
+pol-after-you	after you	اتفضل / اتفضلي	Please / Please (for a woman)
+pol-of-course	of course	طبعا	Of course / Of course
+pol-yes	yes	أيوه	Yeah /no translation needed
+pol-no	no	لأ	Oh (no, not really)
+pol-okay	okay	ماشي	Let's go / Let's go (to the car)
+pol-perfect	perfect	تمام	Okay
+pol-sorry-late	sorry i'm late	آسف على التأخير	Sorry for the delay / Sorry for the delay
+pol-up-to-you	whatever you think	اللي تشوفه / اللي تشوفيه	Whoever sees him / whoever sees her
+pol-kind	you are very kind	ده من ذوقك	That's your taste / That's your style
+pol-no-need	no need	مفيش داعي	No need.
+meta-little-arabic	i only speak a little arabic	أنا بتكلم عربي شوية بس	I'm speaking a bit of Arabic, but...
+meta-no-arabic	i don't speak arabic	أنا مبتكلمش عربي	I don't speak Arabic
+meta-sorry-arabic	sorry my arabic is bad	معلش، العربي بتاعي مش كويس	No, my Arabic isn't very good.
+meta-phone	i am using this phone to translate	الموبايل ده بيترجملي	This mobile translates for me.
+meta-speak-into-phone	speak into the phone	اتكلم في الموبايل / اتكلمي في الموبايل	Talk on the phone / talk on the phone
+meta-speak-slowly	please speak slowly	اتكلم بالراحة شوية / اتكلمي بالراحة شوية	Talk comfortably for a bit / Talk comfortably for a bit
+meta-say-again	say it again	ممكن تقولها تاني؟ / تقوليها تاني؟	Can you say it again? / Say it again?
+meta-dont-understand	i don't understand	مش فاهم	I don't understand / I don't understand
+meta-understood	i understand	فهمت	I understand /I understand
+meta-what-mean	what does that mean	يعني إيه؟	What do you mean?
+meta-write	can you write it	ممكن تكتبهالي؟ / تكتبيهالي؟	Can you write it here? / Can you write it here?
+meta-how-say	how do you say this in arabic	ده اسمه إيه بالعربي؟	What's his name in Arabic?
+meta-speak-english	do you speak english	بتتكلم إنجليزي؟ / بتتكلمي إنجليزي؟	Do you speak English?
+meta-anyone-english	does anyone speak english	حد هنا بيتكلم إنجليزي؟	Do you speak English here?
+meta-learning	i'm learning arabic	أنا بتعلم عربي	I'm learning Arabic
+meta-one-second	one second let me translate	ثانية أترجم	Translate again
+meta-dad-taught	my father taught me a little	بابا علمني شوية	Dad, I told you some stuff /no translation needed
+meta-exactly	exactly	بالظبط	Exactly / precisely
+meta-pardon	what	نعم؟	Yes?
+dir-where	where	فين؟	Where are you?
+dir-where-place	where is this place	المكان ده فين؟	Where is this place?
+dir-left	turn left	لف شمال	Turn left
+dir-right	turn right	لف يمين	turn right / turn right
+dir-straight	go straight	على طول	Along
+dir-stop-here	stop here	وقف هنا لو سمحت	Stop here if it's okay
+dir-here-fine	here is fine	هنا كويس	This is good /no translation needed
+dir-slow-down	slow down	بالراحة لو سمحت	If it's okay with you, I'll take the comfort / If it's okay with you, I'll take the comfort
+dir-wait	wait a moment	استنى دقيقة / استني دقيقة	Wait a minute / Wait a minute
+dir-fare	how much is the ride	الأجرة كام؟	How much is the fare?
+dir-how-much-to	how much to	بكام لحد هناك؟	How far is it there?
+dir-take-me	take me to this address	وديني العنوان ده	And this is the title /no translation needed
+dir-far	is it far	هو بعيد؟	Is it far?
+dir-near	is it close	هو قريب؟	Is it near?
+dir-arrive-when	when will we arrive	هنوصل إمتى؟	When do we arrive?
+dir-lost	i'm lost	أنا تايه	I'm tired / I'm exhausted
+dir-here	here	هنا	Here /no translation needed
+dir-there	there	هناك	Here /no translation
+dir-go-back	go back	ارجع ورا	Go back
+dir-uber	are you the uber	انت الأوبر؟	Are you the Uber?
+dir-ac	can you turn on the ac	ممكن تشغل التكييف؟	Can you turn on the AC?
+dir-walk	can we walk	ينفع نروح مشي؟	Does it work if we walk?
+shop-how-much	how much	ده بكام؟	How much is this?
+shop-expensive	too expensive	غالي أوي	Oh my dear / Oh my love
+shop-best-price	can you lower the price	آخر سعر كام؟	How much is the last price?
+shop-take-it	i'll take it	هاخده	Take it
+shop-want-this	i want this one	عايز ده	I want this / I want this
+shop-change	do you have change	معاك فكة؟	Do you have a cake?
+shop-no-change	i don't have change	معييش فكة	I don't have a tooth / I don't have a tooth (for a man or a woman)
+shop-card	can i pay by card	ينفع أدفع بالفيزا؟	Can I pay with a visa card?
+shop-cash	i'll pay cash	هدفع كاش	Pay cash / Pay cash
+shop-just-looking	just looking	بتفرج بس	Just look / Just look (at me)
+shop-size	do you have another size	عندك مقاس تاني؟	Do you have another size?
+shop-color	do you have another color	عندك لون تاني؟	Do you have another color?
+shop-keep-change	keep the change	خلي الباقي	Leave the rest /no translation needed
+shop-bag	can i have a bag	ممكن كيس؟	Can I have a bag?
+shop-deal	okay deal	ماشي، اتفقنا	Let's go, we agreed /no translation needed
+shop-total	how much altogether	كله بكام؟	How much is everything?
+hl-tired	i'm tired	أنا تعبان	I'm tired
+hl-headache	i have a headache	عندي صداع	I have a headache
+hl-bathroom	where is the bathroom	الحمام فين؟	Where is the bathroom?
+hl-need-water	i need water	عايز مية	I want a hundred
+hl-thirsty	i'm thirsty	أنا عطشان	I'm thirsty / I'm thirsty
+hl-hungry	i'm hungry	أنا جعان	I'm hungry / I'm hungry
+hl-rest	i need to rest a little	محتاج أرتاح شوية	I need to rest a bit.
+hl-sleep	i want to sleep	عايز أنام	I want to sleep
+hl-sleepy	i'm sleepy	أنا نعسان	I'm sleepy
+hl-cold	i'm cold	أنا بردان	I'm tired / I'm exhausted
+hl-hot	i'm hot	أنا حران	I'm fine /I'm okay
+hl-sick	i feel sick	حاسس إني تعبان	I feel like I'm exhausted /no translation needed
+hl-stomach	my stomach hurts	بطني بتوجعني	My stomach is bothering me.
+hl-pharmacy	where is the pharmacy	فين أقرب صيدلية؟	Where's the nearest pharmacy?
+hl-doctor	i need a doctor	محتاج دكتور	I need a doctor
+hl-painkiller	do you have painkillers	عندك مسكن؟	Do you have a place to stay?
+hl-medicine	i need medicine	محتاج دوا	I need medicine
+hl-dont-worry	don't worry i'm fine	أنا كويس، متقلقش / متقلقيش	I'm fine, don't worry / don't worry
+hl-wash-hands	i want to wash my hands	عايز أغسل إيدي	I want to wash my hands
+hl-shower	can i take a shower	ممكن آخد دش؟	Can I take a shower?
+tm-now	now	دلوقتي	Right now / At this moment
+tm-later	later	بعدين	Later
+tm-not-now	not now	مش دلوقتي	Not now
+tm-today	today	النهارده	Today / Today
+tm-tomorrow	tomorrow	بكرة	Tomorrow
+tm-yesterday	yesterday	امبارح	Yesterday
+tm-day-after	the day after tomorrow	بعد بكرة	Tomorrow
+tm-tonight	tonight	النهارده بالليل	Tonight at night / tonight at night
+tm-morning	in the morning	الصبح	Good morning
+tm-tomorrow-morning	tomorrow morning	بكرة الصبح	Tomorrow morning /no translation needed
+tm-what-time	what time is it	الساعة كام؟	What time is it?
+tm-when	when	إمتى؟	When?
+tm-leave-when	what time do we leave	هنمشي الساعة كام؟	What time is it?
+tm-wake-when	what time do we wake up	هنصحى الساعة كام؟	What time is it?
+tm-coming	i'm coming	جاي حالا	Come on now / Come on now
+tm-late	it's late	الوقت اتأخر	The time is late /no translation needed
+tm-week	i'm staying for a week	أنا قاعد أسبوع	I've been sitting for a week
+tm-two-weeks	i'm staying for two weeks	أنا قاعد أسبوعين	I've been here for two weeks
+tm-next-week	next week	الأسبوع الجاي	Next week /no translation
+pr-wifi-password	what's the wifi password	باسورد الواي فاي إيه؟	What's the Wi-Fi password?
+pr-wifi	is there wifi	فيه واي فاي؟	Is there WiFi?
+pr-charger	do you have a charger	معاك شاحن؟ / معاكي شاحن؟	Do you have a charger?
+pr-charge-phone	i need to charge my phone	محتاج أشحن الموبايل	I need to charge my mobile phone.
+pr-battery-dead	my phone died	الموبايل فصل شحن	The phone is charging /no translation needed
+pr-sim	where can i buy a sim	أشتري خط منين؟	Where did you get the wire from?
+pr-photo-together	can we take a picture together	ممكن ناخد صورة مع بعض؟	Can we take a picture together?
+pr-photo	can i take a picture	ممكن أصور؟	Can I take a photo?
+pr-number	what's your number	ممكن رقمك؟	Can I have your number?
+pr-whatsapp	do you have whatsapp	عندك واتساب؟	Do you have WhatsApp?
+pr-call-me	call me	كلمني / كلميني	Speak to me / speak to me
+pr-outlet	where can i plug this in	فين الفيشة؟	Where's the fish?
+pr-atm	where is an atm	فين أقرب ماكينة صرف؟	Where's the nearest ATM?
+pr-exchange	where can i exchange money	أغير فلوس فين؟	Where did I lose my money?
+pr-wake-me	can you wake me up	ممكن تصحيني؟	Can you check my work?
+bye-goodbye	goodbye	مع السلامة	Goodbye
+bye-see-tomorrow	see you tomorrow	أشوفك بكرة	I'll see you tomorrow / I'll see you tomorrow
+bye-see-later	see you later	أشوفك بعدين	I'll see you later / I'll see you later
+bye-goodnight	good night	تصبح على خير / تصبحي على خير	You're well / You're well too...
+bye-goodnight-all	good night everyone	تصبحوا على خير	You are all well / You are all fine
+bye-goodnight-reply	good night to you too	وانت من أهله / وانتي من أهله	You are from his family / You are from her family
+bye-take-care	take care	خلي بالك من نفسك	Take care of yourself / Take care of yourself
+bye-miss-you	i'll miss you	هتوحشني / هتوحشيني	You're scolding me / You're scolding her /
+bye-miss-you-all	i'll miss you all	هتوحشوني	Don't scold me / Don't scold me
+bye-great-time	i had a great time	انبسطت أوي	I'm fine / I'm okay
+bye-thanks-everything	thank you for everything	شكرا على كل حاجة	Thanks for everything
+bye-come-back	i will come back	هرجع تاني إن شاء الله	He'll come back again if God wills
+bye-visit-us	come visit us	لازم تيجوا تزورونا	You must come visit us
+bye-have-to-go	i have to go	لازم أمشي	I have to go
+bye-love-you	i love you	بحبك	I love you
+bye-love-you-all	i love you all	بحبكم	I love you / I love you
+bye-say-hi	say hi to everyone for me	سلملي على الكل / سلميلي على الكل	Peace be upon all of you / Peace be upon all of you
