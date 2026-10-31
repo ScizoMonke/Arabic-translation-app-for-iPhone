@@ -32,3 +32,7 @@ R19 (closed 2026-10-31 by D30).
 R26 (2026-10-31, open) With a free Apple ID and no laptop, the app stops opening on day 8 after its last refresh on this PC. Trip length unknown. If the trip exceeds 7 days the only free on-phone refresh route is SideStore, which the ledger reports broken on current iOS; otherwise the user accepts the app dying on day 8. Owner: user ruling on trip length.
 R11 (closed 2026-10-31 by D31: repository exists and is public).
 R26 (updated 2026-10-31) User accepts the 7-day limit (D32). Remaining action: try SideStore on the phone before departure; owner: orchestrator, after the first AltStore install works.
+R12 (closed 2026-10-31 by D34: no detection, no misrouting).
+R27 (2026-10-31, open) Whisper translate emits Latin-script Arabic on some utterances (seen by the user on the phone). D36 adds a prefix and a fallback; the rate before and after is unmeasured. Owner: app-4 and the user's next field test; the session log records which path produced each top-half line.
+R28 (2026-10-31, open) Bottom-half latency measured by the user at 3 to 5 seconds from end of speech to the Latin line. Target after D34, D35, D37: under 2 seconds for a phrasebook hit, about 3 for the model. Measured by timestamps in the session log. Owner: app-4, then field test.
+R10/R13/R23 (still open) Peak memory on the phone is still unreported; the MEM lines in the session log answer it. Owner: user to share one day's log file after the next install.
