@@ -262,8 +262,8 @@ final class AppModel: ObservableObject {
         // the marker is still set: use large-v3 this once, so a model that
         // cannot load never locks him out. The next launch tries turbo again.
         let liveMarker = "liveWhisperLoadInProgress"
-        let mode: TopMode
-        let note: String
+        var mode: TopMode = .perUtterance
+        var note = ""
         do {
             if !packInstalled {
                 note = try await transcriber.load(.full)
@@ -629,7 +629,7 @@ final class AppModel: ObservableObject {
                 // window meanwhile, and its tail must not come back.
                 if !window.isCurrent(snap.generation) || isHolding {
                     liveTail = ""
-                } else if let shown = english.flatMap(Self.displayableEnglish) {
+                } else if let english, let shown = Self.displayableEnglish(english) {
                     liveTail = shown
                     if firstLiveAt == nil { firstLiveAt = Date() }
                 } else if settle > 0 {
