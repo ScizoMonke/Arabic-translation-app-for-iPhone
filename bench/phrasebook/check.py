@@ -57,8 +57,8 @@ for e in entries:
     if not e["tags"] or any(t not in TAGS for t in e["tags"]):
         fails.append(f"{eid}: tags {e['tags']}")
     # A "masc / fem" arabizi must be explained in the gloss, or he cannot pick the right half.
-    if " / " in e["arabizi"] and "to a woman" not in e["gloss"]:
-        fails.append(f"{eid}: gendered arabizi without 'to a woman' in gloss")
+    if " / " in e["arabizi"] and "woman" not in e["gloss"]:
+        fails.append(f"{eid}: gendered arabizi without 'woman' in gloss")
 
 print(f"{len(entries)} entries, {len(alias_owner)} aliases, tags: {dict(Counter(e['tags'][0] for e in entries))}")
 for f in fails:

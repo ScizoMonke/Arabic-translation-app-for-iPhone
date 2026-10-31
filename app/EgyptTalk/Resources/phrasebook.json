@@ -1,0 +1,1395 @@
+{
+ "version": 1,
+ "entries": [
+  {
+   "id": "greet-hello",
+   "english": [
+    "hello",
+    "hi",
+    "hey",
+    "hello there"
+   ],
+   "arabic": "أهلا",
+   "arabizi": "ahlan",
+   "respelling": "ahlan",
+   "gloss": "hello (lit. [as] family)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-welcome",
+   "english": [
+    "welcome",
+    "welcome welcome",
+    "welcome everyone"
+   ],
+   "arabic": "أهلا وسهلا",
+   "arabizi": "ahlan wa sahlan",
+   "respelling": "ahlan wa sahlan",
+   "gloss": "[you came to] family and easy ground (welcome)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-salam",
+   "english": [
+    "peace be upon you",
+    "assalamu alaikum",
+    "salam alaikum",
+    "salaam alaikum"
+   ],
+   "arabic": "السلام عليكم",
+   "arabizi": "essalamu 3aleikom",
+   "respelling": "essalamu aleikom",
+   "gloss": "the peace [be] upon you",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-salam-reply",
+   "english": [
+    "and peace be upon you",
+    "wa alaikum assalam",
+    "and upon you peace",
+    "peace be upon you too"
+   ],
+   "arabic": "وعليكم السلام",
+   "arabizi": "we 3aleikom essalam",
+   "respelling": "we aleikom essalam",
+   "gloss": "and upon you [be] the peace (the reply)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-morning",
+   "english": [
+    "good morning",
+    "morning",
+    "good morning everyone"
+   ],
+   "arabic": "صباح الخير",
+   "arabizi": "saba7 el 5eir",
+   "respelling": "sabah el kheir",
+   "gloss": "morning of the good",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-morning-reply",
+   "english": [
+    "good morning to you too",
+    "morning to you too",
+    "morning of light"
+   ],
+   "arabic": "صباح النور",
+   "arabizi": "saba7 ennour",
+   "respelling": "sabah ennour",
+   "gloss": "morning of the light (the reply to good morning)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-evening",
+   "english": [
+    "good evening",
+    "evening",
+    "good evening everyone"
+   ],
+   "arabic": "مساء الخير",
+   "arabizi": "masa2 el 5eir",
+   "respelling": "masa' el kheir",
+   "gloss": "evening of the good",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-evening-reply",
+   "english": [
+    "good evening to you too",
+    "evening to you too",
+    "evening of light"
+   ],
+   "arabic": "مساء النور",
+   "arabizi": "masa2 ennour",
+   "respelling": "masa' ennour",
+   "gloss": "evening of the light (the reply to good evening)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-how-are-you",
+   "english": [
+    "how are you",
+    "how are you doing",
+    "how's it going",
+    "how have you been",
+    "how are things"
+   ],
+   "arabic": "إزيك",
+   "arabizi": "ezzayak / ezzayek",
+   "respelling": "ezzayak / ezzayek",
+   "gloss": "how [are] you? (to a man / to a woman)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-how-are-you-all",
+   "english": [
+    "how is everyone",
+    "how are you all",
+    "how are you guys",
+    "how's everybody"
+   ],
+   "arabic": "إزيكم",
+   "arabizi": "ezzayoko",
+   "respelling": "ezzayoko",
+   "gloss": "how [are] you all?",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-fine",
+   "english": [
+    "i'm fine",
+    "i am fine",
+    "i'm good",
+    "i'm doing well",
+    "i'm okay"
+   ],
+   "arabic": "أنا كويس الحمد لله",
+   "arabizi": "ana kwayes el7amdulillah",
+   "respelling": "ana kwayes elhamdulillah",
+   "gloss": "I [am] good, praise [be] to God",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-fine-and-you",
+   "english": [
+    "i'm fine and you",
+    "good and you",
+    "fine and you",
+    "i'm good how about you"
+   ],
+   "arabic": "الحمد لله، وانت؟ / وانتي؟",
+   "arabizi": "el7amdulillah, w enta? / w enti?",
+   "respelling": "elhamdulillah, w enta? / w enti?",
+   "gloss": "praise [be] to God, and you? (to a man / to a woman)",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "greet-whats-new",
+   "english": [
+    "what's up",
+    "what's new",
+    "what's the news",
+    "any news"
+   ],
+   "arabic": "إيه الأخبار؟",
+   "arabizi": "eh el a5bar?",
+   "respelling": "eh el akhbar?",
+   "gloss": "what [are] the news?",
+   "tags": [
+    "greeting"
+   ]
+  },
+  {
+   "id": "intro-whats-your-name",
+   "english": [
+    "what's your name",
+    "what is your name",
+    "and your name",
+    "what do they call you"
+   ],
+   "arabic": "اسمك إيه؟",
+   "arabizi": "esmak eh? / esmek eh?",
+   "respelling": "esmak eh? / esmek eh?",
+   "gloss": "your name [is] what? (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-my-name-is",
+   "english": [
+    "my name is",
+    "my name's",
+    "i am called",
+    "my name"
+   ],
+   "arabic": "اسمي ...",
+   "arabizi": "esmi ...",
+   "respelling": "esmi ...",
+   "gloss": "my name [is] ... (then say your name)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-nice-to-meet",
+   "english": [
+    "nice to meet you",
+    "pleased to meet you",
+    "good to meet you",
+    "it's a pleasure to meet you",
+    "nice meeting you"
+   ],
+   "arabic": "اتشرفنا",
+   "arabizi": "etsharrafna",
+   "respelling": "etsharrafna",
+   "gloss": "we have been honored (nice to meet you)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-pleasure-mine",
+   "english": [
+    "the pleasure is mine",
+    "the honor is mine",
+    "pleasure is all mine"
+   ],
+   "arabic": "الشرف ليا",
+   "arabizi": "el sharaf leyya",
+   "respelling": "el sharaf leyya",
+   "gloss": "the honor [is] mine",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-son-of",
+   "english": [
+    "i'm the son of",
+    "i am the son of",
+    "son of"
+   ],
+   "arabic": "أنا ابن ...",
+   "arabizi": "ana ebn ...",
+   "respelling": "ana ebn ...",
+   "gloss": "I [am the] son [of] ... (then say your father's name)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-his-son",
+   "english": [
+    "i'm his son",
+    "i am his son",
+    "he's my dad and i'm his son"
+   ],
+   "arabic": "أنا ابنه",
+   "arabizi": "ana ebno",
+   "respelling": "ana ebno",
+   "gloss": "I [am] his son",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-this-is-dad",
+   "english": [
+    "this is my father",
+    "he is my father",
+    "he's my dad",
+    "that's my dad"
+   ],
+   "arabic": "ده بابا",
+   "arabizi": "da baba",
+   "respelling": "da baba",
+   "gloss": "this [is] dad",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-brothers-son",
+   "english": [
+    "i'm your brother's son",
+    "i am your brother's son",
+    "i'm your nephew",
+    "your brother is my father"
+   ],
+   "arabic": "أنا ابن أخوك / أخوكي",
+   "arabizi": "ana ebn a5ook / a5ooki",
+   "respelling": "ana ebn akhook / akhooki",
+   "gloss": "I [am the] son [of] your brother (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-grandson",
+   "english": [
+    "i'm your grandson",
+    "i am your grandson",
+    "i'm your son's son",
+    "i'm your grandchild"
+   ],
+   "arabic": "أنا حفيدك",
+   "arabizi": "ana 7afeedak / 7afeedek",
+   "respelling": "ana hafeedak / hafeedek",
+   "gloss": "I [am] your grandson (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-from-abroad",
+   "english": [
+    "i came from abroad",
+    "i came from far away",
+    "i came from overseas",
+    "i flew in from abroad"
+   ],
+   "arabic": "أنا جاي من برة",
+   "arabizi": "ana gay men barra",
+   "respelling": "ana gay men barra",
+   "gloss": "I [am] coming from outside (from abroad)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-first-time",
+   "english": [
+    "this is my first time here",
+    "it's my first time in egypt",
+    "first time in egypt",
+    "this is my first visit",
+    "my first time in egypt"
+   ],
+   "arabic": "دي أول مرة أجي مصر",
+   "arabizi": "di awwel marra aga ma9r",
+   "respelling": "di awwel marra aga masr",
+   "gloss": "this [is the] first time I come [to] Egypt",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-happy-here",
+   "english": [
+    "i'm happy to be here",
+    "i'm glad to be here",
+    "i'm so happy to be here",
+    "happy to be here"
+   ],
+   "arabic": "أنا مبسوط إني هنا",
+   "arabizi": "ana mabsoo6 enni hena",
+   "respelling": "ana mabsoot enni hena",
+   "gloss": "I [am] happy that I [am] here",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-happy-see-you",
+   "english": [
+    "i'm so happy to see you",
+    "i'm happy to see you all",
+    "so good to see you",
+    "i'm glad to see you"
+   ],
+   "arabic": "أنا مبسوط أوي إني شفتكم",
+   "arabizi": "ana mabsoo6 awi enni shoftoko",
+   "respelling": "ana mabsoot awi enni shoftoko",
+   "gloss": "I [am] very happy that I saw you all",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-wanted-to-meet",
+   "english": [
+    "i've always wanted to meet you",
+    "i've wanted to see you for a long time",
+    "i always wanted to meet you all"
+   ],
+   "arabic": "كان نفسي أشوفكم من زمان",
+   "arabizi": "kan nefsi ashoofko men zaman",
+   "respelling": "kan nefsi ashoofko men zaman",
+   "gloss": "my soul wanted [to] see you all since long ago (I have long wished to meet you)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-dad-says-hi",
+   "english": [
+    "my father says hello",
+    "dad says hi",
+    "my father sends his greetings",
+    "my dad says hello to you"
+   ],
+   "arabic": "بابا بيسلم عليكم",
+   "arabizi": "baba beysallem 3aleikom",
+   "respelling": "baba beysallem aleikom",
+   "gloss": "dad greets you all",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-dad-misses",
+   "english": [
+    "my father misses you",
+    "dad misses you all",
+    "my dad misses you",
+    "my father misses everyone"
+   ],
+   "arabic": "بابا مشتاقلكم أوي",
+   "arabizi": "baba meshta2elkom awi",
+   "respelling": "baba meshta'elkom awi",
+   "gloss": "dad [is] longing for you all very much",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-thanks-welcome",
+   "english": [
+    "thank you for having me",
+    "thanks for welcoming me",
+    "thank you for the welcome",
+    "thank you for your hospitality"
+   ],
+   "arabic": "متشكر أوي على الاستقبال الجميل ده",
+   "arabizi": "metshakker awi 3ala el este2bal el gameel da",
+   "respelling": "metshakker awi ala el este'bal el gameel da",
+   "gloss": "[I am] very thankful for this beautiful welcome",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-gift",
+   "english": [
+    "i brought you a gift",
+    "this is a gift for you",
+    "it's a small gift",
+    "a little gift for you"
+   ],
+   "arabic": "دي هدية بسيطة عشانك",
+   "arabizi": "di hedeyya basee6a 3ashanak / 3ashanek",
+   "respelling": "di hedeyya baseeta ashanak / ashanek",
+   "gloss": "this [is] a simple gift for your sake (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-your-light",
+   "english": [
+    "that's your light",
+    "the light is yours",
+    "it's your light"
+   ],
+   "arabic": "ده نورك",
+   "arabizi": "da noorak / da noorek",
+   "respelling": "da noorak / da noorek",
+   "gloss": "that [is] your light (the reply when they say you lit up the place) (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-age",
+   "english": [
+    "how old are you",
+    "what's your age",
+    "what is your age"
+   ],
+   "arabic": "عندك كام سنة؟",
+   "arabizi": "3andak kam sana? / 3andek kam sana?",
+   "respelling": "andak kam sana? / andek kam sana?",
+   "gloss": "you have how many years? (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-what-work",
+   "english": [
+    "what do you do",
+    "what's your job",
+    "what do you do for work",
+    "what is your job"
+   ],
+   "arabic": "بتشتغل إيه؟ / بتشتغلي إيه؟",
+   "arabizi": "beteshta8al eh? / beteshta8ali eh?",
+   "respelling": "beteshtaghal eh? / beteshtaghali eh?",
+   "gloss": "you work [as] what? (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-married",
+   "english": [
+    "are you married",
+    "are you married yet",
+    "you're married"
+   ],
+   "arabic": "انت متجوز؟ / انتي متجوزة؟",
+   "arabizi": "enta metgawez? / enti metgawza?",
+   "respelling": "enta metgawez? / enti metgawza?",
+   "gloss": "you [are] married? (to a man / to a woman)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-not-married",
+   "english": [
+    "i'm not married",
+    "i'm not married yet",
+    "i am single",
+    "not married yet"
+   ],
+   "arabic": "لسه مش متجوز",
+   "arabizi": "lessa mesh metgawez",
+   "respelling": "lessa mesh metgawez",
+   "gloss": "still not married",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-not-yet",
+   "english": [
+    "not yet",
+    "not yet no",
+    "still not"
+   ],
+   "arabic": "لسه",
+   "arabizi": "lessa",
+   "respelling": "lessa",
+   "gloss": "still (not yet)",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "intro-soon-inshallah",
+   "english": [
+    "soon god willing",
+    "hopefully soon",
+    "soon inshallah"
+   ],
+   "arabic": "قريب إن شاء الله",
+   "arabizi": "2orayyeb inshallah",
+   "respelling": "orayyeb inshallah",
+   "gloss": "soon, if God wills",
+   "tags": [
+    "intro"
+   ]
+  },
+  {
+   "id": "fam-uncle-paternal",
+   "english": [
+    "uncle",
+    "my uncle",
+    "my father's brother",
+    "dad's brother",
+    "paternal uncle"
+   ],
+   "arabic": "عمي",
+   "arabizi": "3ammi",
+   "respelling": "ammi",
+   "gloss": "my uncle (father's brother); also what you call him",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-aunt-paternal",
+   "english": [
+    "aunt",
+    "auntie",
+    "my aunt",
+    "my father's sister",
+    "dad's sister"
+   ],
+   "arabic": "عمتي",
+   "arabizi": "3ammeti",
+   "respelling": "ammeti",
+   "gloss": "my aunt (father's sister); also what you call her",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-uncle-maternal",
+   "english": [
+    "my mother's brother",
+    "mom's brother",
+    "maternal uncle",
+    "my uncle on my mother's side"
+   ],
+   "arabic": "خالي",
+   "arabizi": "5ali",
+   "respelling": "khali",
+   "gloss": "my uncle (mother's brother)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-aunt-maternal",
+   "english": [
+    "my mother's sister",
+    "mom's sister",
+    "maternal aunt",
+    "my aunt on my mother's side"
+   ],
+   "arabic": "خالتي",
+   "arabizi": "5alti",
+   "respelling": "khalti",
+   "gloss": "my aunt (mother's sister)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-grandma",
+   "english": [
+    "grandma",
+    "grandmother",
+    "my grandmother",
+    "granny",
+    "my grandma"
+   ],
+   "arabic": "تيتة",
+   "arabizi": "teta",
+   "respelling": "teta",
+   "gloss": "grandma (what you call her)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-grandpa",
+   "english": [
+    "grandpa",
+    "grandfather",
+    "my grandfather",
+    "my grandpa"
+   ],
+   "arabic": "جدو",
+   "arabizi": "geddo",
+   "respelling": "geddo",
+   "gloss": "grandpa (what you call him)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-cousin",
+   "english": [
+    "cousin",
+    "my cousin",
+    "he is my cousin",
+    "my uncle's son"
+   ],
+   "arabic": "ابن عمي",
+   "arabizi": "ebn 3ammi",
+   "respelling": "ebn ammi",
+   "gloss": "son [of] my uncle (father's brother's son)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-cousin-f",
+   "english": [
+    "my female cousin",
+    "she is my cousin",
+    "she's my cousin",
+    "my uncle's daughter"
+   ],
+   "arabic": "بنت عمي",
+   "arabizi": "bent 3ammi",
+   "respelling": "bent ammi",
+   "gloss": "daughter [of] my uncle (father's brother's daughter)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-cousin-aunt",
+   "english": [
+    "my aunt's son",
+    "my father's sister's son",
+    "son of my aunt"
+   ],
+   "arabic": "ابن عمتي",
+   "arabizi": "ebn 3ammeti",
+   "respelling": "ebn ammeti",
+   "gloss": "son [of] my aunt (father's sister's son)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-cousin-maternal-uncle",
+   "english": [
+    "my mother's brother's son",
+    "son of my mother's brother",
+    "my cousin on my mother's side"
+   ],
+   "arabic": "ابن خالي",
+   "arabizi": "ebn 5ali",
+   "respelling": "ebn khali",
+   "gloss": "son [of] my uncle (mother's brother's son)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-cousin-maternal-aunt",
+   "english": [
+    "my mother's sister's son",
+    "son of my mother's sister",
+    "my maternal aunt's son"
+   ],
+   "arabic": "ابن خالتي",
+   "arabizi": "ebn 5alti",
+   "respelling": "ebn khalti",
+   "gloss": "son [of] my aunt (mother's sister's son)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-father",
+   "english": [
+    "my father",
+    "my dad",
+    "dad",
+    "father"
+   ],
+   "arabic": "بابا",
+   "arabizi": "baba",
+   "respelling": "baba",
+   "gloss": "dad",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-mother",
+   "english": [
+    "my mother",
+    "my mom",
+    "mom",
+    "mother"
+   ],
+   "arabic": "ماما",
+   "arabizi": "mama",
+   "respelling": "mama",
+   "gloss": "mom",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-brother",
+   "english": [
+    "my brother",
+    "brother",
+    "my little brother",
+    "my big brother"
+   ],
+   "arabic": "أخويا",
+   "arabizi": "a5oya",
+   "respelling": "akhoya",
+   "gloss": "my brother",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-sister",
+   "english": [
+    "my sister",
+    "sister",
+    "my little sister",
+    "my big sister"
+   ],
+   "arabic": "أختي",
+   "arabizi": "o5ti",
+   "respelling": "okhti",
+   "gloss": "my sister",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-family",
+   "english": [
+    "my family",
+    "family",
+    "the family"
+   ],
+   "arabic": "عيلتي",
+   "arabizi": "3eilti",
+   "respelling": "eilti",
+   "gloss": "my family",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-wife",
+   "english": [
+    "my wife",
+    "this is my wife",
+    "she is my wife"
+   ],
+   "arabic": "دي مراتي",
+   "arabizi": "di merati",
+   "respelling": "di merati",
+   "gloss": "this [is] my wife",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-son",
+   "english": [
+    "my son",
+    "this is my son",
+    "he is my son"
+   ],
+   "arabic": "ده ابني",
+   "arabizi": "da ebni",
+   "respelling": "da ebni",
+   "gloss": "this [is] my son",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-daughter",
+   "english": [
+    "my daughter",
+    "this is my daughter",
+    "she is my daughter"
+   ],
+   "arabic": "دي بنتي",
+   "arabizi": "di benti",
+   "respelling": "di benti",
+   "gloss": "this [is] my daughter",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-who-is-this",
+   "english": [
+    "who is this",
+    "who is he",
+    "who is she",
+    "who's that"
+   ],
+   "arabic": "مين ده؟ / مين دي؟",
+   "arabizi": "meen da? / meen di?",
+   "respelling": "meen da? / meen di?",
+   "gloss": "who [is] this? (for a man / for a woman)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-how-related",
+   "english": [
+    "how are we related",
+    "how are you related to me",
+    "how are we family",
+    "what's our relation"
+   ],
+   "arabic": "إحنا قرايب إزاي؟",
+   "arabizi": "e7na 2arayeb ezzay?",
+   "respelling": "ehna arayeb ezzay?",
+   "gloss": "we [are] relatives how?",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-children",
+   "english": [
+    "do you have children",
+    "do you have kids",
+    "you have kids"
+   ],
+   "arabic": "عندك ولاد؟",
+   "arabizi": "3andak wlad? / 3andek wlad?",
+   "respelling": "andak wlad? / andek wlad?",
+   "gloss": "you have children? (to a man / to a woman)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-look-like-dad",
+   "english": [
+    "you look like my father",
+    "you look like dad",
+    "you look like my dad"
+   ],
+   "arabic": "انت شبه بابا / انتي شبه بابا",
+   "arabizi": "enta shabah baba / enti shabah baba",
+   "respelling": "enta shabah baba / enti shabah baba",
+   "gloss": "you [are the] likeness [of] dad (to a man / to a woman)",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "fam-everyone-here",
+   "english": [
+    "is everyone here",
+    "is the whole family here",
+    "everyone's here"
+   ],
+   "arabic": "الكل هنا؟",
+   "arabizi": "el koll hena?",
+   "respelling": "el koll hena?",
+   "gloss": "everyone [is] here?",
+   "tags": [
+    "family"
+   ]
+  },
+  {
+   "id": "st-day-nice",
+   "english": [
+    "how was your day",
+    "how's your day",
+    "how was today",
+    "was your day good"
+   ],
+   "arabic": "يومك كان حلو؟",
+   "arabizi": "yomak kan 7elw? / yomek kan 7elw?",
+   "respelling": "yomak kan helw? / yomek kan helw?",
+   "gloss": "your day was nice? (to a man / to a woman)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-flight-long",
+   "english": [
+    "the flight was long",
+    "it was a long flight",
+    "long flight",
+    "the trip was long",
+    "the journey was long"
+   ],
+   "arabic": "الرحلة كانت طويلة أوي",
+   "arabizi": "el re7la kanet 6aweela awi",
+   "respelling": "el rehla kanet taweela awi",
+   "gloss": "the trip was very long",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-little-tired",
+   "english": [
+    "i'm a little tired",
+    "i'm kind of tired",
+    "a bit tired",
+    "i'm a bit tired"
+   ],
+   "arabic": "أنا تعبان شوية",
+   "arabizi": "ana ta3ban shwaya",
+   "respelling": "ana ta'ban shwaya",
+   "gloss": "I [am] tired a little",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-no-sleep-plane",
+   "english": [
+    "i didn't sleep on the plane",
+    "i couldn't sleep on the plane",
+    "i have jet lag",
+    "jet lag"
+   ],
+   "arabic": "منمتش في الطيارة",
+   "arabizi": "manemtesh fel 6ayyara",
+   "respelling": "manemtesh fel tayyara",
+   "gloss": "I didn't sleep in the plane",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-hot",
+   "english": [
+    "the weather is hot",
+    "it's hot",
+    "it's so hot",
+    "it's really hot today"
+   ],
+   "arabic": "الجو حر أوي",
+   "arabizi": "el gaw 7arr awi",
+   "respelling": "el gaw harr awi",
+   "gloss": "the weather [is] very hot",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-nice-weather",
+   "english": [
+    "the weather is nice",
+    "nice weather",
+    "beautiful weather",
+    "the weather is beautiful"
+   ],
+   "arabic": "الجو حلو",
+   "arabizi": "el gaw 7elw",
+   "respelling": "el gaw helw",
+   "gloss": "the weather [is] nice",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-cold-weather",
+   "english": [
+    "it's cold",
+    "the weather is cold",
+    "it's chilly",
+    "it's cold outside"
+   ],
+   "arabic": "الجو برد",
+   "arabizi": "el gaw bard",
+   "respelling": "el gaw bard",
+   "gloss": "the weather [is] cold",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-egypt-beautiful",
+   "english": [
+    "egypt is beautiful",
+    "egypt is so beautiful",
+    "egypt is amazing",
+    "egypt is lovely"
+   ],
+   "arabic": "مصر حلوة أوي",
+   "arabizi": "ma9r 7elwa awi",
+   "respelling": "masr helwa awi",
+   "gloss": "Egypt [is] very sweet (beautiful)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-love-egypt",
+   "english": [
+    "i love egypt",
+    "i really love egypt",
+    "i love egypt so much"
+   ],
+   "arabic": "أنا بحب مصر",
+   "arabizi": "ana ba7ebb ma9r",
+   "respelling": "ana bahebb masr",
+   "gloss": "I love Egypt",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-traffic",
+   "english": [
+    "there's so much traffic",
+    "the traffic is crazy",
+    "cairo is so crowded",
+    "so much traffic",
+    "it's so crowded"
+   ],
+   "arabic": "الزحمة صعبة أوي",
+   "arabizi": "el za7ma 9a3ba awi",
+   "respelling": "el zahma sa'ba awi",
+   "gloss": "the crowding [is] very hard",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-all-good",
+   "english": [
+    "everything is fine",
+    "all good",
+    "everything okay",
+    "it's all good",
+    "is everything okay"
+   ],
+   "arabic": "كله تمام",
+   "arabizi": "kollo tamam",
+   "respelling": "kollo tamam",
+   "gloss": "all of it [is] complete (all fine; say it rising to ask)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-family-news",
+   "english": [
+    "how is the family",
+    "how's your family",
+    "how is everyone at home",
+    "how's the family doing"
+   ],
+   "arabic": "أخبار العيلة إيه؟",
+   "arabizi": "a5bar el 3eila eh?",
+   "respelling": "akhbar el eila eh?",
+   "gloss": "the family's news [is] what?",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-what-this",
+   "english": [
+    "what is this",
+    "what's this",
+    "what is that",
+    "what's that"
+   ],
+   "arabic": "إيه ده؟",
+   "arabizi": "eh da?",
+   "respelling": "eh da?",
+   "gloss": "what [is] this?",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-really",
+   "english": [
+    "really",
+    "seriously",
+    "is that true",
+    "are you serious"
+   ],
+   "arabic": "بجد؟",
+   "arabizi": "begad?",
+   "respelling": "begad?",
+   "gloss": "with seriousness? (really?)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-dont-know",
+   "english": [
+    "i don't know",
+    "no idea",
+    "i have no idea",
+    "i'm not sure"
+   ],
+   "arabic": "مش عارف",
+   "arabizi": "mesh 3aref",
+   "respelling": "mesh aref",
+   "gloss": "[I am] not knowing (I don't know)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-i-know",
+   "english": [
+    "i know",
+    "i know that",
+    "yes i know"
+   ],
+   "arabic": "عارف",
+   "arabizi": "3aref",
+   "respelling": "aref",
+   "gloss": "[I am] knowing (I know)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-beautiful",
+   "english": [
+    "that's beautiful",
+    "how beautiful",
+    "very nice",
+    "that's so nice",
+    "so pretty"
+   ],
+   "arabic": "حلو أوي",
+   "arabizi": "7elw awi",
+   "respelling": "helw awi",
+   "gloss": "very sweet (very nice)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-i-like-it",
+   "english": [
+    "i like it",
+    "i love it",
+    "i like this",
+    "i really like it"
+   ],
+   "arabic": "عاجبني أوي",
+   "arabizi": "3agebni awi",
+   "respelling": "agebni awi",
+   "gloss": "it pleases me a lot",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-me-too",
+   "english": [
+    "me too",
+    "same here",
+    "me as well"
+   ],
+   "arabic": "وأنا كمان",
+   "arabizi": "w ana kaman",
+   "respelling": "w ana kaman",
+   "gloss": "and I also",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-good-one",
+   "english": [
+    "that's funny",
+    "that's so funny",
+    "good one",
+    "haha that's funny"
+   ],
+   "arabic": "حلوة دي",
+   "arabizi": "7elwa di",
+   "respelling": "helwa di",
+   "gloss": "this [one is] sweet (good one)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-missed-all",
+   "english": [
+    "i missed you all",
+    "i missed everyone",
+    "i've missed you all",
+    "i missed you guys"
+   ],
+   "arabic": "وحشتوني",
+   "arabizi": "wa7ashtoni",
+   "respelling": "wahashtoni",
+   "gloss": "you all made me miss you (I missed you all)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-where-live",
+   "english": [
+    "where do you live",
+    "where do you stay",
+    "where's your house",
+    "where is your home"
+   ],
+   "arabic": "ساكن فين؟ / ساكنة فين؟",
+   "arabizi": "saken fein? / sakna fein?",
+   "respelling": "saken fein? / sakna fein?",
+   "gloss": "living where? (to a man / to a woman)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-what-doing",
+   "english": [
+    "what are you doing",
+    "what are you up to",
+    "what are you doing now"
+   ],
+   "arabic": "بتعمل إيه؟ / بتعملي إيه؟",
+   "arabizi": "bte3mel eh? / bte3meli eh?",
+   "respelling": "bte'mel eh? / bte'meli eh?",
+   "gloss": "you [are] doing what? (to a man / to a woman)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-football-team",
+   "english": [
+    "who do you support",
+    "what team do you support",
+    "do you like football",
+    "which football team"
+   ],
+   "arabic": "بتشجع مين؟ / بتشجعي مين؟",
+   "arabizi": "betshagga3 meen? / betshagga3i meen?",
+   "respelling": "betshagga' meen? / betshagga'i meen?",
+   "gloss": "you cheer for whom? (to a man / to a woman)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-ahly-zamalek",
+   "english": [
+    "ahly or zamalek",
+    "al ahly or zamalek",
+    "are you ahly or zamalek"
+   ],
+   "arabic": "أهلي ولا زمالك؟",
+   "arabizi": "ahly walla zamalek?",
+   "respelling": "ahly walla zamalek?",
+   "gloss": "Ahly or Zamalek? (the two big Cairo football clubs)",
+   "tags": [
+    "smalltalk"
+   ]
+  },
+  {
+   "id": "st-egyptian-food",
+   "english": [
+    "i love egyptian food",
+    "egyptian food is great",
+    "egyptian food is delicious",
+    "the food here is great"
+   ],
+   "arabic": "الأكل المصري حلو أوي",
+   "arabizi": "el akl el ma9ri 7elw awi",
+   "respelling": "el akl el masri helw awi",
+   "gloss": "the Egyptian food [is] very sweet (delicious)",
+   "tags": [
+    "smalltalk"
+   ]
+  }
+ ]
+}
