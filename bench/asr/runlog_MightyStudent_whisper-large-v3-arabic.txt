@@ -1,0 +1,56 @@
+W1031 14:39:21.548000 20012 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Exception in thread Thread-auto_conversion:
+Traceback (most recent call last):
+  File "C:\Coding\Lib\threading.py", line 1038, in _bootstrap_inner
+    self.run()
+  File "C:\Coding\Lib\threading.py", line 975, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Coding\Lib\site-packages\transformers\safetensors_conversion.py", line 117, in auto_conversion
+    raise e
+  File "C:\Coding\Lib\site-packages\transformers\safetensors_conversion.py", line 96, in auto_conversion
+    sha = get_conversion_pr_reference(api, pretrained_model_name_or_path, **cached_file_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Coding\Lib\site-packages\transformers\safetensors_conversion.py", line 72, in get_conversion_pr_reference
+    spawn_conversion(token, private, model_id)
+  File "C:\Coding\Lib\site-packages\transformers\safetensors_conversion.py", line 49, in spawn_conversion
+    event_id = result["event_id"]
+               ~~~~~~^^^^^^^^^^^^
+KeyError: 'event_id'
+Loading weights:   0%|          | 0/1260 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1260 [00:00<01:28, 14.24it/s]Loading weights:   7%|6         | 87/1260 [00:00<00:02, 429.40it/s]Loading weights:  11%|#         | 137/1260 [00:00<00:02, 445.61it/s]Loading weights:  15%|#4        | 186/1260 [00:00<00:02, 451.34it/s]Loading weights:  19%|#8        | 234/1260 [00:00<00:02, 450.76it/s]Loading weights:  22%|##2       | 281/1260 [00:00<00:02, 436.61it/s]Loading weights:  26%|##5       | 327/1260 [00:00<00:02, 438.32it/s]Loading weights:  30%|##9       | 375/1260 [00:00<00:02, 440.09it/s]Loading weights:  34%|###3      | 423/1260 [00:00<00:01, 441.22it/s]Loading weights:  37%|###7      | 471/1260 [00:01<00:01, 445.92it/s]Loading weights:  41%|####1     | 519/1260 [00:01<00:01, 445.56it/s]Loading weights:  45%|####5     | 567/1260 [00:01<00:01, 447.08it/s]Loading weights:  49%|####8     | 615/1260 [00:01<00:01, 447.75it/s]Loading weights:  53%|#####2    | 663/1260 [00:01<00:01, 449.79it/s]Loading weights:  56%|#####6    | 711/1260 [00:01<00:01, 438.07it/s]Loading weights:  60%|######    | 759/1260 [00:01<00:01, 442.33it/s]Loading weights:  64%|######3   | 804/1260 [00:01<00:01, 441.58it/s]Loading weights:  67%|######7   | 849/1260 [00:01<00:00, 426.30it/s]Loading weights:  71%|#######   | 892/1260 [00:02<00:00, 396.74it/s]Loading weights:  74%|#######4  | 933/1260 [00:02<00:00, 384.67it/s]Loading weights:  77%|#######7  | 976/1260 [00:02<00:00, 379.92it/s]Loading weights:  81%|########1 | 1021/1260 [00:02<00:00, 372.95it/s]Loading weights:  85%|########4 | 1066/1260 [00:02<00:00, 375.71it/s]Loading weights:  88%|########8 | 1111/1260 [00:02<00:00, 367.16it/s]Loading weights:  92%|#########1| 1156/1260 [00:02<00:00, 374.05it/s]Loading weights:  95%|#########5| 1201/1260 [00:02<00:00, 372.19it/s]Loading weights:  99%|#########8| 1246/1260 [00:03<00:00, 379.12it/s]Loading weights: 100%|##########| 1260/1260 [00:03<00:00, 409.95it/s]
+Passing `generation_config` together with generation-related arguments=({'num_beams'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+mgb3_s0_r0000 6.05s عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حالة إنسانية استضعتنا في البرن
+mgb3_s0_r0019 6.19s أنا كلامي كده واضح تمام مستر عسام ايه يا فندم انت ليه مش عايز تسمع الكلام دجاكي 
+mgb3_s0_r0038 6.15s لا أنت أول أنت أنت إيه إحنا هنا كنا في الحديقة الدولية في مدينة نصر دي أحلى صور 
+mgb3_s0_r0057 8.82s آه لا الحقيقة أنا لسه بجرب يعني لسه في الأول بحاول يعني لا أصلاً أنا جيت على فيل
+mgb3_s0_r0077 8.74s اللي ما بيكلوش الحاجات دي ما بيكلوش الجبنة إزاي نخليهم ياكلوا الحاجات دي بشكل لط
+mgb3_s0_r0096 7.40s آه بيفقد قوامه الكيس نفسه ف أنا خايفة إن هو يدخل أجزاء منه في الأكل تمام بصي هو 
+mgb3_s0_r0115 6.20s دي حاجة على حسب ما تحبه طبعاً دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن ناح
+mgb3_s0_r0135 4.05s فيها بكتيريا حلوة جداً يعني ال ال الفرنسويين دايماً من العادات اللي عندهم بعد ال
+mgb3_s0_r0154 6.75s بنعود مع حضراتكم مرة أخرى على الهواء مباشرةً وفقرة الصالون آ لكل سيدة هتفهم كويس
+mgb3_s0_r0173 4.12s لكن النوع اللي إنتي بتقولي عليه ده الراجل اللي هو اللي عنيه زيه ده بيبقى من قبل 
+mgb3_s0_r0193 8.52s ما هو الجملة الوحدة مش كفاية يعني ده تسلسل سبحان الله ربنا خلقنا بيه كده مفروض ك
+mgb3_s0_r0212 9.31s الأم تيجي تشتجرك ويقولك الولد ده هو لسه في الشهر الخامس أو السالسة يا دكتور لحد 
+mgb3_s0_r0231 9.79s الحركة الوحدة ناخد جزء جزء كده الحركة الوحدة ممكن تنتج عنها إيه الولد ده كل يوم 
+mgb3_s0_r0250 6.58s على مر السنين اللي فاتت دي كلها لما نقول موضة بتبني المسألة كأنها يعني مسألة خاص
+mgb3_s0_r0270 10.02s تمام تسلميه ألف شكر تسلم إليك الأفكار نفسها دي بتجيبيها منين لا يع يعني ما عند ر
+mgb3_s0_r0289 6.72s علشان كده أنا جايلكم النهارده هتكلم في موضوع مثير جداً وهو حلق هي حلقة خاصة عن ا
+mgb3_s0_r0308 11.74s بالظبط تمام بنلاقي البنات وهي عندها خمسة وعشرين سنة إنتي لو بصيت البشرة بدأت تجا
+mgb3_s0_r0328 11.62s درجة السمن عند حضرتك قد إيه ومن خلاله بنقدر نحدد الأسباب لي منطقة السمن لو قدرنا
+mgb3_s0_r0347 4.36s ما فيش دا على الطريق بالعكس إحنا ممكن نساعد بعض إزاي لو ما عندكيش مانع ممكن أملي
+mgb3_s0_r0366 6.05s علشان تراجع الأرقام لأن إحنا بنشتغل آ بالموليد بنطرح ال ال ب الموليد ولو وفيات و
+mgb3_s0_r0386 8.31s إيه دور ال ال ال المجلس القومي للسكان في الفترة الحالية مش ناقص غير إن إحنا نتحر
+mgb3_s0_r0406 3.60s في ظل ال السماوات المفتوحة وال مواقع التواصل الاجتماعي ف هذه الأمور بطبعها فرضت 
+mgb3_s0_r0425 6.81s آه فيلم تسجيلي ده عملتك سنة اللي فاتت آه فيلم تسجيلي اللي هو آ أصل الحكاية بي أص
+mgb3_s0_r0444 8.88s آ أرجع للدكتورة نجوة البدري برحب بحضرتك دكتورة نجوة أهلاً وسهلاً هنعرفكوا طبعاً 
+mgb3_s0_r0464 7.65s اللي هي طرع ال الطلبة ال الموهوبين والمتفوقين حتى من قبل الثانوية العامة لكن مرت
+mgb3_s0_r0483 7.31s ما لقيتش إن في أي تطور ف فكري خالص لقيت عادي جداً لقيت إن أنا بحفظ حاجة أدخل الا
+mgb3_s0_r0502 8.65s يوم ت من تمانية لعشرة و ب بيحسبوش آخر تلات أربع تيام في ناس بيقولوا لا ده آخر ال
+mgb3_s0_r0522 9.17s إن ياخذ فرصته وبالتالي أنا شايف إنه يعني الفترة دي كانت محتاجة إن أنا أكون م موج
+mgb3_s0_r0541 7.69s الجبن ما الجبنة فيها كميام الدهون خصوصاً الجبن الصفراء كميام الدهون اللي هو ده د
+mgb3_s0_r0560 4.65s يعني الفرن جنبك عندك فرن واجهوله يحرقهولك وممكن بصوا أهو بخلط العسل والزيت كويس 
+{"model_id": "MightyStudent/whisper-large-v3-arabic", "task": "transcribe", "dataset": "mgb3", "n_clips": 30, "audio_s": 747.02, "wall_s": 221.89, "audio_s_per_wall_s": 3.37, "settings": {"backend": "transformers 5.5.0", "dtype": "float16", "language": "arabic", "num_beams": 5}, "python": "3.11.0", "gpu_before_load_mem_util": "680 MiB, 0 %", "command": "asr_bench.py MightyStudent/whisper-large-v3-arabic transcribe mgb3"}

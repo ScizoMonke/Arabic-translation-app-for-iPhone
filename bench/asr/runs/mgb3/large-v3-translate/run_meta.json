@@ -1,0 +1,20 @@
+{
+  "model_id": "large-v3",
+  "task": "translate",
+  "dataset": "mgb3",
+  "n_clips": 30,
+  "audio_s": 747.02,
+  "wall_s": 78.4,
+  "audio_s_per_wall_s": 9.53,
+  "settings": {
+    "backend": "faster-whisper 1.2.1",
+    "compute_type": "float16",
+    "language": "ar",
+    "beam_size": 5,
+    "vad_filter": false,
+    "temperature_fallback": "faster-whisper default, ctranslate2 seed 0"
+  },
+  "python": "3.11.0",
+  "gpu_before_load_mem_util": "8501 MiB, 15 %",
+  "command": "asr_bench.py large-v3 translate mgb3"
+}

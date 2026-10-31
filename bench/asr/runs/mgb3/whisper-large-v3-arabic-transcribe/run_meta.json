@@ -1,0 +1,18 @@
+{
+  "model_id": "MightyStudent/whisper-large-v3-arabic",
+  "task": "transcribe",
+  "dataset": "mgb3",
+  "n_clips": 30,
+  "audio_s": 747.02,
+  "wall_s": 221.89,
+  "audio_s_per_wall_s": 3.37,
+  "settings": {
+    "backend": "transformers 5.5.0",
+    "dtype": "float16",
+    "language": "arabic",
+    "num_beams": 5
+  },
+  "python": "3.11.0",
+  "gpu_before_load_mem_util": "680 MiB, 0 %",
+  "command": "asr_bench.py MightyStudent/whisper-large-v3-arabic transcribe mgb3"
+}
