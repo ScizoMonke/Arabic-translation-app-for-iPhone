@@ -8,6 +8,8 @@ The screen is split in the middle.
 
 Folders:
 - record/    the decision record, the open-flags register, and the standing traps. A decision lives here, never only in chat.
-- research/  facts gathered from primary sources, one ledger file per topic. Every fact is cited or marked not found; nothing here is a recommendation.
+- research/  facts gathered from primary sources, one ledger file per topic, plus verify/ for independent checks of built work. Nothing here is a recommendation.
+- app/       the iOS app (SwiftUI, WhisperKit). FIRST_RUN.md is the install guide. Compiled by .github/workflows/ios-build.yml on a GitHub macOS runner into an unsigned .ipa; AltStore on the PC puts it on the phone.
+- data/      downloaded corpora and models, and the user's own material. Not in git.
 
-Planned, not yet created: bench/ (scripts that run on this PC and measure real models on real Egyptian speech), app/ (the iOS project), data/ (corpora and the user's own material).
+Planned, not yet merged: bench/ (scripts that run on this PC and measure real models on real Egyptian speech and real romanization).
