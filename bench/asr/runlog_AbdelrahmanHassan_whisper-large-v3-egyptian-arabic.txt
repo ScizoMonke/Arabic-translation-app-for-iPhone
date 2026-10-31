@@ -1,0 +1,40 @@
+W1031 14:32:01.687000 26092 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1259 [00:00<?, ?it/s]Loading weights:  50%|#####     | 635/1259 [00:00<00:00, 6330.81it/s]Loading weights: 100%|##########| 1259/1259 [00:00<00:00, 6424.97it/s]
+`torch_dtype` is deprecated! Use `dtype` instead!
+Passing `generation_config` together with generation-related arguments=({'num_beams'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+mgb3_s0_r0000 7.54s عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حالة إنسانية استضلتنا في البرن
+mgb3_s0_r0019 7.82s انا كلامك كده واضح؟ تمام مستر عسام ايه فادي؟ انت ليه مش عايز تسمع كلام جاكي؟ بيق
+mgb3_s0_r0038 8.35s عشان اللي ت... لا إنت أول إنت إنت... إحنا هنا كنا في الحديقة الدولية في مدينة نص
+mgb3_s0_r0057 22.66s لا الحقيقة أنا لسه بجرب يعني لسه في الأول بحاول يعني لا أصلا أنا جيت على فيلم سل
+mgb3_s0_r0077 12.21s للاطفال اه اللي ما بيكلوش الحاجات دي ما بيكلوش الجبنة ازاي نخليهم ياكلوا الحاجات
+mgb3_s0_r0096 9.85s يفقد قوامه الكيس نفسه ف أنا خايفة إن هو يدخل أجزاء منه في الأكل تمام بص يا هو مب
+mgb3_s0_r0115 8.61s دي حاجة على حسب ما تحبه طبعاً دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن نحي
+mgb3_s0_r0135 5.51s فيها بكتيريا حلوة جدا يعني الفرنسويين دايما من العادات اللي عندهم بعد الأكل يروح
+mgb3_s0_r0154 8.74s بنعود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون لكل سيدة هتفهم كويس قو
+mgb3_s0_r0173 4.64s لكن النوع اللي انت بتقولي عليه ده الراجل اللي هو اللي يعنيه زي غدا بيبقى من قبل 
+mgb3_s0_r0193 10.59s ما هو الجملة الوحدة مش كفاية يعني ده تسلسل سبحان الله ربنا خلقنا بيه كده مفروض ك
+mgb3_s0_r0212 11.88s الأم تجي تشتجرك ويقولك الولد ده هو لسه في الشهر الخامس أو السالسة يا دكتور لحد م
+mgb3_s0_r0231 11.58s الحركة الوحدة ناخد جزء وجزء كده الحركة الوحدة ممكن تنتج عنها ايه الولد ده كل يوم
+mgb3_s0_r0250 7.65s على مر السنين اللي فاتت دي كلها لما نقول موضة بتبني المسألة كأنها يعني مسألة خاص
+mgb3_s0_r0270 11.30s تمام تسلميه ألف شكر تسلم إليك اللي أفكار نفسها دي بتجيبيها منين؟ لا يعني من عند 
+mgb3_s0_r0289 7.41s علشان كده أنا جايلكم النهاردة هتكلم في موضوع مثير جدا وهو حلق هي حلقة خاصة عن ال
+mgb3_s0_r0308 23.73s بالضبط بيلاقي البنات وهي عندها خمسة وعشرين سنة إنت لو بسيطي البشرة بدأت تجعيد تظ
+mgb3_s0_r0328 14.05s بحدد درجة السمن عند حضرتك قديه ومن خلاله بنقدر نحدد الاسباب لمنطقة السمن لو قدرن
+mgb3_s0_r0347 5.38s ما فيش داعي على الطريق بالعكس إحنا ممكن نساعد بعضا إزاي لو ما عندكش مانع ممكن أم
+mgb3_s0_r0366 8.54s سنين. اه. علشان تراجع الارقام لان احنا بنشتغل اه بالموليد بنطرح الموليد ولو وفيا
+mgb3_s0_r0386 10.71s إيه دور المجلس لقاومة السكان في الفترة الحالية مش ناقص غير إن إحنا نتحرك بشكل إي
+mgb3_s0_r0406 4.93s خاصة في ظل السماوات المفتوحة والمواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت 
+mgb3_s0_r0425 6.41s تسجيلي اه فيلم تسجيلي اه اللي هو اه اصل الحكاية اه اه بيقصل مسألة الارهاب اصله ا
+mgb3_s0_r0444 7.56s أرجع للدكتورة نجوة البدري برحب بعد الدكتورة نجوة أهلا وسهلا هنعرفكم طبعا وهندي ف
+mgb3_s0_r0464 6.75s المدينة. اللي هي بترعى الطلب الموهوبين والمتفوقين حتى من قبل السنوية العامة. لكن
+mgb3_s0_r0483 5.51s ما لقيتش إن في أي تطور في الفكري خالص لقيت عادي جداً لقيت إن أنا بحفظ حاجة بأدخل
+mgb3_s0_r0502 6.06s يوم من 8 الى 10 و بيحسبوش اخر 3 اربع تيام في ناس بيقولوا لا ده اخر الشهر يوم 26 
+mgb3_s0_r0522 7.01s ان ياخد فرصته وبالتالي انا شايف انه يعني الفترة دي كانت محتاجة ان انا اكون موجود
+mgb3_s0_r0541 6.04s ده. الجبن ما الجبنة فيها كميام الدهون خصوصا الجبن الصفراء كميام الدهون اللي هو د
+mgb3_s0_r0560 3.87s يعني الفرن جنبك عندك فرن واجهوله يحرقهولك وممكن بصوا اهو بخلط العسل والزيت كويس 
+{"model_id": "AbdelrahmanHassan/whisper-large-v3-egyptian-arabic", "task": "transcribe", "dataset": "mgb3", "n_clips": 30, "audio_s": 747.02, "wall_s": 272.86, "audio_s_per_wall_s": 2.74, "settings": {"backend": "transformers 5.5.0", "dtype": "float16", "language": "arabic", "num_beams": 5}, "python": "3.11.0", "gpu_before_load_mem_util": "8563 MiB, 23 %", "command": "asr_bench.py AbdelrahmanHassan/whisper-large-v3-egyptian-arabic transcribe mgb3"}

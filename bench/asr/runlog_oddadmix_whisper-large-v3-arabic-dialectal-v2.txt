@@ -1,0 +1,39 @@
+W1031 14:43:27.226000 3724 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1259 [00:00<?, ?it/s]Loading weights:   0%|          | 2/1259 [00:00<01:52, 11.15it/s]Loading weights:   9%|8         | 111/1259 [00:00<00:02, 420.52it/s]Loading weights:  13%|#2        | 159/1259 [00:00<00:02, 393.11it/s]Loading weights:  16%|#6        | 207/1259 [00:00<00:02, 407.99it/s]Loading weights:  20%|##        | 255/1259 [00:00<00:02, 412.04it/s]Loading weights:  24%|##4       | 303/1259 [00:00<00:02, 422.52it/s]Loading weights:  28%|##7       | 351/1259 [00:00<00:02, 428.17it/s]Loading weights:  32%|###1      | 399/1259 [00:00<00:01, 437.63it/s]Loading weights:  36%|###5      | 447/1259 [00:01<00:01, 428.80it/s]Loading weights:  39%|###9      | 495/1259 [00:01<00:01, 425.81it/s]Loading weights:  43%|####3     | 543/1259 [00:01<00:01, 433.67it/s]Loading weights:  47%|####6     | 591/1259 [00:01<00:01, 433.26it/s]Loading weights:  51%|#####     | 639/1259 [00:01<00:01, 428.57it/s]Loading weights:  55%|#####4    | 687/1259 [00:01<00:01, 429.52it/s]Loading weights:  58%|#####8    | 735/1259 [00:01<00:01, 432.22it/s]Loading weights:  62%|######2   | 781/1259 [00:01<00:01, 429.69it/s]Loading weights:  66%|######5   | 826/1259 [00:02<00:01, 408.95it/s]Loading weights:  69%|######9   | 871/1259 [00:02<00:00, 388.33it/s]Loading weights:  73%|#######2  | 916/1259 [00:02<00:00, 392.33it/s]Loading weights:  76%|#######6  | 961/1259 [00:02<00:00, 381.20it/s]Loading weights:  80%|#######9  | 1006/1259 [00:02<00:00, 378.52it/s]Loading weights:  83%|########3 | 1051/1259 [00:02<00:00, 366.44it/s]Loading weights:  87%|########7 | 1096/1259 [00:02<00:00, 365.72it/s]Loading weights:  91%|######### | 1141/1259 [00:02<00:00, 368.42it/s]Loading weights:  94%|#########4| 1186/1259 [00:03<00:00, 365.99it/s]Loading weights:  98%|#########7| 1231/1259 [00:03<00:00, 365.06it/s]Loading weights: 100%|##########| 1259/1259 [00:03<00:00, 397.96it/s]
+Passing `generation_config` together with generation-related arguments=({'num_beams'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+mgb3_s0_r0000 11.04s عزيزي المشاهد، البرنامج ده مش برنامج كوميديو بس، ده حالة إنسانية، استضلتنا في ال
+mgb3_s0_r0019 10.67s أنا كلامي كده واضح؟ تمام. مستر أسام، أي فهمت؟ أنت ليه مش عايز تسمع كلام جاكي؟ بي
+mgb3_s0_r0038 7.08s أنا اللي لا أنت أول أنت أنت إيه؟ إحنا هنا كنا في الحديقة الدولية. اللي في مدينة 
+mgb3_s0_r0057 21.27s إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. إيه. 
+mgb3_s0_r0077 11.84s للأطفال اللي ما بياكلوش الحاجات دي، ما بياكلوش الجبنة، إزاي نخليهم ياكلوا الحاجا
+mgb3_s0_r0096 9.94s آه. يفقد قوامه الكيس نفسه، فأنا خايفة إنه هو يدخل أجزاء منه في الأكل. تمام، بصي 
+mgb3_s0_r0115 7.66s دي حاجة على حسب ما تحبوا طبعا دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن ناح
+mgb3_s0_r0135 4.44s فيها بكتيريا حلوة جدا يعني الفرنساويين دايما من العادات اللي عندهم باحة الأكل ير
+mgb3_s0_r0154 7.00s بنعاود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون. آآآ لكل سيدة هتفهم ك
+mgb3_s0_r0173 4.50s ضابط بيها. لكن النوع اللي أنت بتقولي عليه ده الراجل اللي هو لاني زيك، ده بيبقى م
+mgb3_s0_r0193 9.12s قصة. ما هو جملة وحدة مش كفاية، يعني ده تسلسل، سبحان الله ربنا خلقنا بيه كده، الم
+mgb3_s0_r0212 11.10s زي كده. الأم تيجي تشتغل تقول لك الولد ده وهو لسه في الشهر الخامس أو السادس يا دك
+mgb3_s0_r0231 10.04s الحركة الوحدة، ناخد جزء جزء كده، الحركة الوحدة ممكن تنتقل عنها إيه؟ الولد ده كل 
+mgb3_s0_r0250 7.73s موضة على مر السنين اللي فاتت دي كلها. لما نقول موضة بتبان المسألة كأنها يعني مسأ
+mgb3_s0_r0270 9.65s تمام، تسلمي، ألف شكر. تسلم إلك، الأفكار نفسها دي بتجيبيها منين؟ لأ يعني من عند ر
+mgb3_s0_r0289 5.93s علشان كده أنا جاية لكم النهار ده هتكلم في موضوع مثير جدا وهو حلقة هي حلقة خاصة ع
+mgb3_s0_r0308 13.00s البشرة. بالزبط. كمان؟ بنلاقي البنات وهن عندها 25 سنة، أنت لو بصيتي لبشرتها، أنا 
+mgb3_s0_r0328 13.12s وبحدد درجة السمنة عند حضرتك قد إيه، ومن خلاله بنقدر نحدد الأسباب لمنطقة السمنة. 
+mgb3_s0_r0347 6.22s ما فيش داعي على الطلاق. بالعكس، إحنا ممكن نساعد بعض. إزاي؟ لأ، ما عندكش مانع، مم
+mgb3_s0_r0366 7.33s عشر سنين، علشان تراجع الأرقام لإن إحنا بنشتغل بالمواليد، بنطرح المواليد والوفيات
+mgb3_s0_r0386 8.61s إيه دور المجلس لقوامل السكان في الفترة الحالية، مش ناقص غير إن إحنا نتحرك بشكل إ
+mgb3_s0_r0406 4.21s خاصة في ظل السماوات المفتوحة و مواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت ت
+mgb3_s0_r0425 8.48s تسجيلي. آه فيلم تسجيلي اللي فاتت اللي هو أصل الحكاية بأصل مسألة الإرهاب أصله إيه
+mgb3_s0_r0444 10.85s امم. ايه، ارجع للدكتورة نجوى البدل، برحب بعد الدكتورة نجوى. السلام. هنعرفكم طبعا
+mgb3_s0_r0464 8.96s في المدينة ليطرع الطلبة الموهوبين والمتفوقين حتى من قبل الثانوية العامة. لكن مرت
+mgb3_s0_r0483 6.20s ما لقيتش إني فيه أي تطور فكري خالص، لقيت عادي جدا، لقيت إني أنا بحفظ حاجة، بادخل
+mgb3_s0_r0502 6.18s يوم يوم من 8 ل 10، وما بيحسبوش آخر ثلاثة أربعة أيام، في ناس بيقولوا لأ ده آخر ال
+mgb3_s0_r0522 6.94s إنه ياخد فرصته. وبالتالي أنا شايف إنه يعني الفترة دي كانت محتاجة إن أنا أكون موج
+mgb3_s0_r0541 8.03s الجبن ده. الجبن، ما الجبنة فيها كمية من الدهون، خصوصا الجبنة الصفراء كمية من الد
+mgb3_s0_r0560 5.36s يعني الفرن جنبك عندك فرن، ووجهوا له يحرقوا لك. وممكن بصوا اهو، بخلط العسل والزيت
+{"model_id": "oddadmix/whisper-large-v3-arabic-dialectal-v2", "task": "transcribe", "dataset": "mgb3", "n_clips": 30, "audio_s": 747.02, "wall_s": 262.49, "audio_s_per_wall_s": 2.85, "settings": {"backend": "transformers 5.5.0", "dtype": "float16", "language": "arabic", "num_beams": 5}, "python": "3.11.0", "gpu_before_load_mem_util": "8440 MiB, 19 %", "command": "asr_bench.py oddadmix/whisper-large-v3-arabic-dialectal-v2 transcribe mgb3"}

@@ -1,0 +1,39 @@
+W1031 14:48:27.446000 25844 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/1260 [00:00<?, ?it/s]Loading weights:   6%|6         | 77/1260 [00:00<00:01, 769.68it/s]Loading weights:  13%|#2        | 159/1260 [00:00<00:01, 721.24it/s]Loading weights:  20%|#9        | 249/1260 [00:00<00:01, 793.22it/s]Loading weights:  26%|##6       | 329/1260 [00:00<00:01, 710.98it/s]Loading weights:  34%|###3      | 423/1260 [00:00<00:01, 758.56it/s]Loading weights:  41%|####1     | 519/1260 [00:00<00:00, 792.51it/s]Loading weights:  48%|####8     | 609/1260 [00:00<00:00, 822.08it/s]Loading weights:  55%|#####4    | 692/1260 [00:00<00:00, 787.09it/s]Loading weights:  62%|######1   | 776/1260 [00:00<00:00, 785.26it/s]Loading weights:  68%|######7   | 855/1260 [00:01<00:00, 770.29it/s]Loading weights:  74%|#######4  | 933/1260 [00:01<00:00, 670.80it/s]Loading weights:  80%|#######9  | 1006/1260 [00:01<00:00, 657.00it/s]Loading weights:  86%|########5 | 1081/1260 [00:01<00:00, 651.32it/s]Loading weights:  92%|#########1| 1156/1260 [00:01<00:00, 661.68it/s]Loading weights:  98%|#########7| 1231/1260 [00:01<00:00, 663.27it/s]Loading weights: 100%|##########| 1260/1260 [00:01<00:00, 663.74it/s]
+Passing `generation_config` together with generation-related arguments=({'num_beams'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+mgb3_s0_r0000 7.65s عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حالة إنسانية اصطدقتنا في البرن
+mgb3_s0_r0019 7.28s انا كلامك كده واضح تمام أسرع سام أيوه أنت ليه مش عايز تسمع كلام جاكي بيقول لك لي
+mgb3_s0_r0038 7.65s عشان اللي أنت أول أنت انت ايه احنا هنا كنا في الحديقة الدولية في مريه نصر دي أحل
+mgb3_s0_r0057 9.11s اللي جديد لا الحقيقة أنا لسه بجرب يعني لسه في الأول صح أول يعني لا أصل أنا جيت ع
+mgb3_s0_r0077 8.66s للاطفال اللي ما بياكلوش الحاجات دي ما بياكلوش الجبنة إزاي نخليهم ياكلوا الحاجات 
+mgb3_s0_r0096 7.06s بيفقد قوامه الكيس نفسه فانا خايفة أن هو يدخل اجزاء منه في الأكل تمام بص هو مبدئي
+mgb3_s0_r0115 6.70s دي حاجة على حسب ما تحبوا طبعا دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن ناح
+mgb3_s0_r0135 4.98s فيها بكتيريا حلوة جدا يعني الفرنسويين دايما من العادات اللي عندهم بعد الأكل يروح
+mgb3_s0_r0154 8.01s بنعود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون لكل سيدة هتفهم كويس أو
+mgb3_s0_r0173 4.86s لكن النوع اللي أنت بتقول لي عليه ده الراجل اللي هو العينيه زي غدابيه بقى من قبل 
+mgb3_s0_r0193 9.60s قصه ما هو الجملة الواحدة مش كفاية يعني ده تسالسل سبحان الله ربنا خلقنا بيه كده ا
+mgb3_s0_r0212 10.80s زي كده الأم تيجي تشتجرك يقول لك الولد ده هو لسه في الشهر الخامس أو السادس يا دكت
+mgb3_s0_r0231 9.05s الحركة الوحدة ناخد جزء وجزء كده الحركة الوحدة ممكن تبدو عنها ايه الولد ده كل يوم
+mgb3_s0_r0250 5.66s موضة على مر السنين اللي فاتت دي كلها منقول موضة بتبني المسألة كأنها يعني مسألة خ
+mgb3_s0_r0270 7.40s تمام تسلميه ألف شكر تسلم إليك الأفكار نفسها دي بتجيبيها منين لا يعني هو عند ربنا
+mgb3_s0_r0289 5.18s علشان كده نجيلكم النهاردة هتكلم في موضوع مثير جدا وهو حلقة هي حلقة خاصة عن الجما
+mgb3_s0_r0308 12.47s بشرة بالضبط بنلاقي البنات وهي عندها خمسة وعشرين سنة أنت لو بسيطت البشرة بدأت الت
+mgb3_s0_r0328 14.40s وبحدد درجة السمن عند حضرتك قد ايه ومن خلاله بنقدر نحدد الأسباب لمنطقة السمن لو ق
+mgb3_s0_r0347 5.97s ما فيش دارع الطريق بالعكس احنا ممكن نساعد بعض إزاي طب ما عندكيش مانع ممكن امليكي
+mgb3_s0_r0366 8.24s عشر سنين علشان تراجع الأرقام لإن احنا بنشتغل بالمواليد بنطرح الموليد ولوفيات وبن
+mgb3_s0_r0386 10.87s ايه دور المجلس القوم السكان في الفترة الحالية مش ناقص غير إن احنا نتحرك بشكل إيج
+mgb3_s0_r0406 5.03s خاصة في ظل السماوات المفتوحة ومواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت تح
+mgb3_s0_r0425 8.50s فلم تسجيلي ده عملتك سنة اللي فاتت اللي هو أصل الحكاية بيقصل مسألة الإرهاب أصله ا
+mgb3_s0_r0444 11.52s ارجع للدكتوره نجوه البدر برحب بحض الدكتوره نجوه أهلا وسهلا هنعرفكم طبعا وهندي فر
+mgb3_s0_r0464 9.82s في المدينة اللي هي ابترع الطلب الموهوبين والمتفوقين حتى من قبل السنوية العامة لك
+mgb3_s0_r0483 6.25s ما لقيتش ان في أي تطور في الفكر خالص لقيت عادي جدا لقيت أن أنا بحفظ حاجة بدخل ال
+mgb3_s0_r0502 6.75s كمل يوم من ثمانية العشرة وبيحسبوش آخر ثلاث أربع أيام في ناس بيقولوا لا ده آخر ال
+mgb3_s0_r0522 6.69s انه ياخد فرصته وبالتالي أنا شايف أنه يعني الفترة دي كانت محتاجة أن أنا أكون موجو
+mgb3_s0_r0541 5.78s الجبن ما الجبنة فيها كمام الدهون خصوصا الجبن الصفراء كمام الدهون اللي هو ده ده ا
+mgb3_s0_r0560 3.55s يعني الفرن جنبك عندك فرن وجهوله يحلقه لك وممكن بصوا أهو بخلط العسل والزيت كويس م
+{"model_id": "Dr-AliGomaa/whisper-large-v3-ar-eg", "task": "transcribe", "dataset": "mgb3", "n_clips": 30, "audio_s": 747.02, "wall_s": 235.48, "audio_s_per_wall_s": 3.17, "settings": {"backend": "transformers 5.5.0", "dtype": "float16", "language": "arabic", "num_beams": 5}, "python": "3.11.0", "gpu_before_load_mem_util": "3664 MiB, 82 %", "command": "asr_bench.py Dr-AliGomaa/whisper-large-v3-ar-eg transcribe mgb3"}

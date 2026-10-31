@@ -1,0 +1,39 @@
+W1031 14:37:16.631000 8628 site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/479 [00:00<?, ?it/s]Loading weights:   0%|          | 2/479 [00:00<00:31, 14.91it/s]Loading weights:  47%|####6     | 225/479 [00:00<00:00, 1145.66it/s]Loading weights:  74%|#######4  | 355/479 [00:00<00:00, 1112.72it/s]Loading weights:  99%|#########9| 475/479 [00:00<00:00, 1085.18it/s]Loading weights: 100%|##########| 479/479 [00:00<00:00, 1014.50it/s]
+Passing `generation_config` together with generation-related arguments=({'num_beams'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensLogitsProcessor'> to see related `.generate()` flags.
+A custom logits processor of type <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> has been passed to `.generate()`, but it was also created in `.generate()`, given its parameterization. The custom <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> will take precedence. Please check the docstring of <class 'transformers.generation.logits_process.SuppressTokensAtBeginLogitsProcessor'> to see related `.generate()` flags.
+You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+mgb3_s0_r0000 2.43s عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حلة انسانية استضلتنا في البرنا
+mgb3_s0_r0019 6.98s انا كلامك كده واضح تمام مصر عسام ايه فامر انت ليه مش عايز تسمى الكلام جاكي بيقول
+mgb3_s0_r0038 6.94s انا إينا كنا في الحضيك الدولاية الف مارينت نصر دي أحلى صور في الدنيا على فكرة بي
+mgb3_s0_r0057 3.63s آه لا الحيانة لسا بجرب يعني لسا في الأول، في حول يعني لأ أصل أنا جيت على فيلم سل
+mgb3_s0_r0077 3.76s للي أطفال آه اللي ما بيأكلوش الحاجات دي ما بيأكلوش اللي جيبنا إزاي نخليهم ياكلو 
+mgb3_s0_r0096 3.06s آه بيافقد قوامه الكيف نفسه فانا خيسة انه هو يدخل اجزاء منه في الاخر. تمام بصي هو
+mgb3_s0_r0115 2.51s ده حاجة على حسب ما تحبه طبعا دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن ناحي
+mgb3_s0_r0135 1.71s فيها بكتيرية حلوة جداّ، يعني الفرنسويين، دائماّ من العادات اللي عندهم بحد الأكل 
+mgb3_s0_r0154 2.60s بنعود مع حضراتكم مرة أخرى على الهواء بشرة وفقرة الصلون آه لكل سيادة حتفهم كويس ق
+mgb3_s0_r0173 1.55s لكن النار اللي انت بتقولي عليه ده الراجل اللي هو آه لانيزا يخذب يبقى من قبل ما ي
+mgb3_s0_r0193 2.95s مهو جملة الوحدة مش كفاية، يعني دا تساسر سبحان الله ربنا خلاق نبي كذا، مفروض كلنا
+mgb3_s0_r0212 3.45s القوم بتجي تشكير كولك الولد وهو ولسا في الشهر الخامس أو الساسة دكتور لحد ما تولد
+mgb3_s0_r0231 3.36s الحركة الوحدة ناخذ جزء جزء كده الحركة الوحدة ممكن تنتج عنها إيه الولد ده كل يوم 
+mgb3_s0_r0250 2.28s موضة على مرة السنين اللي فاتت دي كلها منقول موضة ببن المسألة كانها يعني مسألة خا
+mgb3_s0_r0270 7.02s تمام تسلم إيها أقل في شكر آه تسلم إيك إيليه أفكار نفسها دي بجي بيها مين لا يعني 
+mgb3_s0_r0289 2.20s على شان كان الجيالكم النهاردة هتكلم في موضوع مثير جدا وهو حل هي حل أخاصة عن الجم
+mgb3_s0_r0308 2.95s بالضبط باللاقي البنات وهو يعني عندها خمسة وعشرين سنة انت لو بسيتي المشهرات ببدأ 
+mgb3_s0_r0328 4.05s وبحدد درجة السنة عند حضرتك قديه ومن خياله بنقدر نحديد الأسباب ليه منطقل السن لو 
+mgb3_s0_r0347 7.19s مافيش داعي عالطار، بالعكس احنا ممكن نساعد بعضة، ازاي، اما عندكش مانع ممكن امليكي
+mgb3_s0_r0366 2.38s سنين على شان ترجع الأرقام لأن نحن بنشتغل آه بالمواليد بنطرح الالبن المواليد ولو 
+mgb3_s0_r0386 3.37s مم إيه دور ال ال المجرس القومة اللي السكان في الفترة حالية مش نائى صغير إن نحن ن
+mgb3_s0_r0406 1.79s خاصة في ظل آه ال آه السموات المفتوحة و ال آه المواقع التواصل الاجتماعي فهذه الأم
+mgb3_s0_r0425 2.66s آه في المتزجيلي، بعمل فيصل لفاتت، إللي هو آه أصل الحكاية، بأصل مسألت الارهاب أصل
+mgb3_s0_r0444 3.08s آه أرجع للدكتورة نجوى البدر برحبها دكتورة نجوى هنعرفك وطبعا هندي فرصة العلمان ال
+mgb3_s0_r0464 2.76s في المدينة لا يبترعى ال الطلب الموهوبين والمتفووقين حتى من قبل السنوان العامة لك
+mgb3_s0_r0483 2.17s ما لاقش اني فيه اي تطور فيت فكري خالص لقيت عادي جدا لاتان انا بحفظ حاجة بتخلي لأ
+mgb3_s0_r0502 2.94s آه يوم من ثمانية العشرة وبيحسبوش آخر ثلاثة ربعتيام في ناس بيقولوا لا آه آخر الشر
+mgb3_s0_r0522 2.70s انه ياخذ فرساته وبالتالي انا شايف انه يعني الفترة دي كانت محتاجة ان انا كم موقود
+mgb3_s0_r0541 2.39s جيبنا ما جيبنا فيها كم مام الدهون اخصونا جيبنا نصفرا كم مام الدهون اللي هو ده ده
+mgb3_s0_r0560 1.43s يعني الفور نجامك عندك فور واجهوله يحرقهلك وممكن بصه أهو بخلط العسل و الزيك كويس 
+{"model_id": "tawreck-hasaballah/whisper-small-eg", "task": "transcribe", "dataset": "mgb3", "n_clips": 30, "audio_s": 747.02, "wall_s": 98.28, "audio_s_per_wall_s": 7.6, "settings": {"backend": "transformers 5.5.0", "dtype": "float16", "language": "arabic", "num_beams": 5}, "python": "3.11.0", "gpu_before_load_mem_util": "682 MiB, 0 %", "command": "asr_bench.py tawreck-hasaballah/whisper-small-eg transcribe mgb3"}
