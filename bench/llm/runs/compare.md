@@ -7,6 +7,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|---|---|---|---|---|
 | Nile-Chat-4B | A | 3.88B | 1/40 | 0 | 17 | 47.2 | 5.30 | - | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:61 `"gemma3_text": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3_text) |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | A | 3.88B | 0/40 | 0 | 16 | 43.2 | 2.45 | - | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:60 `"gemma3": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3) |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | C | 3.88B | 3/40 | 43 | - | 63.1 | 0.76 | 30/40 vs Nile-Chat-4B-promptC-rp1.15 | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:60 `"gemma3": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3) |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | C | 3.88B | 1/40 | 33 | - | 20.5 | 0.44 | 28/40 vs Nile-Chat-4B-promptC-rp1.15 | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:60 `"gemma3": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3) |
 | Nile-Chat-4B-promptB | B | 3.88B | 0/40 | 262 | 15 | 42.3 | 5.08 | - | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:61 `"gemma3_text": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3_text) |
 | Nile-Chat-4B-promptC-rp1.15 | C | 3.88B | 0/40 | 44 | - | 22.5 | 2.98 | - | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:61 `"gemma3_text": create(Gemma3TextConfiguration.self, Gemma3TextModel.init),` (model_type gemma3_text) |
 | Qwen3-4B | A | 4.02B | 0/40 | 0 | 11 | 50.8 | 4.29 | - | yes: mlx-swift-lm@128f49f1 Libraries/MLXLLM/LLMModelFactory.swift:67 `"qwen3": createQwen3CompatibleModel,` (model_type qwen3) |
@@ -18,6 +20,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | السلام عليكم | el salam 3aleikom | E-L SALAM 3ALEIKOM | Hi there! |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | السلام عليكم | el salam 3alekom | E L S A L A M 3AL E K O M | Hi! |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | أهلًا | ahlan | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | أهلًا | ahlan | - | - |
 | Nile-Chat-4B-promptB | أهلوا | اهلوا | ahlo | اهلا |
 | Nile-Chat-4B-promptC-rp1.15 | أهلًا وسَلامًا | ahlan w salamam | - | - |
 | Qwen3-4B | مرحبا | marhaba | MAR-hba | HELLO |
@@ -29,6 +33,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | صباح الخير | sabah el kheir | SABAH EL KHEIR | GOOD MORNING |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | صباح الخير | sabah el kheir | SABAH EL KHEIR | GOOD MORNING |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | مساء الخير | masa2 el kheir | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | مساء الخير | masa2 el kheir | - | - |
 | Nile-Chat-4B-promptB | مساء الخير | مساء الخيـــــر | masaa el kheir | مساء الخير |
 | Nile-Chat-4B-promptC-rp1.15 | صباح الخير | sabah el kheir | - | - |
 | Qwen3-4B | صباح الخير | sabah al-khayr | SABAH AL-KHAYR | GOOD MORNING |
@@ -40,6 +46,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | صباح الخير | sabah el kheir | SABAH EL KHEIR | GOOD MORNING TO YOU TOO |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | صباح الخير عليكو | sabah el kheir 3aleko | SABAH EL KHEIR 3ALIKO | GOOD MORNING TO YOU TOO |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | صباح النور عليكو | صباااح النووور علكوو | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | صباح النور | sabah el nour | - | - |
 | Nile-Chat-4B-promptB | مساء الخير | مساء الخيـر | masaa el kheir | مساء الخير |
 | Nile-Chat-4B-promptC-rp1.15 | صباح النور عليكو | sabah el nour 3aleiko | - | - |
 | Qwen3-4B | صباح الخير لك أيضًا | sabah al-khier lik 7idam | SABAH AL-KHIER LIK 7IDAM | GOOD MORNING TO YOU ALSO |
@@ -51,6 +59,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | PARSE FAIL (no JSON object found); raw: {"arabic": "إزيك؟", "arabizi": "ezayk?", "latin": "EZZIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII | | | |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | إزيك؟ | ezik? | EZZIIK? | HOW ARE YOU? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | ازيكو؟ | eziko? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ازيك | ezayak | - | - |
 | Nile-Chat-4B-promptB | إزيكو؟ | ezikoo? | ezayak? | howa/heya/homma eh? howa/heya/homma 3amel/3amla eh? |
 | Nile-Chat-4B-promptC-rp1.15 | إزيك؟ | ezayak? | - | - |
 | Qwen3-4B | كيف أنت؟ | KIF ANT? | KIF ANT | HOW ARE YOU |
@@ -62,6 +72,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | انا كويس الحمد لله | ana kowayyes el7amdullah | A-NA KUWAYYES EL7AMDOLLAH | I am good, thanks be Allah |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | انا كويس الحمد لله | ana kowayyes el7amdo lelah | A-na KO-WEYSS EL7AMDO LELEH | I I am FINE Thank GOD |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | PARSE FAIL (no JSON object found); raw: {"arabic": "\u064a\u0651\u2039\u064e\u0648 \u064b\u064f\u0647\u2039\u064d\u064c\u064a\u0651\u2039\u064e\u0648 \u064b\u064f\u0647\u2039\u064d\u064c\u064a\u0651\u2039\u064e\u0648 \u064b\u064f\u0647\u203 | | | |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا تمام الحمد لله | ana tamam el7amdellah | - | - |
 | Nile-Chat-4B-promptB | أنا كويس الحمد لله | ana kwayyes el7amdullah | ana kways el7amdulellah | ana tamam el7amdullah |
 | Nile-Chat-4B-promptC-rp1.15 | الحمدلله تمام | el hamdulellah tamam | - | - |
 | Qwen3-4B | أنا بخير شكر الله | ana bkhayr shakr allah | A-NA B-KHAYR SHAKR ALLAH | I I-am fine thank God |
@@ -73,6 +85,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | اهلا وسهلا | ahla w sahla | AHLA W SAHLA | HIHLO WEL SALAM |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | اهلا بيك | ahlaa beek | AHLA BEEEK | HIH YOU |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | اهلا بيك | ahla beek | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | اهلا بيك | ahla beek | - | - |
 | Nile-Chat-4B-promptB | اهلا وسهلا | اھلا وسهلا | ahla wosola | اهلا وسهلا |
 | Nile-Chat-4B-promptC-rp1.15 | أهلا وسهلا | ahla wessela | - | - |
 | Qwen3-4B | سأي بيك | sai bi7 | SAY BI7 | SAY BI7 |
@@ -84,6 +98,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | مع السلامة، نشوفك بكره. | ma3 el salama, neshoofak bokra. | Ma3 el SALAMA, neshufak bOKRA. | Bye, see you tomorrow |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | مع السلامة، نشوفك بكره. | ma3 el salama, neshoofak bokra. | MAA EL SALAMA NESHOOFAK BOKRA | GOODBYE SEE YOU TOMORROW |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | bay bay shofak bokra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | باي باي اشوفك بكره | باي باي اشوفك بكره | - | - |
 | Nile-Chat-4B-promptB | باي باي، نشوفك بكره | باى باى ، نـشوفك بكرة | bye bye, see you tomorrow. | باي باي، نشوفك بكره |
 | Nile-Chat-4B-promptC-rp1.15 | باي باي، نشوفك بكره. | باى باى ، نتشوفك بكرة . | - | - |
 | Qwen3-4B | بسماعك مالا بس نلاقي اليوم بس | besma3k ma3a bas nala3i alayyab bas | B-SEE-mahk MAH-lah BES NEE-ah-ee ALAY-yah BAH-s | GOOD-BYE SEE YOU TOMORROW BES |
@@ -95,6 +111,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | شكرا جزيلا | shokran gazilan | SHOKRAN GAZILAN | THANK YOU VERY MUCH |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | شكرا جزيلا | shokran gazzilan | SHOKRAN GAZZILAN | THANK YOU VERY MUCH |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َو ًُهٌٍو | 𒠕𞐮𞐫 𒠟𞐧𞐦 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | شكرا جزيلا | shokran gazzilan | - | - |
 | Nile-Chat-4B-promptB | شكرًا جزيلاً | شكرا جزيل | shokran gazilan | shokran gazzilan |
 | Nile-Chat-4B-promptC-rp1.15 | شكرًا جزيلاً | shokran gazilan | - | - |
 | Qwen3-4B | شكرك بكثير | shukrak b3khir | SHUKR AK B3KHIR | THANK YOU VERY MUCH |
@@ -106,6 +124,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | العفو | el 3afo | El 3aFOO | The 3aFOO |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | عفواً | 3afwan | 3afo2an | you are welcome |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | عفواً | 3afwan | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | عفوا | 3afwa | - | - |
 | Nile-Chat-4B-promptB | عفوا | 3afwa | 3afw | عفوك |
 | Nile-Chat-4B-promptC-rp1.15 | عفواً | 3ofwan | - | - |
 | Qwen3-4B | أنا بتحب مصري | ana batheb masri | A-NA BA-THIBB MAS-REE | I I-love Egyptians |
@@ -117,6 +137,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ده طعمه حلو | da ta3mo 7elw | DA ta3MO 7ELW | Da ta3mo 7elw |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ده طعمه حلو اوي | da ta3mo 7elw awi | DA TA3MO HELW AWY | THIS IS TASTE GOOD VERY |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َو ًُهٌ | el akl da 7elo | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ده طعمه حلو | da ta3mo 7elw | - | - |
 | Nile-Chat-4B-promptB | ده طعمه حلو | ده طعمو حلو | da ta3mo helw | da ta3mo helw |
 | Nile-Chat-4B-promptC-rp1.15 | ده طعمه حلو اوي | da taamo 7elo awi | - | - |
 | Qwen3-4B | هذا مغذى | hatha maghda | HA-THA MA-GHDA | THIS IS DELICIOUS |
@@ -128,6 +150,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | انا شبعان | ana shabaan | A-NA sha-BAH-han | I am full |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | انا شبعان | ana shaba3an | A-NA SHABA3AN | I am FULL |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َوٌ ًُهٍ | 𐃂𐔹𐕚𐕞 𐃎𐔷 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا شبعان | ana shab3an | - | - |
 | Nile-Chat-4B-promptB | انا شبعت | ana shaba3t | ana shab3at | ana shab3et |
 | Nile-Chat-4B-promptC-rp1.15 | أنا شبعان | ana shab3an | - | - |
 | Qwen3-4B | أنا مكتمل | ana makhtml | A-NA MAKHTML | I AM FULL |
@@ -139,6 +163,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | من فضلك شوية كمان | men fadlak shwaya kaman | Men Fadla Shwaya Kaman | From Please A Little More |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ممكن شوية كمان لو سمحت؟ | momken shwaya kaman law sama7? | MOMKEN SHWAYA KAMAN LAW SAMAH? | Can you give me a little more please? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ بعلُ ًَاٌ | يّ بعلُ ًَاٌ | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | عايز اكتر شوية لو سمحت | 3ayez aktar shwaya law sama7 | - | - |
 | Nile-Chat-4B-promptB | شوية كمان لو سمحت | شوية كاااامن لو سمح | shwaya kaman law sama7 | شوية زيادة لو سمحت |
 | Nile-Chat-4B-promptC-rp1.15 | عايز شوية كمان لو سمحت. | 3awez shwayet kaman law sama7t. | - | - |
 | Qwen3-4B | أنا بسأكمل قليلاً | ana basa7il ma3ila | A-NA BA7IBIL MA3ILA | I I-will finish a-little |
@@ -150,6 +176,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | لا سكر لو سمحت | la sokkar law sama7 | La sokkar law sama7 | No sugar, please |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | لا سكر لو سمحت | la sokkar law sama7 | LA SOKKAR LAW SAMAH | NO SUGAR PLEASE |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | لا سكر لو سمحت | la sokar law sama7t | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | لا سكر لو سمحت | la sokar law sama7 | - | - |
 | Nile-Chat-4B-promptB | لا سكر لو سمحت | لا سكر لوسمحت | la sokkar law samaht | لا سكر لو سمحت |
 | Nile-Chat-4B-promptC-rp1.15 | لا سكر لو سمحت | la sokkar law sama7t | - | - |
 | Qwen3-4B | لا سكر يالله | la saker yal3al | LA SAKER YAL3AL | NO SUGAR PLEASE |
@@ -161,6 +189,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ممكن مية؟ | momken mayya? | moo2kan mayya? | maynfa3sh maya? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ممكن مية؟ | momken mayya? | MOMKEN MAYYA? | CAN I HAVE SOME WATER? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | el mayya momken | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ممكن مية؟ | momken mayya? | - | - |
 | Nile-Chat-4B-promptB | ممكن مية؟ | ميكن مييه؟ | momken mayya? | momken maya? |
 | Nile-Chat-4B-promptC-rp1.15 | عايز مية؟ | 3awez mayah? | - | - |
 | Qwen3-4B | أنا بسأله ماء | ana basal ma | A-NA BA-SAL MA | I CAN HAVE WATER |
@@ -172,6 +202,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | فين الحمام؟ | feen el 7ammam? | feen el 7ammam? | where is the bathroom? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | فين الحمام؟ | feen el 7ammam? | FEEN EL 7AMMAM? | WHERE IS THE BATHROOM? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | el 7amam fen | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | فين الحمام؟ | fin el 7amam? | - | - |
 | Nile-Chat-4B-promptB | فين الحمام؟ | فين الحام؟ | fein el hammam? | فين الحمام؟ |
 | Nile-Chat-4B-promptC-rp1.15 | فين الحمام؟ | feen el hammam? | - | - |
 | Qwen3-4B | متي بانوو مسجى؟ | mee ba7oo masjee | MEE BA7OO MASJEE | WHERE IS THE BATHROOM |
@@ -183,6 +215,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | من فضلك قولها ببطء | men fadlak oolha bebot2 | Men Fadlaa Oola Bebotoo2 | From please say it slowly |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | قولها ببطء | 2oolha bebat2 | 2OOLHA BEBAT2 | Say it slowly |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | قولها ببطء | 2olha bebot2 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | قولها ببطء | 2olha bebot2 | - | - |
 | Nile-Chat-4B-promptB | من فضلك قولها ببطء | من فضلك قولها بطبıع | men fadlak oolha bebot2 | from please say it slowly |
 | Nile-Chat-4B-promptC-rp1.15 | من فضلك قولها ببطء. | men fadlak oolha bebot2 | - | - |
 | Qwen3-4B | اِنْتَنْ بِسْكِرْ | intan biskr | IN-TAN BI-SKIR | YOU SAY IT SLOWER |
@@ -194,6 +228,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ممكن تقولها تاني؟ | momken te2olha tany? | Momken te2olha tany? | Momken te2olha tany? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ممكن تقولها تاني؟ | momken te2olha tany? | MOMKEN TE2OLHA TANY? | CAN YOU SAY IT AGAIN? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ بعلَ ًُهلّ | 𓐚\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ممكن تقولها تاني؟ | momken te2olha tany? | - | - |
 | Nile-Chat-4B-promptB | ممكن تقولها تاني؟ | makan te2olha tany? | momken te2olha tany? | momken te2olha tany? |
 | Nile-Chat-4B-promptC-rp1.15 | عايز تقولها تاني؟ | 3awez te2olha tany? | - | - |
 | Qwen3-4B | يمكنك قولها مجددًا | yamkunak qoolha ma3d3an | YAM-KUNAK QOOL-HA MA3-D3AN | YOU CAN SAY IT AGAIN |
@@ -205,6 +241,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | مش فاهم | mesh fahem | MASH FAHEM | I do not understand |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | مش فاهم | mesh fahem | MASH FAHEM | I do not understand |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | فحع يٜوَان | el 3arabiya barra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | مش فاهم | mesh fahem | - | - |
 | Nile-Chat-4B-promptB | مش فاهم | مش فاهم | mesh fahem | ana mesh fahma |
 | Nile-Chat-4B-promptC-rp1.15 | مش فاهم | mesh fahem | - | - |
 | Qwen3-4B | أنا بسأدي | ana basa7id | A-NA BA-SAH-DI | I I-don't understand |
@@ -216,6 +254,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | يعني إيه ده؟ | ya3ni eh da? | Ya3ni eh da? | What does that mean? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | إيه ده يعني؟ | eh da ya3ni? | E eh DA ye2ny? | What does that mean? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | ايه ده ؟ | eh da ? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ايه ده ؟ | eh da ? | - | - |
 | Nile-Chat-4B-promptB | يعني إيه؟ | یعنى ايه؟ | ya3ni eh? | يعني ايه؟ |
 | Nile-Chat-4B-promptC-rp1.15 | إيه ده يعني؟ | eh da ya3ni? | - | - |
 | Qwen3-4B | ما ده بيعني؟ | ma deh bi7inay? | MA DEH BI7INAY | WHAT DOES THAT MEAN |
@@ -227,6 +267,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ده عمي | da omi | DA OMI | THIS IS MY UNCLE |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ده عمي | da 3ami | DA AMEE | THIS IS MY UNCLE |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ بعلَ يهيلَ | 𓐕 𓐣 𓐙 𓐟 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ده عمي | da 3ami | - | - |
 | Nile-Chat-4B-promptB | ده عمي | ديه عـمي | dehe omi | da 3ami |
 | Nile-Chat-4B-promptC-rp1.15 | ده عمي | da omi | - | - |
 | Qwen3-4B | هذا أخوي | hatha akhwi | HA-THA AKH-WEE | THIS MY UNCLE |
@@ -238,6 +280,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | فين خالتي؟ | feen khalaty? | feen kha-la-ty? | where is my aunt? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | فين خالتي؟ | feen khalti? | FEEN KHALTI? | WHERE IS MY AUNT? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | فين خالتي؟ | fin khalti? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | فين خالتي؟ | fin khalti? | - | - |
 | Nile-Chat-4B-promptB | فين خالتي؟ | فِين خَالِتِي؟ | feen khalti? | فين خالتي؟ |
 | Nile-Chat-4B-promptC-rp1.15 | فين خالة؟ | feen khalo? | - | - |
 | Qwen3-4B | متي بنتي؟ | mati binti | MATI BINTI | WHERE MY AUNT |
@@ -249,6 +293,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | إزيك يا تيتة؟ | ezik ya teta? | E-ZIK YA TETA? | HIW IZ GRANDMA DOING? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | إزيك يا تيتة؟ | ezik ya teta? | E-ZIK YA TETA? | HOW IS GRANDMA DOING? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | تيتة عاملة ايه؟ | teta 3amla eh? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | تيتة عاملة ايه؟ | teta 3amla eh? | - | - |
 | Nile-Chat-4B-promptB | إزيكو يا طنط؟ | eziko ya tant? | ezikoo ya tant? | ازيكو يا طنط؟ |
 | Nile-Chat-4B-promptC-rp1.15 | تيتة عاملة ايه؟ | tetta 3amla eh? | - | - |
 | Qwen3-4B | كيف هي أمّي؟ | kif hi ammee | KIF HI AMEE | HOW IS MOMMY |
@@ -260,6 +306,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | إزيكو؟ | eziko? | EZZIKOO? | HOW IS EVERYONE? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | إزيكو؟ | eziko? | EZZIKO? | HOW IS EVERYONE? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | ازيكو يا جماعة؟ | زيكوا ياجماعه ؟ | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ازيكو يا جماعة | ازيكو يا جماعة | - | - |
 | Nile-Chat-4B-promptB | إزيكو؟ | ئزيكو؟ | ezayko? | ازيكوا؟ |
 | Nile-Chat-4B-promptC-rp1.15 | إزيكو؟ | ايه زيكوا ؟ | - | - |
 | Qwen3-4B | كيف هوا كلهم؟ | KIF HA wa KALAM | KIF HA WA KALAM | HOW IS EVERYONE |
@@ -271,6 +319,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | وحشتوني كلكم | wa7ashtooni kolkom | Wa7a-shtoonee koLkoM | I miss you all |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | وحشتوني كلكم | wa7ashtooni kolkom | WA 7ASHTOONII KOLKOM | I miss you all |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | انا وحشتوني | ana wa7ashtoni | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا وحشتوني | ana wa7ashtoni | - | - |
 | Nile-Chat-4B-promptB | نورتوا يا جماعة | نوروتو ياجماعه | nawarto ya gama3a | نورتوا يا جماعة |
 | Nile-Chat-4B-promptC-rp1.15 | وحشتوني كلكم | واشتحتونى كلكم | - | - |
 | Qwen3-4B | أنا بخسرك كلهم | ana baksirka khalhum | A-NA BAKSIRKAA KHALHUM | I I-missed you all |
@@ -282,6 +332,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | أيوه | aywa | Ay-WAH | Yeeees |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | أيوه | aywa | AYWA | YES |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | أيوة | آه | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | PARSE FAIL (no JSON object found); raw: {"arabic": "ايوة", "arabizi": "ايوووووووووووووووووووووووووووووووووووووووووووووووووووووووووووووو | | | |
 | Nile-Chat-4B-promptB | ايوة | ايهوه | aywa | ايوة |
 | Nile-Chat-4B-promptC-rp1.15 | أيوة | ايهوه | - | - |
 | Qwen3-4B | نعم | nem | NEM | YES |
@@ -293,6 +345,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | لا | la | LA | NO |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | لا | la2 | LA2 | NO. |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | لا | la2 | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | لا | la | - | - |
 | Nile-Chat-4B-promptB | لا | لـ | la | no |
 | Nile-Chat-4B-promptC-rp1.15 | لا | laa | - | - |
 | Qwen3-4B | لا | la | LA | NO |
@@ -304,6 +358,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ممكن | momken | MOMKEN | MAYBE |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ممكن. | momken. | MOMKEN. | MAYBE. |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يمكن | yemken | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ممكن | momken | - | - |
 | Nile-Chat-4B-promptB | ممكن | ماكن | ma'kan | momken |
 | Nile-Chat-4B-promptC-rp1.15 | يمكن | yemken | - | - |
 | Qwen3-4B | قد | qad | QAD | MAY-be |
@@ -315,6 +371,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | بعدين | ba3den | Ba3d-een | After |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | بعدين | ba3den | BA3DEN | LATER |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | بعدين | ba3den | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | بعدين | ba3den | - | - |
 | Nile-Chat-4B-promptB | بعدين | ba3den | ba3den | after that |
 | Nile-Chat-4B-promptC-rp1.15 | بعدين | ba3den | - | - |
 | Qwen3-4B | بدي لاتر | badi la7er | B-DE LA-TER | I WILL LATER |
@@ -326,6 +384,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | بكرة | bokra | Bo-KRA | To-mor-row |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | بكرة | bokra | Bo-KRA | To-MORROW |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | بكرة | bokra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | بكرة | bokra | - | - |
 | Nile-Chat-4B-promptB | بكرة | بـكـرآ | bakra | borkara |
 | Nile-Chat-4B-promptC-rp1.15 | بكرة | bokra | - | - |
 | Qwen3-4B | أمسية | amsiya | A-MES-ee-ah | TOMORROW |
@@ -337,6 +397,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | يلا بينا | yalla bina | YALLA BINA | LET'S GO |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | يلا بينا | yalla bina | YALLA BINA | LET'S GO |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ بىري | yalla! | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | يلا | yalla | - | - |
 | Nile-Chat-4B-promptB | يلا | يالا | yalla | yalla ya3ni yalla |
 | Nile-Chat-4B-promptC-rp1.15 | يلا بينا | yalla bena | - | - |
 | Qwen3-4B | ايه ناول | a7 nayl | A-HE NAYL | LET'S GO |
@@ -348,6 +410,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | كام ده؟ | kam dah? | KAAM DAH? | HOW MUCH IS THIS? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | كام ده؟ | kam da? | KAAM DA? | HOW MUCH IS THIS? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | el 7aga di b kam? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | كام ده | kam dah | - | - |
 | Nile-Chat-4B-promptB | كام ده ؟ | كـام ده؟ | kam da? | كم ده؟ |
 | Nile-Chat-4B-promptC-rp1.15 | كام ده؟ | kam dah? | - | - |
 | Qwen3-4B | كم هذة؟ | kam huzza? | KAM HUZZA | HOW MUCH THIS |
@@ -359,6 +423,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ده غالي أوي | da ghalii awi | Da GHALII AWI | This is very expensive |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ده غالي أوي | da 3'aly awi | DA GHA'LY AWY | THAT IS TOO EXPENSIVE |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | فحٚع وخله | el 3arabiya ghalia awi | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ده غالي اوي | da ghaly awi | - | - |
 | Nile-Chat-4B-promptB | ده غالي اوي | ديه غاليه اوى | da ghaly awi | dah ghaley awi |
 | Nile-Chat-4B-promptC-rp1.15 | ده غالي اوي | da ghalii awi | - | - |
 | Qwen3-4B | هذا مال كثيير | hatha mal kathiir | HAH-THA MAAL KATH-IIR | THIS MONEY TOO MUCH |
@@ -370,6 +436,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | فين الفندق؟ | feen el fondok? | Feen el fonduq? | Where is the hotel? |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | فين الفندق؟ | feen el fondok? | FEEN EL FONDOOK? | WHERE IS THE HOTEL? |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | فين الفندق؟ | fin el fondok? | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | فين الفندق؟ | fin el fondok? | - | - |
 | Nile-Chat-4B-promptB | فين الفندق؟ | فـين الفنـدق ؟ | feen el fondok? | feen el fondok? |
 | Nile-Chat-4B-promptC-rp1.15 | فين الفندق؟ | feen el fondok? | - | - |
 | Qwen3-4B | ما مكان المبيت؟ | ma maqan al-mabiat | MA MA-QUAN AL-MA-BIAT | WHERE PLACE HOTEL |
@@ -381,6 +449,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | لف يمين. | lef yemeen. | Lef YEMIN. | Turn right. |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | لف شمال | lef shemal | LIF SHEMAL | TURN LEFT |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | el 3arabiya barra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | لف شمال | lef shemal | - | - |
 | Nile-Chat-4B-promptB | لف يمين | لڤ يمين | lef yemeen | left turn |
 | Nile-Chat-4B-promptC-rp1.15 | لف يمين. | lef yemeen. | - | - |
 | Qwen3-4B | اكتب يسار | akhtib yasir | A-KHTIB YASIR | WRITE LEFT |
@@ -392,6 +462,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | لف يمين | lef yemeen | Lef YEMIN | Turn right |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | لف يمين | lef yemeen | LIF YEMIN | TURN RIGHT |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َ وّ‹ٍ | el 7araka yemeen | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | لف يمين | لف يمين | - | - |
 | Nile-Chat-4B-promptB | لف يمين | لڤ يمين | lef yemeen | left turn |
 | Nile-Chat-4B-promptC-rp1.15 | لف يمين. | lef yemeen | - | - |
 | Qwen3-4B | اكتب يومن | akhtib yumin | A-KHTIB YU-MIN | TURN RIGHT |
@@ -403,6 +475,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | ماتمشيش هنا، لو سمحت. | matmashish hena, law sama7t. | MATMASHISH HENA, LAW SAMAHAT. | MATMASHISH HENA, LAW SAMAHAT |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | ماتمشيش، لو سمحت. | matmashish law sama7 | M-AT-MESHISH LAW SAMAH | STOP HERE PLEASE |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | PARSE FAIL (no JSON object found); raw: {"arabic": "\u064a\u0651\u2039\u064e\u0648 \u064b\u064f\u0647\u2039\u064c\u064d\u064a\u0651\u2039\u064e\u0648 \u064b\u064f\u0647\u2039\u064c\u064d\u064a\u0651", "arabizi": "\ud800\udcc2\ud800\uddff \u | | | |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | ماتش | matsh | - | - |
 | Nile-Chat-4B-promptB | وقفة هنا لو سمحت | وقتة هانا لوسمحت | wa2fa hena law samaht | وقفة هنا لو سمحت |
 | Nile-Chat-4B-promptC-rp1.15 | اتفضلوا، لو سمحتم. | etfaddalo law sama7to | - | - |
 | Qwen3-4B | صُدّق هنا | sud3k hana | S-TOP H-E-RE | STOP HERE |
@@ -414,6 +488,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | انا تعبان | ana ta3ban | A-NA TA3BAN | I am TIRED |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | انا تعبان | ana ta3ban | A-NA TA-ABAN | I am TIRED |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َو ًُهٌ | ana ta3ban | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا تعبان | ana ta3ban | - | - |
 | Nile-Chat-4B-promptB | انا تعبان | ana ta3ban | ana ta3ban | ana ta3ban |
 | Nile-Chat-4B-promptC-rp1.15 | انا تعبان | ana ta3ban | - | - |
 | Qwen3-4B | أنا متعب | ana matib | A-NA MA-TIB | I I-AM TIRED |
@@ -425,6 +501,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | عندي صداع | 3ando sada3 | 3ANDO SODA3 | I have a headache |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | عندي صداع | 3andy sadaa2 | O-NDY soDaa2 | I O-N'DY soDaA2 |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | يّ‹َو ًُهٌ | el 3arabiya barra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | عندي صداع | 3andy sada3 | - | - |
 | Nile-Chat-4B-promptB | عندي صداع | 3andey soda3 | 3andy soda3 | ana 3andy soda3 |
 | Nile-Chat-4B-promptC-rp1.15 | عندي صداع | 3andy sadad | - | - |
 | Qwen3-4B | أنا بآلام في الرأس | ana ba7alim fi al-ras | A-na BA7ALIM FI AL-RAS | I I-have pain in the head |
@@ -436,6 +514,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | محتاج أريح شوية | me7tag ara7 shwaya | Me7TAG ARAYE7 SHWAYA | ME7TAG ARYEE7 SHWEYA |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | محتاج أريح شوية | me7tag ara7 shwaya | ME7TAG ARA7 SHWAYA | I NEED TO REST A LITTLE |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | فحٚع وخله | el 3arabiya barra | - | - |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا عايزة ارتاح شوية | ana 3ayza arta7 shwaya | - | - |
 | Nile-Chat-4B-promptB | انا محتاج ارتاح شوية | ana me7tag arta7 shwaya | ana me7tag arta7 shwaya | ana me7tag arta7 shwaya |
 | Nile-Chat-4B-promptC-rp1.15 | عايز ارتاح شوية | 3awez arta7 shwaya | - | - |
 | Qwen3-4B | أنا بحاجة راحة بليت | ana ba7abat ra7a bleyt | A-na BA7ABAT RA7A BLEYT | I I-need REST A LITTLE |
@@ -447,6 +527,8 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 |---|---|---|---|---|
 | Nile-Chat-4B | انا مبسوط اني هنا معاك | ana mabsoot eni hena ma3ak | A-NA MABSOOT ENI HEENA MA3AK | I am happy to be here with you |
 | Nile-Chat-4B-GGUF-Q4_K_M-promptA-ollama | أنا مبسوط إني هنا معاك | ana mabsoot eni hena ma3ak | A-NA MABSOOT ENI HEENA MA3AK | I I'm happy to be here with you |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama | PARSE FAIL (no JSON object found); raw: {"arabic": "\u064a\u0651\u2039\u064e \u0648\u0651\u2039\u064d \u0647\u064f\u064b\u0651\u2039\u064a\u064e \u0648\u0651\u2039\u064d \u0647\u064f\u064b\u0651\u2039\u064a\u064e \u0648\u0651\u2039\u064d \u | | | |
+| Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0 | انا مبسوط اني هنا معاك | ana mabsoot eni hena ma3ak | - | - |
 | Nile-Chat-4B-promptB | أنا مبسوط إني هنا معاك | ana mabsoot eni hena ma3ak | ana mabsout eni hena ma3ak | ana mabsoot eny hena ma3ak |
 | Nile-Chat-4B-promptC-rp1.15 | انا مبسوط اني هنا معاكوا | ana mabsoot eni hena ma3ako | - | - |
 | Qwen3-4B | أنا سعيد بوجودي هنا معك | ana saeed biwajoodi hana ma3ik | A-NA SAEE-DAY BIWAJOODI HANA MA3IK | I I-AM HAPPY TO BE HERE WITH YOU |
@@ -455,6 +537,96 @@ Leak = count of Arabic-script characters inside the arabizi + latin fields (pars
 # Respelling prototype (respell.py) over prompt C arabizi
 
 Deterministic rule from bench/llm/respell.py applied to the model's arabizi field; the respelling column is code output, not model output.
+
+## Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama
+
+| # | english | arabizi | respelling |
+|---|---|---|---|
+| 1 | Hello. | ahlan | ahlan |
+| 2 | Good morning. | masa2 el kheir | masa' el kheir |
+| 3 | Good morning to you too. | صباااح النووور علكوو | صباااح النووور علكوو |
+| 4 | How are you? | eziko? | eziko? |
+| 5 | I'm fine, thank God. | PARSE FAIL | - |
+| 6 | Nice to meet you. | ahla beek | ahla beek |
+| 7 | Goodbye, see you tomorrow. | bay bay shofak bokra | bay bay shofak bokra |
+| 8 | Thank you very much. | 𒠕𞐮𞐫 𒠟𞐧𞐦 | 𒠕𞐮𞐫 𒠟𞐧𞐦 |
+| 9 | You're welcome. | 3afwan | afwan |
+| 10 | This is delicious. | el akl da 7elo | el akl da helo |
+| 11 | I'm full. | 𐃂𐔹𐕚𐕞 𐃎𐔷 | 𐃂𐔹𐕚𐕞 𐃎𐔷 |
+| 12 | A little more, please. | يّ بعلُ ًَاٌ | يّ بعلُ ًَاٌ |
+| 13 | No sugar, please. | la sokar law sama7t | la sokar law samaht |
+| 14 | Can I have some water? | el mayya momken | el mayya momken |
+| 15 | Where is the bathroom? | el 7amam fen | el hamam fen |
+| 16 | Please say it slower. | 2olha bebot2 | olha bebot' |
+| 17 | Can you say it again? | 𓐚\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹 | 𓐚\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹\ud80d숹 |
+| 18 | I don't understand. | el 3arabiya barra | el arabiya barra |
+| 19 | What does that mean? | eh da ? | eh da ? |
+| 20 | This is my uncle. | 𓐕 𓐣 𓐙 𓐟 | 𓐕 𓐣 𓐙 𓐟 |
+| 21 | Where is my aunt? | fin khalti? | fin khalti? |
+| 22 | How is Grandma doing? | teta 3amla eh? | teta amla eh? |
+| 23 | How is everyone? | زيكوا ياجماعه ؟ | زيكوا ياجماعه ؟ |
+| 24 | I missed you all. | ana wa7ashtoni | ana wahashtoni |
+| 25 | Yes. | آه | آه |
+| 26 | No. | la2 | la' |
+| 27 | Maybe. | yemken | yemken |
+| 28 | Later. | ba3den | ba'den |
+| 29 | Tomorrow. | bokra | bokra |
+| 30 | Let's go. | yalla! | yalla! |
+| 31 | How much is this? | el 7aga di b kam? | el haga di b kam? |
+| 32 | That's too expensive. | el 3arabiya ghalia awi | el arabiya ghalia awi |
+| 33 | Where is the hotel? | fin el fondok? | fin el fondok? |
+| 34 | Turn left. | el 3arabiya barra | el arabiya barra |
+| 35 | Turn right. | el 7araka yemeen | el haraka yemeen |
+| 36 | Stop here, please. | PARSE FAIL | - |
+| 37 | I'm tired. | ana ta3ban | ana ta'ban |
+| 38 | I have a headache. | el 3arabiya barra | el arabiya barra |
+| 39 | I need to rest a little. | el 3arabiya barra | el arabiya barra |
+| 40 | I'm happy to be here with you. | PARSE FAIL | - |
+
+## Nile-Chat-4B-GGUF-Q4_K_M-promptC-ollama-rp1.0
+
+| # | english | arabizi | respelling |
+|---|---|---|---|
+| 1 | Hello. | ahlan | ahlan |
+| 2 | Good morning. | masa2 el kheir | masa' el kheir |
+| 3 | Good morning to you too. | sabah el nour | sabah el nour |
+| 4 | How are you? | ezayak | ezayak |
+| 5 | I'm fine, thank God. | ana tamam el7amdellah | ana tamam elhamdellah |
+| 6 | Nice to meet you. | ahla beek | ahla beek |
+| 7 | Goodbye, see you tomorrow. | باي باي اشوفك بكره | باي باي اشوفك بكره |
+| 8 | Thank you very much. | shokran gazzilan | shokran gazzilan |
+| 9 | You're welcome. | 3afwa | afwa |
+| 10 | This is delicious. | da ta3mo 7elw | da ta'mo helw |
+| 11 | I'm full. | ana shab3an | ana shab'an |
+| 12 | A little more, please. | 3ayez aktar shwaya law sama7 | ayez aktar shwaya law samah |
+| 13 | No sugar, please. | la sokar law sama7 | la sokar law samah |
+| 14 | Can I have some water? | momken mayya? | momken mayya? |
+| 15 | Where is the bathroom? | fin el 7amam? | fin el hamam? |
+| 16 | Please say it slower. | 2olha bebot2 | olha bebot' |
+| 17 | Can you say it again? | momken te2olha tany? | momken te'olha tany? |
+| 18 | I don't understand. | mesh fahem | mesh fahem |
+| 19 | What does that mean? | eh da ? | eh da ? |
+| 20 | This is my uncle. | da 3ami | da ami |
+| 21 | Where is my aunt? | fin khalti? | fin khalti? |
+| 22 | How is Grandma doing? | teta 3amla eh? | teta amla eh? |
+| 23 | How is everyone? | ازيكو يا جماعة | ازيكو يا جماعة |
+| 24 | I missed you all. | ana wa7ashtoni | ana wahashtoni |
+| 25 | Yes. | PARSE FAIL | - |
+| 26 | No. | la | la |
+| 27 | Maybe. | momken | momken |
+| 28 | Later. | ba3den | ba'den |
+| 29 | Tomorrow. | bokra | bokra |
+| 30 | Let's go. | yalla | yalla |
+| 31 | How much is this? | kam dah | kam dah |
+| 32 | That's too expensive. | da ghaly awi | da ghaly awi |
+| 33 | Where is the hotel? | fin el fondok? | fin el fondok? |
+| 34 | Turn left. | lef shemal | lef shemal |
+| 35 | Turn right. | لف يمين | لف يمين |
+| 36 | Stop here, please. | matsh | matsh |
+| 37 | I'm tired. | ana ta3ban | ana ta'ban |
+| 38 | I have a headache. | 3andy sada3 | andy sada' |
+| 39 | I need to rest a little. | ana 3ayza arta7 shwaya | ana ayza artah shwaya |
+| 40 | I'm happy to be here with you. | ana mabsoot eni hena ma3ak | ana mabsoot eni hena ma'ak |
 
 ## Nile-Chat-4B-promptC-rp1.15
 
