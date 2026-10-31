@@ -240,3 +240,73 @@ their memory limit without a warning.
    4-bit file `Nile-Chat-4B.Q4_K_S.gguf` from the same repository, or loading
    the Egyptian model only when you speak English. Each is a new build, not
    something to change on the phone.
+
+## 7. This build (wave app-4): hold to talk
+
+Install it exactly like the last one (section 3). It installs over the old app
+and keeps both downloaded models; no setup screen.
+
+**What changed on screen.**
+- The Auto/Them/Me switch is gone. Wherever sections 5 and 6 say to use it,
+  ignore that: nothing guesses who is speaking any more.
+- The top half ("THEY SAID") listens all the time and treats everything it
+  hears as Arabic. It shows English or nothing: when Whisper writes Arabic in
+  Latin letters instead of translating, the app writes the Arabic down and has
+  Apple translate it (that line carries "via Apple Translate"); if that cannot
+  work either (Apple Arabic pack missing), the line is dropped and only the log
+  keeps it.
+- The bottom half ("YOU SAY") is now the talk button. A hint under YOU SAY says
+  "Press and hold anywhere here, speak English, let go."
+- The middle dot: green "Listening for Arabic", orange "Hearing", blue "Your
+  turn: top half paused" while you hold.
+
+**First launch of this build.** iOS asks once for **Speech Recognition**:
+allow it. If the hint under YOU SAY turns red, it says what is missing:
+- "Speech recognition is off": Settings > Apps > Egypt Talk > Speech Recognition on.
+- "English offline recognition is not on this phone yet": at home on Wi-Fi,
+  Settings > General > Keyboard > Enable Dictation on, wait a few minutes,
+  reopen the app. Your English is recognized on the phone only, never online.
+
+**The hold.** Press anywhere on the bottom half and keep your finger down. The
+half turns blue, the top half pauses, and your English appears live under
+"Listening to you" as you speak. Lift your finger when done: the card appears.
+While you hold, nothing you say can reach the top half, and it starts
+listening again half a second after you let go. A tap shorter than a third of
+a second with no words is ignored. A hold ends by itself after a minute, and
+when you leave the app. The old cards no longer scroll by hand (touching the
+half means talking); the newest is always in view and the log has them all.
+
+**Checks for this build.**
+1. Someone speaks Arabic, you touch nothing: English in the top half. No line
+   of Arabic in Latin letters (like "ana mesh 3aref") may appear there.
+2. Hold, say "Where is the bathroom?", let go: a `phrasebook` card. Target:
+   under about 2 seconds from letting go.
+3. Hold, say a sentence no phrasebook has, let go: a `model` card. Target:
+   about 3 seconds.
+4. While holding, have someone speak Arabic too: nothing lands in the top half
+   until you let go.
+
+**Reading the timing lines in the log** (Files > On My iPhone > Egypt Talk >
+today's file). Times are the phone's clock with milliseconds.
+- Under each card:
+  `TIME me: release 14:02:03.120 | heard-final 14:02:03.540 (+420 ms) | card 14:02:04.900 (+1780 ms after release) [phrasebook]`
+  The last number is what you felt as the wait. `heard-final` minus `release`
+  is Apple finishing your English; the rest is the phrasebook or the model.
+- Under each top line:
+  `TIME them: utterance-end 14:02:01.000 | line 14:02:03.200 (+2200 ms) [translate]`
+  `utterance-end` is when the app decided they stopped, which is about 0.8 s
+  after their last word (the quiet it waits for).
+- The tag in brackets on `THEM:` and `TIME them:` lines says which path made
+  the line: `translate` (Whisper directly), `fallback-apple` (Whisper wrote
+  Arabic, Apple translated it), `dropped` (nothing shown; the `THEM dropped:`
+  line above it says why and keeps the raw text, Arabic letters as
+  `\u{0627}`-style codes).
+- Model cards also have a `diag:` line like
+  `model greedy: 290 prompt (262 reused from cache) + 31 new tokens, 1.40 s`:
+  the reused number should be most of the prompt on every sentence. At launch
+  a `diag:` line says `prefix cached: N tokens`.
+
+**What to report after a session**: the `TIME me` lines (the last number of
+each), how many `THEM:` lines were `translate`, `fallback-apple` and `dropped`
+(R27), and as before the largest `peak` and smallest `headroom` from the `MEM`
+lines.
