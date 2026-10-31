@@ -52,6 +52,9 @@ targets:
           - UIInterfaceOrientationPortrait
         UIRequiresFullScreen: true
         NSMicrophoneUsageDescription: Egypt Talk listens to the conversation around you and turns it into English text on this phone. Nothing leaves the phone.
+        # D35: Apple's on-device English recognizer for what he says while holding
+        # the bottom half. Without this key iOS kills the app on the first request.
+        NSSpeechRecognitionUsageDescription: While you hold the bottom half, Egypt Talk turns your English into text on this phone so it can show you how to say it in Egyptian. Nothing leaves the phone.
         # Lets the session log in Documents show up in the Files app under
         # On My iPhone > Egypt Talk, so it can be shared after the trip.
         UIFileSharingEnabled: true

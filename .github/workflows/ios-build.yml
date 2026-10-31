@@ -90,7 +90,7 @@ jobs:
           zip -qry EgyptTalk.ipa Payload
           ls -l EgyptTalk.ipa
           # Proof for the first-run checklist: the plist keys the phone depends on.
-          plutil -p Payload/EgyptTalk.app/Info.plist | grep -E "CFBundleIdentifier|CFBundleDisplayName|NSMicrophoneUsageDescription|MinimumOSVersion"
+          plutil -p Payload/EgyptTalk.app/Info.plist | grep -E "CFBundleIdentifier|CFBundleDisplayName|NSMicrophoneUsageDescription|NSSpeechRecognitionUsageDescription|MinimumOSVersion"
           # llama.framework is dynamic: if Xcode did not embed it, the app dies in
           # dyld at launch on the phone. Fail here instead.
           test -f Payload/EgyptTalk.app/Frameworks/llama.framework/llama \
