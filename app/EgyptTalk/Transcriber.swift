@@ -138,12 +138,25 @@ actor Transcriber {
         if !segments.isEmpty, segments.allSatisfy({ $0.noSpeechProb > 0.6 }) {
             return nil
         }
-        let text = results.map { $0.text }.joined(separator: " ")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let text = Self.stripLeadingJunk(results.map { $0.text }.joined(separator: " ")
+            .trimmingCharacters(in: .whitespacesAndNewlines))
         if text.isEmpty || Self.isKnownHallucination(text) {
             return nil
         }
         return Heard(speaker: speaker, text: text)
+    }
+
+    /// On the PC bench (bench/asr, clip r0000) the translate task opened a clean
+    /// show intro with "F**k". Whisper does this on the first word after noise;
+    /// the rest of the sentence was right, so only a leading expletive is dropped.
+    private static func stripLeadingJunk(_ text: String) -> String {
+        let junk: Set<String> = ["f**k", "fuck", "f*ck", "fucking", "shit", "damn"]
+        var words = text.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
+        while let first = words.first,
+              junk.contains(first.lowercased().trimmingCharacters(in: .punctuationCharacters)) {
+            words.removeFirst()
+        }
+        return words.joined(separator: " ")
     }
 
     /// Subtitle credits Whisper learned from video and emits on near-silence.
