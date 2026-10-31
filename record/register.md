@@ -44,3 +44,7 @@ R28 (closed 2026-10-31 by D45: bottom half measured 1.9 to 3.4 s, all of it mode
 R27 (updated 2026-10-31) Measured on the phone: 3 of 11 translate outputs undetermined, 2 junk in a wrong language, 1 hallucination through the fallback. Superseded for the live path by D43; the fallback path keeps the checks.
 R32 (2026-10-31, open) The hallucination filter must run on every top-half path, including after Apple Translation, and must drop the Arabic forms before translation. Owner: app-5 (message sent).
 R33 (2026-10-31, standing) The user's phone logs are his material: kept under data/field/, never committed or pushed, quoted in the record only as numbers and error classes.
+R31 (closed 2026-10-31: Argmax's config lists turbo 632MB for the iPhone18 identifiers; the builder read it raw).
+R34 (2026-10-31, open) Apple Translation requests are now serialized (R24), so a bottom-half meaning can wait behind top-half translations, adding up to a few hundred milliseconds to a card. Measure from the next log; if it shows, give the bottom half priority. Owner: field test.
+R35 (2026-10-31, open) Each live decode re-encodes up to a 30 s window; if a decode takes longer than a second on the phone, the update rate falls to the decode time. The diag lines record decode time. Owner: field test.
+R24 (closed 2026-10-31 by serialization in AppleTranslator, D46 wave).
