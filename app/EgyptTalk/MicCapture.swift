@@ -7,6 +7,15 @@ enum MicState: Sendable {
     case off
     case listening   // mic open, nobody talking
     case hearing     // speech in progress, an utterance is being collected
+    case holding     // he is holding the bottom half: audio goes to his English only
+}
+
+/// One utterance for the top half, with the moment the cutter ended it (the
+/// "utterance-end" of the TIME line; speech itself stopped about 0.8 s earlier,
+/// which is the cutter's quiet hangover).
+struct Utterance: Sendable {
+    let samples: [Float]
+    let endedAt: Date
 }
 
 /// Splits a continuous 16 kHz mono stream into utterances with an energy gate.
@@ -24,6 +33,17 @@ struct Segmenter {
     private var preRoll: [Float] = []
     private var quietRun = 0
     private var speechRun = 0
+
+    /// Forgets any utterance in progress and the pre-roll. Used at both ends of a
+    /// hold so none of his speech reaches the top half. The noise floor is kept:
+    /// it describes the room, not the speaker.
+    mutating func discardUtterance() {
+        inSpeech = false
+        current.removeAll(keepingCapacity: true)
+        preRoll.removeAll(keepingCapacity: true)
+        quietRun = 0
+        speechRun = 0
+    }
 
     /// Feeds one chunk; returns a finished utterance when one just ended, and
     /// whether speech is in progress after this chunk.
@@ -74,13 +94,35 @@ struct Segmenter {
 }
 
 /// Keeps the microphone open while the app is in the foreground and delivers
-/// utterances (16 kHz mono Float) through `utterances`. Never needs a button.
+/// utterances (16 kHz mono Float) for the top half through `utterances`.
+///
+/// D34 hold routing. While he holds the bottom half, every tap buffer goes, in
+/// the input's native format, to the hold sink (his English recognizer) and
+/// NOTHING is fed to the utterance cutter; the cutter's utterance in progress is
+/// discarded when the hold starts and again when it ends, and the cutter stays
+/// deaf for `releaseMute` after release so the tail of his voice still in the
+/// pipe cannot open a top-half utterance. The hold state lives under `holdLock`
+/// because the main thread sets it and the audio tap thread reads it. It
+/// survives an engine restart (headset, phone call), so a restart mid-hold can
+/// never send his voice to the top half.
 final class MicCapture {
-    let utterances: AsyncStream<[Float]>
-    private let continuation: AsyncStream<[Float]>.Continuation
+    let utterances: AsyncStream<Utterance>
+    private let continuation: AsyncStream<Utterance>.Continuation
     private let engine = AVAudioEngine()
+    /// Tap thread only (and `open`, before the tap exists).
     private var segmenter = Segmenter()
     private var lastSpeaking = false
+
+    /// After release, how long the cutter ignores the microphone.
+    static let releaseMute: TimeInterval = 0.5
+    private let holdLock = NSLock()
+    /// Guarded by holdLock. Non-nil exactly while he holds.
+    private var holdSink: (@Sendable (AVAudioPCMBuffer) -> Void)?
+    /// Guarded by holdLock. Set at both ends of a hold; the tap thread then
+    /// discards the cutter's utterance in progress before using the buffer.
+    private var discardPending = false
+    /// Guarded by holdLock. The cutter ignores audio until this moment.
+    private var mutedUntil: Date?
     /// The owner wants the mic open (app in foreground, model ready).
     private var wanted = false
     /// The engine is actually running right now.
@@ -93,7 +135,7 @@ final class MicCapture {
     private let stateContinuation: AsyncStream<MicState>.Continuation
 
     init() {
-        let (stream, continuation) = AsyncStream.makeStream(of: [Float].self, bufferingPolicy: .unbounded)
+        let (stream, continuation) = AsyncStream.makeStream(of: Utterance.self, bufferingPolicy: .unbounded)
         self.utterances = stream
         self.continuation = continuation
         let (stateStream, stateContinuation) = AsyncStream.makeStream(of: MicState.self, bufferingPolicy: .bufferingNewest(8))
@@ -116,6 +158,29 @@ final class MicCapture {
     func stop() {
         wanted = false
         close()
+    }
+
+    /// Touch down on the bottom half. From the next tap buffer on, audio goes
+    /// to `sink` only (called on the audio tap thread) and the top half hears
+    /// nothing.
+    func beginHold(sink: @escaping @Sendable (AVAudioPCMBuffer) -> Void) {
+        holdLock.lock()
+        holdSink = sink
+        discardPending = true
+        mutedUntil = nil
+        holdLock.unlock()
+        report(.holding)
+    }
+
+    /// Release. The sink gets no more buffers; the top half resumes after
+    /// `releaseMute` with a clean cutter.
+    func endHold() {
+        holdLock.lock()
+        holdSink = nil
+        discardPending = true
+        mutedUntil = Date().addingTimeInterval(Self.releaseMute)
+        holdLock.unlock()
+        report(running ? .listening : .off)
     }
 
     private func open() throws {
@@ -142,6 +207,9 @@ final class MicCapture {
         segmenter = Segmenter()
         input.installTap(onBus: 0, bufferSize: 4096, format: inputFormat) { [weak self] buffer, _ in
             guard let self else { return }
+            // His hold first: a buffer that goes to his English never reaches
+            // the cutter, not even resampled.
+            guard self.routeOutsideCutter(buffer) == false else { return }
             let converted: AVAudioPCMBuffer
             do {
                 converted = try AudioProcessor.resampleBuffer(buffer, with: converter)
@@ -160,7 +228,10 @@ final class MicCapture {
             throw error
         }
         running = true
-        report(.listening)
+        holdLock.lock()
+        let holding = holdSink != nil
+        holdLock.unlock()
+        report(holding ? .holding : .listening)
     }
 
     private func close() {
@@ -174,11 +245,33 @@ final class MicCapture {
         report(.off)
     }
 
-    /// Audio tap thread.
+    /// Audio tap thread. True when the buffer must not reach the cutter: it went
+    /// to his hold, or the cutter is muted just after a release.
+    private func routeOutsideCutter(_ buffer: AVAudioPCMBuffer) -> Bool {
+        holdLock.lock()
+        let sink = holdSink
+        let discard = discardPending
+        discardPending = false
+        let muted = mutedUntil.map { Date() < $0 } ?? false
+        holdLock.unlock()
+
+        if discard {
+            segmenter.discardUtterance()
+            lastSpeaking = false
+        }
+        if let sink {
+            sink(buffer)
+            return true
+        }
+        return muted
+    }
+
+    /// Audio tap thread. Never reached during a hold, so the indicator below
+    /// cannot overwrite `.holding`.
     private func consume(_ samples: [Float]) {
-        let (utterance, speaking) = segmenter.push(samples)
-        if let utterance {
-            continuation.yield(utterance)
+        let (finished, speaking) = segmenter.push(samples)
+        if let finished {
+            continuation.yield(Utterance(samples: finished, endedAt: Date()))
         }
         if speaking != lastSpeaking {
             lastSpeaking = speaking

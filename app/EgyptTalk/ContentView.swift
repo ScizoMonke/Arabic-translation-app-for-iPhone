@@ -26,7 +26,7 @@ struct ConversationView: View {
             TheirHalf(lines: model.topLines)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             StatusBar(showingPackSheet: $showingPackSheet)
-            MyHalf(lines: model.bottomLines, isComposing: model.isComposing)
+            MyHalf()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .sheet(isPresented: $showingPackSheet) {
@@ -92,9 +92,16 @@ struct TheirHalf: View {
 /// Bottom half: for each thing he said, the English heard, the Egyptian to say
 /// in Latin letters (largest), the meaning check (D13, D20), and a small tag
 /// saying whether it came from the phrasebook or the model (D22).
+///
+/// D34: the whole half is the talk button. A transparent layer over it takes
+/// every touch: touch down begins a hold, lifting the finger ends it. The press
+/// is a @GestureState, which SwiftUI resets both when the finger lifts AND when
+/// the system cancels the touch (a call, Control Center), so a hold cannot be
+/// left on by a touch that never "ended". The history underneath no longer
+/// scrolls by hand; it keeps the newest card in view by itself.
 struct MyHalf: View {
-    let lines: [BottomLine]
-    let isComposing: Bool
+    @EnvironmentObject private var model: AppModel
+    @GestureState private var pressing = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -102,7 +109,7 @@ struct MyHalf: View {
                 Text("YOU SAY")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
-                if isComposing {
+                if model.isComposing {
                     ProgressView()
                         .controlSize(.mini)
                     Text("working out the Egyptian")
@@ -112,11 +119,16 @@ struct MyHalf: View {
             }
             .padding(.horizontal)
             .padding(.top, 8)
+
+            HoldPrompt()
+                .padding(.horizontal)
+                .padding(.top, 4)
+
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 14) {
-                        ForEach(lines) { line in
-                            let isNewest = line.id == lines.last?.id
+                        ForEach(model.bottomLines) { line in
+                            let isNewest = line.id == model.bottomLines.last?.id
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("You: \(line.heard)")
                                     .font(.subheadline)
@@ -141,34 +153,102 @@ struct MyHalf: View {
                     }
                     .padding()
                 }
-                .onChange(of: lines.last?.id) { _, newID in
+                .onChange(of: model.bottomLines.last?.id) { _, newID in
                     guard let newID else { return }
                     withAnimation { proxy.scrollTo(newID, anchor: .bottom) }
                 }
             }
         }
-        .background(Color(.secondarySystemBackground))
+        .background(model.isHolding ? Color.blue.opacity(0.16) : Color(.secondarySystemBackground))
+        .overlay {
+            if model.isHolding {
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(Color.blue, lineWidth: 3)
+                    .padding(4)
+                    .allowsHitTesting(false)
+            }
+        }
+        .overlay {
+            Color.clear
+                .contentShape(Rectangle())
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .updating($pressing) { _, isPressed, _ in
+                            isPressed = true
+                        }
+                )
+        }
+        .onChange(of: pressing) { _, isPressed in
+            if isPressed {
+                model.beginHold()
+            } else {
+                model.endHold()
+            }
+        }
     }
 }
 
-/// The middle strip: microphone indicator, Auto/Them/Me switch, last status.
+/// The line under "YOU SAY": how to talk, what is being heard right now, or why
+/// talking cannot work yet.
+struct HoldPrompt: View {
+    @EnvironmentObject private var model: AppModel
+
+    var body: some View {
+        if model.isHolding {
+            VStack(alignment: .leading, spacing: 2) {
+                Label("Listening to you. Let go when you are done.", systemImage: "mic.fill")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(Color.blue)
+                Text(model.liveHeard.isEmpty ? "..." : model.liveHeard)
+                    .font(.title3)
+                    .foregroundStyle(.primary)
+                    .lineLimit(3)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        } else if !model.liveHeard.isEmpty {
+            Text("You: \(model.liveHeard)")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(3)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else if let problem = model.englishProblem {
+            Text(problem)
+                .font(.caption)
+                .foregroundStyle(.red)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            Label("Press and hold anywhere here, speak English, let go.", systemImage: "hand.tap")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
+/// The middle strip: microphone indicator, Apple pack button, last status.
 struct StatusBar: View {
     @EnvironmentObject private var model: AppModel
     @Binding var showingPackSheet: Bool
 
+    // The hold is shown from the model's own flag: the mic's state stream can
+    // lag a buffer behind a touch.
     private var micColor: Color {
+        if model.isHolding { return .blue }
         switch model.micState {
         case .off: return .gray
         case .listening: return .green
         case .hearing: return .orange
+        case .holding: return .blue
         }
     }
 
     private var micLabel: String {
+        if model.isHolding { return "Your turn: top half paused" }
         switch model.micState {
         case .off: return "Mic off"
-        case .listening: return "Listening"
+        case .listening: return "Listening for Arabic"
         case .hearing: return "Hearing"
+        case .holding: return "Your turn: top half paused"
         }
     }
 
@@ -185,13 +265,6 @@ struct StatusBar: View {
                         .controlSize(.small)
                 }
                 Spacer()
-                Picker("Who is speaking", selection: $model.routing) {
-                    ForEach(Routing.allCases) { routing in
-                        Text(routing.rawValue).tag(routing)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .frame(width: 190)
                 Button {
                     showingPackSheet = true
                 } label: {

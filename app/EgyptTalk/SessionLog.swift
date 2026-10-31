@@ -22,6 +22,19 @@ final class SessionLog {
         return f
     }()
 
+    /// TIME lines (R27, R28): local wall-clock time with milliseconds, the
+    /// ISO 8601 extended time format, e.g. 14:02:03.120.
+    private let clockFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "HH:mm:ss.SSS"
+        return f
+    }()
+
+    func clock(_ date: Date) -> String {
+        clockFormatter.string(from: date)
+    }
+
     private var documents: URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
