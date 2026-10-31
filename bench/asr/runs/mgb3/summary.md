@@ -6,9 +6,9 @@ Instrument check this build: {'wer identical': 0.0, 'wer empty hyp': 1.0, 'cer i
 
 | run | task | WER | CER | empty outputs | audio s | wall s | audio s / wall s | backend |
 |---|---|---|---|---|---|---|---|---|
-| fw-large-v3-turbo-ct2-transcribe | transcribe | 0.377 | 0.204 | 0 | 747.02 | 27.7 | 26.97 | faster-whisper 1.2.1 |
-| fw-large-v3-turbo-ct2-translate | translate | n/a; 1% of letters Latin | n/a; 1% of letters Latin | 0 | 747.02 | 22.88 | 32.65 | faster-whisper 1.2.1 |
-| large-v3-transcribe | transcribe | 0.395 | 0.243 | 1 | 747.02 | 117.58 | 6.35 | faster-whisper 1.2.1 |
-| large-v3-translate | translate | n/a; 100% of letters Latin | n/a; 100% of letters Latin | 0 | 747.02 | 61.42 | 12.16 | faster-whisper 1.2.1 |
+| fw-large-v3-turbo-ct2-transcribe | transcribe | 0.376 | 0.204 | 0 | 747.02 | 41.63 | 17.94 | faster-whisper 1.2.1 |
+| fw-large-v3-turbo-ct2-translate | translate | n/a; 0% of letters Latin | n/a; 0% of letters Latin | 0 | 747.02 | 44.01 | 16.98 | faster-whisper 1.2.1 |
+| large-v3-transcribe | transcribe | 0.397 | 0.245 | 1 | 747.02 | 138.05 | 5.41 | faster-whisper 1.2.1 |
+| large-v3-translate | translate | n/a; 100% of letters Latin | n/a; 100% of letters Latin | 0 | 747.02 | 78.4 | 9.53 | faster-whisper 1.2.1 |
 
 Wall time excludes one warm-up decode of the first clip. GPU: RTX 5070 Ti 16 GB. Settings per run in run_meta.json.
