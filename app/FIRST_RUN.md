@@ -7,7 +7,7 @@ iPhone through AltStore.
 
 ## 0. Before the first run
 
-- A GitHub repository holding this repo, with branch `app-2` (or a merge of it) pushed (register R11).
+- The repository is https://github.com/ScizoMonke/Arabic-translation-app-for-iPhone (public). Builds appear at https://github.com/ScizoMonke/Arabic-translation-app-for-iPhone/actions.
 - The workflow is `.github/workflows/ios-build.yml`. It starts on any push that
   touches `app/` or the workflow file, or by hand: GitHub > repo > Actions >
   ios-build > Run workflow.
