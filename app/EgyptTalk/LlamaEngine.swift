@@ -45,6 +45,12 @@ enum StopReason: String, Sendable {
     case loop = "loop guard"
 }
 
+/// D37: what priming the fixed prompt prefix cost, for the session log.
+struct PrimeResult: Sendable {
+    let tokens: Int
+    let seconds: Double
+}
+
 struct Generation: Sendable {
     let text: String
     let promptTokens: Int
@@ -92,7 +98,7 @@ final class LlamaEngine: @unchecked Sendable {
     /// D37: processes the fixed part of every prompt once, so each request
     /// decodes only what follows it. Returns the token count and seconds for the
     /// session log.
-    func prime(prefix: String) async throws -> (tokens: Int, seconds: Double) {
+    func prime(prefix: String) async throws -> PrimeResult {
         try await onQueue { try self.primeOnQueue(prefix: prefix) }
     }
 
@@ -185,7 +191,7 @@ final class LlamaEngine: @unchecked Sendable {
         cachedTokens = []
     }
 
-    private func primeOnQueue(prefix: String) throws -> (tokens: Int, seconds: Double) {
+    private func primeOnQueue(prefix: String) throws -> PrimeResult {
         guard let context, let vocab else { throw LlamaError.notLoaded }
         let started = Date()
         let memory = llama_get_memory(context)
@@ -198,7 +204,7 @@ final class LlamaEngine: @unchecked Sendable {
             throw error
         }
         cachedTokens = tokens
-        return (tokens.count, Date().timeIntervalSince(started))
+        return PrimeResult(tokens: tokens.count, seconds: Date().timeIntervalSince(started))
     }
 
     private func generateOnQueue(prompt: String, maxNewTokens: Int, sampling: Sampling) throws -> Generation {
