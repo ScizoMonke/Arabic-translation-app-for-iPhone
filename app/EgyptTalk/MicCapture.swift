@@ -117,7 +117,7 @@ final class LiveWindow: @unchecked Sendable {
         let samples: [Float]
         /// The utterance ended inside this snapshot, at its last sample.
         let closed: Bool
-        /// Wall clock when the energy gate opened for this utterance.
+        /// Wall clock of the utterance's first sample (pre-roll included).
         let speechStartedAt: Date
         let loudSamples: Int
         /// Samples appended in this generation so far, to pace decodes.
@@ -451,8 +451,9 @@ final class MicCapture {
     private func consume(_ samples: [Float]) {
         let step = segmenter.push(samples)
         if step.started {
-            // The gate opened on this buffer: speech began about one buffer ago.
-            let startedAt = Date().addingTimeInterval(-Double(samples.count) / Double(Segmenter.sampleRate))
+            // The wall clock of the utterance's first sample (the pre-roll's
+            // start), so a time inside the window maps to a time of day.
+            let startedAt = Date().addingTimeInterval(-Double(step.audio.count) / Double(Segmenter.sampleRate))
             window.speechStarted(step.audio, loud: step.loudSamples, at: startedAt)
         } else if !step.audio.isEmpty {
             window.speechContinued(step.audio, loud: step.loudSamples)
