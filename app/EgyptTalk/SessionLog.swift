@@ -1,4 +1,6 @@
+import Darwin
 import Foundation
+import os
 
 /// Plain-text record of everything shown on screen, one file per day in the
 /// app's Documents folder (visible in Files > On My iPhone > Egypt Talk), so the
@@ -46,5 +48,38 @@ final class SessionLog {
         } catch {
             print("SessionLog write failed: \(error)")
         }
+    }
+}
+
+/// R10/R13: how close the app is to iOS killing it for memory. One line per call,
+/// written to the session log after each model load and each utterance so the
+/// user can report it from the Files app.
+///   footprint      phys_footprint, the number the kernel's memory limit is checked against
+///   peak           ledger_phys_footprint_peak, the highest footprint since launch
+///   resident       pages in RAM, including the memory-mapped model weights
+///   peak resident  resident_size_peak
+///   headroom       os_proc_available_memory(): what is left before the limit
+enum MemoryProbe {
+    static func line() -> String {
+        var info = task_vm_info_data_t()
+        var count = mach_msg_type_number_t(MemoryLayout<task_vm_info_data_t>.size / MemoryLayout<integer_t>.size)
+        let result = withUnsafeMutablePointer(to: &info) { pointer in
+            pointer.withMemoryRebound(to: integer_t.self, capacity: Int(count)) { reboundPointer in
+                task_info(mach_task_self_, task_flavor_t(TASK_VM_INFO), reboundPointer, &count)
+            }
+        }
+        let headroom = megabytes(os_proc_available_memory())
+        guard result == KERN_SUCCESS else {
+            return "MEM task_info failed (\(result)); headroom \(headroom) MB"
+        }
+        return "MEM footprint \(megabytes(info.phys_footprint)) MB, peak \(megabytes(info.ledger_phys_footprint_peak)) MB, "
+            + "resident \(megabytes(info.resident_size)) MB, peak resident \(megabytes(info.resident_size_peak)) MB, "
+            + "headroom \(headroom) MB"
+    }
+
+    /// Generic because the SDK declares these fields with different integer types
+    /// (mach_vm_size_t, int64_t, size_t).
+    private static func megabytes<T: BinaryInteger>(_ bytes: T) -> Int64 {
+        Int64(bytes) / 1_048_576
     }
 }

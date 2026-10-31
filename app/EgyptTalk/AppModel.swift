@@ -19,12 +19,14 @@ struct TopLine: Identifiable {
     let note: String?
 }
 
-/// One card in the bottom half (D13): what he said, what to say, what it means.
+/// One card in the bottom half (D13): what he said, what to say, what it means,
+/// and where the Latin line came from.
 struct BottomLine: Identifiable {
     let id = UUID()
     let heard: String
     let latin: String
     let gloss: String
+    let source: String
 }
 
 @MainActor
@@ -32,8 +34,8 @@ final class AppModel: ObservableObject {
     enum Phase: Equatable {
         case checking
         case needsDownload
-        case downloading(Double)
-        case preparing
+        case downloading(String, Double)
+        case preparing(String)
         case ready
         case failed(String)
     }
@@ -41,6 +43,8 @@ final class AppModel: ObservableObject {
     @Published private(set) var phase: Phase = .checking
     @Published private(set) var micState: MicState = .off
     @Published private(set) var isWorking = false
+    /// True while the Egyptian model works on one of his sentences.
+    @Published private(set) var isComposing = false
     @Published var routing: Routing = .auto
     @Published private(set) var topLines: [TopLine] = []
     @Published private(set) var bottomLines: [BottomLine] = []
@@ -48,63 +52,141 @@ final class AppModel: ObservableObject {
     @Published private(set) var translationStatus: LanguageAvailability.Status?
 
     private let transcriber = Transcriber()
-    private let translator = AppleTranslator()
-    /// Swap point for tomorrow's model: replace StubRomanizer() with the real one.
-    private let romanizer: any Romanizer = StubRomanizer()
+    private let translator: AppleTranslator
+    private let romanizer: EgyptianRomanizer
+    private let nileDownloader = ModelDownloader()
     private let log = SessionLog()
     private let mic = MicCapture()
     private var pipelineStarted = false
     private var isForeground = true
 
+    /// His own sentences wait here for the Egyptian model, so a slow generation
+    /// never holds up Whisper or the top half: a conversation does not wait.
+    private let myUtterances: AsyncStream<Heard>
+    private let myUtterancesContinuation: AsyncStream<Heard>.Continuation
+
     /// Keeps the views fast over a long day; the session log keeps everything.
     private let maxLinesOnScreen = 300
 
+    init() {
+        let translator = AppleTranslator()
+        self.translator = translator
+        self.romanizer = EgyptianRomanizer(translator: translator)
+        let (stream, continuation) = AsyncStream.makeStream(of: Heard.self, bufferingPolicy: .unbounded)
+        self.myUtterances = stream
+        self.myUtterancesContinuation = continuation
+    }
+
     // MARK: Setup
+
+    private var everythingDownloaded: Bool {
+        Transcriber.localModelFolder() != nil && ModelDownloader.localModelFile() != nil
+    }
 
     func launch() async {
         await refreshTranslationStatus()
         guard phase == .checking else { return }
-        if Transcriber.localModelFolder() == nil {
-            phase = .needsDownload
+        if everythingDownloaded {
+            await prepareModels()
         } else {
-            await prepareModel()
+            phase = .needsDownload
         }
     }
 
-    func downloadModel() async {
-        phase = .downloading(0)
-        do {
-            try await transcriber.download { fraction in
-                Task { @MainActor in
-                    // Progress callbacks can arrive after the download returned;
-                    // only a phase that is still downloading may be updated.
-                    if case .downloading = self.phase {
-                        self.phase = .downloading(fraction)
-                    }
+    /// Whatever is missing, in order: Whisper (about 950 MB), then the Egyptian
+    /// model (about 2.5 GB). Each resumes where it stopped when tapped again.
+    func downloadModels() async {
+        if Transcriber.localModelFolder() == nil {
+            let label = "Speech model (1 of 2, about 950 MB)"
+            phase = .downloading(label, 0)
+            do {
+                try await transcriber.download { fraction in
+                    Task { @MainActor in self.reportDownload(label, fraction) }
                 }
+            } catch {
+                phase = .failed("Speech model download failed. Check Wi-Fi and tap Try again. (\(error.localizedDescription))")
+                return
             }
-        } catch {
-            phase = .failed("Download failed. Check Wi-Fi and try again. (\(error.localizedDescription))")
-            return
         }
-        await prepareModel()
+        if ModelDownloader.localModelFile() == nil {
+            let label = "Egyptian model (2 of 2, about 2.5 GB)"
+            phase = .downloading(label, 0)
+            do {
+                try await nileDownloader.download { fraction in
+                    Task { @MainActor in self.reportDownload(label, fraction) }
+                }
+            } catch {
+                phase = .failed("Egyptian model download stopped. Check Wi-Fi and tap Try again; it continues where it stopped. (\(error.localizedDescription))")
+                return
+            }
+        }
+        await prepareModels()
     }
 
+    /// Progress callbacks can arrive after a download returned; only the phase
+    /// for the same download may be updated.
+    private func reportDownload(_ label: String, _ fraction: Double) {
+        if case .downloading(let current, _) = phase, current == label {
+            phase = .downloading(label, fraction)
+        }
+    }
+
+    /// After a failed download, Try again resumes the download directly.
     func retry() async {
-        phase = .checking
-        await launch()
+        if everythingDownloaded {
+            phase = .checking
+            await launch()
+        } else {
+            await downloadModels()
+        }
     }
 
-    private func prepareModel() async {
-        phase = .preparing
+    /// R10/R13: the two models load one after the other, never at once, with a
+    /// memory line in the log after each, so a spike can be told apart from a
+    /// steady state.
+    private func prepareModels() async {
+        phase = .preparing("Preparing the speech model for this phone. The first time can take several minutes.")
         do {
             try await transcriber.load()
         } catch {
             phase = .failed("Could not load the speech model. (\(error.localizedDescription))")
             return
         }
+        logMemory("after Whisper load")
+
+        do {
+            let book = try Phrasebook.loadBundled()
+            await romanizer.installPhrasebook(book)
+            showStatus(book.map { "Phrasebook: \($0.entries.count) phrases." } ?? "No phrasebook in this build; every sentence goes to the model.")
+        } catch {
+            showStatus("Phrasebook could not be read, so it is skipped. (\(error.localizedDescription))")
+        }
+
+        // A failed Egyptian model must not cost him the top half: the app opens
+        // anyway and the bottom half says what is wrong on each card.
+        // If iOS killed the app during the previous load (memory, R10), the
+        // marker below is still set: skip the load once, so a model that cannot
+        // fit never locks him out of the top half. The next launch tries again.
+        let loadMarker = "egyptianModelLoadInProgress"
+        if UserDefaults.standard.bool(forKey: loadMarker) {
+            UserDefaults.standard.set(false, forKey: loadMarker)
+            showStatus("Egyptian model skipped this time: loading it ended the app last time (memory). Top half only. Reopen the app to try again.")
+        } else if let file = ModelDownloader.localModelFile() {
+            phase = .preparing("Loading the Egyptian model.")
+            logMemory("before Egyptian model load")
+            UserDefaults.standard.set(true, forKey: loadMarker)
+            do {
+                let description = try await romanizer.loadModel(path: file.path)
+                logDiagnostic("Egyptian model loaded: \(description)")
+            } catch {
+                showStatus("The Egyptian model could not load; the bottom half will not work. (\(error.localizedDescription))")
+            }
+            UserDefaults.standard.set(false, forKey: loadMarker)
+            logMemory("after Egyptian model load")
+        }
+
         phase = .ready
-        showStatus("Ready. Model: \(Transcriber.modelVariant)")
+        showStatus("Ready. Speech: \(Transcriber.modelVariant). Egyptian: \(ModelDownloader.fileName).")
         startPipelineIfNeeded()
         let granted = await AVAudioApplication.requestRecordPermission()
         if !granted {
@@ -162,9 +244,17 @@ final class AppModel: ObservableObject {
             }
         }
         Task {
-            // One utterance at a time; the stream buffers while Whisper is busy.
+            // One utterance at a time through Whisper; the stream buffers while
+            // Whisper is busy.
             for await samples in mic.utterances {
                 await handle(samples)
+            }
+        }
+        Task {
+            // His sentences, one at a time through the Egyptian model, in parallel
+            // with Whisper working on whatever is said next.
+            for await heard in myUtterances {
+                await deliverMe(heard)
             }
         }
     }
@@ -194,8 +284,9 @@ final class AppModel: ObservableObject {
         switch heard.speaker {
         case .them:
             await deliverThem(heard)
+            logMemory("after their sentence")
         case .me:
-            await deliverMe(heard)
+            myUtterancesContinuation.yield(heard)
         }
     }
 
@@ -214,6 +305,8 @@ final class AppModel: ObservableObject {
     }
 
     private func deliverMe(_ heard: Heard) async {
+        isComposing = true
+        defer { isComposing = false }
         do {
             let rendering = try await romanizer.render(heardEnglish: heard.text)
             showBottom(rendering)
@@ -221,14 +314,18 @@ final class AppModel: ObservableObject {
             showBottom(Rendering(
                 heardEnglish: heard.text,
                 latin: "[could not render this one]",
-                gloss: error.localizedDescription
+                gloss: "Say it again, shorter or in other words.",
+                source: "error",
+                diagnostics: ["error: \(error.localizedDescription)"]
             ))
         }
+        logMemory("after my sentence")
     }
 
     // MARK: Render paths
     // The only three ways text reaches the screen. Each cleans with ScriptGuard
-    // (D5) and logs exactly what it shows.
+    // (D5) and logs exactly what it shows. The two log-only helpers below them
+    // write lines that are never shown, also cleaned.
 
     private func showTop(english: String, note: String?) {
         let text = ScriptGuard.clean(english)
@@ -245,18 +342,30 @@ final class AppModel: ObservableObject {
         let line = BottomLine(
             heard: ScriptGuard.clean(rendering.heardEnglish),
             latin: ScriptGuard.clean(rendering.latin),
-            gloss: ScriptGuard.clean(rendering.gloss)
+            gloss: ScriptGuard.clean(rendering.gloss),
+            source: ScriptGuard.clean(rendering.source)
         )
         bottomLines.append(line)
         if bottomLines.count > maxLinesOnScreen {
             bottomLines.removeFirst(bottomLines.count - maxLinesOnScreen)
         }
-        log.append("ME: heard \"\(line.heard)\" | say \"\(line.latin)\" | means \"\(line.gloss)\"")
+        log.append("ME: heard \"\(line.heard)\" | say \"\(line.latin)\" | \(line.gloss) | [\(line.source)]")
+        for diagnostic in rendering.diagnostics {
+            logDiagnostic(diagnostic)
+        }
     }
 
     private func showStatus(_ message: String) {
         let text = ScriptGuard.clean(message)
         statusMessage = text
         log.append("STATUS: \(text)")
+    }
+
+    private func logDiagnostic(_ message: String) {
+        log.append("  diag: \(ScriptGuard.clean(message))")
+    }
+
+    private func logMemory(_ moment: String) {
+        log.append("\(MemoryProbe.line()) (\(moment))")
     }
 }

@@ -7,7 +7,7 @@ iPhone through AltStore.
 
 ## 0. Before the first run
 
-- A GitHub repository holding this repo, with branch `app-1` pushed (register R11).
+- A GitHub repository holding this repo, with branch `app-2` (or a merge of it) pushed (register R11).
 - The workflow is `.github/workflows/ios-build.yml`. It starts on any push that
   touches `app/` or the workflow file, or by hand: GitHub > repo > Actions >
   ios-build > Run workflow.
@@ -24,9 +24,9 @@ Open the run in the Actions tab. Each step, and the line that proves it worked:
 | Select Xcode 26.6 | `Xcode 26.6` and an iphoneos SDK version starting `26.` |
 | Install XcodeGen | `Version: 2.4x.x` |
 | Generate Xcode project | `Created project at .../app/EgyptTalk.xcodeproj` |
-| Resolve Swift packages | `argmax-oss-swift` at revision `1bbc57cb...` and `swift-argument-parser` in the resolved list, then `resolved source packages` |
+| Resolve Swift packages | `argmax-oss-swift` at revision `1bbc57cb...` and `swift-argument-parser` in the resolved list, `LlamaBinary` (local), then `resolved source packages`; after it, a path ending in `llama.xcframework` and no `WARNING: llama.xcframework ... not found` line |
 | Archive | `** ARCHIVE SUCCEEDED **` at the end |
-| Package .ipa | a size line for `EgyptTalk.ipa` (a few MB to a few tens of MB; the speech model is NOT inside, it downloads on the phone), then `CFBundleIdentifier => "com.a2e.egypttalk"`, `CFBundleDisplayName => "Egypt Talk"`, `MinimumOSVersion => "26.0"`, and the microphone sentence |
+| Package .ipa | a size line for `EgyptTalk.ipa` (now a few tens of MB: llama.framework is about 12 MB; neither model is inside, both download on the phone), then `CFBundleIdentifier => "com.a2e.egypttalk"`, `CFBundleDisplayName => "Egypt Talk"`, `MinimumOSVersion => "26.0"`, the microphone sentence, `llama.framework` listed under Frameworks, and either `phrasebook.json bundled (N bytes)` or `phrasebook.json not bundled` |
 | Upload .ipa | the run page lists an artifact named `EgyptTalk-ipa` |
 
 `build-logs` is uploaded even when the run fails; `archive.log` in it is the
@@ -34,6 +34,28 @@ full compiler output. Search it for `error:`.
 
 ## 2. Most likely first-compile failures, most likely first
 
+0. **llama.cpp (wave app-2), in this order of likelihood.** llama.cpp ships no
+   Package.swift any more; `app/LlamaBinary/Package.swift` is a local package
+   whose only target is upstream's prebuilt `llama-b12020-xcframework.zip`
+   (binaryTarget, sha256 `78fdf6ec...1ae5`).
+   - `llama.framework is not embedded in EgyptTalk.app/Frameworks` in the
+     Package step: Xcode linked the dynamic framework but did not copy it. The
+     app would die at launch. Fix: in `project.yml`, under the target's
+     `dependencies`, give the LlamaBinary entry `embed: true`; if that is not
+     enough, replace the package with a `framework:` dependency on the unzipped
+     `llama.xcframework` downloaded by a workflow step (same URL, same checksum).
+   - Resolve fails with `checksum ... does not match` or `does not contain a
+     binary artifact`: the release asset changed or the zip layout did. Re-read
+     the asset digest on the GitHub release page and the zip's top folder
+     (`build-apple/llama.xcframework`; SwiftPM 6.2 strips one folder level).
+   - Swift errors in `LlamaEngine.swift`: a C import shape. Every symbol was
+     checked against `include/llama.h` at b12020; the usual suspects are
+     `LLAMA_LOAD_MODE_MMAP` (C enum constant), `llama_model_get_vocab` returning
+     `OpaquePointer`, and `llama_batch_get_one` taking a mutable pointer.
+   - Swift errors in `SessionLog.swift` (`MemoryProbe`): `task_vm_info_data_t`,
+     `TASK_VM_INFO`, `os_proc_available_memory()`. If one name refuses, delete
+     that field from the line rather than the whole probe.
+   - `ModelDownloader.swift`: CryptoKit `SHA256`, `FileHandle.read(upToCount:)`.
 1. **Package refused for unsafe flags.** Symptom in `archive.log` or the
    resolve step: `The package product 'WhisperKit' cannot be used as a dependency
    of this target because it uses unsafe build flags.` Cause: WhisperKit v1.x's
@@ -111,13 +133,26 @@ AltStore itself, 10 App IDs per 7 days.
 
 ## 4. First launch on the phone (at home, on Wi-Fi)
 
-1. Open Egypt Talk. Tap **Download speech model** (about 950 MB). Keep the app
-   open and the screen on.
-2. "Preparing the model for this phone" follows. The first time can take
-   several minutes while Core ML compiles the model for the A19 Pro. Do not
-   leave the app.
+1. Open Egypt Talk. Tap **Download the two models**. Two downloads run one
+   after the other: "Speech model (1 of 2, about 950 MB)", then "Egyptian
+   model (2 of 2, about 2.5 GB)". Keep the app open and the screen on; on home
+   Wi-Fi expect several minutes to half an hour in total. The Egyptian model
+   downloads over Wi-Fi only, never mobile data.
+   - If it stops ("download stopped"), tap **Try again**, then the download
+     button: it continues from where it stopped (the part already on the
+     phone is kept). At the end the app checks the exact size (2,489,894,752
+     bytes) and the SHA-256 fingerprint before using the file; a corrupted
+     file is deleted and must be downloaded again.
+   - Already-installed builds that have the speech model skip straight to
+     "2 of 2".
+2. "Preparing the speech model for this phone" follows. The first time can take
+   several minutes while Core ML compiles the model for the A19 Pro. Then
+   "Loading the Egyptian model" (seconds). Do not leave the app.
 3. Allow the microphone. The split screen appears with a green dot: listening.
-4. Optional backup: tap the gear in the middle bar > Download Apple Arabic pack.
+4. **Needed for the meaning check:** tap the gear in the middle bar (or use the
+   section at the bottom of the setup screen) > Download Apple Arabic pack.
+   Without it, the line under each Egyptian sentence reads "Meaning check
+   unavailable".
 5. **Offline proof (D9):** turn on Airplane Mode, swipe the app away, open it
    again. It must come back to the split screen with no network. If it shows
    the setup screen or an error instead, the offline promise is broken: report
@@ -129,9 +164,10 @@ AltStore itself, 10 App IDs per 7 days.
 ## 5. The checks from the mission
 
 - Someone speaks Egyptian Arabic: English appears in the top half ("THEY SAID").
-- He speaks English: a card appears in the bottom half ("YOU SAY"). Until the
-  bottom-half model lands, its middle and last lines read `[STUB] ...`; the top
-  line ("You: ...") must already be what he said.
+- He speaks English: a card appears in the bottom half ("YOU SAY"): what he
+  said, the Egyptian to say in plain Latin letters (largest), "Means: ..." (the
+  meaning check), and a small tag saying where the Egyptian came from. Section
+  6 has the exact checks.
 - He never touches the phone: each utterance lands in its half by itself. When
   it lands wrong, the Auto/Them/Me switch in the middle bar forces the side.
 - No Arabic letters anywhere.
@@ -139,3 +175,68 @@ AltStore itself, 10 App IDs per 7 days.
   next to it means a sentence is being processed.
 - The session log: Files app > On My iPhone > Egypt Talk > `EgyptTalk-YYYY-MM-DD.txt`,
   one line per thing shown.
+
+## 6. The bottom half on the phone (wave app-2)
+
+Do these at home, after section 4, with the Apple Arabic pack installed.
+Switch the middle bar to **Me** for these checks so detection cannot send your
+English to the top half (R12); then repeat one of them on **Auto**.
+
+1. **Phrasebook hit.** Say "Where is the bathroom?". Expect a card whose tag
+   reads `phrasebook` (or `phrasebook, close to "..."` when your wording was
+   close to one of its phrasings, shown so you can see what it matched). The
+   Latin line and the "Means:" line are the phrasebook's own, vetted. It
+   appears almost at once. If the tag says `model` instead, either this build
+   carries no phrasebook (the CI Package step said `phrasebook.json not
+   bundled`, and the status line at launch said "No phrasebook in this build")
+   or that phrase is not in it yet: check the status line at launch for
+   "Phrasebook: N phrases".
+2. **Model.** Say something nobody would put in a phrasebook, for example "My
+   cousin's dog ate my sandwich yesterday." Expect, within a few seconds, a
+   spinner next to YOU SAY ("working out the Egyptian"), then a card tagged
+   `model` (or `model, second try`). The Latin line is lowercase letters with
+   apostrophes where Egyptians stop the breath ("ma' el salama"). Read the
+   "Means:" line: it is Apple's translation of the Egyptian back into English,
+   made by a different engine. If it does not mean what you said, do not say
+   that sentence.
+   - Tag `model, ROUGH: letters only, vowels missing`: the model failed twice
+     to spell it properly and this is a letter-by-letter fallback. Treat it as a
+     hint, not a script; rephrase shorter.
+   - `[the model could not answer this one]`: rephrase shorter.
+3. **Talking over it.** While a card is still being worked out, have someone
+   speak Arabic. Their English must still appear in the top half without
+   waiting for your card: the microphone and Whisper never wait for the
+   Egyptian model.
+4. **Memory line in the log.** Open Files > On My iPhone > Egypt Talk >
+   today's `EgyptTalk-YYYY-MM-DD.txt`. After each load and each sentence there
+   is a line like
+   `MEM footprint 3100 MB, peak 4200 MB, resident ..., peak resident ..., headroom 1900 MB (after my sentence)`.
+   Report the largest `peak` and the smallest `headroom` you see after a few
+   minutes of both halves working. The phone's ceiling for one app is about
+   6 GB (R10). Lines starting `  diag:` under each card give the model timings,
+   and for rejected answers the raw model text with Arabic letters written as
+   `\u{0627}`-style codes (so no Arabic shows even in the log).
+5. **Offline.** Airplane Mode, swipe the app away, reopen: the setup screen must
+   not come back, and checks 1 and 2 must still work.
+
+### If the app is killed for memory
+
+Symptom: the app vanishes back to the home screen while loading the Egyptian
+model or while working on a sentence, with no message. iOS ends apps that pass
+their memory limit without a warning.
+
+1. Reopen it and note where it died: the last `MEM` line in today's log tells
+   how high it got and at which moment ("after Whisper load", "after Egyptian
+   model load", "after my sentence"; "before Egyptian model load" as the last
+   one means it died while loading). If it died while loading the Egyptian
+   model, the next launch skips that model once and says so in the status line
+   ("Egyptian model skipped this time"), so the top half still works; the
+   launch after that tries again.
+2. Restart the phone once and try again. The per-app limit itself does not
+   change, but a fresh start clears memory other apps were holding, which can
+   decide a borderline case.
+3. Report the last `MEM` lines. The fixes on our side, in order: a shorter
+   context (2048 to 1024 tokens, `LlamaEngine.contextLength`), the smaller
+   4-bit file `Nile-Chat-4B.Q4_K_S.gguf` from the same repository, or loading
+   the Egyptian model only when you speak English. Each is a new build, not
+   something to change on the phone.
