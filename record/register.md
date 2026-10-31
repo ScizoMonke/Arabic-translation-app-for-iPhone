@@ -31,3 +31,4 @@ R25 (2026-10-31, open) Agent downloads left outside any worktree at C:\VScode\a2
 R19 (closed 2026-10-31 by D30).
 R26 (2026-10-31, open) With a free Apple ID and no laptop, the app stops opening on day 8 after its last refresh on this PC. Trip length unknown. If the trip exceeds 7 days the only free on-phone refresh route is SideStore, which the ledger reports broken on current iOS; otherwise the user accepts the app dying on day 8. Owner: user ruling on trip length.
 R11 (closed 2026-10-31 by D31: repository exists and is public).
+R26 (updated 2026-10-31) User accepts the 7-day limit (D32). Remaining action: try SideStore on the phone before departure; owner: orchestrator, after the first AltStore install works.

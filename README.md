@@ -13,3 +13,11 @@ Folders:
 - data/      downloaded corpora and models, and the user's own material. Not in git.
 
 - bench/      scripts that ran on this PC against real material, with their outputs kept: asr/ (Whisper on Egyptian broadcast speech), llm/ (small language models turning English into Egyptian), phrasebook/ (the vetted phrase list and its cross-check).
+
+## Where it stands (2026-10-31, evening)
+
+- Code: complete first version on main, pushed to https://github.com/ScizoMonke/Arabic-translation-app-for-iPhone (private). Nothing has compiled yet; the first cloud build is triggered by the push and shows at the repository's Actions tab. app/FIRST_RUN.md says what that run must show and what to do when it fails.
+- PC: iTunes installed from Apple; AltServer downloaded; Apple's direct iCloud installer downloaded; a restart is pending. Then the five AltServer steps in FIRST_RUN.md section 3.
+- Rulings: record/decisions.md D1 to D32; open flags in record/register.md. The user accepts the 7-day free signature (D32); the trip departs about 2026-11-05.
+- Next: confirm the first build; fix compile errors by reading archive.log; get the .ipa onto the phone through AltStore; first launch at home on Wi-Fi (two downloads, about 3.5 GB); the phone checks in FIRST_RUN.md sections 5 and 6; try SideStore as a bonus.
+
