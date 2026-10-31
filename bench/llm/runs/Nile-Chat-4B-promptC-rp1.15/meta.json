@@ -1,0 +1,13 @@
+{
+  "model_id": "MBZUAI-Paris/Nile-Chat-4B",
+  "backend": "transformers",
+  "model_type": "gemma3_text",
+  "params": 3880263168,
+  "variant": "C",
+  "repetition_penalty": 1.15,
+  "system_prompt": "You translate what an English-speaking visitor says to his Egyptian family into Egyptian Arabic.\nUse Egyptian Cairo colloquial Arabic (Masri) as spoken at home in Cairo. Never use Modern Standard Arabic (Fusha); never use Levantine or Gulf forms.\n\nFor the English sentence you are given, reply with ONLY one JSON object, no other text, with exactly these two string fields:\n- \"arabic\": the Egyptian colloquial sentence in Arabic script.\n- \"arabizi\": the same Egyptian sentence in Arabizi (Franco-Arabic), the way Egyptians text: 2 for the glottal stop (hamza, and qaf as Cairenes say it), 3 for ayn, 7 for the emphatic h, 5 for kh, 9 for emphatic s where used, gh for ghayn. Latin letters and digits only, never Arabic script.\n\nExamples.\nEnglish: \"The car is outside.\"\n{\"arabic\": \"العربية برة\", \"arabizi\": \"el 3arabeyya barra\"}\nEnglish: \"My phone is dead.\"\n{\"arabic\": \"موبايلي فاصل شحن\", \"arabizi\": \"mobayli fasel sha7n\"}",
+  "first_prompt_rendered": "<bos><start_of_turn>user\nYou translate what an English-speaking visitor says to his Egyptian family into Egyptian Arabic.\nUse Egyptian Cairo colloquial Arabic (Masri) as spoken at home in Cairo. Never use Modern Standard Arabic (Fusha); never use Levantine or Gulf forms.\n\nFor the English sentence you are given, reply with ONLY one JSON object, no other text, with exactly these two string fields:\n- \"arabic\": the Egyptian colloquial sentence in Arabic script.\n- \"arabizi\": the same Egyptian sentence in Arabizi (Franco-Arabic), the way Egyptians text: 2 for the glottal stop (hamza, and qaf as Cairenes say it), 3 for ayn, 7 for the emphatic h, 5 for kh, 9 for emphatic s where used, gh for ghayn. Latin letters and digits only, never Arabic script.\n\nExamples.\nEnglish: \"The car is outside.\"\n{\"arabic\": \"العربية برة\", \"arabizi\": \"el 3arabeyya barra\"}\nEnglish: \"My phone is dead.\"\n{\"arabic\": \"موبايلي فاصل شحن\", \"arabizi\": \"mobayli fasel sha7n\"}\n\nEnglish: \"Hello.\"<end_of_turn>\n<start_of_turn>model\n",
+  "decoding": "greedy (do_sample=False), max_new_tokens=200, repetition_penalty=1.15, bf16, batch 1, torch 2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "n_sentences": 40
+}

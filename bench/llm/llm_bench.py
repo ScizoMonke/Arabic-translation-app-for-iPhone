@@ -152,11 +152,18 @@ def build_messages(tokenizer, system: str, sentence: str) -> list[dict]:
 def save_run(out_dir: Path, rows: list[dict], meta: dict) -> None:
     with open(out_dir / "results.jsonl", "w", encoding="utf-8") as f:
         for r in rows:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+            line = json.dumps(r, ensure_ascii=False)
+            # A model that emits JSON escapes for lone surrogates (seen on Q4_K_M + prompt C) yields text UTF-8 cannot
+            # encode; such rows are stored ASCII-escaped instead, which round-trips through json.loads unchanged.
+            try:
+                line.encode("utf-8")
+            except UnicodeEncodeError:
+                line = json.dumps(r, ensure_ascii=True)
+            f.write(line + "\n")
     (out_dir / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def run_ollama(tag: str, variant: str, limit: int | None, bf16_twin: str | None) -> Path:
+def run_ollama(tag: str, variant: str, limit: int | None, bf16_twin: str | None, repeat_penalty: float = REPEAT_PENALTY_DEFAULT) -> Path:
     """Same sentences and prompt through a local Ollama model (llama.cpp). The system prompt is folded into the
     user turn exactly as the Gemma 3 HF template does, so bf16 and GGUF see the same text."""
     import urllib.request
@@ -166,13 +173,13 @@ def run_ollama(tag: str, variant: str, limit: int | None, bf16_twin: str | None)
         with urllib.request.urlopen(req, timeout=600) as resp:
             return json.loads(resp.read().decode("utf-8"))
 
-    short = tag.split("/")[-1].replace(":", "-") + f"-prompt{variant}-ollama"
+    short = tag.split("/")[-1].replace(":", "-") + f"-prompt{variant}-ollama" + ("" if repeat_penalty == REPEAT_PENALTY_DEFAULT else f"-rp{repeat_penalty}")
     out_dir = RUNS / short
     out_dir.mkdir(parents=True, exist_ok=True)
     show = post("/api/show", {"model": tag})
     info = show.get("model_info", {})
     options = {"temperature": 0, "top_k": 1, "seed": 0, "num_predict": MAX_NEW_TOKENS,
-               "repeat_penalty": REPEAT_PENALTY_DEFAULT, "num_ctx": 2048}
+               "repeat_penalty": repeat_penalty, "num_ctx": 2048}
     system = PROMPTS[variant]
     fields_req = FIELDS_BY_VARIANT[variant]
     sentences = SENTENCES[:limit] if limit else SENTENCES
@@ -324,7 +331,7 @@ def write_compare() -> Path:
                     lines.append(f"| {r['n']} | {cell(r['sentence'])} | PARSE FAIL | - |")
             lines.append("")
     out = RUNS / "compare.md"
-    out.write_text("\n".join(lines), encoding="utf-8")
+    out.write_text("\n".join(lines), encoding="utf-8", errors="backslashreplace")  # lone surrogates from model output
     return out
 
 
@@ -348,7 +355,8 @@ if __name__ == "__main__":
     limit = int(args[args.index("--limit") + 1]) if "--limit" in args else None
     if "--ollama" in args:
         twin = args[args.index("--twin") + 1] if "--twin" in args else None
-        d = run_ollama(model_id, variant, limit, twin)
+        rp = float(args[args.index("--repeat-penalty") + 1]) if "--repeat-penalty" in args else REPEAT_PENALTY_DEFAULT
+        d = run_ollama(model_id, variant, limit, twin, rp)
     else:
         d = run_model(model_id, variant, limit, REPEAT_PENALTY_DEFAULT if "--rp" in args else None)
     if limit is None:
