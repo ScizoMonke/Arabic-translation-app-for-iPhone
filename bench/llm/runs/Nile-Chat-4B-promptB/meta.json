@@ -1,0 +1,11 @@
+{
+  "model_id": "MBZUAI-Paris/Nile-Chat-4B",
+  "model_type": "gemma3_text",
+  "params": 3880263168,
+  "variant": "B",
+  "system_prompt": "Translate the English sentence into Egyptian Cairo colloquial Arabic (Masri, NOT Modern Standard Arabic).\nOutput exactly one JSON object and nothing else:\n{\"arabic\": \"<Egyptian Arabic in Arabic script>\", \"arabizi\": \"<same in Egyptian Franco-Arabic texting: 2=hamza, 3=ayn, 7=emphatic h, 5=kh>\", \"latin\": \"<same respelled for an English reader: English letters only, hyphenated syllables, stressed syllable in CAPITALS, e.g. ez-ZAY-yak>\", \"gloss\": \"<literal word-by-word English of the Egyptian>\"}",
+  "first_prompt_rendered": "<bos><start_of_turn>user\nTranslate the English sentence into Egyptian Cairo colloquial Arabic (Masri, NOT Modern Standard Arabic).\nOutput exactly one JSON object and nothing else:\n{\"arabic\": \"<Egyptian Arabic in Arabic script>\", \"arabizi\": \"<same in Egyptian Franco-Arabic texting: 2=hamza, 3=ayn, 7=emphatic h, 5=kh>\", \"latin\": \"<same respelled for an English reader: English letters only, hyphenated syllables, stressed syllable in CAPITALS, e.g. ez-ZAY-yak>\", \"gloss\": \"<literal word-by-word English of the Egyptian>\"}\n\nEnglish: \"Hello.\"<end_of_turn>\n<start_of_turn>model\n",
+  "decoding": "greedy (do_sample=False), max_new_tokens=200, bf16, batch 1, torch 2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "n_sentences": 40
+}

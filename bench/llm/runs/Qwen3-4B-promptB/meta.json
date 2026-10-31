@@ -1,0 +1,11 @@
+{
+  "model_id": "Qwen/Qwen3-4B",
+  "model_type": "qwen3",
+  "params": 4022468096,
+  "variant": "B",
+  "system_prompt": "Translate the English sentence into Egyptian Cairo colloquial Arabic (Masri, NOT Modern Standard Arabic).\nOutput exactly one JSON object and nothing else:\n{\"arabic\": \"<Egyptian Arabic in Arabic script>\", \"arabizi\": \"<same in Egyptian Franco-Arabic texting: 2=hamza, 3=ayn, 7=emphatic h, 5=kh>\", \"latin\": \"<same respelled for an English reader: English letters only, hyphenated syllables, stressed syllable in CAPITALS, e.g. ez-ZAY-yak>\", \"gloss\": \"<literal word-by-word English of the Egyptian>\"}",
+  "first_prompt_rendered": "<|im_start|>system\nTranslate the English sentence into Egyptian Cairo colloquial Arabic (Masri, NOT Modern Standard Arabic).\nOutput exactly one JSON object and nothing else:\n{\"arabic\": \"<Egyptian Arabic in Arabic script>\", \"arabizi\": \"<same in Egyptian Franco-Arabic texting: 2=hamza, 3=ayn, 7=emphatic h, 5=kh>\", \"latin\": \"<same respelled for an English reader: English letters only, hyphenated syllables, stressed syllable in CAPITALS, e.g. ez-ZAY-yak>\", \"gloss\": \"<literal word-by-word English of the Egyptian>\"}<|im_end|>\n<|im_start|>user\nEnglish: \"Hello.\"<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "decoding": "greedy (do_sample=False), max_new_tokens=200, bf16, batch 1, torch 2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "n_sentences": 40
+}
