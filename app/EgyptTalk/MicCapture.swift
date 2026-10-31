@@ -6,49 +6,52 @@ import WhisperKit
 enum MicState: Sendable {
     case off
     case listening   // mic open, nobody talking
-    case hearing     // speech in progress, an utterance is being collected
+    case hearing     // speech in progress
     case holding     // he is holding the bottom half: audio goes to his English only
 }
 
-/// One utterance for the top half, with the moment the cutter ended it (the
-/// "utterance-end" of the TIME line; speech itself stopped about 0.8 s earlier,
-/// which is the cutter's quiet hangover).
-struct Utterance: Sendable {
-    let samples: [Float]
-    let endedAt: Date
-}
-
-/// Splits a continuous 16 kHz mono stream into utterances with an energy gate.
-/// Runs only on the audio tap thread.
+/// An energy gate over a continuous 16 kHz mono stream: says when speech
+/// starts, which audio belongs to it, and when it ends. It keeps no utterance
+/// itself; the audio goes to the LiveWindow. Runs only on the audio tap thread.
 struct Segmenter {
-    private let sampleRate = 16_000
-    private var preRollSamples: Int { sampleRate * 3 / 10 }      // 0.3 s kept before speech starts
-    private var hangoverSamples: Int { sampleRate * 8 / 10 }     // 0.8 s of quiet ends an utterance
-    private var maxSamples: Int { sampleRate * 25 }              // Whisper's window is 30 s
-    private var minSpeechSamples: Int { sampleRate * 35 / 100 }  // shorter blips are coughs and clicks
+    struct Step {
+        /// Speech began with this chunk; `audio` is then the pre-roll, which
+        /// already ends with this chunk.
+        var started = false
+        /// Audio that belongs to the utterance in progress (empty when quiet).
+        var audio: [Float] = []
+        /// The utterance ended with this chunk (after `audio` is added).
+        var ended = false
+        /// At the end: enough loud audio to be speech, not a cough or a click.
+        var enoughSpeech = false
+        /// Loud samples in the utterance so far.
+        var loudSamples = 0
+        var speaking = false
+    }
+
+    static let sampleRate = 16_000
+    private var preRollSamples: Int { Self.sampleRate * 3 / 10 }      // 0.3 s kept before speech starts
+    private var hangoverSamples: Int { Self.sampleRate * 8 / 10 }     // 0.8 s of quiet ends an utterance
+    static let minSpeechSamples = sampleRate * 35 / 100               // shorter blips are coughs and clicks
 
     private var noiseFloor: Float = 0.003
     private var inSpeech = false
-    private var current: [Float] = []
     private var preRoll: [Float] = []
     private var quietRun = 0
     private var speechRun = 0
 
-    /// Forgets any utterance in progress and the pre-roll. Used at both ends of a
-    /// hold so none of his speech reaches the top half. The noise floor is kept:
-    /// it describes the room, not the speaker.
+    /// Forgets the utterance in progress and the pre-roll. Used at both ends of
+    /// a hold so none of his speech reaches the top half. The noise floor is
+    /// kept: it describes the room, not the speaker.
     mutating func discardUtterance() {
         inSpeech = false
-        current.removeAll(keepingCapacity: true)
         preRoll.removeAll(keepingCapacity: true)
         quietRun = 0
         speechRun = 0
     }
 
-    /// Feeds one chunk; returns a finished utterance when one just ended, and
-    /// whether speech is in progress after this chunk.
-    mutating func push(_ chunk: [Float]) -> (utterance: [Float]?, speaking: Bool) {
-        guard !chunk.isEmpty else { return (nil, inSpeech) }
+    mutating func push(_ chunk: [Float]) -> Step {
+        guard !chunk.isEmpty else { return Step(speaking: inSpeech) }
         var sumSquares: Float = 0
         for s in chunk { sumSquares += s * s }
         let rms = (sumSquares / Float(chunk.count)).squareRoot()
@@ -63,65 +66,240 @@ struct Segmenter {
             if preRoll.count > preRollSamples {
                 preRoll.removeFirst(preRoll.count - preRollSamples)
             }
-            guard isLoud else { return (nil, false) }
+            guard isLoud else { return Step() }
             inSpeech = true
-            current = preRoll
+            let audio = preRoll
             preRoll.removeAll(keepingCapacity: true)
             quietRun = 0
             speechRun = chunk.count
-            return (nil, true)
+            return Step(started: true, audio: audio, loudSamples: speechRun, speaking: true)
         }
 
-        current.append(contentsOf: chunk)
         if isLoud {
             quietRun = 0
             speechRun += chunk.count
         } else {
             quietRun += chunk.count
         }
-
-        if quietRun >= hangoverSamples || current.count >= maxSamples {
-            let finished = current
-            let hadEnoughSpeech = speechRun >= minSpeechSamples
+        var step = Step(audio: chunk, loudSamples: speechRun, speaking: true)
+        if quietRun >= hangoverSamples {
+            step.ended = true
+            step.enoughSpeech = speechRun >= Self.minSpeechSamples
+            step.speaking = false
             inSpeech = false
-            current.removeAll(keepingCapacity: true)
             quietRun = 0
             speechRun = 0
-            return (hadEnoughSpeech ? finished : nil, false)
         }
-        return (nil, true)
+        return step
     }
 }
 
-/// Keeps the microphone open while the app is in the foreground and delivers
-/// utterances (16 kHz mono Float) for the top half through `utterances`.
+/// D43: the top half's audio since the last settle point, shared between the
+/// audio tap thread (which appends) and the live loop in AppModel (which
+/// snapshots, decodes, and advances the start past settled words). Everything
+/// is under one lock; the tap thread never waits on a decode, only on this
+/// lock for a copy.
+///
+/// The window holds one or more utterances back to back (quiet between them
+/// is not kept). Only the last one can still be open. A snapshot covers the
+/// oldest utterance: to its end when closed (the loop then settles all of it),
+/// or to the newest sample when open.
+///
+/// Generation: any change other than appending at the end or advancing the
+/// start (a hold edge, a blip removed, the safety cap) bumps it, and a decode
+/// started on an older generation is thrown away without settling anything.
+/// That is how a hold seals his voice from the top half (D34): his audio is
+/// never appended (suspended), and nothing decoded before the hold can be
+/// settled into a window that was emptied under it.
+final class LiveWindow: @unchecked Sendable {
+    struct Snapshot: Sendable {
+        let generation: Int
+        let samples: [Float]
+        /// The utterance ended inside this snapshot, at its last sample.
+        let closed: Bool
+        /// Wall clock when the energy gate opened for this utterance.
+        let speechStartedAt: Date
+        let loudSamples: Int
+        /// Samples appended in this generation so far, to pace decodes.
+        let appended: Int
+    }
+
+    private struct Mark {
+        var start: Int
+        var end: Int?
+        let startedAt: Date
+        var loud: Int
+    }
+
+    /// If the loop stops consuming (a model failed), the oldest audio is let go
+    /// past this length instead of growing without bound.
+    private static let capSamples = Segmenter.sampleRate * 90
+
+    private let lock = NSLock()
+    private var samples: [Float] = []
+    private var marks: [Mark] = []
+    private var generation = 0
+    private var appended = 0
+    private var suspended = false
+
+    // MARK: Audio tap thread
+
+    func speechStarted(_ audio: [Float], loud: Int, at date: Date) {
+        lock.lock(); defer { lock.unlock() }
+        guard !suspended else { return }
+        // Only the last utterance may be open; one left open by an engine
+        // restart is closed here, so its audio is still settled.
+        if let last = marks.indices.last, marks[last].end == nil {
+            marks[last].end = samples.count
+        }
+        marks.append(Mark(start: samples.count, end: nil, startedAt: date, loud: loud))
+        appendLocked(audio)
+    }
+
+    func speechContinued(_ audio: [Float], loud: Int) {
+        lock.lock(); defer { lock.unlock() }
+        guard !suspended, let last = marks.indices.last, marks[last].end == nil else { return }
+        marks[last].loud = loud
+        appendLocked(audio)
+    }
+
+    func speechEnded(enoughSpeech: Bool) {
+        lock.lock(); defer { lock.unlock() }
+        guard !suspended, let last = marks.indices.last, marks[last].end == nil else { return }
+        if enoughSpeech {
+            marks[last].end = samples.count
+        } else {
+            dropLastLocked()
+        }
+    }
+
+    private func appendLocked(_ audio: [Float]) {
+        samples.append(contentsOf: audio)
+        appended += audio.count
+        if samples.count > Self.capSamples {
+            shiftLocked(by: samples.count - Self.capSamples)
+            generation += 1
+        }
+    }
+
+    /// A cough or a click: its audio leaves the window before any decode could
+    /// settle it (the loop decodes an open utterance only after
+    /// minSpeechSamples of loud audio, so none is running on it).
+    private func dropLastLocked() {
+        guard let last = marks.last else { return }
+        samples.removeSubrange(last.start...)
+        marks.removeLast()
+        generation += 1
+    }
+
+    // MARK: Owner
+
+    /// Touch down: the window is emptied and takes no audio until `resume`.
+    func suspend() {
+        lock.lock(); defer { lock.unlock() }
+        suspended = true
+        clearLocked()
+    }
+
+    /// Release: an empty window, open for audio again.
+    func resume() {
+        lock.lock(); defer { lock.unlock() }
+        clearLocked()
+        suspended = false
+    }
+
+    /// The engine is stopping: an utterance in progress ends here, so what was
+    /// said is still settled.
+    func closeOpenUtterance() {
+        lock.lock(); defer { lock.unlock() }
+        guard let last = marks.indices.last, marks[last].end == nil else { return }
+        if marks[last].loud >= Segmenter.minSpeechSamples {
+            marks[last].end = samples.count
+        } else {
+            dropLastLocked()
+        }
+    }
+
+    private func clearLocked() {
+        samples.removeAll()
+        marks.removeAll()
+        appended = 0
+        generation += 1
+    }
+
+    func snapshot() -> Snapshot? {
+        lock.lock(); defer { lock.unlock() }
+        guard let first = marks.first else { return nil }
+        let end = first.end ?? samples.count
+        return Snapshot(
+            generation: generation,
+            samples: Array(samples[0..<end]),
+            closed: first.end != nil,
+            speechStartedAt: first.startedAt,
+            loudSamples: first.loud,
+            appended: appended
+        )
+    }
+
+    /// Drops the first `count` samples (settled audio) if the window is still
+    /// the one the snapshot came from. False means the result is stale and must
+    /// not be settled.
+    func advance(by count: Int, generation expected: Int) -> Bool {
+        lock.lock(); defer { lock.unlock() }
+        guard expected == generation else { return false }
+        shiftLocked(by: min(max(0, count), samples.count))
+        return true
+    }
+
+    func isCurrent(_ expected: Int) -> Bool {
+        lock.lock(); defer { lock.unlock() }
+        return expected == generation
+    }
+
+    private func shiftLocked(by count: Int) {
+        guard count > 0 else { return }
+        samples.removeFirst(count)
+        for index in marks.indices {
+            marks[index].start = max(0, marks[index].start - count)
+            marks[index].end = marks[index].end.map { $0 - count }
+        }
+        // A closed utterance whose audio is all gone is done.
+        marks.removeAll { mark in
+            if let end = mark.end { return end <= 0 }
+            return false
+        }
+    }
+}
+
+/// Keeps the microphone open while the app is in the foreground and feeds the
+/// top half's audio (16 kHz mono Float) into `window`.
 ///
 /// D34 hold routing. While he holds the bottom half, every tap buffer goes, in
 /// the input's native format, to the hold sink (his English recognizer) and
-/// NOTHING is fed to the utterance cutter; the cutter's utterance in progress is
-/// discarded when the hold starts and again when it ends, and the cutter stays
-/// deaf for `releaseMute` after release so the tail of his voice still in the
-/// pipe cannot open a top-half utterance. The hold state lives under `holdLock`
+/// NOTHING is fed to the gate or the window: the window is emptied and
+/// suspended when the hold starts and emptied again when it ends, the gate's
+/// utterance in progress is discarded at both ends, and the gate stays deaf
+/// for `releaseMute` after release so the tail of his voice still in the pipe
+/// cannot open a top-half utterance. The hold state lives under `holdLock`
 /// because the main thread sets it and the audio tap thread reads it. It
 /// survives an engine restart (headset, phone call), so a restart mid-hold can
 /// never send his voice to the top half.
 final class MicCapture {
-    let utterances: AsyncStream<Utterance>
-    private let continuation: AsyncStream<Utterance>.Continuation
+    let window = LiveWindow()
     private let engine = AVAudioEngine()
     /// Tap thread only (and `open`, before the tap exists).
     private var segmenter = Segmenter()
     private var lastSpeaking = false
 
-    /// After release, how long the cutter ignores the microphone.
+    /// After release, how long the gate ignores the microphone.
     static let releaseMute: TimeInterval = 0.5
     private let holdLock = NSLock()
     /// Guarded by holdLock. Non-nil exactly while he holds.
     private var holdSink: (@Sendable (AVAudioPCMBuffer) -> Void)?
     /// Guarded by holdLock. Set at both ends of a hold; the tap thread then
-    /// discards the cutter's utterance in progress before using the buffer.
+    /// discards the gate's utterance in progress before using the buffer.
     private var discardPending = false
-    /// Guarded by holdLock. The cutter ignores audio until this moment.
+    /// Guarded by holdLock. The gate ignores audio until this moment.
     private var mutedUntil: Date?
     /// The owner wants the mic open (app in foreground, model ready).
     private var wanted = false
@@ -135,9 +313,6 @@ final class MicCapture {
     private let stateContinuation: AsyncStream<MicState>.Continuation
 
     init() {
-        let (stream, continuation) = AsyncStream.makeStream(of: Utterance.self, bufferingPolicy: .unbounded)
-        self.utterances = stream
-        self.continuation = continuation
         let (stateStream, stateContinuation) = AsyncStream.makeStream(of: MicState.self, bufferingPolicy: .bufferingNewest(8))
         self.states = stateStream
         self.stateContinuation = stateContinuation
@@ -146,7 +321,6 @@ final class MicCapture {
 
     deinit {
         observers.forEach { NotificationCenter.default.removeObserver($0) }
-        continuation.finish()
         stateContinuation.finish()
     }
 
@@ -160,10 +334,12 @@ final class MicCapture {
         close()
     }
 
-    /// Touch down on the bottom half. From the next tap buffer on, audio goes
-    /// to `sink` only (called on the audio tap thread) and the top half hears
-    /// nothing.
+    /// Touch down on the bottom half. The window is suspended first, so a tap
+    /// buffer already past the routing check can no longer reach it; from the
+    /// next tap buffer on, audio goes to `sink` only (called on the audio tap
+    /// thread) and the top half hears nothing.
     func beginHold(sink: @escaping @Sendable (AVAudioPCMBuffer) -> Void) {
+        window.suspend()
         holdLock.lock()
         holdSink = sink
         discardPending = true
@@ -173,13 +349,16 @@ final class MicCapture {
     }
 
     /// Release. The sink gets no more buffers; the top half resumes after
-    /// `releaseMute` with a clean cutter.
+    /// `releaseMute` with a clean gate and an empty window.
     func endHold() {
         holdLock.lock()
         holdSink = nil
         discardPending = true
         mutedUntil = Date().addingTimeInterval(Self.releaseMute)
         holdLock.unlock()
+        // After the mute is set: a buffer arriving now is muted, so nothing
+        // from his hold can enter the window being reopened.
+        window.resume()
         report(running ? .listening : .off)
     }
 
@@ -208,8 +387,8 @@ final class MicCapture {
         input.installTap(onBus: 0, bufferSize: 4096, format: inputFormat) { [weak self] buffer, _ in
             guard let self else { return }
             // His hold first: a buffer that goes to his English never reaches
-            // the cutter, not even resampled.
-            guard self.routeOutsideCutter(buffer) == false else { return }
+            // the gate, not even resampled.
+            guard self.routeOutsideGate(buffer) == false else { return }
             let converted: AVAudioPCMBuffer
             do {
                 converted = try AudioProcessor.resampleBuffer(buffer, with: converter)
@@ -240,14 +419,15 @@ final class MicCapture {
         engine.stop()
         running = false
         lastSpeaking = false
+        window.closeOpenUtterance()
         // The audio session is left active on purpose: deactivating it can itself
         // fire a configuration change, which would restart the engine in a loop.
         report(.off)
     }
 
-    /// Audio tap thread. True when the buffer must not reach the cutter: it went
-    /// to his hold, or the cutter is muted just after a release.
-    private func routeOutsideCutter(_ buffer: AVAudioPCMBuffer) -> Bool {
+    /// Audio tap thread. True when the buffer must not reach the gate: it went
+    /// to his hold, or the gate is muted just after a release.
+    private func routeOutsideGate(_ buffer: AVAudioPCMBuffer) -> Bool {
         holdLock.lock()
         let sink = holdSink
         let discard = discardPending
@@ -269,13 +449,20 @@ final class MicCapture {
     /// Audio tap thread. Never reached during a hold, so the indicator below
     /// cannot overwrite `.holding`.
     private func consume(_ samples: [Float]) {
-        let (finished, speaking) = segmenter.push(samples)
-        if let finished {
-            continuation.yield(Utterance(samples: finished, endedAt: Date()))
+        let step = segmenter.push(samples)
+        if step.started {
+            // The gate opened on this buffer: speech began about one buffer ago.
+            let startedAt = Date().addingTimeInterval(-Double(samples.count) / Double(Segmenter.sampleRate))
+            window.speechStarted(step.audio, loud: step.loudSamples, at: startedAt)
+        } else if !step.audio.isEmpty {
+            window.speechContinued(step.audio, loud: step.loudSamples)
         }
-        if speaking != lastSpeaking {
-            lastSpeaking = speaking
-            report(speaking ? .hearing : .listening)
+        if step.ended {
+            window.speechEnded(enoughSpeech: step.enoughSpeech)
+        }
+        if step.speaking != lastSpeaking {
+            lastSpeaking = step.speaking
+            report(step.speaking ? .hearing : .listening)
         }
     }
 
