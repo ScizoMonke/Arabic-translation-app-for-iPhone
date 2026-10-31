@@ -12,4 +12,4 @@ Folders:
 - app/       the iOS app (SwiftUI, WhisperKit). FIRST_RUN.md is the install guide. Compiled by .github/workflows/ios-build.yml on a GitHub macOS runner into an unsigned .ipa; AltStore on the PC puts it on the phone.
 - data/      downloaded corpora and models, and the user's own material. Not in git.
 
-Planned, not yet merged: bench/ (scripts that run on this PC and measure real models on real Egyptian speech and real romanization).
+- bench/      scripts that ran on this PC against real material, with their outputs kept: asr/ (Whisper on Egyptian broadcast speech), llm/ (small language models turning English into Egyptian), phrasebook/ (the vetted phrase list and its cross-check).
