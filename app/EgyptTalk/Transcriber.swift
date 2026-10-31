@@ -1,26 +1,17 @@
 import Foundation
 import WhisperKit
 
-/// Who an utterance belongs to. `them` fills the top half, `me` the bottom half.
-enum Speaker: String, Sendable {
-    case them
-    case me
-}
-
-/// One utterance after Whisper. `text` is raw model output and may still contain
-/// Arabic script; it is cleaned only in AppModel's render path (ScriptGuard).
-struct Heard: Sendable {
-    let speaker: Speaker
-    let text: String
-}
-
 enum TranscriberError: LocalizedError {
     case notLoaded
     var errorDescription: String? { "The speech model is not downloaded or not loaded yet." }
 }
 
 /// Owns WhisperKit: the one-time model download on home Wi-Fi, loading it from
-/// disk afterwards with no network (D9), and turning each utterance into text.
+/// disk afterwards with no network (D9), and turning each utterance of the top
+/// half into text. Since D34 everything it hears is Arabic: there is no language
+/// detection pass and no English transcription here (his English goes to Apple's
+/// recognizer, D35). Returned text is raw model output and may contain Arabic
+/// script; it is cleaned only in AppModel's render paths (ScriptGuard).
 /// An actor so WhisperKit (not Sendable) is only ever touched from one place and
 /// its work runs off the main thread.
 actor Transcriber {
@@ -38,6 +29,15 @@ actor Transcriber {
     private static let modelPathKey = "whisperModelRelativePath"
 
     private var pipe: WhisperKit?
+
+    /// D36: conditioning text for the translate task, given to the decoder as a
+    /// previous-context prompt (<|startofprev|> ... before <|startoftranscript|>,
+    /// WhisperKit TextDecoder.prefillDecoderInputs at 1bbc57cb). It biases the
+    /// decoder towards English output instead of Arabic in Latin letters.
+    static let englishPrompt = "The following is an English translation of Egyptian Arabic speech."
+    /// The prompt in Whisper tokens, made once at load with the model's own
+    /// tokenizer. Nil when the tokenizer is unavailable (translate runs unprompted).
+    private var englishPromptTokens: [Int]?
 
     /// Models live in Application Support (not Documents) so they stay out of the
     /// Files app and cannot be deleted by accident there; excluded from iCloud backup.
@@ -85,7 +85,8 @@ actor Transcriber {
     /// (openai/whisper-large-v3 tokenizer.json, small) into the models folder and
     /// lets Core ML specialize the model for this chip, which can take minutes;
     /// both are cached, so every later load works with no network.
-    func load() async throws {
+    /// Returns a line for the session log about the D36 prompt.
+    func load() async throws -> String {
         guard let folder = Self.localModelFolder() else {
             throw TranscriberError.notLoaded
         }
@@ -100,35 +101,46 @@ actor Transcriber {
             load: true,
             download: false
         )
-        pipe = try await WhisperKit(config)
+        let loaded = try await WhisperKit(config)
+        pipe = loaded
+        guard let tokenizer = loaded.tokenizer else {
+            englishPromptTokens = nil
+            return "translate prompt: none (tokenizer unavailable)"
+        }
+        // Leading space as OpenAI's whisper does for initial_prompt. Special
+        // tokens the tokenizer may add are dropped here; WhisperKit drops them
+        // too, this only keeps the logged count honest.
+        let tokens = tokenizer.encode(text: " " + Self.englishPrompt)
+            .filter { $0 < tokenizer.specialTokens.specialTokenBegin }
+        englishPromptTokens = tokens.isEmpty ? nil : tokens
+        return "translate prompt: \(tokens.count) tokens"
     }
 
-    /// One utterance in, one routed result out. `forced` comes from the manual
-    /// Them/Me switch (D11); nil means decide from Whisper's language ID.
-    /// Returns nil for audio Whisper judges to be non-speech.
-    func process(_ samples: [Float], forced: Speaker?) async throws -> Heard? {
+    /// The top half's first pass: Arabic speech to English with the D36 prompt.
+    /// Nil for audio Whisper judges to be non-speech.
+    func translate(_ samples: [Float]) async throws -> String? {
+        try await decode(samples, task: .translate, promptTokens: englishPromptTokens)
+    }
+
+    /// The D36 fallback pass: the same audio written down in Arabic, for Apple
+    /// Translation. Unprompted: an English prompt would pull it towards English.
+    func transcribeArabic(_ samples: [Float]) async throws -> String? {
+        try await decode(samples, task: .transcribe, promptTokens: nil)
+    }
+
+    /// Source language is always forced to Arabic (D34: the top half hears
+    /// only the people around him).
+    private func decode(_ samples: [Float], task: DecodingTask, promptTokens: [Int]?) async throws -> String? {
         guard let pipe else { throw TranscriberError.notLoaded }
-
-        let speaker: Speaker
-        if let forced {
-            speaker = forced
-        } else {
-            // Only two languages are in the room: anything Whisper does not call
-            // English is treated as Arabic, so an Egyptian sentence misread as
-            // Persian or Urdu still lands in the top half.
-            // (detectLangauge is WhisperKit's own spelling.)
-            let result = try await pipe.detectLangauge(audioArray: samples)
-            speaker = result.language == "en" ? .me : .them
-        }
-
         let options = DecodingOptions(
-            task: speaker == .them ? .translate : .transcribe,
-            language: speaker == .them ? "ar" : "en",
+            task: task,
+            language: "ar",
             temperatureFallbackCount: 3,
             usePrefillPrompt: true,
             detectLanguage: false,
             skipSpecialTokens: true,
-            withoutTimestamps: true
+            withoutTimestamps: true,
+            promptTokens: promptTokens
         )
         let results = try await pipe.transcribe(audioArray: samples, decodeOptions: options)
 
@@ -143,7 +155,7 @@ actor Transcriber {
         if text.isEmpty || Self.isKnownHallucination(text) {
             return nil
         }
-        return Heard(speaker: speaker, text: text)
+        return text
     }
 
     /// On the PC bench (bench/asr, clip r0000) the translate task opened a clean
@@ -162,7 +174,10 @@ actor Transcriber {
     /// Subtitle credits Whisper learned from video and emits on near-silence.
     private static func isKnownHallucination(_ text: String) -> Bool {
         let lowered = text.lowercased()
-        let markers = ["thanks for watching", "subscribe", "amara.org", "nancy qanqar", "subtitles by", "translated by"]
+        // The last marker is the D36 prompt itself: on near-silence a prompted
+        // Whisper can repeat its prompt back.
+        let markers = ["thanks for watching", "subscribe", "amara.org", "nancy qanqar", "subtitles by", "translated by",
+                       "english translation of egyptian arabic"]
         return markers.contains { lowered.contains($0) }
     }
 }
