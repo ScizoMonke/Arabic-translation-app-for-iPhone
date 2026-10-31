@@ -131,9 +131,14 @@ final class AppModel: ObservableObject {
         }
     }
 
+    /// After a failed download, Try again resumes the download directly.
     func retry() async {
-        phase = .checking
-        await launch()
+        if everythingDownloaded {
+            phase = .checking
+            await launch()
+        } else {
+            await downloadModels()
+        }
     }
 
     /// R10/R13: the two models load one after the other, never at once, with a
@@ -159,14 +164,24 @@ final class AppModel: ObservableObject {
 
         // A failed Egyptian model must not cost him the top half: the app opens
         // anyway and the bottom half says what is wrong on each card.
-        if let file = ModelDownloader.localModelFile() {
+        // If iOS killed the app during the previous load (memory, R10), the
+        // marker below is still set: skip the load once, so a model that cannot
+        // fit never locks him out of the top half. The next launch tries again.
+        let loadMarker = "egyptianModelLoadInProgress"
+        if UserDefaults.standard.bool(forKey: loadMarker) {
+            UserDefaults.standard.set(false, forKey: loadMarker)
+            showStatus("Egyptian model skipped this time: loading it ended the app last time (memory). Top half only. Reopen the app to try again.")
+        } else if let file = ModelDownloader.localModelFile() {
             phase = .preparing("Loading the Egyptian model.")
+            logMemory("before Egyptian model load")
+            UserDefaults.standard.set(true, forKey: loadMarker)
             do {
                 let description = try await romanizer.loadModel(path: file.path)
                 logDiagnostic("Egyptian model loaded: \(description)")
             } catch {
                 showStatus("The Egyptian model could not load; the bottom half will not work. (\(error.localizedDescription))")
             }
+            UserDefaults.standard.set(false, forKey: loadMarker)
             logMemory("after Egyptian model load")
         }
 

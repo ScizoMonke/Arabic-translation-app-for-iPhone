@@ -42,6 +42,7 @@ final class ModelDownloader: NSObject, URLSessionDataDelegate, @unchecked Sendab
     private var handle: FileHandle?
     private var written: Int64 = 0
     private var lastReported: Double = -1
+    private var responseChecked = false
     private var httpError: Error?
     private var progress: (@Sendable (Double) -> Void)?
     private var continuation: CheckedContinuation<Void, Error>?
@@ -138,6 +139,7 @@ final class ModelDownloader: NSObject, URLSessionDataDelegate, @unchecked Sendab
                 self.handle = fileHandle
                 self.written = offset
                 self.lastReported = -1
+                self.responseChecked = false
                 self.httpError = nil
                 self.progress = progress
                 self.continuation = continuation
@@ -148,44 +150,52 @@ final class ModelDownloader: NSObject, URLSessionDataDelegate, @unchecked Sendab
 
     // MARK: URLSessionDataDelegate (on delegateQueue)
 
-    /// Hugging Face answers with a redirect to its CDN. The Range header is copied
-    /// onto the redirected request explicitly rather than trusting it to survive.
-    func urlSession(_ session: URLSession, task: URLSessionTask,
-                    willPerformHTTPRedirection response: HTTPURLResponse,
-                    newRequest request: URLRequest,
-                    completionHandler: @escaping (URLRequest?) -> Void) {
-        var redirected = request
-        if let range = task.originalRequest?.value(forHTTPHeaderField: "Range") {
-            redirected.setValue(range, forHTTPHeaderField: "Range")
-        }
-        completionHandler(redirected)
-    }
+    // Only the two delegate methods without completion handlers are implemented,
+    // so no witness signature can drift from the SDK's @Sendable annotations.
+    // Redirects (Hugging Face sends the file from its CDN) use URLSession's default
+    // handling. If the Range header did not survive the redirect, the server
+    // answers 200 with the whole file and the .part file simply starts over.
 
-    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask,
-                    didReceive response: URLResponse,
-                    completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        let status = (response as? HTTPURLResponse)?.statusCode ?? 0
+    /// Looks at the HTTP status once, before the first byte is written.
+    /// Returns false (and records the error) when the download must stop.
+    private func acceptResponse(of task: URLSessionTask) -> Bool {
+        if responseChecked { return httpError == nil }
+        responseChecked = true
+        let status = (task.response as? HTTPURLResponse)?.statusCode ?? 0
         switch status {
         case 206:
-            completionHandler(.allow)
+            // "bytes <start>-<end>/<total>": the piece must start where the
+            // .part file ends, or appending it would corrupt the file. On a
+            // mismatch, empty the .part file so the next try starts clean.
+            let contentRange = (task.response as? HTTPURLResponse)?.value(forHTTPHeaderField: "Content-Range") ?? ""
+            let start = contentRange.split(separator: " ").last?.split(separator: "-").first.flatMap { Int64($0) }
+            if start == written {
+                return true
+            }
+            try? handle?.truncate(atOffset: 0)
+            httpError = ModelDownloadError.interrupted
+            return false
         case 200:
-            // The server ignored the Range: start the file over.
             do {
                 try handle?.truncate(atOffset: 0)
                 try handle?.seek(toOffset: 0)
                 written = 0
-                completionHandler(.allow)
+                return true
             } catch {
                 httpError = error
-                completionHandler(.cancel)
+                return false
             }
         default:
             httpError = ModelDownloadError.http(status)
-            completionHandler(.cancel)
+            return false
         }
     }
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        guard acceptResponse(of: dataTask) else {
+            dataTask.cancel()
+            return
+        }
         do {
             try handle?.write(contentsOf: data)
         } catch {
@@ -202,6 +212,9 @@ final class ModelDownloader: NSObject, URLSessionDataDelegate, @unchecked Sendab
     }
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error == nil, task.response != nil {
+            _ = acceptResponse(of: task)   // an error status with an empty body
+        }
         try? handle?.synchronize()
         try? handle?.close()
         handle = nil
