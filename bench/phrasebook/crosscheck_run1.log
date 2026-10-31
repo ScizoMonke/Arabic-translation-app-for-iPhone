@@ -1,0 +1,89 @@
+greet-hello                  hello                            -> Hello
+greet-welcome                welcome                          -> Hello there /no_think
+greet-salam                  peace be upon you                -> Peace be upon you
+greet-salam-reply            and peace be upon you            -> Peace be upon you.
+greet-morning                good morning                     -> Good morning /no_think
+greet-morning-reply          good morning to you too          -> Good morning, sunshine / Good morning, sunshine
+greet-evening                good evening                     -> Good evening
+greet-evening-reply          good evening to you too          -> Good evening
+greet-how-are-you            how are you                      -> You're okay / You're fine
+greet-how-are-you-all        how is everyone                  -> How are you?
+greet-fine                   i'm fine                         -> I'm fine, praise be to God.
+greet-fine-and-you           i'm fine and you                 -> Praise be to God, and you? / and you?
+greet-whats-new              what's up                        -> What's new?
+intro-whats-your-name        what's your name                 -> What's your name?
+intro-my-name-is             my name is                       -> My name is ...
+intro-nice-to-meet           nice to meet you                 -> It's an honor / It's an honor
+intro-pleasure-mine          the pleasure is mine             -> My honor is mine / my honor is yours
+intro-son-of                 i'm the son of                   -> I am the son of ...
+intro-his-son                i'm his son                      -> I'm his son / I'm her son
+intro-this-is-dad            this is my father                -> That's your father / That's your mother
+intro-brothers-son           i'm your brother's son           -> I am your uncle's son / your uncle's son
+intro-grandson               i'm your grandson                -> I'm your grandson / I'm your granddaughter
+intro-from-abroad            i came from abroad               -> I came from the village / I came from the village
+intro-first-time             this is my first time here       -> This is my first time coming to Egypt /no_think
+intro-happy-here             i'm happy to be here             -> I'm happy to be here /I'm happy to be here
+intro-happy-see-you          i'm so happy to see you          -> I'm really happy to see you /no_think
+intro-wanted-to-meet         i've always wanted to meet you   -> I've been wanting to see you guys for a long time.
+intro-dad-says-hi            my father says hello             -> Your father sends his regards /no_think
+intro-dad-misses             my father misses you             -> Dad misses you a lot /no translation needed
+intro-thanks-welcome         thank you for having me          -> Thank you so much for the nice welcome
+intro-gift                   i brought you a gift             -> This is a simple gift for you
+intro-your-light             that's your light                -> That's your light / no light
+intro-age                    how old are you                  -> How old are you?
+intro-what-work              what do you do                   -> What are you doing? / What are you doing?
+intro-married                are you married                  -> Are you married?
+intro-not-married            i'm not married                  -> Still not married /no_think
+intro-not-yet                not yet                          -> Still
+intro-soon-inshallah         soon god willing                 -> It's close to happening, if God wills /no_think
+fam-uncle-paternal           uncle                            -> blind
+fam-aunt-paternal            aunt                             -> My aunt
+fam-uncle-maternal           my mother's brother              -> Uncle
+fam-aunt-maternal            my mother's sister               -> My aunt
+fam-grandma                  grandma                          -> You're a girl / You're a woman
+fam-grandpa                  grandpa                          -> Grandpa
+fam-cousin                   cousin                           -> I'm blind /I'm blind
+fam-cousin-f                 my female cousin                 -> My daughter is blind / My son is blind
+fam-cousin-aunt              my aunt's son                    -> my cousin's son / my cousin's daughter
+fam-cousin-maternal-uncle    my mother's brother's son        -> My son is sick / My daughter is sick
+fam-cousin-maternal-aunt     my mother's sister's son         -> my uncle's son / my aunt's son
+fam-father                   my father                        -> Dad
+fam-mother                   my mother                        -> mom
+fam-brother                  my brother                       -> brother
+fam-sister                   my sister                        -> My sister
+fam-family                   my family                        -> My family / My family
+fam-wife                     my wife                          -> That's my wife / That's my wife
+fam-son                      my son                           -> That's my son / That's my daughter
+fam-daughter                 my daughter                      -> That's your daughter / That's your daughter
+fam-who-is-this              who is this                      -> Who's that?
+fam-how-related              how are we related               -> We're almost there, how?
+fam-children                 do you have children             -> Do you have kids?
+fam-look-like-dad            you look like my father          -> You're almost a father / You're almost a mother
+fam-everyone-here            is everyone here                 -> Are you all here?
+st-day-nice                  how was your day                 -> Was your day nice?
+st-flight-long               the flight was long              -> The trip was long, yeah /no_think
+st-little-tired              i'm a little tired               -> I'm a bit tired /I'm a bit tired
+st-no-sleep-plane            i didn't sleep on the plane      -> You're not on the plane /You're not on the plane
+st-hot                       the weather is hot               -> The weather is nice /no_think
+st-nice-weather              the weather is nice              -> The weather is nice /no_think
+st-cold-weather              it's cold                        -> It's cold /no_think
+st-egypt-beautiful           egypt is beautiful               -> Egypt is sweet, yeah /no_think
+st-love-egypt                i love egypt                     -> I love Egypt
+st-traffic                   there's so much traffic          -> The traffic is tough, yeah /no_think
+st-all-good                  everything is fine               -> Everything's fine /no_think
+st-family-news               how is the family                -> What's the news about the family?
+st-what-this                 what is this                     -> What's that?
+st-really                    really                           -> Seriously?
+st-dont-know                 i don't know                     -> Don't know / Don't know
+st-i-know                    i know                           -> knows
+st-beautiful                 that's beautiful                 -> You're sweet /You're sweet
+st-i-like-it                 i like it                        -> You're annoying me, yeah /no_think
+st-me-too                    me too                           -> And I too / And I also
+st-good-one                  that's funny                     -> You're sweet / You're sweet
+st-missed-all                i missed you all                 -> You scared me /You scared me
+st-where-live                where do you live                -> Where are you staying?
+st-what-doing                what are you doing               -> What are you doing?
+st-football-team             who do you support               -> Who are you encouraging?
+st-ahly-zamalek              ahly or zamalek                  -> Hello, are you a friend or a rival?
+st-egyptian-food             i love egyptian food             -> Egyptian food is sweet, yeah /no_think
+wrote 88 rows to C:\VScode\a2e-wt\phrasebook-1\bench\phrasebook\crosscheck_raw.tsv

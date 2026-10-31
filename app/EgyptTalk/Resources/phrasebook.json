@@ -69,7 +69,9 @@
    "english": [
     "good morning",
     "morning",
-    "good morning everyone"
+    "good morning everyone",
+    "morning everyone",
+    "good morning all"
    ],
    "arabic": "صباح الخير",
    "arabizi": "saba7 el 5eir",
@@ -84,7 +86,10 @@
    "english": [
     "good morning to you too",
     "morning to you too",
-    "morning of light"
+    "morning of light",
+    "good morning to you as well",
+    "and good morning to you",
+    "good morning back"
    ],
    "arabic": "صباح النور",
    "arabizi": "saba7 ennour",
@@ -99,7 +104,9 @@
    "english": [
     "good evening",
     "evening",
-    "good evening everyone"
+    "good evening everyone",
+    "evening everyone",
+    "good evening all"
    ],
    "arabic": "مساء الخير",
    "arabizi": "masa2 el 5eir",
@@ -356,7 +363,7 @@
     "i came from overseas",
     "i flew in from abroad"
    ],
-   "arabic": "أنا جاي من برة",
+   "arabic": "أنا جاي من بره",
    "arabizi": "ana gay men barra",
    "respelling": "ana gay men barra",
    "gloss": "I [am] coming from outside (from abroad)",
@@ -855,51 +862,6 @@
    ]
   },
   {
-   "id": "fam-wife",
-   "english": [
-    "my wife",
-    "this is my wife",
-    "she is my wife"
-   ],
-   "arabic": "دي مراتي",
-   "arabizi": "di merati",
-   "respelling": "di merati",
-   "gloss": "this [is] my wife",
-   "tags": [
-    "family"
-   ]
-  },
-  {
-   "id": "fam-son",
-   "english": [
-    "my son",
-    "this is my son",
-    "he is my son"
-   ],
-   "arabic": "ده ابني",
-   "arabizi": "da ebni",
-   "respelling": "da ebni",
-   "gloss": "this [is] my son",
-   "tags": [
-    "family"
-   ]
-  },
-  {
-   "id": "fam-daughter",
-   "english": [
-    "my daughter",
-    "this is my daughter",
-    "she is my daughter"
-   ],
-   "arabic": "دي بنتي",
-   "arabizi": "di benti",
-   "respelling": "di benti",
-   "gloss": "this [is] my daughter",
-   "tags": [
-    "family"
-   ]
-  },
-  {
    "id": "fam-who-is-this",
    "english": [
     "who is this",
@@ -1389,6 +1351,3012 @@
    "gloss": "the Egyptian food [is] very sweet (delicious)",
    "tags": [
     "smalltalk"
+   ]
+  },
+  {
+   "id": "hosp-thanks-full",
+   "english": [
+    "thank you i'm full",
+    "no thank you i'm full",
+    "thanks i'm full",
+    "thank you but i'm full"
+   ],
+   "arabic": "شكرا، شبعت والله",
+   "arabizi": "shokran, shebe3t wallahi",
+   "respelling": "shokran, shebe't wallahi",
+   "gloss": "thanks, I got full, by God",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-full",
+   "english": [
+    "i'm full",
+    "i am full",
+    "i'm stuffed",
+    "i've had enough food"
+   ],
+   "arabic": "الحمد لله، شبعت",
+   "arabizi": "el7amdulillah, shebe3t",
+   "respelling": "elhamdulillah, shebe't",
+   "gloss": "praise [be] to God, I got full",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-swear",
+   "english": [
+    "i swear",
+    "really i swear",
+    "i promise",
+    "honestly",
+    "i swear to god"
+   ],
+   "arabic": "والله",
+   "arabizi": "wallahi",
+   "respelling": "wallahi",
+   "gloss": "by God (I swear)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-cant-eat-more",
+   "english": [
+    "i really can't eat any more",
+    "i can't eat anymore",
+    "i swear i can't eat any more",
+    "i can't eat more"
+   ],
+   "arabic": "والله مش قادر آكل تاني",
+   "arabizi": "wallahi mesh 2ader akol tani",
+   "respelling": "wallahi mesh ader akol tani",
+   "gloss": "by God, [I am] not able [to] eat again (any more)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-just-little",
+   "english": [
+    "just a little",
+    "only a little",
+    "just a little bit",
+    "a little please",
+    "a small amount please"
+   ],
+   "arabic": "شوية بس",
+   "arabizi": "shwaya bas",
+   "respelling": "shwaya bas",
+   "gloss": "a little only",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-delicious",
+   "english": [
+    "it's delicious",
+    "this is delicious",
+    "the food is delicious",
+    "so tasty",
+    "it's very tasty"
+   ],
+   "arabic": "الأكل حلو أوي",
+   "arabizi": "el akl 7elw awi",
+   "respelling": "el akl helw awi",
+   "gloss": "the food [is] very sweet (delicious)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-bless-hands",
+   "english": [
+    "god bless your hands",
+    "bless your hands",
+    "thank you for the food",
+    "thanks for cooking",
+    "the food was great thank you"
+   ],
+   "arabic": "تسلم إيدك",
+   "arabizi": "teslam eedak / teslam eedek",
+   "respelling": "teslam eedak / teslam eedek",
+   "gloss": "may your hand stay safe (thanks to the cook) (to a man / to a woman)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-bon-appetit",
+   "english": [
+    "bon appetit",
+    "enjoy your meal",
+    "enjoy the food",
+    "enjoy"
+   ],
+   "arabic": "بالهنا والشفا",
+   "arabizi": "bel hana wel shefa",
+   "respelling": "bel hana wel shefa",
+   "gloss": "with delight and healing (enjoy your meal)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-no-sugar",
+   "english": [
+    "no sugar",
+    "without sugar",
+    "no sugar please",
+    "i don't take sugar"
+   ],
+   "arabic": "من غير سكر",
+   "arabizi": "men 8eir sokkar",
+   "respelling": "men gheir sokkar",
+   "gloss": "without sugar",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-little-sugar",
+   "english": [
+    "a little sugar",
+    "just a little sugar",
+    "not too much sugar",
+    "light sugar"
+   ],
+   "arabic": "سكر خفيف",
+   "arabizi": "sokkar 5afeef",
+   "respelling": "sokkar khafeef",
+   "gloss": "sugar light",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-with-milk",
+   "english": [
+    "with milk",
+    "with milk please",
+    "add milk"
+   ],
+   "arabic": "بلبن",
+   "arabizi": "bel laban",
+   "respelling": "bel laban",
+   "gloss": "with milk",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-tea-milk",
+   "english": [
+    "tea with milk",
+    "milk tea",
+    "tea with milk please"
+   ],
+   "arabic": "شاي بلبن",
+   "arabizi": "shai bel laban",
+   "respelling": "shai bel laban",
+   "gloss": "tea with milk",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-more-tea",
+   "english": [
+    "more tea please",
+    "can i have more tea",
+    "another tea please",
+    "more tea",
+    "another cup of tea"
+   ],
+   "arabic": "ممكن كمان شاي؟",
+   "arabizi": "momken kaman shai?",
+   "respelling": "momken kaman shai?",
+   "gloss": "possible more tea?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-tea",
+   "english": [
+    "tea please",
+    "i'd like tea",
+    "can i have tea",
+    "yes tea please"
+   ],
+   "arabic": "ممكن شاي؟",
+   "arabizi": "momken shai?",
+   "respelling": "momken shai?",
+   "gloss": "possible [some] tea?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-coffee",
+   "english": [
+    "coffee please",
+    "i'd like coffee",
+    "can i have coffee",
+    "can i have a coffee"
+   ],
+   "arabic": "ممكن قهوة؟",
+   "arabizi": "momken 2ahwa?",
+   "respelling": "momken ahwa?",
+   "gloss": "possible [a] coffee?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-coffee-medium",
+   "english": [
+    "coffee with medium sugar",
+    "medium sugar",
+    "coffee medium sweet"
+   ],
+   "arabic": "قهوة مظبوط",
+   "arabizi": "2ahwa mazboo6",
+   "respelling": "ahwa mazboot",
+   "gloss": "coffee just-right (medium sugar)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-water",
+   "english": [
+    "can i have water",
+    "water please",
+    "can i have some water",
+    "some water please",
+    "could i get some water"
+   ],
+   "arabic": "ممكن مية؟",
+   "arabizi": "momken mayya?",
+   "respelling": "momken mayya?",
+   "gloss": "possible water?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-no-thanks",
+   "english": [
+    "no thank you",
+    "no thanks",
+    "no thank you very much"
+   ],
+   "arabic": "لأ، شكرا",
+   "arabizi": "la2, shokran",
+   "respelling": "la', shokran",
+   "gloss": "no, thanks",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-yes-please",
+   "english": [
+    "yes please",
+    "yes i'd love that",
+    "i would love that",
+    "sure please"
+   ],
+   "arabic": "أيوه، ياريت",
+   "arabizi": "aywa, yareet",
+   "respelling": "aywa, yareet",
+   "gloss": "yes, I wish (yes please)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-dont-trouble",
+   "english": [
+    "don't go to any trouble",
+    "please don't trouble yourself",
+    "you didn't have to",
+    "don't trouble yourself"
+   ],
+   "arabic": "متتعبش نفسك / متتعبيش نفسك",
+   "arabizi": "matet3ebsh nafsak / matet3ebeesh nafsek",
+   "respelling": "matet'ebsh nafsak / matet'ebeesh nafsek",
+   "gloss": "don't tire yourself (to a man / to a woman)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-dish-name",
+   "english": [
+    "what is this dish",
+    "what's this food",
+    "what is this called",
+    "what's the name of this dish"
+   ],
+   "arabic": "الأكلة دي اسمها إيه؟",
+   "arabizi": "el akla di esmaha eh?",
+   "respelling": "el akla di esmaha eh?",
+   "gloss": "this dish, its name [is] what?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-want-taste",
+   "english": [
+    "i want to try it",
+    "let me try",
+    "can i try it",
+    "i want to taste it"
+   ],
+   "arabic": "عايز أدوق",
+   "arabizi": "3ayez adoo2",
+   "respelling": "ayez adoo'",
+   "gloss": "[I am] wanting [to] taste",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-house-beautiful",
+   "english": [
+    "your home is beautiful",
+    "beautiful house",
+    "you have a nice home",
+    "your house is lovely"
+   ],
+   "arabic": "البيت حلو أوي",
+   "arabizi": "el beit 7elw awi",
+   "respelling": "el beit helw awi",
+   "gloss": "the house [is] very sweet (beautiful)",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-enough",
+   "english": [
+    "that's enough",
+    "enough thank you",
+    "that's enough for me",
+    "that's plenty"
+   ],
+   "arabic": "كفاية كده، شكرا",
+   "arabizi": "kefaya keda, shokran",
+   "respelling": "kefaya keda, shokran",
+   "gloss": "enough like this, thanks",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-help",
+   "english": [
+    "can i help",
+    "let me help",
+    "can i help you",
+    "do you need help"
+   ],
+   "arabic": "ممكن أساعد؟",
+   "arabizi": "momken asa3ed?",
+   "respelling": "momken asa'ed?",
+   "gloss": "possible [that] I help?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-bread",
+   "english": [
+    "can you pass the bread",
+    "bread please",
+    "can i have some bread"
+   ],
+   "arabic": "ممكن العيش؟",
+   "arabizi": "momken el 3eish?",
+   "respelling": "momken el eish?",
+   "gloss": "possible the bread?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "hosp-salt",
+   "english": [
+    "can you pass the salt",
+    "salt please",
+    "can i have the salt"
+   ],
+   "arabic": "ممكن الملح؟",
+   "arabizi": "momken el mal7?",
+   "respelling": "momken el malh?",
+   "gloss": "possible the salt?",
+   "tags": [
+    "hospitality"
+   ]
+  },
+  {
+   "id": "rel-alhamdulillah",
+   "english": [
+    "thank god",
+    "praise god",
+    "alhamdulillah",
+    "thanks be to god",
+    "praise be to god"
+   ],
+   "arabic": "الحمد لله",
+   "arabizi": "el7amdulillah",
+   "respelling": "elhamdulillah",
+   "gloss": "the praise [be] to God",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-inshallah",
+   "english": [
+    "god willing",
+    "inshallah",
+    "if god wills",
+    "hopefully",
+    "god willing yes"
+   ],
+   "arabic": "إن شاء الله",
+   "arabizi": "inshallah",
+   "respelling": "inshallah",
+   "gloss": "if God wills (hopefully; also a soft yes)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-mashallah",
+   "english": [
+    "mashallah",
+    "what god wills",
+    "god has willed it",
+    "what god has willed"
+   ],
+   "arabic": "ما شاء الله",
+   "arabizi": "mashallah",
+   "respelling": "mashallah",
+   "gloss": "what God has willed (admiring something without envy: a child, a house, good news)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-bless-you",
+   "english": [
+    "god bless you",
+    "may god bless you",
+    "god bless"
+   ],
+   "arabic": "الله يبارك فيك / فيكي",
+   "arabizi": "allah ybarek feek / feeki",
+   "respelling": "allah ybarek feek / feeki",
+   "gloss": "God bless in you (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-keep-you",
+   "english": [
+    "may god keep you",
+    "god keep you",
+    "god keep you for me",
+    "god keep you for us"
+   ],
+   "arabic": "ربنا يخليك / يخليكي",
+   "arabizi": "rabbena y5alleek / y5alleeki",
+   "respelling": "rabbena ykhalleek / ykhalleeki",
+   "gloss": "may our Lord keep you (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-safe-reply",
+   "english": [
+    "may god keep you safe",
+    "god keep you safe",
+    "god keep you safe too"
+   ],
+   "arabic": "الله يسلمك",
+   "arabizi": "allah ysallemak / ysallemek",
+   "respelling": "allah ysallemak / ysallemek",
+   "gloss": "may God keep you safe (the reply to 'praise God for your safe arrival') (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-sneeze",
+   "english": [
+    "bless you",
+    "bless you after a sneeze",
+    "bless you for sneezing"
+   ],
+   "arabic": "يرحمكم الله",
+   "arabizi": "yar7amkom allah",
+   "respelling": "yarhamkom allah",
+   "gloss": "may God have mercy on you (said after a sneeze)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-rip-m",
+   "english": [
+    "may he rest in peace",
+    "rest in peace",
+    "god rest his soul",
+    "may god have mercy on him"
+   ],
+   "arabic": "الله يرحمه",
+   "arabizi": "allah yer7amo",
+   "respelling": "allah yerhamo",
+   "gloss": "may God have mercy on him (said of a man who has died)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-rip-f",
+   "english": [
+    "may she rest in peace",
+    "god rest her soul",
+    "may god have mercy on her"
+   ],
+   "arabic": "الله يرحمها",
+   "arabizi": "allah yer7amha",
+   "respelling": "allah yerhamha",
+   "gloss": "may God have mercy on her (said of a woman who has died)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-bismillah",
+   "english": [
+    "in the name of god",
+    "bismillah",
+    "let's eat bismillah"
+   ],
+   "arabic": "بسم الله",
+   "arabizi": "bismillah",
+   "respelling": "bismillah",
+   "gloss": "in the name of God (said before eating or starting)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-god-generous",
+   "english": [
+    "god is generous",
+    "god will provide",
+    "it'll work out",
+    "god is kind"
+   ],
+   "arabic": "ربنا كريم",
+   "arabizi": "rabbena kareem",
+   "respelling": "rabbena kareem",
+   "gloss": "our Lord [is] generous (it will work out)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-reward-you",
+   "english": [
+    "may god reward you",
+    "god reward you",
+    "may god be generous to you",
+    "god be good to you"
+   ],
+   "arabic": "ربنا يكرمك",
+   "arabizi": "rabbena yekremak / yekremek",
+   "respelling": "rabbena yekremak / yekremek",
+   "gloss": "may our Lord be generous to you (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-protect-you",
+   "english": [
+    "may god protect you",
+    "god protect you",
+    "god keep you protected"
+   ],
+   "arabic": "ربنا يحفظك",
+   "arabizi": "rabbena ye7fazak / ye7fazek",
+   "respelling": "rabbena yehfazak / yehfazek",
+   "gloss": "may our Lord guard you (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "rel-god-with-you",
+   "english": [
+    "god be with you",
+    "god help you",
+    "may god help you",
+    "god give you strength"
+   ],
+   "arabic": "ربنا معاك / معاكي",
+   "arabizi": "rabbena ma3ak / ma3aki",
+   "respelling": "rabbena ma'ak / ma'aki",
+   "gloss": "our Lord [is] with you (to a man / to a woman)",
+   "tags": [
+    "religious"
+   ]
+  },
+  {
+   "id": "pol-thanks",
+   "english": [
+    "thank you",
+    "thanks",
+    "thank you very much",
+    "thanks a lot"
+   ],
+   "arabic": "شكرا",
+   "arabizi": "shokran",
+   "respelling": "shokran",
+   "gloss": "thanks",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-thanks-very",
+   "english": [
+    "thank you so much",
+    "thank you very very much",
+    "i'm very grateful",
+    "i really appreciate it"
+   ],
+   "arabic": "متشكر أوي",
+   "arabizi": "metshakker awi",
+   "respelling": "metshakker awi",
+   "gloss": "[I am] very thankful",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-welcome",
+   "english": [
+    "you're welcome",
+    "don't mention it",
+    "it's nothing",
+    "my pleasure"
+   ],
+   "arabic": "العفو",
+   "arabizi": "el 3afw",
+   "respelling": "el afw",
+   "gloss": "the pardon (you're welcome)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-no-problem",
+   "english": [
+    "no problem",
+    "not a problem",
+    "no problem at all"
+   ],
+   "arabic": "مفيش مشكلة",
+   "arabizi": "mafeesh moshkela",
+   "respelling": "mafeesh moshkela",
+   "gloss": "there's no problem",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-excuse-me",
+   "english": [
+    "excuse me",
+    "please",
+    "excuse me sir",
+    "if you please",
+    "excuse me please"
+   ],
+   "arabic": "لو سمحت / لو سمحتي",
+   "arabizi": "law sama7t / law sama7ti",
+   "respelling": "law samaht / law samahti",
+   "gloss": "if you permit (excuse me; please) (to a man / to a woman)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-excuse-pass",
+   "english": [
+    "excuse me can i pass",
+    "let me through",
+    "can i get by",
+    "with your permission"
+   ],
+   "arabic": "عن إذنك",
+   "arabizi": "3an eznak / 3an eznek",
+   "respelling": "an eznak / an eznek",
+   "gloss": "by your leave (to pass by, or to leave) (to a man / to a woman)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-sorry",
+   "english": [
+    "sorry",
+    "i'm sorry",
+    "i am sorry",
+    "my apologies",
+    "i apologize"
+   ],
+   "arabic": "آسف",
+   "arabizi": "asef",
+   "respelling": "asef",
+   "gloss": "[I am] sorry",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-never-mind",
+   "english": [
+    "never mind",
+    "don't worry about it",
+    "no worries",
+    "it's okay",
+    "it's fine"
+   ],
+   "arabic": "معلش",
+   "arabizi": "ma3lesh",
+   "respelling": "ma'lesh",
+   "gloss": "never mind (lit. no harm on it; also 'sorry about that')",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-after-you",
+   "english": [
+    "after you",
+    "you first",
+    "go ahead",
+    "please go ahead",
+    "here you go",
+    "come in"
+   ],
+   "arabic": "اتفضل / اتفضلي",
+   "arabizi": "etfaddal / etfaddali",
+   "respelling": "etfaddal / etfaddali",
+   "gloss": "please go ahead (after you; come in; here you are) (to a man / to a woman)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-of-course",
+   "english": [
+    "of course",
+    "sure",
+    "definitely",
+    "certainly",
+    "of course yes"
+   ],
+   "arabic": "طبعا",
+   "arabizi": "6ab3an",
+   "respelling": "tab'an",
+   "gloss": "naturally (of course)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-yes",
+   "english": [
+    "yes",
+    "yeah",
+    "yep",
+    "yes yes"
+   ],
+   "arabic": "أيوه",
+   "arabizi": "aywa",
+   "respelling": "aywa",
+   "gloss": "yes",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-no",
+   "english": [
+    "no",
+    "nope",
+    "no no"
+   ],
+   "arabic": "لأ",
+   "arabizi": "la2",
+   "respelling": "la'",
+   "gloss": "no",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-okay",
+   "english": [
+    "okay",
+    "ok",
+    "alright",
+    "sounds good"
+   ],
+   "arabic": "ماشي",
+   "arabizi": "mashi",
+   "respelling": "mashi",
+   "gloss": "okay (lit. walking)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-perfect",
+   "english": [
+    "perfect",
+    "great",
+    "excellent",
+    "that's great",
+    "awesome"
+   ],
+   "arabic": "تمام",
+   "arabizi": "tamam",
+   "respelling": "tamam",
+   "gloss": "complete (perfect, fine)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-sorry-late",
+   "english": [
+    "sorry i'm late",
+    "sorry for being late",
+    "sorry for the delay"
+   ],
+   "arabic": "آسف على التأخير",
+   "arabizi": "asef 3ala etta25eer",
+   "respelling": "asef ala etta'kheer",
+   "gloss": "sorry for the lateness",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-up-to-you",
+   "english": [
+    "whatever you think",
+    "i don't mind",
+    "up to you",
+    "whatever you want"
+   ],
+   "arabic": "اللي تشوفه / اللي تشوفيه",
+   "arabizi": "elli tshoofo / elli tshoofeeh",
+   "respelling": "elli tshoofo / elli tshoofeeh",
+   "gloss": "what you see (whatever you think best) (to a man / to a woman)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-kind",
+   "english": [
+    "you are very kind",
+    "that's very kind of you",
+    "you're so sweet",
+    "that's kind of you"
+   ],
+   "arabic": "ده من ذوقك",
+   "arabizi": "da men zo2ak / da men zo2ek",
+   "respelling": "da men zo'ak / da men zo'ek",
+   "gloss": "that [is] from your good taste (that's kind of you) (to a man / to a woman)",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "pol-no-need",
+   "english": [
+    "no need",
+    "there's no need",
+    "it's not necessary"
+   ],
+   "arabic": "مفيش داعي",
+   "arabizi": "mafeesh da3i",
+   "respelling": "mafeesh da'i",
+   "gloss": "there's no need",
+   "tags": [
+    "polite"
+   ]
+  },
+  {
+   "id": "meta-little-arabic",
+   "english": [
+    "i only speak a little arabic",
+    "i speak a little arabic",
+    "i speak a bit of arabic",
+    "my arabic is not good",
+    "i don't speak arabic well"
+   ],
+   "arabic": "أنا بتكلم عربي شوية بس",
+   "arabizi": "ana batkallem 3arabi shwaya bas",
+   "respelling": "ana batkallem arabi shwaya bas",
+   "gloss": "I speak Arabic a little only",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-no-arabic",
+   "english": [
+    "i don't speak arabic",
+    "i can't speak arabic",
+    "i do not speak arabic"
+   ],
+   "arabic": "أنا مبتكلمش عربي",
+   "arabizi": "ana mabatkallemsh 3arabi",
+   "respelling": "ana mabatkallemsh arabi",
+   "gloss": "I don't speak Arabic",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-sorry-arabic",
+   "english": [
+    "sorry my arabic is bad",
+    "excuse my arabic",
+    "sorry for my arabic",
+    "my arabic is bad"
+   ],
+   "arabic": "معلش، العربي بتاعي مش كويس",
+   "arabizi": "ma3lesh, el 3arabi beta3i mesh kwayes",
+   "respelling": "ma'lesh, el arabi beta'i mesh kwayes",
+   "gloss": "never mind (sorry), my Arabic [is] not good",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-phone",
+   "english": [
+    "i am using this phone to translate",
+    "i'm using my phone to translate",
+    "this phone translates for me",
+    "the phone is translating",
+    "i'm using an app to translate"
+   ],
+   "arabic": "الموبايل ده بيترجملي",
+   "arabizi": "el mobile da beyetargemli",
+   "respelling": "el mobile da beyetargemli",
+   "gloss": "this mobile translates for me",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-speak-into-phone",
+   "english": [
+    "speak into the phone",
+    "talk to the phone",
+    "please speak into the phone",
+    "talk into my phone",
+    "say it to the phone"
+   ],
+   "arabic": "اتكلم في الموبايل / اتكلمي في الموبايل",
+   "arabizi": "etkallem fel mobile / etkallemi fel mobile",
+   "respelling": "etkallem fel mobile / etkallemi fel mobile",
+   "gloss": "speak into the mobile (to a man / to a woman)",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-speak-slowly",
+   "english": [
+    "please speak slowly",
+    "speak slowly",
+    "can you speak slower",
+    "speak slower please",
+    "slowly please",
+    "talk slowly"
+   ],
+   "arabic": "اتكلم بالراحة شوية / اتكلمي بالراحة شوية",
+   "arabizi": "etkallem bel ra7a shwaya / etkallemi bel ra7a shwaya",
+   "respelling": "etkallem bel raha shwaya / etkallemi bel raha shwaya",
+   "gloss": "speak with ease a little (slowly) (to a man / to a woman)",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-say-again",
+   "english": [
+    "say it again",
+    "can you repeat that",
+    "repeat please",
+    "say that again",
+    "one more time please",
+    "again please"
+   ],
+   "arabic": "ممكن تقولها تاني؟ / تقوليها تاني؟",
+   "arabizi": "momken t2oolha tani? / t2ooleeha tani?",
+   "respelling": "momken t'oolha tani? / t'ooleeha tani?",
+   "gloss": "possible [that] you say it again? (to a man / to a woman)",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-dont-understand",
+   "english": [
+    "i don't understand",
+    "i didn't understand",
+    "i don't get it",
+    "i didn't get that",
+    "i do not understand"
+   ],
+   "arabic": "مش فاهم",
+   "arabizi": "mesh fahem",
+   "respelling": "mesh fahem",
+   "gloss": "[I am] not understanding",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-understood",
+   "english": [
+    "i understand",
+    "i get it",
+    "understood",
+    "got it",
+    "i understood"
+   ],
+   "arabic": "فهمت",
+   "arabizi": "fehemt",
+   "respelling": "fehemt",
+   "gloss": "I understood",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-what-mean",
+   "english": [
+    "what does that mean",
+    "what does it mean",
+    "what does this mean",
+    "what do you mean",
+    "what's the meaning",
+    "meaning what"
+   ],
+   "arabic": "يعني إيه؟",
+   "arabizi": "ya3ni eh?",
+   "respelling": "ya'ni eh?",
+   "gloss": "it means what?",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-write",
+   "english": [
+    "can you write it",
+    "write it down please",
+    "can you write it for me",
+    "please write it",
+    "write it down"
+   ],
+   "arabic": "ممكن تكتبهالي؟ / تكتبيهالي؟",
+   "arabizi": "momken tektebhali? / tektebeehali?",
+   "respelling": "momken tektebhali? / tektebeehali?",
+   "gloss": "possible [that] you write it for me? (to a man / to a woman)",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-how-say",
+   "english": [
+    "how do you say this in arabic",
+    "how do you say it in arabic",
+    "what is this called in arabic",
+    "what's this in arabic"
+   ],
+   "arabic": "ده اسمه إيه بالعربي؟",
+   "arabizi": "da esmo eh bel 3arabi?",
+   "respelling": "da esmo eh bel arabi?",
+   "gloss": "this, its name [is] what in Arabic?",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-speak-english",
+   "english": [
+    "do you speak english",
+    "can you speak english",
+    "you speak english"
+   ],
+   "arabic": "بتتكلم إنجليزي؟ / بتتكلمي إنجليزي؟",
+   "arabizi": "betetkallem engelizi? / betetkallemi engelizi?",
+   "respelling": "betetkallem engelizi? / betetkallemi engelizi?",
+   "gloss": "you speak English? (to a man / to a woman)",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-anyone-english",
+   "english": [
+    "does anyone speak english",
+    "does anyone here speak english",
+    "is there someone who speaks english"
+   ],
+   "arabic": "حد هنا بيتكلم إنجليزي؟",
+   "arabizi": "7add hena beyetkallem engelizi?",
+   "respelling": "hadd hena beyetkallem engelizi?",
+   "gloss": "someone here speaks English?",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-learning",
+   "english": [
+    "i'm learning arabic",
+    "i am learning arabic",
+    "i'm trying to learn arabic"
+   ],
+   "arabic": "أنا بتعلم عربي",
+   "arabizi": "ana bat3allem 3arabi",
+   "respelling": "ana bat'allem arabi",
+   "gloss": "I [am] learning Arabic",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-one-second",
+   "english": [
+    "one second let me translate",
+    "wait let me translate",
+    "let me check the phone",
+    "hold on let me translate"
+   ],
+   "arabic": "ثانية أترجم",
+   "arabizi": "sanya atargem",
+   "respelling": "sanya atargem",
+   "gloss": "a second, I translate",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-dad-taught",
+   "english": [
+    "my father taught me a little",
+    "dad taught me some arabic",
+    "my dad taught me a little arabic"
+   ],
+   "arabic": "بابا علمني شوية",
+   "arabizi": "baba 3allemni shwaya",
+   "respelling": "baba allemni shwaya",
+   "gloss": "dad taught me a little",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-exactly",
+   "english": [
+    "exactly",
+    "that's right",
+    "correct",
+    "yes exactly"
+   ],
+   "arabic": "بالظبط",
+   "arabizi": "bezzab6",
+   "respelling": "bezzabt",
+   "gloss": "exactly",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "meta-pardon",
+   "english": [
+    "what",
+    "sorry what",
+    "pardon",
+    "pardon me",
+    "come again"
+   ],
+   "arabic": "نعم؟",
+   "arabizi": "na3am?",
+   "respelling": "na'am?",
+   "gloss": "yes? (the polite 'pardon?')",
+   "tags": [
+    "meta"
+   ]
+  },
+  {
+   "id": "dir-where",
+   "english": [
+    "where",
+    "where is it",
+    "where is that",
+    "where's that"
+   ],
+   "arabic": "فين؟",
+   "arabizi": "fein?",
+   "respelling": "fein?",
+   "gloss": "where?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-where-place",
+   "english": [
+    "where is this place",
+    "where is this",
+    "where is this address"
+   ],
+   "arabic": "المكان ده فين؟",
+   "arabizi": "el makan da fein?",
+   "respelling": "el makan da fein?",
+   "gloss": "this place [is] where?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-left",
+   "english": [
+    "turn left",
+    "left",
+    "go left",
+    "take a left",
+    "turn left please",
+    "left here"
+   ],
+   "arabic": "لف شمال",
+   "arabizi": "leff shemal",
+   "respelling": "leff shemal",
+   "gloss": "turn left (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-right",
+   "english": [
+    "turn right",
+    "right",
+    "go right",
+    "take a right",
+    "turn right please",
+    "make a right"
+   ],
+   "arabic": "لف يمين",
+   "arabizi": "leff yemeen",
+   "respelling": "leff yemeen",
+   "gloss": "turn right (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-straight",
+   "english": [
+    "go straight",
+    "straight",
+    "straight ahead",
+    "keep going straight",
+    "keep going"
+   ],
+   "arabic": "على طول",
+   "arabizi": "3ala 6ool",
+   "respelling": "ala tool",
+   "gloss": "on length (straight ahead)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-stop-here",
+   "english": [
+    "stop here",
+    "stop here please",
+    "please stop here",
+    "can you stop here",
+    "you can stop here",
+    "stop the car here"
+   ],
+   "arabic": "وقف هنا لو سمحت",
+   "arabizi": "wa22af hena law sama7t",
+   "respelling": "wa'af hena law samaht",
+   "gloss": "stop here, if you permit (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-here-fine",
+   "english": [
+    "here is fine",
+    "here is good",
+    "this is fine",
+    "right here is fine",
+    "here's good"
+   ],
+   "arabic": "هنا كويس",
+   "arabizi": "hena kwayes",
+   "respelling": "hena kwayes",
+   "gloss": "here [is] good",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-slow-down",
+   "english": [
+    "slow down",
+    "drive slowly please",
+    "slow down please",
+    "please drive slower"
+   ],
+   "arabic": "بالراحة لو سمحت",
+   "arabizi": "bel ra7a law sama7t",
+   "respelling": "bel raha law samaht",
+   "gloss": "with ease (slowly), if you permit (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-wait",
+   "english": [
+    "wait a moment",
+    "wait a minute",
+    "one moment",
+    "just a second",
+    "hold on",
+    "wait please"
+   ],
+   "arabic": "استنى دقيقة / استني دقيقة",
+   "arabizi": "estanna de2ee2a / estanni de2ee2a",
+   "respelling": "estanna de'ee'a / estanni de'ee'a",
+   "gloss": "wait a minute (to a man / to a woman)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-fare",
+   "english": [
+    "how much is the ride",
+    "what's the fare",
+    "how much is the fare",
+    "how much do i owe you",
+    "how much for the ride"
+   ],
+   "arabic": "الأجرة كام؟",
+   "arabizi": "el ogra kam?",
+   "respelling": "el ogra kam?",
+   "gloss": "the fare [is] how much?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-how-much-to",
+   "english": [
+    "how much to",
+    "how much to get there",
+    "how much to go there",
+    "how much to go to"
+   ],
+   "arabic": "بكام لحد هناك؟",
+   "arabizi": "bekam le7add hnak?",
+   "respelling": "bekam lehadd hnak?",
+   "gloss": "for how much until there?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-take-me",
+   "english": [
+    "take me to this address",
+    "this address please",
+    "can you take me here",
+    "take me here"
+   ],
+   "arabic": "وديني العنوان ده",
+   "arabizi": "waddeeni el 3enwan da",
+   "respelling": "waddeeni el enwan da",
+   "gloss": "take me [to] this address",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-far",
+   "english": [
+    "is it far",
+    "how far is it",
+    "is it far from here"
+   ],
+   "arabic": "هو بعيد؟",
+   "arabizi": "howwa be3eed?",
+   "respelling": "howwa be'eed?",
+   "gloss": "[is] it far?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-near",
+   "english": [
+    "is it close",
+    "is it near",
+    "is it nearby",
+    "is it close by"
+   ],
+   "arabic": "هو قريب؟",
+   "arabizi": "howwa 2orayyeb?",
+   "respelling": "howwa orayyeb?",
+   "gloss": "[is] it near?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-arrive-when",
+   "english": [
+    "when will we arrive",
+    "how long until we arrive",
+    "when do we get there",
+    "how long will it take",
+    "are we there yet"
+   ],
+   "arabic": "هنوصل إمتى؟",
+   "arabizi": "hanew9al emta?",
+   "respelling": "hanewsal emta?",
+   "gloss": "we will arrive when?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-lost",
+   "english": [
+    "i'm lost",
+    "i am lost",
+    "i don't know where i am",
+    "i got lost"
+   ],
+   "arabic": "أنا تايه",
+   "arabizi": "ana tayeh",
+   "respelling": "ana tayeh",
+   "gloss": "I [am] lost",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-here",
+   "english": [
+    "here",
+    "it's here",
+    "over here",
+    "here it is"
+   ],
+   "arabic": "هنا",
+   "arabizi": "hena",
+   "respelling": "hena",
+   "gloss": "here",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-there",
+   "english": [
+    "there",
+    "over there",
+    "it's over there",
+    "that way"
+   ],
+   "arabic": "هناك",
+   "arabizi": "hnak",
+   "respelling": "hnak",
+   "gloss": "there",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-go-back",
+   "english": [
+    "go back",
+    "turn around",
+    "we need to go back",
+    "go back please"
+   ],
+   "arabic": "ارجع ورا",
+   "arabizi": "erga3 wara",
+   "respelling": "erga' wara",
+   "gloss": "go back behind (go back) (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-uber",
+   "english": [
+    "are you the uber",
+    "is this the uber",
+    "are you my uber",
+    "are you my driver"
+   ],
+   "arabic": "انت الأوبر؟",
+   "arabizi": "enta el uber?",
+   "respelling": "enta el uber?",
+   "gloss": "you [are] the Uber? (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-ac",
+   "english": [
+    "can you turn on the ac",
+    "turn on the air conditioning",
+    "ac please",
+    "turn on the ac"
+   ],
+   "arabic": "ممكن تشغل التكييف؟",
+   "arabizi": "momken tesha88al ettakyeef?",
+   "respelling": "momken teshaghghal ettakyeef?",
+   "gloss": "possible [that you] run the air-conditioning? (to the driver)",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "dir-walk",
+   "english": [
+    "can we walk",
+    "can we walk there",
+    "is it walking distance"
+   ],
+   "arabic": "ينفع نروح مشي؟",
+   "arabizi": "yenfa3 nero7 mashy?",
+   "respelling": "yenfa' neroh mashy?",
+   "gloss": "is it possible [that we] go walking?",
+   "tags": [
+    "directions"
+   ]
+  },
+  {
+   "id": "shop-how-much",
+   "english": [
+    "how much",
+    "how much is this",
+    "how much does it cost",
+    "what's the price",
+    "how much is it",
+    "how much does this cost"
+   ],
+   "arabic": "ده بكام؟",
+   "arabizi": "da bekam?",
+   "respelling": "da bekam?",
+   "gloss": "this [is] for how much?",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-expensive",
+   "english": [
+    "too expensive",
+    "that's too expensive",
+    "it's too much",
+    "that's a lot",
+    "it's expensive"
+   ],
+   "arabic": "غالي أوي",
+   "arabizi": "8ali awi",
+   "respelling": "ghali awi",
+   "gloss": "very expensive",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-best-price",
+   "english": [
+    "can you lower the price",
+    "give me a better price",
+    "what's your best price",
+    "can you do a discount",
+    "make it cheaper",
+    "last price"
+   ],
+   "arabic": "آخر سعر كام؟",
+   "arabizi": "a5er se3r kam?",
+   "respelling": "akher se'r kam?",
+   "gloss": "last price [is] how much? (your best price)",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-take-it",
+   "english": [
+    "i'll take it",
+    "i will take it",
+    "i'll buy it",
+    "i'll take this"
+   ],
+   "arabic": "هاخده",
+   "arabizi": "ha5do",
+   "respelling": "hakhdo",
+   "gloss": "I will take it",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-want-this",
+   "english": [
+    "i want this one",
+    "i want this",
+    "this one please",
+    "i'd like this one"
+   ],
+   "arabic": "عايز ده",
+   "arabizi": "3ayez da",
+   "respelling": "ayez da",
+   "gloss": "[I am] wanting this",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-change",
+   "english": [
+    "do you have change",
+    "do you have smaller change",
+    "can you break this",
+    "do you have small bills"
+   ],
+   "arabic": "معاك فكة؟",
+   "arabizi": "ma3ak fakka?",
+   "respelling": "ma'ak fakka?",
+   "gloss": "with you [is there] change? (to a man)",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-no-change",
+   "english": [
+    "i don't have change",
+    "i have no change",
+    "i don't have small bills"
+   ],
+   "arabic": "معييش فكة",
+   "arabizi": "ma3eesh fakka",
+   "respelling": "ma'eesh fakka",
+   "gloss": "with me [there is] no change",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-card",
+   "english": [
+    "can i pay by card",
+    "do you take card",
+    "can i pay with a credit card",
+    "do you accept cards"
+   ],
+   "arabic": "ينفع أدفع بالفيزا؟",
+   "arabizi": "yenfa3 adfa3 bel visa?",
+   "respelling": "yenfa' adfa' bel visa?",
+   "gloss": "is it possible [that] I pay with the Visa (card)?",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-cash",
+   "english": [
+    "i'll pay cash",
+    "in cash",
+    "cash",
+    "i'll pay in cash"
+   ],
+   "arabic": "هدفع كاش",
+   "arabizi": "hadfa3 kash",
+   "respelling": "hadfa' kash",
+   "gloss": "I will pay cash",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-just-looking",
+   "english": [
+    "just looking",
+    "i'm just looking",
+    "only looking thanks",
+    "i'm only looking"
+   ],
+   "arabic": "بتفرج بس",
+   "arabizi": "batfarrag bas",
+   "respelling": "batfarrag bas",
+   "gloss": "[I am] looking around only",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-size",
+   "english": [
+    "do you have another size",
+    "another size",
+    "different size please"
+   ],
+   "arabic": "عندك مقاس تاني؟",
+   "arabizi": "3andak ma2as tani?",
+   "respelling": "andak ma'as tani?",
+   "gloss": "you have another size? (to a man)",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-color",
+   "english": [
+    "do you have another color",
+    "another color",
+    "different color please",
+    "do you have other colors"
+   ],
+   "arabic": "عندك لون تاني؟",
+   "arabizi": "3andak loon tani?",
+   "respelling": "andak loon tani?",
+   "gloss": "you have another color? (to a man)",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-keep-change",
+   "english": [
+    "keep the change",
+    "keep it",
+    "no change needed",
+    "keep the rest"
+   ],
+   "arabic": "خلي الباقي",
+   "arabizi": "5alli el ba2i",
+   "respelling": "khalli el ba'i",
+   "gloss": "keep the rest",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-bag",
+   "english": [
+    "can i have a bag",
+    "a bag please",
+    "do you have a bag"
+   ],
+   "arabic": "ممكن كيس؟",
+   "arabizi": "momken kees?",
+   "respelling": "momken kees?",
+   "gloss": "possible [a] bag?",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-deal",
+   "english": [
+    "okay deal",
+    "deal",
+    "fine i'll pay that",
+    "it's a deal",
+    "agreed"
+   ],
+   "arabic": "ماشي، اتفقنا",
+   "arabizi": "mashi, ettafa2na",
+   "respelling": "mashi, ettafa'na",
+   "gloss": "okay, we agreed",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "shop-total",
+   "english": [
+    "how much altogether",
+    "what's the total",
+    "how much is everything",
+    "how much for all of it",
+    "how much for everything"
+   ],
+   "arabic": "كله بكام؟",
+   "arabizi": "kollo bekam?",
+   "respelling": "kollo bekam?",
+   "gloss": "all of it for how much?",
+   "tags": [
+    "shopping"
+   ]
+  },
+  {
+   "id": "hl-tired",
+   "english": [
+    "i'm tired",
+    "i am tired",
+    "i'm exhausted",
+    "i'm very tired",
+    "i'm so tired"
+   ],
+   "arabic": "أنا تعبان",
+   "arabizi": "ana ta3ban",
+   "respelling": "ana ta'ban",
+   "gloss": "I [am] tired (the same word also means unwell)",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-headache",
+   "english": [
+    "i have a headache",
+    "my head hurts",
+    "headache",
+    "i've got a headache",
+    "my head is hurting",
+    "i have a bad headache"
+   ],
+   "arabic": "عندي صداع",
+   "arabizi": "3andi 9oda3",
+   "respelling": "andi soda'",
+   "gloss": "at-me [a] headache (I have a headache)",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-bathroom",
+   "english": [
+    "where is the bathroom",
+    "where's the toilet",
+    "i need the bathroom",
+    "where is the restroom",
+    "i need to use the toilet",
+    "where's the bathroom"
+   ],
+   "arabic": "الحمام فين؟",
+   "arabizi": "el 7ammam fein?",
+   "respelling": "el hammam fein?",
+   "gloss": "the bathroom [is] where?",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-need-water",
+   "english": [
+    "i need water",
+    "i want water",
+    "i need some water",
+    "i want some water"
+   ],
+   "arabic": "عايز مية",
+   "arabizi": "3ayez mayya",
+   "respelling": "ayez mayya",
+   "gloss": "[I am] wanting water",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-thirsty",
+   "english": [
+    "i'm thirsty",
+    "i am thirsty",
+    "i'm very thirsty"
+   ],
+   "arabic": "أنا عطشان",
+   "arabizi": "ana 3a6shan",
+   "respelling": "ana atshan",
+   "gloss": "I [am] thirsty",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-hungry",
+   "english": [
+    "i'm hungry",
+    "i am hungry",
+    "i'm very hungry",
+    "i'm starving"
+   ],
+   "arabic": "أنا جعان",
+   "arabizi": "ana ga3an",
+   "respelling": "ana ga'an",
+   "gloss": "I [am] hungry",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-rest",
+   "english": [
+    "i need to rest a little",
+    "i need to rest",
+    "i want to rest",
+    "can i rest a bit",
+    "i need a little rest",
+    "let me rest a little"
+   ],
+   "arabic": "محتاج أرتاح شوية",
+   "arabizi": "me7tag arta7 shwaya",
+   "respelling": "mehtag artah shwaya",
+   "gloss": "[I am] needing [to] rest a little",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-sleep",
+   "english": [
+    "i want to sleep",
+    "i need to sleep",
+    "i need some sleep",
+    "i want to go to sleep"
+   ],
+   "arabic": "عايز أنام",
+   "arabizi": "3ayez anam",
+   "respelling": "ayez anam",
+   "gloss": "[I am] wanting [to] sleep",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-sleepy",
+   "english": [
+    "i'm sleepy",
+    "i am sleepy",
+    "i'm getting sleepy"
+   ],
+   "arabic": "أنا نعسان",
+   "arabizi": "ana na3san",
+   "respelling": "ana na'san",
+   "gloss": "I [am] sleepy",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-cold",
+   "english": [
+    "i'm cold",
+    "i am cold",
+    "i feel cold",
+    "i'm freezing"
+   ],
+   "arabic": "أنا بردان",
+   "arabizi": "ana bardan",
+   "respelling": "ana bardan",
+   "gloss": "I [am] cold",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-hot",
+   "english": [
+    "i'm hot",
+    "i am hot",
+    "i feel hot",
+    "i'm too hot"
+   ],
+   "arabic": "أنا حران",
+   "arabizi": "ana 7arran",
+   "respelling": "ana harran",
+   "gloss": "I [am] hot",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-sick",
+   "english": [
+    "i feel sick",
+    "i'm sick",
+    "i don't feel well",
+    "i'm not feeling well",
+    "i feel unwell"
+   ],
+   "arabic": "حاسس إني تعبان",
+   "arabizi": "7asses enni ta3ban",
+   "respelling": "hasses enni ta'ban",
+   "gloss": "[I am] feeling that I [am] unwell",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-stomach",
+   "english": [
+    "my stomach hurts",
+    "i have a stomach ache",
+    "stomach ache",
+    "my stomach is upset",
+    "my belly hurts"
+   ],
+   "arabic": "بطني بتوجعني",
+   "arabizi": "ba6ni betewga3ni",
+   "respelling": "batni betewga'ni",
+   "gloss": "my belly [is] hurting me",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-pharmacy",
+   "english": [
+    "where is the pharmacy",
+    "i need a pharmacy",
+    "is there a pharmacy nearby",
+    "where's the nearest pharmacy"
+   ],
+   "arabic": "فين أقرب صيدلية؟",
+   "arabizi": "fein a2rab 9aydaleyya?",
+   "respelling": "fein a'rab saydaleyya?",
+   "gloss": "where [is the] nearest pharmacy?",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-doctor",
+   "english": [
+    "i need a doctor",
+    "call a doctor",
+    "i need to see a doctor",
+    "get a doctor please"
+   ],
+   "arabic": "محتاج دكتور",
+   "arabizi": "me7tag doktor",
+   "respelling": "mehtag doktor",
+   "gloss": "[I am] needing [a] doctor",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-painkiller",
+   "english": [
+    "do you have painkillers",
+    "do you have a painkiller",
+    "do you have panadol",
+    "do you have something for pain"
+   ],
+   "arabic": "عندك مسكن؟",
+   "arabizi": "3andak mosakken? / 3andek mosakken?",
+   "respelling": "andak mosakken? / andek mosakken?",
+   "gloss": "you have [a] painkiller? (to a man / to a woman)",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-medicine",
+   "english": [
+    "i need medicine",
+    "i need my medicine",
+    "i need some medicine"
+   ],
+   "arabic": "محتاج دوا",
+   "arabizi": "me7tag dawa",
+   "respelling": "mehtag dawa",
+   "gloss": "[I am] needing medicine",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-dont-worry",
+   "english": [
+    "don't worry i'm fine",
+    "don't worry about me",
+    "i'm alright don't worry"
+   ],
+   "arabic": "أنا كويس، متقلقش / متقلقيش",
+   "arabizi": "ana kwayes, mate2la2sh / mate2la2eesh",
+   "respelling": "ana kwayes, mate'la'sh / mate'la'eesh",
+   "gloss": "I [am] good, don't worry (to a man / to a woman)",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-wash-hands",
+   "english": [
+    "i want to wash my hands",
+    "where can i wash my hands",
+    "i need to wash my hands"
+   ],
+   "arabic": "عايز أغسل إيدي",
+   "arabizi": "3ayez a8sel eedi",
+   "respelling": "ayez aghsel eedi",
+   "gloss": "[I am] wanting [to] wash my hand(s)",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "hl-shower",
+   "english": [
+    "can i take a shower",
+    "i want to shower",
+    "i need a shower",
+    "can i shower"
+   ],
+   "arabic": "ممكن آخد دش؟",
+   "arabizi": "momken a5od dosh?",
+   "respelling": "momken akhod dosh?",
+   "gloss": "possible [that] I take [a] shower?",
+   "tags": [
+    "health"
+   ]
+  },
+  {
+   "id": "tm-now",
+   "english": [
+    "now",
+    "right now",
+    "now please"
+   ],
+   "arabic": "دلوقتي",
+   "arabizi": "dilwa2ti",
+   "respelling": "dilwa'ti",
+   "gloss": "now",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-later",
+   "english": [
+    "later",
+    "later on",
+    "maybe later",
+    "we'll do it later"
+   ],
+   "arabic": "بعدين",
+   "arabizi": "ba3deen",
+   "respelling": "ba'deen",
+   "gloss": "later",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-not-now",
+   "english": [
+    "not now",
+    "not right now",
+    "not at the moment"
+   ],
+   "arabic": "مش دلوقتي",
+   "arabizi": "mesh dilwa2ti",
+   "respelling": "mesh dilwa'ti",
+   "gloss": "not now",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-today",
+   "english": [
+    "today",
+    "for today",
+    "today then"
+   ],
+   "arabic": "النهارده",
+   "arabizi": "ennaharda",
+   "respelling": "ennaharda",
+   "gloss": "the day this (today)",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-tomorrow",
+   "english": [
+    "tomorrow",
+    "by tomorrow",
+    "tomorrow then"
+   ],
+   "arabic": "بكرة",
+   "arabizi": "bokra",
+   "respelling": "bokra",
+   "gloss": "tomorrow",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-yesterday",
+   "english": [
+    "yesterday",
+    "it was yesterday",
+    "since yesterday"
+   ],
+   "arabic": "امبارح",
+   "arabizi": "embare7",
+   "respelling": "embareh",
+   "gloss": "yesterday",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-day-after",
+   "english": [
+    "the day after tomorrow",
+    "day after tomorrow",
+    "after tomorrow"
+   ],
+   "arabic": "بعد بكرة",
+   "arabizi": "ba3d bokra",
+   "respelling": "ba'd bokra",
+   "gloss": "after tomorrow",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-tonight",
+   "english": [
+    "tonight",
+    "this evening",
+    "later tonight"
+   ],
+   "arabic": "النهارده بالليل",
+   "arabizi": "ennaharda bel leil",
+   "respelling": "ennaharda bel leil",
+   "gloss": "today at night",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-morning",
+   "english": [
+    "in the morning",
+    "this morning",
+    "the morning"
+   ],
+   "arabic": "الصبح",
+   "arabizi": "e99ob7",
+   "respelling": "essobh",
+   "gloss": "the morning",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-tomorrow-morning",
+   "english": [
+    "tomorrow morning",
+    "in the morning tomorrow",
+    "early tomorrow"
+   ],
+   "arabic": "بكرة الصبح",
+   "arabizi": "bokra e99ob7",
+   "respelling": "bokra essobh",
+   "gloss": "tomorrow the morning",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-what-time",
+   "english": [
+    "what time is it",
+    "what's the time",
+    "do you know the time",
+    "what time is it now"
+   ],
+   "arabic": "الساعة كام؟",
+   "arabizi": "essa3a kam?",
+   "respelling": "essa'a kam?",
+   "gloss": "the hour [is] how many?",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-when",
+   "english": [
+    "when",
+    "when is it",
+    "at what time",
+    "what time"
+   ],
+   "arabic": "إمتى؟",
+   "arabizi": "emta?",
+   "respelling": "emta?",
+   "gloss": "when?",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-leave-when",
+   "english": [
+    "what time do we leave",
+    "when do we leave",
+    "what time are we going",
+    "when are we going"
+   ],
+   "arabic": "هنمشي الساعة كام؟",
+   "arabizi": "hanemshi essa3a kam?",
+   "respelling": "hanemshi essa'a kam?",
+   "gloss": "we will leave [at] the hour how many?",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-wake-when",
+   "english": [
+    "what time do we wake up",
+    "when do we wake up",
+    "what time should i wake up"
+   ],
+   "arabic": "هنصحى الساعة كام؟",
+   "arabizi": "han9a7a essa3a kam?",
+   "respelling": "hansaha essa'a kam?",
+   "gloss": "we will wake [at] the hour how many?",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-coming",
+   "english": [
+    "i'm coming",
+    "coming",
+    "i'll be right there",
+    "coming right now",
+    "i'm on my way"
+   ],
+   "arabic": "جاي حالا",
+   "arabizi": "gay 7alan",
+   "respelling": "gay halan",
+   "gloss": "coming right away",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-late",
+   "english": [
+    "it's late",
+    "it's getting late",
+    "it's late now"
+   ],
+   "arabic": "الوقت اتأخر",
+   "arabizi": "elwa2t et2a5ar",
+   "respelling": "elwa't et'akhar",
+   "gloss": "the time got late",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-week",
+   "english": [
+    "i'm staying for a week",
+    "i'll be here for a week",
+    "one week",
+    "for a week"
+   ],
+   "arabic": "أنا قاعد أسبوع",
+   "arabizi": "ana 2a3ed esboo3",
+   "respelling": "ana a'ed esboo'",
+   "gloss": "I [am] staying a week",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-two-weeks",
+   "english": [
+    "i'm staying for two weeks",
+    "i'll be here for two weeks",
+    "two weeks",
+    "for two weeks"
+   ],
+   "arabic": "أنا قاعد أسبوعين",
+   "arabizi": "ana 2a3ed esbo3ein",
+   "respelling": "ana a'ed esbo'ein",
+   "gloss": "I [am] staying two weeks",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "tm-next-week",
+   "english": [
+    "next week",
+    "the coming week",
+    "by next week"
+   ],
+   "arabic": "الأسبوع الجاي",
+   "arabizi": "el esboo3 eggay",
+   "respelling": "el esboo' eggay",
+   "gloss": "the coming week",
+   "tags": [
+    "time"
+   ]
+  },
+  {
+   "id": "pr-wifi-password",
+   "english": [
+    "what's the wifi password",
+    "wifi password",
+    "what is the wi-fi password",
+    "what's the password for the wifi",
+    "can i have the wifi password"
+   ],
+   "arabic": "باسورد الواي فاي إيه؟",
+   "arabizi": "password el wifi eh?",
+   "respelling": "password el wifi eh?",
+   "gloss": "the wifi password [is] what?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-wifi",
+   "english": [
+    "is there wifi",
+    "do you have wifi",
+    "is there internet",
+    "do you have internet"
+   ],
+   "arabic": "فيه واي فاي؟",
+   "arabizi": "fih wifi?",
+   "respelling": "fih wifi?",
+   "gloss": "there [is] wifi?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-charger",
+   "english": [
+    "do you have a charger",
+    "can i borrow a charger",
+    "i need a charger",
+    "do you have an iphone charger",
+    "charger"
+   ],
+   "arabic": "معاك شاحن؟ / معاكي شاحن؟",
+   "arabizi": "ma3ak sha7en? / ma3aki sha7en?",
+   "respelling": "ma'ak shahen? / ma'aki shahen?",
+   "gloss": "with you [is there a] charger? (to a man / to a woman)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-charge-phone",
+   "english": [
+    "i need to charge my phone",
+    "where can i charge my phone",
+    "my phone needs charging",
+    "can i charge my phone"
+   ],
+   "arabic": "محتاج أشحن الموبايل",
+   "arabizi": "me7tag ash7an el mobile",
+   "respelling": "mehtag ashhan el mobile",
+   "gloss": "[I am] needing [to] charge the mobile",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-battery-dead",
+   "english": [
+    "my phone died",
+    "my battery is dead",
+    "my phone is dead",
+    "my battery died"
+   ],
+   "arabic": "الموبايل فصل شحن",
+   "arabizi": "el mobile fa9al sha7n",
+   "respelling": "el mobile fasal shahn",
+   "gloss": "the mobile cut out [of] charge (the battery died)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-sim",
+   "english": [
+    "where can i buy a sim",
+    "where can i buy a sim card",
+    "i need a sim card",
+    "i need a local sim",
+    "where can i get a sim card"
+   ],
+   "arabic": "أشتري خط منين؟",
+   "arabizi": "ashtery 5a6 menein?",
+   "respelling": "ashtery khat menein?",
+   "gloss": "I buy a line from where? (a SIM card)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-photo-together",
+   "english": [
+    "can we take a picture together",
+    "let's take a picture",
+    "can i take a picture with you",
+    "let's take a photo together",
+    "can we take a photo"
+   ],
+   "arabic": "ممكن ناخد صورة مع بعض؟",
+   "arabizi": "momken na5od 9oora ma3a ba3d?",
+   "respelling": "momken nakhod soora ma'a ba'd?",
+   "gloss": "possible [that] we take a picture with each other?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-photo",
+   "english": [
+    "can i take a picture",
+    "can i take a photo",
+    "is it okay to take a picture"
+   ],
+   "arabic": "ممكن أصور؟",
+   "arabizi": "momken a9awwar?",
+   "respelling": "momken asawwar?",
+   "gloss": "possible [that] I photograph?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-number",
+   "english": [
+    "what's your number",
+    "can i have your number",
+    "give me your phone number",
+    "what is your phone number"
+   ],
+   "arabic": "ممكن رقمك؟",
+   "arabizi": "momken ra2amak? / momken ra2amek?",
+   "respelling": "momken ra'amak? / momken ra'amek?",
+   "gloss": "possible your number? (to a man / to a woman)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-whatsapp",
+   "english": [
+    "do you have whatsapp",
+    "are you on whatsapp",
+    "do you use whatsapp"
+   ],
+   "arabic": "عندك واتساب؟",
+   "arabizi": "3andak whatsapp? / 3andek whatsapp?",
+   "respelling": "andak whatsapp? / andek whatsapp?",
+   "gloss": "you have WhatsApp? (to a man / to a woman)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-call-me",
+   "english": [
+    "call me",
+    "give me a call",
+    "call me later",
+    "phone me"
+   ],
+   "arabic": "كلمني / كلميني",
+   "arabizi": "kallemni / kallemeeni",
+   "respelling": "kallemni / kallemeeni",
+   "gloss": "talk to me (call me) (to a man / to a woman)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-outlet",
+   "english": [
+    "where can i plug this in",
+    "where is the outlet",
+    "is there a socket",
+    "where's the power outlet"
+   ],
+   "arabic": "فين الفيشة؟",
+   "arabizi": "fein el feesha?",
+   "respelling": "fein el feesha?",
+   "gloss": "where [is] the socket?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-atm",
+   "english": [
+    "where is an atm",
+    "i need an atm",
+    "where is the nearest atm",
+    "is there an atm nearby"
+   ],
+   "arabic": "فين أقرب ماكينة صرف؟",
+   "arabizi": "fein a2rab makanet 9arf?",
+   "respelling": "fein a'rab makanet sarf?",
+   "gloss": "where [is the] nearest withdrawal machine? (ATM)",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-exchange",
+   "english": [
+    "where can i exchange money",
+    "i need to change money",
+    "where can i change dollars",
+    "money exchange"
+   ],
+   "arabic": "أغير فلوس فين؟",
+   "arabizi": "a8ayyar floos fein?",
+   "respelling": "aghayyar floos fein?",
+   "gloss": "I change money where?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "pr-wake-me",
+   "english": [
+    "can you wake me up",
+    "please wake me up",
+    "wake me up please",
+    "wake me up in the morning"
+   ],
+   "arabic": "ممكن تصحيني؟",
+   "arabizi": "momken te9a77eeni?",
+   "respelling": "momken tesahheeni?",
+   "gloss": "possible [that] you wake me?",
+   "tags": [
+    "practical"
+   ]
+  },
+  {
+   "id": "bye-goodbye",
+   "english": [
+    "goodbye",
+    "bye",
+    "bye bye",
+    "good bye"
+   ],
+   "arabic": "مع السلامة",
+   "arabizi": "ma3a essalama",
+   "respelling": "ma'a essalama",
+   "gloss": "with the safety (goodbye)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-see-tomorrow",
+   "english": [
+    "see you tomorrow",
+    "see you tomorrow then",
+    "i'll see you tomorrow"
+   ],
+   "arabic": "أشوفك بكرة",
+   "arabizi": "ashoofak bokra / ashoofek bokra",
+   "respelling": "ashoofak bokra / ashoofek bokra",
+   "gloss": "I see you tomorrow (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-see-later",
+   "english": [
+    "see you later",
+    "see you soon",
+    "catch you later",
+    "see you"
+   ],
+   "arabic": "أشوفك بعدين",
+   "arabizi": "ashoofak ba3deen / ashoofek ba3deen",
+   "respelling": "ashoofak ba'deen / ashoofek ba'deen",
+   "gloss": "I see you later (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-goodnight",
+   "english": [
+    "good night",
+    "goodnight",
+    "night",
+    "nighty night",
+    "have a good night"
+   ],
+   "arabic": "تصبح على خير / تصبحي على خير",
+   "arabizi": "te9ba7 3ala 5eir / te9ba7i 3ala 5eir",
+   "respelling": "tesbah ala kheir / tesbahi ala kheir",
+   "gloss": "may you wake up upon good (good night) (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-goodnight-all",
+   "english": [
+    "good night everyone",
+    "goodnight all",
+    "good night everybody",
+    "good night guys"
+   ],
+   "arabic": "تصبحوا على خير",
+   "arabizi": "te9ba7o 3ala 5eir",
+   "respelling": "tesbaho ala kheir",
+   "gloss": "may you all wake up upon good (good night, everyone)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-goodnight-reply",
+   "english": [
+    "good night to you too",
+    "goodnight to you as well",
+    "and good night to you"
+   ],
+   "arabic": "وانت من أهله / وانتي من أهله",
+   "arabizi": "w enta men ahlo / w enti men ahlo",
+   "respelling": "w enta men ahlo / w enti men ahlo",
+   "gloss": "and you [are] of its people (the reply to good night) (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-take-care",
+   "english": [
+    "take care",
+    "take care of yourself",
+    "be careful",
+    "look after yourself"
+   ],
+   "arabic": "خلي بالك من نفسك",
+   "arabizi": "5alli balak men nafsak / 5alli balek men nafsek",
+   "respelling": "khalli balak men nafsak / khalli balek men nafsek",
+   "gloss": "keep your mind on yourself (take care) (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-miss-you",
+   "english": [
+    "i'll miss you",
+    "i will miss you",
+    "i'm going to miss you",
+    "i'm gonna miss you"
+   ],
+   "arabic": "هتوحشني / هتوحشيني",
+   "arabizi": "hatew7ashni / hatew7asheeni",
+   "respelling": "hatewhashni / hatewhasheeni",
+   "gloss": "you will make me miss you (I'll miss you) (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-miss-you-all",
+   "english": [
+    "i'll miss you all",
+    "i will miss you all",
+    "i'm going to miss everyone",
+    "i'll miss everyone"
+   ],
+   "arabic": "هتوحشوني",
+   "arabizi": "hatew7ashooni",
+   "respelling": "hatewhashooni",
+   "gloss": "you all will make me miss you (I'll miss you all)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-great-time",
+   "english": [
+    "i had a great time",
+    "i had a wonderful time",
+    "i really enjoyed it",
+    "it was wonderful",
+    "i enjoyed myself"
+   ],
+   "arabic": "انبسطت أوي",
+   "arabizi": "enbasa6t awi",
+   "respelling": "enbasatt awi",
+   "gloss": "I got very happy (I had a great time)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-thanks-everything",
+   "english": [
+    "thank you for everything",
+    "thanks for everything",
+    "thank you for all of it"
+   ],
+   "arabic": "شكرا على كل حاجة",
+   "arabizi": "shokran 3ala kol 7aga",
+   "respelling": "shokran ala kol haga",
+   "gloss": "thanks for every thing",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-come-back",
+   "english": [
+    "i will come back",
+    "i'll be back",
+    "i'll visit again",
+    "i'll come back again"
+   ],
+   "arabic": "هرجع تاني إن شاء الله",
+   "arabizi": "harga3 tani inshallah",
+   "respelling": "harga' tani inshallah",
+   "gloss": "I will return again, if God wills",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-visit-us",
+   "english": [
+    "come visit us",
+    "you should visit us",
+    "come visit me",
+    "you must visit us"
+   ],
+   "arabic": "لازم تيجوا تزورونا",
+   "arabizi": "lazem tegoo tzoroona",
+   "respelling": "lazem tegoo tzoroona",
+   "gloss": "you all must come visit us",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-have-to-go",
+   "english": [
+    "i have to go",
+    "i need to go",
+    "i must go now",
+    "i should go",
+    "i have to leave"
+   ],
+   "arabic": "لازم أمشي",
+   "arabizi": "lazem amshi",
+   "respelling": "lazem amshi",
+   "gloss": "[I] must go (lit. walk)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-love-you",
+   "english": [
+    "i love you",
+    "love you",
+    "i love you so much"
+   ],
+   "arabic": "بحبك",
+   "arabizi": "ba7ebbak / ba7ebbek",
+   "respelling": "bahebbak / bahebbek",
+   "gloss": "I love you (to a man / to a woman)",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-love-you-all",
+   "english": [
+    "i love you all",
+    "love you all",
+    "i love you guys",
+    "i love you all so much"
+   ],
+   "arabic": "بحبكم",
+   "arabizi": "ba7ebbokom",
+   "respelling": "bahebbokom",
+   "gloss": "I love you all",
+   "tags": [
+    "goodbye"
+   ]
+  },
+  {
+   "id": "bye-say-hi",
+   "english": [
+    "say hi to everyone for me",
+    "give my regards to everyone",
+    "say hello to everyone",
+    "send my love to everyone"
+   ],
+   "arabic": "سلملي على الكل / سلميلي على الكل",
+   "arabizi": "sallemli 3ala el koll / sallemeeli 3ala el koll",
+   "respelling": "sallemli ala el koll / sallemeeli ala el koll",
+   "gloss": "greet for me everyone (to a man / to a woman)",
+   "tags": [
+    "goodbye"
    ]
   }
  ]

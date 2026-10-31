@@ -25,7 +25,7 @@ def back_translate(arabic: str) -> str:
     req = urllib.request.Request(URL, data=json.dumps(body).encode("utf-8"),
                                  headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=120) as resp:
-        return json.loads(resp.read())["message"]["content"].strip().replace("\n", " ").replace("\t", " ")
+        return json.loads(resp.read())["message"]["content"].replace("/no_think", "").strip().replace("\n", " ").replace("\t", " ")
 
 
 entries = json.loads(PHRASEBOOK.read_text(encoding="utf-8"))["entries"]
