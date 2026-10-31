@@ -39,6 +39,27 @@ enum ScriptGuard {
         text.unicodeScalars.contains(where: isArabic)
     }
 
+    /// For the session log only (D23: on a failed answer the log records the raw
+    /// model text). Arabic-script code points and bidi controls become \u{XXXX}
+    /// escapes, so nothing in the log file renders as Arabic (D5) and the exact
+    /// text can still be decoded afterwards; newlines become \n so one answer
+    /// stays on one log line.
+    static func escapeForLog(_ text: String) -> String {
+        var out = ""
+        for scalar in text.unicodeScalars {
+            if isArabic(scalar) || bidiControls.contains(scalar.value) {
+                out += "\\u{" + String(scalar.value, radix: 16, uppercase: true) + "}"
+            } else if scalar == "\n" {
+                out += "\\n"
+            } else if scalar == "\r" {
+                continue
+            } else {
+                out.unicodeScalars.append(scalar)
+            }
+        }
+        return out
+    }
+
     /// Removes Arabic-script code points and bidi controls, then collapses the
     /// whitespace the removal leaves behind.
     static func clean(_ text: String) -> String {

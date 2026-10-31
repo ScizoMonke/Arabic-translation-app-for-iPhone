@@ -26,7 +26,7 @@ struct ConversationView: View {
             TheirHalf(lines: model.topLines)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             StatusBar(showingPackSheet: $showingPackSheet)
-            MyHalf(lines: model.bottomLines)
+            MyHalf(lines: model.bottomLines, isComposing: model.isComposing)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .sheet(isPresented: $showingPackSheet) {
@@ -90,17 +90,28 @@ struct TheirHalf: View {
 }
 
 /// Bottom half: for each thing he said, the English heard, the Egyptian to say
-/// in Latin letters (largest), and its literal meaning (D13).
+/// in Latin letters (largest), the meaning check (D13, D20), and a small tag
+/// saying whether it came from the phrasebook or the model (D22).
 struct MyHalf: View {
     let lines: [BottomLine]
+    let isComposing: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("YOU SAY")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .padding(.horizontal)
-                .padding(.top, 8)
+            HStack(spacing: 6) {
+                Text("YOU SAY")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                if isComposing {
+                    ProgressView()
+                        .controlSize(.mini)
+                    Text("working out the Egyptian")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal)
+            .padding(.top, 8)
             ScrollViewReader { proxy in
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 14) {
@@ -113,10 +124,16 @@ struct MyHalf: View {
                                 Text(line.latin)
                                     .font(.system(size: isNewest ? 34 : 22, weight: .bold))
                                     .foregroundStyle(isNewest ? Color.primary : Color.secondary)
-                                Text("Means: \(line.gloss)")
+                                Text(line.gloss)
                                     .font(.callout)
                                     .italic()
                                     .foregroundStyle(.secondary)
+                                Text(line.source)
+                                    .font(.caption2.weight(.semibold))
+                                    .foregroundStyle(.secondary)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 2)
+                                    .background(Capsule().strokeBorder(Color.secondary.opacity(0.5)))
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .id(line.id)
@@ -206,7 +223,7 @@ struct SetupView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Egypt Talk")
                     .font(.largeTitle.bold())
-                Text("One-time setup, at home on Wi-Fi. This downloads the speech model (about 950 MB) and keeps it on the phone. After setup the app needs no internet. Keep the app open and the phone awake until it says it is ready.")
+                Text("One-time setup, at home on Wi-Fi. Two downloads: the speech model (about 950 MB) and the Egyptian model (about 2.5 GB). Both stay on the phone, and after setup the app needs no internet. Keep the app open and the screen on until it says it is ready. If a download stops, tap Try again: it carries on from where it stopped. The Egyptian model downloads only over Wi-Fi, never mobile data.")
                     .font(.body)
 
                 switch model.phase {
@@ -214,19 +231,19 @@ struct SetupView: View {
                     ProgressView("Checking what is already on the phone")
                 case .needsDownload:
                     Button {
-                        Task { await model.downloadModel() }
+                        Task { await model.downloadModels() }
                     } label: {
-                        Label("Download speech model", systemImage: "arrow.down.circle")
+                        Label("Download the two models", systemImage: "arrow.down.circle")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
-                case .downloading(let fraction):
+                case .downloading(let label, let fraction):
                     ProgressView(value: fraction) {
-                        Text("Downloading: \(Int(fraction * 100))%")
+                        Text("\(label): \(Int(fraction * 100))%")
                     }
-                case .preparing:
-                    ProgressView("Preparing the model for this phone. The first time can take several minutes.")
+                case .preparing(let message):
+                    ProgressView(message)
                 case .failed(let message):
                     Text(message)
                         .foregroundStyle(.red)
@@ -265,8 +282,11 @@ struct TranslationPackSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Apple Arabic pack (optional backup)")
+            Text("Apple Arabic pack (needed for the meaning check)")
                 .font(.headline)
+            Text("Under each Egyptian sentence, Egypt Talk shows what it means in English, translated back by Apple on this phone. Without this pack that line says the check is unavailable.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
             Text(statusText)
                 .font(.callout)
                 .foregroundStyle(.secondary)
