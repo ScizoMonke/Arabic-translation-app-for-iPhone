@@ -13,7 +13,7 @@ HERE = Path(__file__).resolve().parent
 PHRASEBOOK = HERE.parents[1] / "app" / "EgyptTalk" / "Resources" / "phrasebook.json"
 OUT = HERE / "crosscheck_raw.tsv"
 
-SYSTEM = ("You translate Egyptian Arabic (Cairo dialect) into English. When a line holds two forms "
+SYSTEM = ("You translate Egyptian Arabic (Cairo dialect) into English. Each line is something a man visiting his family in Cairo says to them, or to a driver or shopkeeper. When a line holds two forms "
           "separated by '/', they are the same phrase said to a man and to a woman; translate it once. "
           "'...' marks a blank the speaker fills in. Reply with only the English translation, on one line.")
 

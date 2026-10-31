@@ -363,10 +363,10 @@
     "i came from overseas",
     "i flew in from abroad"
    ],
-   "arabic": "أنا جاي من بره",
-   "arabizi": "ana gay men barra",
-   "respelling": "ana gay men barra",
-   "gloss": "I [am] coming from outside (from abroad)",
+   "arabic": "أنا جاي من بره مصر",
+   "arabizi": "ana gay men barra ma9r",
+   "respelling": "ana gay men barra masr",
+   "gloss": "I [am] coming from outside Egypt",
    "tags": [
     "intro"
    ]
@@ -2370,10 +2370,10 @@
     "talk into my phone",
     "say it to the phone"
    ],
-   "arabic": "اتكلم في الموبايل / اتكلمي في الموبايل",
-   "arabizi": "etkallem fel mobile / etkallemi fel mobile",
-   "respelling": "etkallem fel mobile / etkallemi fel mobile",
-   "gloss": "speak into the mobile (to a man / to a woman)",
+   "arabic": "اتكلم والموبايل هيترجم / اتكلمي والموبايل هيترجم",
+   "arabizi": "etkallem wel mobile hayetargem / etkallemi wel mobile hayetargem",
+   "respelling": "etkallem wel mobile hayetargem / etkallemi wel mobile hayetargem",
+   "gloss": "speak and the mobile will translate (to a man / to a woman)",
    "tags": [
     "meta"
    ]
@@ -2552,10 +2552,10 @@
     "let me check the phone",
     "hold on let me translate"
    ],
-   "arabic": "ثانية أترجم",
-   "arabizi": "sanya atargem",
-   "respelling": "sanya atargem",
-   "gloss": "a second, I translate",
+   "arabic": "ثانية واحدة، هترجم",
+   "arabizi": "sanya wa7da, hatargem",
+   "respelling": "sanya wahda, hatargem",
+   "gloss": "one second, I will translate",
    "tags": [
     "meta"
    ]
@@ -2786,10 +2786,10 @@
     "how much to go there",
     "how much to go to"
    ],
-   "arabic": "بكام لحد هناك؟",
-   "arabizi": "bekam le7add hnak?",
-   "respelling": "bekam lehadd hnak?",
-   "gloss": "for how much until there?",
+   "arabic": "توصلني لحد هناك بكام؟",
+   "arabizi": "tewa99alni le7add hnak bekam?",
+   "respelling": "tewassalni lehadd hnak bekam?",
+   "gloss": "you take me until there for how much? (to the driver)",
    "tags": [
     "directions"
    ]
@@ -2802,10 +2802,10 @@
     "can you take me here",
     "take me here"
    ],
-   "arabic": "وديني العنوان ده",
-   "arabizi": "waddeeni el 3enwan da",
-   "respelling": "waddeeni el enwan da",
-   "gloss": "take me [to] this address",
+   "arabic": "وصلني العنوان ده",
+   "arabizi": "wa99alni el 3enwan da",
+   "respelling": "wassalni el enwan da",
+   "gloss": "take me [to] this address (to the driver)",
    "tags": [
     "directions"
    ]
@@ -2996,10 +2996,10 @@
     "that's a lot",
     "it's expensive"
    ],
-   "arabic": "غالي أوي",
-   "arabizi": "8ali awi",
-   "respelling": "ghali awi",
-   "gloss": "very expensive",
+   "arabic": "ده غالي أوي",
+   "arabizi": "da 8ali awi",
+   "respelling": "da ghali awi",
+   "gloss": "this [is] very expensive",
    "tags": [
     "shopping"
    ]
@@ -3759,10 +3759,10 @@
     "when do we wake up",
     "what time should i wake up"
    ],
-   "arabic": "هنصحى الساعة كام؟",
-   "arabizi": "han9a7a essa3a kam?",
-   "respelling": "hansaha essa'a kam?",
-   "gloss": "we will wake [at] the hour how many?",
+   "arabic": "هنقوم الساعة كام؟",
+   "arabizi": "han2oom essa3a kam?",
+   "respelling": "han'oom essa'a kam?",
+   "gloss": "we will get up [at] the hour how many?",
    "tags": [
     "time"
    ]
@@ -3807,10 +3807,10 @@
     "one week",
     "for a week"
    ],
-   "arabic": "أنا قاعد أسبوع",
-   "arabizi": "ana 2a3ed esboo3",
-   "respelling": "ana a'ed esboo'",
-   "gloss": "I [am] staying a week",
+   "arabic": "أنا هقعد أسبوع",
+   "arabizi": "ana ha23od esboo3",
+   "respelling": "ana ha'od esboo'",
+   "gloss": "I will stay a week",
    "tags": [
     "time"
    ]
@@ -3823,10 +3823,10 @@
     "two weeks",
     "for two weeks"
    ],
-   "arabic": "أنا قاعد أسبوعين",
-   "arabizi": "ana 2a3ed esbo3ein",
-   "respelling": "ana a'ed esbo'ein",
-   "gloss": "I [am] staying two weeks",
+   "arabic": "أنا هقعد أسبوعين",
+   "arabizi": "ana ha23od esbo3ein",
+   "respelling": "ana ha'od esbo'ein",
+   "gloss": "I will stay two weeks",
    "tags": [
     "time"
    ]
@@ -3937,10 +3937,10 @@
     "i need a local sim",
     "where can i get a sim card"
    ],
-   "arabic": "أشتري خط منين؟",
-   "arabizi": "ashtery 5a6 menein?",
-   "respelling": "ashtery khat menein?",
-   "gloss": "I buy a line from where? (a SIM card)",
+   "arabic": "أشتري خط موبايل منين؟",
+   "arabizi": "ashtery 5a6 mobile menein?",
+   "respelling": "ashtery khat mobile menein?",
+   "gloss": "I buy a mobile line from where? (a SIM card)",
    "tags": [
     "practical"
    ]
