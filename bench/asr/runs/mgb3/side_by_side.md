@@ -10,6 +10,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حالة إنسانية استضلتنا في البرنامج ده ناس كتير منهم الفنان، الصحفي، سواء التاكسي والمحامي وغيرهم كتير اضطرينا نعرضهم لضغوط كتير زي ما بيحصل في الواقع بالزبط عشان نعرف قد إيه وما بيحبوا البلد دي تعالوا نشوف النهاردة حيحصل
 - **large-v3-transcribe** [WER 0.98]: اشتركوا في القناة
 - **large-v3-translate**: F**k Dear viewer This show is not just a comedy show This is a human state We met many people in this show including artists, journalists, taxi drivers, lawyers and many others We had to put them under a lot of pressure just like what happens in reality to know how much they love this country Let's see what will happen today
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.20]: عزيزي المشاهد البرنامج ده مش برنامج كوميديو بس ده حالة إنسانية استضلتنا في البرنامج ده ناس كتير منهم الفنان الصحفي سواء التكسي والمحامي وغيرهم كتير اضطرينا نعرضهم لضغوط كتير زي ما بيحصل في الواقع بالزبط عشان نعرف قد إيه هما بيحبوا البلد دي تعالوا نشوف النهاردة حيحصل
 
 ## mgb3_s0_r0019 (27.01 s)
 
@@ -18,6 +19,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: أنا كلامي كده واضح؟ تمام. مستر عسام؟ كيف أنا؟ أنت ليه مش عايز تسمع كلامي؟ ما أنا أسمع كلام حضرتك على إيه؟ الشولاني مش بتاعتي. أنت ليك إصحاب زباط عايزين يعرف معلومات عنهم؟ لأ طبع. يعني إيه زباطي؟ هان هي زباط وليه على وسائل نيادة وقريبي. أكيدك حاجة.
 - **large-v3-transcribe** [WER 0.40]: انا كلامك كده واضح؟ تمام مصر عسام ايه فاهم انت ليه مش عايز تسمع كلام جاكي؟ بيقولك ليه مش عايز تسمع كلامي؟ معنى اسمع كلام حضرتك على ايه؟ شغلانة مش بتاعتي انت ليك اصحاب زباط عايزين اعرف معلومات عنهم؟ لا طبعا يعني ايه زباطي؟ هم ايه زباط وليه على وسائل نيادة وقريبي اكيد ديك حاجة
 - **large-v3-translate**: Am I clear? Yes Mr. Osam Yes Why don't you want to listen to Jackie? Why don't you want to listen to me? What do you mean I want to listen to you? This is none of my business Do you have any officers who want to know more about them? No, of course not What officers? I have officers, security guards, close ones Of course I have
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.35]: انا كلامك كده واضح؟ تمام مستر عسام ايه فادي؟ انت ليه مش عايز تسمع كلام جاكي؟ بيقولك ليه مش عايز تسمع كلامي؟ ما معنى أسمع كلام حضرتك على إيه؟ شغلانة مش بتاعتي إنت ليك أصحاب زباط عايزين نعرف معلومات عنهم؟ لا طبعاً يعني إيه زباطي هانيه زباط وليه على وسائل نيادة وقريبي أكيد ديك حاجة
 
 ## mgb3_s0_r0038 (25.09 s)
 
@@ -26,6 +28,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: إحنا كنا في الحضيقة الدولية في مدينة نصر دي أحلى صور في الدنيا على فكرة بيون فؤاد دي أحلى صور سنة بس باجد أنت عارف إن هو في استفتانة أخد أحسن ممثل السنة اللي فاتت ظلم هو من اللي ظلم خلاص أوكي أنا قلت كلمة وخلاص اللي حصل حصل ده صاحبك وزميلك ووشقيقك
 - **large-v3-transcribe** [WER 0.29]: احنا هنا كنا في الحديقة الدولية في مدينة نصر دي احلى صور في الدنيا على فكرة يا بايون فؤاد دي احلى صور السنة بس باجد انت عارف ان هو في استفتانة اخد احسن ممثل السنة اللي فاتت ظلم هو مين اللي ظلم خلاص اوكي انا قلت كلمة وخلاص اللي حصل حصل ده صاحبك وزميلك وشقيئك
 - **large-v3-translate**: We were here in the National Park in Nasser city By the way, this is the best picture in the world Do you know that he was the best actor last year? He's a traitor Who's a traitor? Ok, I said a word and that's it This is your friend and colleague
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.23]: عشان اللي ت... لا إنت أول إنت إنت... إحنا هنا كنا في الحديقة الدولية في مدينة نصر دي أحلى صور في الدنيا على فكرة يا بايون فؤاد دي أحلى صور السنة بس باجد إنت عارف إن هو في استفتانة أخد أحسن ممثل السنة اللي فاتت... ظلم هو مين اللي ظلم خلاص أوكي أنا قولت كلمة وخلاص إنه حصل حصل ده صاحبك وزميلك ووشقيقك حبيبي
 
 ## mgb3_s0_r0057 (28.03 s)
 
@@ -34,6 +37,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: انا لسة بجرب فى الامد الرسال الجمهورى انا بحب الفيلم السلامة صحبه انا بحب الفيلم اسمه حب الفيلم ايه؟ في حاج يسمى انا بحب الفيلم وما الاسم
 - **large-v3-transcribe** [WER 1.00]: (empty output)
 - **large-v3-translate**: Do you want to try it again? No, I'm still trying. I came here for the film Salama Ya Sahabi, so I said Ahmed Salama Salama Ya Sahabi. I came here because I liked the film. Why did you choose Salama Ya Sahabi? Because there is a Salama in the film. Yes, because there is a Salama, so Ahmed Salama. Yes, exactly. Is there a Salama in any Salama? No, I like the film Salama Ya Sahabi. What is the name of the film?
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 1.09]: لا الحقيقة أنا لسه بجرب يعني لسه في الأول بحاول يعني لا أصلا أنا جيت على فيلم سلامة يا صاحبي فقلت أحمد سلامة سلامة يا صاحبي بس فجائش هنا مثلا عجبني الفيلم إيه دخل أحمد سلامة في سلامة يا صاحبي عشان فيه سلامة يا صاحبي الفيلم آه عشان فيه سلام فأحمد سلامة آه بالضبط فأنا أسف يعني إيه السلامة الجمهوري فأحمد السلامة الجمهوري يعني أي سلامة فيه سلامة ولا إيه بقى ما بقى لا أنا بحب الفيلم اسمه سلامة يا صاحبي بحب الفيلم إيه فيه حاجة اسمها بحب الفيلم مال الفيلم ومال الاسم إيه بحب الفيلم إيه فيه حاجة اسمها بحب الفيلم مال الفيلم ومال الاسم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفيلم إيه بحب الفي
 
 ## mgb3_s0_r0077 (29.06 s)
 
@@ -42,6 +46,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: للأطفال اللي مبيكلوش الحاجات دي مبيكلوش الجبنة إزاي نخليهم يأكلوا الحاجات دي بشكل لطيف طيب هنعمل النهاردة لنشون اللحمة لنشون اللحمة مقادير وسهلة وبسيطة ليه طريقتين في التسوية إما أنا أسويه في الفرن طليفه في ورق زبدة وبعد كده في فويل ودخله الفرن أو إن أنا بسلقه على النار وفي الحالة دي ما بيبقاش ورق زبدة لإنه طبيعي هو هيترى ورق الزبدة من المية فبيكون clean film أو plastic stretch وفوقيها الورق الفرن
 - **large-v3-transcribe** [WER 0.31]: للاطفال اه اللي ما بيكلوش الحاجات دي ما بيكلوش الجبنة ازاي نخليهم ياكلوا الحاجات دي بشكل لطيف. طيب هنعمل النهاردة لانشون اللحمة. لانشون اللحمة مقاديره سهلة وبسيطة. لي طريقتين في التسوية. اما انا اسويه في الفرن طالفه في ورق آآ زبدة وبعد كده في دخلوا الفرن او ان انا بسلوقه على النار وفي الحالة دي ما بيبقاش ورق زبدة لانه طبيعي ان هو هيترى آآ ورق الزبدة من مية فبيكون او وفوقيها الورق الفضل.
 - **large-v3-translate**: for children who don't eat these things, they don't eat cheese, how can we make them eat these things in a nice way? Ok, today we are going to make meat luncheon. Meat luncheon is an easy and simple recipe. It has two ways to make it. Either I make it in the oven, wrap it in a sheet of butter and then in foil, and put it in the oven, or I boil it on the stove, and in this case, it doesn't become a sheet of butter, because of course it will drain the butter from the water, so it will be cling film, or plastic stretch, and on top of it is the oven paper.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.31]: للاطفال اه اللي ما بيكلوش الحاجات دي ما بيكلوش الجبنة ازاي نخليهم ياكلوا الحاجات دي بشكل لطيف طيب هنعمل النهار ده لانشون اللحمة لانشون اللحمة مقاديره سهلة وبسيطة ليه طريقتين في التسوية اما انا اسويه في الفرن اطلفه في ورق اه زبدة وبعد كده في فويل هو دخله الفرن او ان انا بسلوقه على النار وفي الحالة دي ما بيبقاش ورق زبدة لانه طبيعي ان هو هيترى اه ورق الزبدة من المية فبيكون كلينج فيلم او البلاستيك الستريتش وفوقيها الورق الفويل
 
 ## mgb3_s0_r0096 (27.01 s)
 
@@ -50,6 +55,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: يفقد قوامه الكيس نفسه فانا خايفة انه هو يدخل اجزاء منه في الاكل تمام بصي هو مبدئيا بس لما نيجي نجيب الحاجات دي الاكياس دي لازم تكون بس يا بصي الاكياس دي كمان زي ما بنقول كده في البلاستيك لازم يكون رقم خمسة الاكياس اللي احنا نستخدمها في الاكلات رقم خمسة بالتحديد عشان يكون صحيا بالزبط فهتلاقي مكتوب على الباكت اللي انتي بتجيبي منه
 - **large-v3-transcribe** [WER 0.24]: يفقد قوامه الكيس نفسه فأنا خايفة ان هو يدخل اجزاء منه في الاكل. تمام بص يا هو مبدئيا بس لما نيجي نجيب الحاجات دي الاكياس دي لازم تكون بس يا بص الاكياس دي كمان زي ما بنقول كده في البلاستيك لازم يكون رقم خمسة. الاكياس اللي احنا هنستخدمها في الاكلات. رقم خمسة بالتحديد عشان يكون صحي يعني. بالزبط. فهتلاقي مكتوب على الباكت اللي انت بتجيبي منه.
 - **large-v3-translate**: It loses its consistency, so I'm afraid it will get into parts of the food. Okay, look, initially, when we bring these bags, they should be... Look, these bags, as we say in plastic, should be number 5. The bags that we use in food. Number 5, specifically, so that it's clean. Exactly, so you'll find it written on the package that you bring it from.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.17]: يفقد قوامه الكيس نفسه ف أنا خايفة إن هو يدخل أجزاء منه في الأكل تمام بص يا هو مبدئياً بس لما نيجي نجيب الحاجات دي الأكياس دي لازم تكون بس يا بص الأكياس دي كمان زي ما بنقول كده في البلاستيك لازم يكون رقم خمسة الأكياس اللي إحنا هنستخدمها في الأكلات رقم خمسة بالتحديد عشان يكون صحي يعني بالزبط ف هتلاقي مكتوب على الباكت اللي إنتي بتجيبي منه
 
 ## mgb3_s0_r0115 (24.06 s)
 
@@ -58,6 +64,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: دي حاجة دي حاجة على حسب ما تحبه طبعا دي يعني مش اي حد يحبها بس هي فكرة موجودة وممكن ناحية تبقى بكريمة الشوكولاتة بالشكل ده تبقى على قل مش كلها كريمة شوكولاتة او نعمل بقى كريمة شوكولاتة اللي احنا عملناها قبل كده اللي نعملها في البيت القفية بكتير جدا هي دي اللي نعملها وساعتها بقى براحة كوية
 - **large-v3-transcribe** [WER 0.18]: دي حاجة على حسب ما تحبو طبعا دي يعني مش اي حد يحبها بس هي فكرة موجودة وممكن نحية تبقى بكريمة شوكولاتة بالشكل ده تبقى على قل مش كلها كريمة شوكولاتة او نعمل بقى كريمة شوكولاتة اللي احنا عملناها قبل كده لنعملها في البيت القافية بكتير جدا هي دي اللي نعملها وساعتها بقى براحتكو يعني
 - **large-v3-translate**: This is something that you like, of course, it means that no one likes it, but it is an idea that exists, and it can be a side with chocolate cream In this way, at least it is not all chocolate cream, or we make chocolate cream that we made before to make it at home This is what we do, and at the same time it is very good
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.14]: دي حاجة على حسب ما تحبه طبعاً دي يعني مش أي حد يحبها بس هي فكرة موجودة وممكن نحية تبقى بكريمة شوكولاتة بالشكل ده تبقى على قل مش كلها كريمة شوكولاتة أو نعمل بقى كريمة شوكولاتة اللي إحنا عملناها قبل كده اللي نعملها في البيت القافية بكتير جداً هي دي اللي نعملها وساعتها بقى براحتكو يعني
 
 ## mgb3_s0_r0135 (14.98 s)
 
@@ -66,6 +73,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: فيها بكتريا حلوة جدا يعني الفرنسويين دايما من العادات اللي عندهم بعد الأكل يروحوا طلعين طبق الجبنة علشان يأكلوا منه طبق الجبنة ليه الجبنة فيها بكتريا حلوة بتساعد جدا على الهضم بعد الأكل
 - **large-v3-transcribe** [WER 0.14]: فيها بكتيريا حلوة جدا يعني الفرنسويين دايما من العادات اللي عندهم بعد الأكل يروحوا طلعين طبق الجبنة علشان يأكلوا منه طبق الجبنة ليه؟ الجبنة فيها بكتيريا حلوة بتساعد جدا على الهضم بعد الأكل
 - **large-v3-translate**: It has a very good bacteria, French people always take a layer of cheese to eat after eating Cheese has a very good bacteria that helps digestion after eating
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.14]: فيها بكتيريا حلوة جدا يعني الفرنسويين دايما من العادات اللي عندهم بعد الأكل يروحوا طلعين طبق الجبنة علشان يأكلوا منه طبق الجبنة ليه الجبنة فيها بكتيريا حلوة بتساعد جدا على الهضم بعد الأكل
 
 ## mgb3_s0_r0154 (22.02 s)
 
@@ -74,6 +82,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: بنعود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون لكل سيدة هتفهم كويس قوي المثل اللي أنا بقوله ده إحنا كسيدات تخيلونا كده لما بنكون داخلين أي محل فيه ملابس كتير أو فساتين كتير فيه سيدة هتدخل هتقلف الفساتين كلها وحتختار فستان وتخرج واحدة تانية هتبص على الفساتين كلها وممكن ما تشتريش أي محل
 - **large-v3-transcribe** [WER 0.21]: بنعود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون لكل سيدة هتفهم كويس قوي المثل اللي أنا بقوله ده إحنا كسيدات تخيلونا كده لما بنكون داخلين أي محل فيه ملابس كتير أو فستين كتير فيه سيدة هتدخل هتقلف الفستين كلها وحتختار فستان وتخرج واحدة تانية هتبص على الفستين كلها وممكن ما تشتريش أي
 - **large-v3-translate**: We are back with you once again on the air directly and the section of the living room. For each lady, you will understand the example that I am telling you. We, as ladies, imagine that when we are entering any place, there are many clothes or many defects. A lady will enter, she will remove all the defects and choose two clothes and leave. Another lady will look at all the defects and may not buy anything.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.14]: بنعود مع حضراتكم مرة أخرى على الهواء مباشرة وفقرة الصالون لكل سيدة هتفهم كويس قوي المثل اللي أنا بقوله ده إحنا كسيدات تخيلونا كده لما بنكون داخلين أي محل فيه ملابس كتير أو فساتين كتير فيه سيدة هتدخل هتقلف الفساتين كلها وهتختار فستان وتخرج واحدة تانية هتبص على الفساتين كلها وممكن ما تشتريش أي شيء
 
 ## mgb3_s0_r0173 (14.98 s)
 
@@ -82,6 +91,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: لكن النوع اللي انتي بتقولي عليه ده الراجل اللي هو آآ آآ اللي يعني زي غدا بيبقى من قبل ما يتجوز من قبل ما يخطب متعدد العلاقات وده هو راجل آآ عنده بنقول اي شهية عالية للمرأة آآ بيحب ستات كتير
 - **large-v3-transcribe** [WER 0.24]: لكن النوع اللي انت بتقولي عليه ده الراجل اللي هو يعنيه زي غدا بيبقى من قبل ما يتجوز من قبل ما يخطب متعدد العلاقات وده هو راجل عنده شهية عالية للمرأة بيحب ستات كتير
 - **large-v3-translate**: But the type that you are talking about is the man who is single before he marries, before he has many relationships. And this is a man who has a high reputation for women. He loves many women.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.24]: لكن النوع اللي انت بتقولي عليه ده الراجل اللي هو اللي يعنيه زي غدا بيبقى من قبل ما يتجوز ما قبل ما يخطب بمتعدد العلاقات وده هو راجل عنده بنقول إيه شهية عالية للمرأة بيحب ستات كتير
 
 ## mgb3_s0_r0193 (27.01 s)
 
@@ -90,6 +100,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: قصة، ما هو جملة الوحدة مش كفية يعني ده تسلسل سبحان الله ربنا خلقنا به كده مفروض كلنا بننضج روتيني يعني في اللغة بس لو الطفل تركيزه تمام مش معنى كين نكون تأخر لغة ويبقى في مشكلة في التركيز بس غالبا ما بيصحوا بعد ان الطفل ما بيبقاش مركز في مخارج الحروف وفي الكلمات ان يسمعها من اهله فبيتأخر لغوية بعض الاطفال بيكون عندهم اندفاع يعني بمعنى ان هو ممكن
 - **large-v3-transcribe** [WER 0.18]: ما هو الجملة الوحدة مش كفاية يعني ده تسلسل سبحان الله ربنا خلقنا بيه كده مفروض كلنا بننضج روتيني يعني في اللغة بس لو الطفل تركيزه تمام مش معنى كده انه يكون تأخر اللغة ويبقى فيه مشكلة في التركيز بس غالبا ما بيصاحبوا بعد ان الطفل ما بيبقاش مركز في مخارج الحروف وفي الكلمات وانه يسمعها من اهله فبيتأخر لغويا بعض الاطفال بيكون عندهم اندفاع يعني بمعنى ان هو ممكن ان هو
 - **large-v3-translate**: The whole sentence is not enough. This is a sequence. We are all supposed to speak routinely in the language. But if the child is fully focused, it doesn't mean that if he is late in his language, there will be a problem in his concentration. But most of the time, they argue that the child is not focused on the letters and the words he hears from his parents. So he is late in his language. Some children have defense, in the sense that he may...
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.21]: ما هو الجملة الوحدة مش كفاية يعني ده تسلسل سبحان الله ربنا خلقنا بيه كده مفروض كلنا بننضج روتيني يعني في اللغة بس لو الطفل تركيزه تمام مش معنى كده إنه يكون يتأخر اللغة ويبقى فيه مشكلة في التركيز بس غالباً ما بيصاحبوا بعض إن الطفل ما بيبقاش مركز في مخارج الحروف وفي الكلمات إنه يسمعها من أهله فبيتأخر لغوياً بعض الأطفال بيكون عندهم اندفاع يعني بمعنى إن هو ممكن إن هو بيبقى
 
 ## mgb3_s0_r0212 (28.03 s)
 
@@ -98,6 +109,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: زي كده زي كده زي كده. الأم تيجي تشتجيرك يقولك الوالد ده هو لسه في الشهر الخامس أو السلسة يا دكتور لحد ما تولد هه حركة كتير قاوي ما بيسكتش. أنا والده قبله اتنين ثلاثة لكن ده بالذات كان فيه كارثة ما بيسكتش دايما الحركة بتاعته جوا تقبيط أي صوت جنبه أي صوت يسمعه يبقى يحس لفي حركة جنبه قاوي حتى جوا الرحم بتاع الأم. ثم يبدأ يطلع للدنيا بقى الطفل ده مجرد ما يبدأ يبقاله صوت هتلاقيه الأسرة
 - **large-v3-transcribe** [WER 0.24]: الام تجي تشتجرك ويقولك الولد ده هو لسه في الشهر الخامس او السالسة دكتور لحد ما تولد هو حركة كتير قوي ما بيسكتش انا والده قابله اتنين تلاتة لكن ده بالذات كان فيه كارثة ما بيسكتش دايما الحركة بتاعته جوه تخبيط اي صوت جنبه اي صوت يسمعه يبقى يبدأ يحسن فيه حركة جامدة قوي حتى جوه الرحم بتاع الام ويبدأ يطلع للدنيا بقى الطفل ده مجرد ما يبدأ يبقاله صوت هتلاقيه الاسرة ما بتنامش بسبب
 - **large-v3-translate**: The mother comes to you and tells you that this boy is still in the 5th or 6th month until he is born He moves a lot, he doesn't shut up I have a mother before him, 2 or 3, but this one in particular was a disaster He doesn't shut up, always his movement inside him is suffocating Any sound next to him, any sound he hears, he begins to feel that there is a strong movement inside him Even inside the mother's womb When he begins to go out into the world, this child, as soon as he begins to have a voice You will find that the family does not sleep together
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.23]: الأم تجي تشتجرك ويقولك الولد ده هو لسه في الشهر الخامس أو السالسة يا دكتور لحد ما تولد هو حركة كتير قوي ما بيسكتش أنا أنا والدة قابله اتنين تلاتة لكن ده بالذات كان فيه كارثة ما بيسكتش دايماً الحركة بتاعته جوه تخبيط أي صوت جنبه أي صوت يسمعه يبقى يبدأ يحسن فيه حركة جامدة قوي حتى جوه الرحم بتاع الأم إذا يبدأ يطلع للدنيا بقى الطفل ده مجرد ما يبدأ يبقاله صوت هتلاقيه الأسرة ما بتنامش بسابق
 
 ## mgb3_s0_r0231 (27.9 s)
 
@@ -106,6 +118,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: الحركة الوحدة ناخد جزء جزء كده الحركة الوحدة ممكن تنته جعنها ايه؟ الولد ده كل يوم بكرسة في المدرسة في البيت كله متكسر بيساوي الحركة بتاعته دايما في خسائر في البيت دايما في كوارث دايما بيساوي حركته في قسور في جروح زي ما قلنا في دايما كرسة موجودة جوه البيت الأب دايما حاجاته مرمية الأم دايما الأدوات بتاعتها مرمية في الشارع الأوراق مهمة
 - **large-v3-transcribe** [WER 0.42]: الحركة الوحدة ممكن تتجانها ايه؟ الولد ده كل يوم بكارثة في المدرسة في البيت الأول البيت كله متكسر بيساووا بساووا الحركة بتاعتهم دايما فيه خسائر في البيت دايما فيه كوارث دايما بسبب حركته فيه كسور فيه جروح زي ما قلنا فيه دايما كارثة موجودة جوة البيت القب دايما حاجاته مرمية الأم دايما الأدوات بتاعتها مرمية في الشارع الأوراق مهمة
 - **large-v3-translate**: The only movement, we take a part and a part like this, the only movement, what can you do about it? This boy, every day with a disaster, in school, in the first house, the whole house is broken, because of his movement There are always losses in the house, there are always disasters, because of his movement, there are castles, there are wounds, as we said There is always a disaster inside the house, the father always has his things thrown away, the mother always has her equipment thrown away on the street The important papers
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.27]: الحركة الوحدة ناخد جزء وجزء كده الحركة الوحدة ممكن تنتج عنها ايه الولد ده كل يوم بكارثة في المدرسة في ال في البيت الاول البيت كله متكسر بيساوي بيساوي الحركة بتاعته دايماً فيه خسائر في المدرس في ال في البيت دايماً فيه كوارث دايماً بيساوي حركته فيه كسور فيه جروح زي ما قلنا فيه دايماً كارثة موجودة جوه البيت الاب دايماً حاجاته مرمية الام دايماً ال ال ال ال ادوات بتاعتها مرمية في الشارع الاوراق مهمة
 
 ## mgb3_s0_r0250 (20.99 s)
 
@@ -114,6 +127,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: موضة على مر السنين اللي فاتت دي كلها ما نقول موضة بيباني المسألة كأنها يعني مسألة خاصة كده بالناس عندها طرف أنها تشتري أحدث حاجة وحاجات موقعة كده مصممين أزياء على فترة مش ضروري أنت لو عندك زوء أصلا في اللبس بتعدري تختري لبسك بتنسقيه مع بعضه بتثبطي دولابك
 - **large-v3-transcribe** [WER 0.74]: موضة على مر السنين اللي فاتت دي كلها لما نقول موضة بتبني المسألة كأنها مسألة خاصة بالناس عندها ترف أنها تشتري أحدث حاجة وحاجات موقعة من مصممين أزياء على فكرة مش ضروري أنت لو عندك زوق أصلا في اللبس بتحضري تختاري لبسك بتنصقيه مع بعضه بتزبطي دولابك
 - **large-v3-translate**: fashion over the past years When we say fashion, it seems like it's a matter of people having the confidence to buy something new and things that are expected from fashion designers By the way, it's not necessary if you have a taste in clothes you can choose your clothes you can match them together you can check your dress
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.76]: على مر السنين اللي فاتت دي كلها لما نقول موضة بتبني المسألة كأنها يعني مسألة خاصة كده بالناس عندها ترف إنها تشتري أحدث حاجة وحاجات موقعة كده من مصممين أزياء وحاجات كده على فكرة مش ضروري إنتي إنتي لو عندك زوق أصلاً في اللبس بتحضري تختاري لبسك بتتنصقيه مع بعضه بتزبطي دولابك
 
 ## mgb3_s0_r0270 (28.03 s)
 
@@ -122,6 +136,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: تمام تسلم ايه؟ ألف شكر تسلم ايديك اللي افكار نفسها دي بجي بيها منين؟ لا يعني نهانت ربنا يعني وانتي عادة بتعملي المجموعة دي بتقولي يا طب انا هعمل الترحة طب انا هعمل الاسم انا ممكن اكون معاملة تصميم معين اجي اشتغل قليق تصميم تاني يعني اجي ان انا بتكرف في التصميم في التنفيذ بقى نفسه وانا بصموم با وانا بركبها كميل يعني انا بركب الحاجة ممكن ان انا هعملها استرابة واحدة مثلا او بالعرض او بالطول لا اه
 - **large-v3-transcribe** [WER 0.36]: تمام تسلم ايه? الف شكر. اه تسلم ايه ديك? الافكار نفسها دي بتجيبيها من ايه? لا يعني من عند ربنا. يعني وانت عادة بتعملي المجموعة دي بتقولي طب انا هعمل الترحة طب انا هعمل. انا ممكن اكون معاملة تصميم معين اجي اشتغل اليه تصميم تاني. يعني اجي ان انا بتكر في التصميم. في التنفيذ بقى نفسه. وانا بركبها كمان. اه. يعني وانا بركب الحاجة ممكن ان انا هعملها استنبا واحدة مسلا او بالعرضة او بالطول لا اه.
 - **large-v3-translate**: Okay, thank you very much. Tell me, where do you get your ideas from? From God. So, when you're doing this group, you tell me, I'm going to do the sketch, I'm going to do the... I might be doing a certain design, I come to work, I find another design. I mean, I come to think about the design. In the production, it's different. In the production, it's different. And I put it together. I mean, when I put together something, I might do it in one stand, for example, or in the exhibition, or in length, no.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.25]: تمام تسلميه ألف شكر تسلم إليك اللي أفكار نفسها دي بتجيبيها منين؟ لا يعني من عند ربنا يعني وإنت قاعدة بت بتعملي المجموعة دي بتقولي طب أنا هعمل الترحة طب أنا هعمل أنا ممكن أكون ما عاملة تصميم معين أجي أشتغل أليق تصميم تاني يعني أجي إن أنا أبتكر في التصميم في التنفيذ بقى نفسه في التنفيذ بقى نفسه في الموضوع بيختلف وأنا بركبها كمان يعني وأنا بركب الحاجة ممكن إن أنا هعملها أستنبا واحدة مثلاً أو بالعرضة أو بالطول لا
 
 ## mgb3_s0_r0289 (25.98 s)
 
@@ -130,6 +145,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: علشان كنا نجيالكو النهاردة هتكلم في موضوع مثير جدا وهي حلقة خاصة عن الجمال هنتكلم عن الجمال والاهتمام بالجمال من خلال الطب مع حوار خاص ولقاء خاص مع دكتورة أمال محروس أخاصية الجلدية والليزر والتجميل الأساليب الطبية الحديثة الليزر اهتمامنا ببشرتنا
 - **large-v3-transcribe** [WER 0.17]: علشان كده أنا جايلكم النهاردة هتكلم في موضوع مثير جدا وهو حلقة خاصة عن الجمال هنتكلم عن الجمال والاهتمام بالجمال من خلال الطب مع حوار خاص ولقاء خاص مع دكتورة أمال محروس أخصائية الجلدية والليزر والتجميل الأسليب الطبية الحديثة الليزر اهتمامنا ببشرتنا
 - **large-v3-translate**: That's why I'm here today to talk about a very interesting topic, which is a special episode about beauty. We will talk about beauty and the interest in beauty through medicine with a special dialogue and a special meeting with Dr. Amal Mahroos, who is a specialist in skin care, laser and beauty, and the latest medical methods, including laser, and our interest in our skin.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.13]: علشان كده أنا جايلكم النهاردة هتكلم في موضوع مثير جدا وهو حلق هي حلقة خاصة عن الجمال هنتكلم عن الجمال والإهتمام بالجمال من خلال الطب مع حوار خاص ولقاء خاص مع دكتورة أمال محروس أخصائية الجلدية والليزر والتجميل الأسليب الطبية الحديثة الليزر إهتمامنا ببشرتنا
 
 ## mgb3_s0_r0308 (27.01 s)
 
@@ -138,6 +154,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: بالضبطي بشرة. بالضبط. بلاقي البنات وهو عندها 25 سنة. انت لو بسيطت البشرة. بدأ التجاية تظهر. انا بحس ان هاي مش 25 سنة. لا. فعلا ومنطقة حوالي العين دي اكتر منطقة بيبدأ فيها تجاية تظهر عشان هي منطقة حساسة شوية. فالجلسات للبشرة سوية ومن سن ممكن تبدأ من سن كام. معديش سن. يعني من العشرين انا ممكن ابدأ جلسات. معديش مشكلة خالص. بالعكس احنا نبدأ الكير بدري عشان الناس تبقى فاعمة برضو. الكير بتاعي كل ما ببدأ
 - **large-v3-transcribe** [WER 0.26]: البشرة. بالزبط. تمام? بنلاقي البنات وهي عندها خمسة وعشرين سنة انت لو بسيطت البشرة. بدأت تجايد تظهر. انا بحس ان هاي مش خمسة وعشرين سنة لا. فعلا ومنطقة حوالي العين دي اكتر منطقة بيبدأ فيها تجايد بتظهر عشان هي منطقة حساسة شوية. امم. فالجلسات للبشرة السوية ومن سن ممكن تبدأ من سن كم? ما عنديش سن. يعني من العشرين انا ممكن ابدأ جلسات. ما عنديش مشكلة خالص. بالعكس احنا نبدأ الكير بدري. امم. عشان الناس تبقى فاعمة برضو. الكير بتاعي كل ما ببدأ فيه بدري انا بحفز على بشرتي بحفز على شباب.
 - **large-v3-translate**: Exactly, we find girls who are 25 years old, if you touch their skin, I feel that this is not 25 years old Indeed, and the area around the eye is the most area that starts to have wrinkles because it is a sensitive area So, the sessions for the skin are equal and from what age can you start? I don't have an age, I mean from 20 I can start the sessions, I don't have a problem at all On the contrary, we start the care early, so that people can be informed as well My care is that whenever I start early, I protect my skin, I protect the youth
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 1.00]: بالضبط بيلاقي البنات وهي عندها خمسة وعشرين سنة إنت لو بسيطي البشرة بدأت تجعيد تظهر أنا بحس إن هاي مش خمسة وعشرين سنة لا فعلاً ومنطقة حوالي العين دي أكتر منطقة بيبدأ فيها تجعيد بتظهر عشان هي منطقة حساسة شوية فالجلسات للبشرة السوية ومن سن ممكن تبدأ من سن كم ما عنديش سن يعني من العشرين أنا ممكن أبدأ جلسات ما عنديش مشكلة خالص بالعكس إحنا نبدأ الكير بدري عشان الناس تبقى فاعمة برضو الكير بتاعي كل ما ببدأ فيه بدري أنا بحفظ على بشريتي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شبابي بحفظ على شباي بحفظ على شباي بحفظ على شباي بحفظ على شب
 
 ## mgb3_s0_r0328 (28.93 s)
 
@@ -146,6 +163,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: ومن خلاله بنقدر نحدد الأسباب لمنطقة السمن. لو إدلنا نحدد الأسباب بطريقة كويسة وطريقة واضحة نبدأ نعالج. لو أنا الأسباب مش واضحة بالنسبالي بيحصل اللي هي القصة اللي بتكلم عليها اللي أنا بحاول ما بنزلش. تعم كده وده إن شاء الله هي تكلم علي في الموقع الأول. لازم تقييم مفصل. ما عادش بقى تقييم زي الأول بالكلام. يعني أنا وزني كذا وطولي كذا وعايز أخس. لا ما فيش الكلام. لا إحنا عندنا فيه أكهزة. في حاجة اسمها طبيب مختصف. في حاجة اسمها تقييم
 - **large-v3-transcribe** [WER 0.66]: بحدد درجة السمن عند حضرتك قديه ومن خلاله بنقدر نحدد الأسباب لمنطقة السمن لو قدرنا نحدد الأسباب بطريقة كويسة وطريقة واضحة نبدأ نعالج لو أنا الأسباب مش واضحة بالنسبة لي بيحصل اللي هي القصة اللي بتكلم عليها اللي أنا بحاول ما بنزلش ده إن شاء الله هي تكلم عليك لازم تقييم مفصل ما عادش بقى التقييم زي الأول بالكلام يعني أنا وزني كذا وطولي كذا وعايز أخس لا ما فيش الكلام ده في حاجة اسمها طبيب مختص
 - **large-v3-translate**: and determine the level of the semen in your body and through it we can determine the causes of the semen If we can determine the causes in a good and clear way we can start treating If the causes are not clear for me the story I'm talking about happens because I try not to go down and I hope this will help you in the future You need a detailed evaluation It doesn't have to be the same as the first one I have a certain weight and a certain length and I want to lose weight No, there is no such thing There is something called a specialist doctor who will give you an evaluation
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.73]: بحدد درجة السمن عند حضرتك قديه ومن خلاله بنقدر نحدد الاسباب لمنطقة السمن لو قدرنا نحدد الاسباب بطريقة كويسة وطريقة واضحة نبدأ نعالج صح لو أنا الاسباب مش واضحة بالنسبة لي بيحصل اللي هي القصة اللي هي بتكلم عليها اللي أنا بحاول ما بنزلش طيب كده وده إن شاء الله هيتكلم عليك في الموقف اللي عليك إبه لازم القيم الأول تمام لازم تقييم مفصل ما عادش بقى التقييم زي الأول بالكلام يعني أنا وزني كذا وطولي كذا وعايز أخس لا ما فيش الكلام ده لا إن إحنا عندنا فيه أجهزة في حاجة اسمها طبيب مختص في حاجة اسمها تقييم في حاجة اسمها
 
 ## mgb3_s0_r0347 (25.98 s)
 
@@ -154,6 +172,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: مفيش داعي عطار بالحكس احنا ممكن نساعد بعض ازاي؟ لما عندكش مانع ممكن امليكي وانتي تكتبي كده نخلص اسرع واحنا الاتنين استفيد قلت ايه؟ طيب إبراحيم صباح الخير صباح الخير
 - **large-v3-transcribe** [WER 0.38]: مافيش داعي على الطريق بالعكس احنا ممكن نساعد بعض ازاي لو ما عندكش مانع ممكن امليكي وانت تكتمل كدا نخلص اسرع واحنا الاتنين نستفيد قلت ايه طيب ابراهيم صباح الخير
 - **large-v3-translate**: We can help each other. How? If you don't mind, I can help you and you can write. That way we can both benefit. What did you say? Okay. Ibrahim, good morning. Good morning. Good morning.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.24]: ما فيش داعي على الطريق بالعكس إحنا ممكن نساعد بعضا إزاي لو ما عندكش مانع ممكن أمليكي وإنت تكتمي كده نخلص أسرع وإحنا الاتنين نستفيد قلت إيه طيب إبراهيم صباح الخير صباح الخير صباح الخير إيه
 
 ## mgb3_s0_r0366 (22.02 s)
 
@@ -162,6 +181,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: علشان تراجع الارقام لان احنا بنشتغل بالموليد بنترح الموليد والوفيات وبنجمع على اللي موجود ودي عملية احصائية تقديرية انما مهم جدا ان احنا نشوف الواقع الفعلي كل عشر سنوات عشان ندر بس كده ولا كده هي طبعا الموليد سنويا معروف انها اتنين مليون وستة من عشرة
 - **large-v3-transcribe** [WER 0.37]: عشر سنين. اه. علشان تراجع الارقام لان احنا بنشتغل اه بالموليد بنطرح الموليد ولوفيات وبنجمع على الموجود ودي عملية احصائية تقديرية. انما مهم جدا نحن نشوف الواقع الفعلي كل عشر سنوات عشان نقدر بس كده ولا كده. اه. هي طبعا الموليد سنويا معروف انها اتنين مليون وستة من عشرة.
 - **large-v3-translate**: because we work with the births and the deaths, and we add them to what is present and this is a mathematical process, but it is very important to see the actual reality every 10 years to be able to measure this or that. Of course, the births annually are known to be 2.6 million
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.27]: سنين. اه. علشان تراجع الارقام لان احنا بنشتغل اه بالموليد بنطرح الموليد ولو وفيات وبنجمع على اللي موجود وده عملية احصائية تقديرية انما مهم جدا ان احنا نشوف الواقع الفعلي كل عشر سنوات عشان نقدر بس كده ولا كده. اه. هي طبعا الموليد سنويا معروف انها اتنين مليون وستة من عشرة في
 
 ## mgb3_s0_r0386 (28.93 s)
 
@@ -170,6 +190,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: إيه دور المجلس القوامة للسكان في الفترة الحالية. مش ناقص غير إن احنا نتحرك بشكل إيجابي وبمنهج علمي علشان برضو ما نكررش أخطاء المواضيع. النقطة بس يا دكتور عاطف قبل ما نروح لنقطة تانية لحاية كلمت فيها وهي دور الدراما. واحنا كلمنا عن طريق التناول الدراما لموضوع الزيادة السكانية أو إن إزاي الناس تبقى عندها وعي أكتر. لو تكلمنا على إن الانتاج في مصر في الدراما بيدور على المواضيع.
 - **large-v3-transcribe** [WER 0.25]: ايه دور المجلس القوم للسكان في الفترة الحالية مش ناقص غير ان احنا نتحرك بشكل ايجابي وبمنهج علمي علشان برضو ما نكررش اخطاء الماضي النقطة بس يا دكتور عاتف قبل ما نروح لنقطة تانية اللي حياتي اتكلمت فيها وهي دور الدراما واحنا اتكلمنا عن طريق التناول الدراما لموضوع الزيادة السكانية او ان ازاي الناس تبقى عندها واعي اكتر لو اتكلمنا على ان الانتاج في مصر في الدراما بيدور على المواضيع السكانية
 - **large-v3-translate**: What is the role of the Council for the Resistance of the Residents in the current period? It is not a small thing that we are moving in a positive and scientific way so that we do not repeat the mistakes of the past. Dr. Atif, before we go to another point that I will talk about, which is the role of drama. We talked about the way drama is interpreted for the issue of population increase or how people should be more aware of it. If we talk about the fact that production in Egypt, in drama, looks for the topics of drama,
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.25]: إيه دور المجلس لقاومة السكان في الفترة الحالية مش ناقص غير إن إحنا نتحرك بشكل إيجابي وبمنهج علمي علشان ما برضو ما نكررش أخطاء الماضي النقطة بس يا دكتور عاتف قبل ما نروح لنقطة تانية اللي حياتي اتكلمت فيها وهي دور الدراما وإحنا اتكلمنا عن طريق التناول الدراما لموضوع الزيادة السكانية أو إن إزاي الناس تبقى عندها واعي أكتر لو اتكلمنا على إن الإنتاج في مصر في الدراما بيدور على المواضيع الدرامية
 
 ## mgb3_s0_r0406 (23.94 s)
 
@@ -178,6 +199,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: خاصة في ظل السماوات المفتوحة ومواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت تحدي من نوع جديد على مسألة الكتاب الديني وهم كانوا بينقشوا هذه الأمور ورقم 3 برضو في بعض
 - **large-v3-transcribe** [WER 0.41]: خاصة في ظل السماوات المفتوحة والمواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت تحدي من نوع جديد على مسألة الكتاب الديني وهم كانوا بينقشوا هذه الأمور ورقم ثلاثة برضو في بعض
 - **large-v3-translate**: especially in the light of the open ears and social media. These issues, of course, imposed a new kind of challenge on the issue of religious literature, and they were discussing these issues. And number three, there is also some...
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.41]: خاصة في ظل السماوات المفتوحة والمواقع التواصل الاجتماعي فهذه الأمور بطبعها فرضت تحدي من نوع جديد على مسألة الكتاب الديني وهم كانوا بينقشوا هذه الأمور ورقم ثلاثة برضو في بعض
 
 ## mgb3_s0_r0425 (23.04 s)
 
@@ -186,6 +208,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: فيلم تسجيلي اللي هو أصل الحكاية بأصل مسألة الإرهاب أصله إيه فده فيلم تسجيلي عشر ده وديه زاعة أنا أصدي عن الأفلام اللي هي بتدخل للسينما وكده بالضبط الرؤية الطويلة حريك قلت إن السينما دلوقتي أصبحت يمكن ملكش مكان فيها أو هي مش عجباك
 - **large-v3-transcribe** [WER 1.22]: تسجيلي. اه فيلم تسجيلي. اه. اللي هو اه اصل الحكاية. اه. بيقصل مسألة الارهاب اصله ايه. اه. فده فيلم تسجيلي عشر دقايق. تمام هو يعني اه صحيح. اه انا قصدي عن الافلام اللي هي بتدخل للسينما. والكده بالضبط الرؤية الطويلة. اه حريق قلت ان السينما دلوقتي اصبحت اه يمكن ملكش مكان فيها او هي مش عجباك.
 - **large-v3-translate**: It's a documentary film, which is the origin of the story, the origin of the issue of terrorism, so it's a 10-minute documentary film, and it's very interesting. Yes, I mean the films that are included in the cinema, and the long vision. Harik, you said that the cinema now has no place in it, or you don't like it.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 1.28]: تسجيلي اه فيلم تسجيلي اه اللي هو اه اصل الحكاية اه اه بيقصل مسألة الارهاب اصله ايه اه فده فيلم تسجيلي عشر دق و و يوزع يعني اه صحيح اه انا قصدي عن الافلام اللي هي بتدخل للسينما والكده بالضبط الرعاية الطويلة اه حريق قلت ان السينما دلوقتي اصبحت اه يمكن ملكش مكان فيها او هي مش عجباك
 
 ## mgb3_s0_r0444 (22.02 s)
 
@@ -194,6 +217,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: أرجع للدكتورة نجوة البدري برحب بعد الدكتورة نجوة هنعرفكم طبعا وهندي فرصة لعلماءنا الأجلاء يكلمون عن نفسهم دكتور شريف صدقي أهلا بيك دكتور شريف برحب حضرتك ثم الدكتور يحيا إسماعيل ألف سلام عليك دكتور يحيا الأول أنا الحياة حزينة جدا لما شفت إيد حضرتك كده ربما نتكلم عن الموضوع ده لو أنت حابب وأخيرا دكتور سامح
 - **large-v3-transcribe** [WER 0.43]: أرجع للدكتورة نجوة البدري برحبا بها الدكتورة نجوة هنعرفكم طبعا وهندي فرصة لعلماءنا الأجلاء يكلمون عن نفسهم دكتور شريف صدقي أهلا بك دكتور شريف برحبا حضرتك ثم الدكتور يحيا إسماعيل ألف سلام عليك دكتور يحيا الأول أنا حزينة جدا لما شفت إيد حضرتك كده ربما نتكلم عن الموضوع ده لو أنت حابب وأخيرا دكتور سامح
 - **large-v3-translate**: Let's go back to Dr. Najwa Al-Badri, welcome Dr. Najwa We will introduce you and give the opportunity to our scholars to talk about themselves Dr. Sherif Sidqi, welcome Dr. Sherif Then Dr. Yahya Ismail, hello Dr. Yahya I am very sad to see your hand like this Maybe we can talk about this topic if you like And finally Dr. Samih
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.30]: أرجع للدكتورة نجوة البدري برحب بعد الدكتورة نجوة أهلا وسهلا هنعرفكم طبعا وهندي فرصة لعلماءنا الأجلاء يكلمون عن نفسهم دكتور شريف صدقي أهلا بيك دكتور شريف برحب بحضرتك ثم الدكتور يحيى إسماعيل ألف سلام عليك دكتور يحيى الأول أنا يحيى حزينت جدا لما شوفت إيد حضرتك كده ربما نتكلم عن الموضوع ده لو أنت حابب وأخيرا دكتور سامح
 
 ## mgb3_s0_r0464 (28.93 s)
 
@@ -202,6 +226,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: الموهبين والمتفوقين حتى من قبل السنوية العامة لكن مرتبطة دية عايزين نربطها بالمراكز او بالمدارس الاخرى في جميع المحافظات للمتفوقين او للي هما متمين بالعلم والهندسة ووالا فكان عندنا الحقيقة مشروع وما زال والحقيقة ان السيد وزير التعليم الحالي التصبية لانه دكتور براهيم رونيم لانه احنا حنلتق
 - **large-v3-transcribe** [WER 0.34]: المدينة. اللي هي بترعى الطلب الموهوبين والمتفوقين حتى من قبل السنوية العامة. لكن مرتبطة ديت عايزين نربطها بالمراكز او بالمدارس الاخرى في جميع المحافظات للمتفوقين او للي هم مهتمين بالعلم والهندسة واه ولا. كان عندنا الحقيقة مشروع ومازال والحقيقة ان السيد وزير التعليم الحالي اتصب بيه لانه اه الدكتور براهيم رونيم لانه احنا هنلتقى.
 - **large-v3-translate**: in the city to recruit talented and outstanding students even before the general election but this is related to other schools in all the governorates for the outstanding students or for those who are interested in science and engineering We had a project and it is still in progress and the current Minister of Education Dr. Ibrahim Raneem because we are going to meet
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.34]: المدينة. اللي هي بترعى الطلب الموهوبين والمتفوقين حتى من قبل السنوية العامة. لكن مرتبطة ديت عايزين نربطها بالمراكز او بالمدارس الاخرى في جميع المحافظات للمتفوقين او للي هم مهتمين بال بالعلم والهندسة واه ولاه. كان عندنا الحقيقة مشروع وما زال والحقيقة ان السيد وزير التعليم الحالي اتصب بيه لانه اه الدكتور براهيم غنيم لانه احنا هنلتقي
 
 ## mgb3_s0_r0483 (14.98 s)
 
@@ -210,6 +235,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: مردخل الامتحانة سماحة اخرج من الامتحانة انسى كل حاجة جبت درجات وبتحاسب على ايه ادخل مثلا كلية مش بكلية انا فعلا مخلوق ان ادخل حاجة زي كده وادخل كلية للدرجات متحدة
 - **large-v3-transcribe** [WER 0.38]: ما لقيتش ان فيه اي تطور في الفكري خالص لقيت عادي جدا لقيت ان انا بحفظ حاجة بادخل الامتحانة سامحة اخرج من الامتحان انسى كل حاجة جبت درجات وبتحاسب على ايه ادخل مثلا كلية مش كلية لان انا فعلا مخلوق ان ادخل حاجة زي كده وادخل كلية للدرجات المتحدة
 - **large-v3-translate**: I didn't find any improvement in my thinking at all, I found it very normal, I found that I preserve something, I enter the exam, I get out of the exam, I forget everything, I get grades, and what do I count on? I enter a college, not a college because I am really born to enter something like that, I enter a college where grades are challenged.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.34]: ما لقيتش إن في أي تطور في الفكري خالص لقيت عادي جداً لقيت إن أنا بحفظ حاجة بأدخل الامتحانة سامحة أخرج من الامتحان أنسى كل حاجة جبت درجات وبتحاسب على إيه أدخل مثلاً كلية مش الكلية إن أنا إن أنا فعلاً مخلوق إن أنا أدخل حاجة زي كده وأدخل الكلية اللي الدرجات متحددة
 
 ## mgb3_s0_r0502 (28.03 s)
 
@@ -218,6 +244,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: يوم 8-10 ويحسبوش آخر 3-4 ايام في ناس بيقولوا لأ ده آخر الشهر يوم 26 والناس بتكتهد وما حيتش عارف الصح فيه هو التصنيف يوم 2-6 وبالتاني ان كان فيه مباراة وكان فيه اقتراح من بعض الدول الافريقية وقفة عليه مكتب ان تنفيذ وبعد هذه المباراة الوقفة الدولية اعتقدوا يوم 6-7 اعتقد
 - **large-v3-transcribe** [WER 0.57]: يوم من 8 الى 10 وبيحسبوش اخر 3 اربع ايام فيه ناس بيقولوا لا اخر الشهر يوم 26 والناس بتكتهد ومحدش عارف الصح فيه هو التصنيف يوم 6 وبالتالي انه كان شي مباراة وكان فيه اقتراح من بعض الدول الافريقية وقف عليه مسا بن تنفيذ وبعد هذه المباراة الوقفة الدولية اعتقدت يوم 6 او 7 6 اعتقد
 - **large-v3-translate**: It was completed on the 18th, and they don't count the last 3 or 4 days. Some people say no, it's the last month, the 26th. And people are working hard, and no one knows what's right or wrong. It was designated on the 26th. The second thing is that it was a struggle, and there was a suggestion from some African countries to stop Massa Ben Tafiz after this struggle. The government thought it was on the 6th, and on the 7th, they thought it was on the 6th.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.46]: يوم من 8 الى 10 و بيحسبوش اخر 3 اربع تيام في ناس بيقولوا لا ده اخر الشهر يوم 26 والناس بتجتهد و ما حدش عارف اللي صح فيه هو هو التصنيف يوم 6 و بالتاني ان كان شي مباراة و كان شي اقتراح من بعض الدول الافريقية واقفة عليه ماتسا بن تنفيذ وبعد هذه المباراة ال الواقفة ال دولية اعتقدت يوم 6 و سبعة 6 اعتقدت
 
 ## mgb3_s0_r0522 (24.96 s)
 
@@ -226,6 +253,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: انه ياخد فرصاته وبالتالي انا شايف انه يعني الفترة دي كانت محتاجة ان انا كون موجود معهم بشكل كبير بعد ان شاء الله المباراة بإذن الله هنبدأ نفكر في موضوع الايبة ونشوف الانتخابات انا اعمل فيه ان شاء الله نعم فيه عاجات كثيرة لزمان خمسة شكات فرنسا لا والمدرب برضو المسألة محتاجة عادة نظر كان يعني برضو لاجمة فنية
 - **large-v3-transcribe** [WER 0.33]: ان اه ياخذ فرصته. وبالتالي انا شايف انه يعني الفترة دي كانت محتاجة ان انا اكون موجود معهم بشكل اه كبير. بعد ان شاء الله المباراة باسم الله هنبدأ نفكر في موضوع الايمة ونشوف الانتخابات هنعمل في ايه ان شاء الله. ان انا في حاجات كتير لسه ما خلصتش كثيرا صعب. لا والمدرب الحقيقة المدرب برضو المسألة محتاجة عادة نظر. كان يعني برضو لاجمة فنية.
 - **large-v3-translate**: to take their chances. Therefore, I think that during this period I needed to be with them in a big way. After the match, God willing, we will continue to think about Ayman and see what other choices we can make. There are still many things to be done. The coach needs to reconsider. He was also an artist.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.32]: ان ياخد فرصته وبالتالي انا شايف انه يعني الفترة دي كانت محتاجة ان انا اكون موجود معهم بشكل اه كبير بعد ان شاء الله المباراة بإذن الله هنبدأ نفكر في موضوع الايمة ونشوف الانتخابات هنعمل في ايه ان شاء الله لما فيه حاجات كتير جدا ما خلصتش كثيرا صعب لا والو والو المدرب الحقيقة المدرب برضو المسألة محتاجة عادة نظر كان يعني برضو لاجمة فنية
 
 ## mgb3_s0_r0541 (24.06 s)
 
@@ -234,6 +262,7 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: الجبنة فيها كمام الدهون خصوصا الجبن الصفرة كمام الدهون اللي هو ده ده اللي أنا بقالفه ده كمان حتى لو هو رقم خمسة ملامس الدهون بيتفاعل معاها يبقى أنا باشتري الجبنة وروح البيت جاري أفك الجبنة واشيلا وحطها في علبة بتاعتي ما خليهاش في التلاجة بالبلاستيك ده خدوا بالك
 - **large-v3-transcribe** [WER 0.23]: ده. الجبن ما الجبنة فيها كمية من الدهون خصوصا الجبن الصفراء كمية من الدهون اللي هو ده. ده اللي انا بلف. ده كمان حتى لو هو رقم خمسة ملامس الدهون بيتفاعل معها. يبقى انا بشتري الجبنة واروح البيت جاري افك الجبنة واشيلها واحطها في علبة بتاعتي. ما اخليهاش في التلاجة بالبلاستيك ده. خدوا بال.
 - **large-v3-translate**: The cheese has a lot of fat in it, especially the yellow cheese, the amount of fat, which is this, this, which I am turning, this also, even if it is number five, the touch of the fat interacts with it. So I buy the cheese and go home running, I open the cheese and take it out and put it in my box. Don't leave it in the fridge with this plastic. I take it out and put it in the fridge.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.28]: ده. الجبن ما الجبنة فيها كميام الدهون خصوصا الجبن الصفراء كميام الدهون اللي هو ده ده اللي انا بلفه ده كمان حتى لو هو رقم خمسة ملامس الدهون بيتفاعل معها يبقى انا بشتري الجبنة واروح البيت جاري افك الجبنة واشيلها واحطها في علبة بتاعتي ما اخليهاش في التلاجة بالبلاستيك ده خدوا بالكم
 
 ## mgb3_s0_r0560 (25.98 s)
 
@@ -242,3 +271,4 @@ Per-clip WER (normalized, see summary.md) shown in brackets for transcribe runs.
 - **fw-large-v3-turbo-ct2-translate**: يعني الفرن جنبك عندك فرن وتجولو يحرقولك وممكن بصوا اهو بخلط العسل والزيت كويس مع بعض اهو يختلطوا ببعض كويس ما يعملوش طبقة مفصولة اهو بصوا اهو ادي العسل
 - **large-v3-transcribe** [WER 0.07]: يعني الفرن جنبك عندك فرن واجهوله يحرقهولك. وممكن بصوا اهو بخلط العسل والزيت كويس مع بعض اهو يختلطوا ببعض كويس ما يعملوش طبقة مفصولة. اهو بصوا اهو ادي العسل.
 - **large-v3-translate**: you. I mean, the oven next to you, you have an oven, send it and burn it for you. And maybe look here, I mix the honey and the oil well. Together. Here. They mix well with each other, do not make a separate layer. Look here, this is the honey.
+- **whisper-large-v3-egyptian-arabic-transcribe** [WER 0.07]: يعني الفرن جنبك عندك فرن واجهوله يحرقهولك وممكن بصوا اهو بخلط العسل والزيت كويس مع بعض اهو يختلطوا ببعض كويس ما يعملوش طبقة مفصولة اهو بصوا اهو ادي العسل

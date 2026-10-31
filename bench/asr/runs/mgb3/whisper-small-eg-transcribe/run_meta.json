@@ -1,0 +1,18 @@
+{
+  "model_id": "tawreck-hasaballah/whisper-small-eg",
+  "task": "transcribe",
+  "dataset": "mgb3",
+  "n_clips": 30,
+  "audio_s": 747.02,
+  "wall_s": 98.28,
+  "audio_s_per_wall_s": 7.6,
+  "settings": {
+    "backend": "transformers 5.5.0",
+    "dtype": "float16",
+    "language": "arabic",
+    "num_beams": 5
+  },
+  "python": "3.11.0",
+  "gpu_before_load_mem_util": "682 MiB, 0 %",
+  "command": "asr_bench.py tawreck-hasaballah/whisper-small-eg transcribe mgb3"
+}

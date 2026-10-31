@@ -10,5 +10,6 @@ Instrument check this build: {'wer identical': 0.0, 'wer empty hyp': 1.0, 'cer i
 | fw-large-v3-turbo-ct2-translate | translate | n/a; 0% of letters Latin | n/a; 0% of letters Latin | 0 | 747.02 | 44.01 | 16.98 | faster-whisper 1.2.1 |
 | large-v3-transcribe | transcribe | 0.397 | 0.245 | 1 | 747.02 | 138.05 | 5.41 | faster-whisper 1.2.1 |
 | large-v3-translate | translate | n/a; 100% of letters Latin | n/a; 100% of letters Latin | 0 | 747.02 | 78.4 | 9.53 | faster-whisper 1.2.1 |
+| whisper-large-v3-egyptian-arabic-transcribe | transcribe | 0.387 | 0.230 | 0 | 747.02 | 272.86 | 2.74 | transformers 5.5.0 |
 
 Wall time excludes one warm-up decode of the first clip. GPU: RTX 5070 Ti 16 GB. Settings per run in run_meta.json.
