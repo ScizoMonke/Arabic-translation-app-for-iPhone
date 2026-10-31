@@ -48,6 +48,9 @@ enum StopReason: String, Sendable {
 struct Generation: Sendable {
     let text: String
     let promptTokens: Int
+    /// D37: prompt tokens whose KV entries were already in the cache and were
+    /// not processed again for this request.
+    let reusedTokens: Int
     let newTokens: Int
     let stop: StopReason
     let seconds: Double
@@ -68,6 +71,10 @@ final class LlamaEngine: @unchecked Sendable {
     private var context: OpaquePointer?
     private var vocab: OpaquePointer?
     private var endOfTurn: llama_token?
+    /// D37: exactly the tokens whose keys and values sit in the KV cache of
+    /// sequence 0, in order (positions 0..<count). Empty means the cache must be
+    /// treated as empty.
+    private var cachedTokens: [llama_token] = []
 
     deinit {
         if let context { llama_free(context) }
@@ -80,6 +87,13 @@ final class LlamaEngine: @unchecked Sendable {
     /// description for the session log.
     func load(path: String) async throws -> String {
         try await onQueue { try self.loadOnQueue(path: path) }
+    }
+
+    /// D37: processes the fixed part of every prompt once, so each request
+    /// decodes only what follows it. Returns the token count and seconds for the
+    /// session log.
+    func prime(prefix: String) async throws -> (tokens: Int, seconds: Double) {
+        try await onQueue { try self.primeOnQueue(prefix: prefix) }
     }
 
     func generate(prompt: String, maxNewTokens: Int, sampling: Sampling) async throws -> Generation {
@@ -140,26 +154,102 @@ final class LlamaEngine: @unchecked Sendable {
         return "arch \(arch), \(sizeMB) MB weights, n_ctx \(llama_n_ctx(loadedContext)), \(templateNote), end_of_turn id \(eotText)"
     }
 
-    private func generateOnQueue(prompt: String, maxNewTokens: Int, sampling: Sampling) throws -> Generation {
-        guard let context, let vocab else { throw LlamaError.notLoaded }
-        let started = Date()
-
-        // Each sentence starts from an empty KV cache: one prompt, one answer.
-        llama_memory_clear(llama_get_memory(context), true)
-
+    /// <bos> + text, tokenized the one way every prompt is (see generateOnQueue).
+    private func tokenizePrompt(_ text: String, vocab: OpaquePointer) throws -> [llama_token] {
         // The Gemma template begins with <bos>, and this GGUF says
         // tokenizer.ggml.add_bos_token = False, so the tokenizer will not add it:
         // tokenize without specials added, parse the <start_of_turn> markers as
         // control tokens, and prepend <bos> by hand.
-        var tokens = try tokenize(prompt, vocab: vocab)
+        var tokens = try tokenize(text, vocab: vocab)
         let bos = llama_vocab_bos(vocab)
         if tokens.first != bos {
             tokens.insert(bos, at: 0)
         }
+        return tokens
+    }
+
+    /// Decodes `tokens` at the next free positions of sequence 0 (llama_batch_get_one
+    /// continues from llama_memory_seq_pos_max + 1, llama-batch.cpp at b12020).
+    private func decodeTokens(_ tokens: [llama_token], context: OpaquePointer) throws {
+        var batch = tokens
+        let result = batch.withUnsafeMutableBufferPointer { buffer in
+            llama_decode(context, llama_batch_get_one(buffer.baseAddress, Int32(buffer.count)))
+        }
+        guard result == 0 else { throw LlamaError.decodeFailed(result) }
+    }
+
+    /// Empties the KV cache and the record of it, together, so they can never
+    /// disagree.
+    private func forgetCache(_ memory: OpaquePointer?) {
+        llama_memory_clear(memory, true)
+        cachedTokens = []
+    }
+
+    private func primeOnQueue(prefix: String) throws -> (tokens: Int, seconds: Double) {
+        guard let context, let vocab else { throw LlamaError.notLoaded }
+        let started = Date()
+        let memory = llama_get_memory(context)
+        forgetCache(memory)
+        let tokens = try tokenizePrompt(prefix, vocab: vocab)
+        do {
+            try decodeTokens(tokens, context: context)
+        } catch {
+            forgetCache(memory)
+            throw error
+        }
+        cachedTokens = tokens
+        return (tokens.count, Date().timeIntervalSince(started))
+    }
+
+    private func generateOnQueue(prompt: String, maxNewTokens: Int, sampling: Sampling) throws -> Generation {
+        guard let context, let vocab else { throw LlamaError.notLoaded }
+        let started = Date()
+
+        // The full prompt is tokenized exactly as before D37, so the token
+        // sequence the model sees is the uncached one, always.
+        let tokens = try tokenizePrompt(prompt, vocab: vocab)
         let promptTokens = tokens.count
         guard promptTokens + maxNewTokens <= Int(llama_n_ctx(context)) else {
             throw LlamaError.promptTooLong(promptTokens)
         }
+
+        // D37 reuse: keep the longest run of leading tokens this prompt shares
+        // with what the cache holds (the fixed prefix, primed at load; also the
+        // whole prompt on the retry), drop everything after it, decode the rest.
+        // At least one token is always decoded, because sampling needs the
+        // logits of the prompt's last token.
+        let memory = llama_get_memory(context)
+        var keep = 0
+        let limit = min(cachedTokens.count, tokens.count - 1)
+        while keep < limit && cachedTokens[keep] == tokens[keep] {
+            keep += 1
+        }
+        if keep > 0 {
+            let removed = llama_memory_seq_rm(memory, 0, llama_pos(keep), -1)
+            // Positions 0..<keep must all still be present; pos_min > 0 would
+            // mean a sliding-window cache dropped early tokens (cannot happen with
+            // swa_full, the default, but checked rather than assumed).
+            let consistent = removed
+                && llama_memory_seq_pos_min(memory, 0) == 0
+                && llama_memory_seq_pos_max(memory, 0) == llama_pos(keep - 1)
+            if consistent {
+                cachedTokens.removeSubrange(keep...)
+            } else {
+                keep = 0
+            }
+        }
+        if keep == 0 {
+            forgetCache(memory)
+        }
+        let reusedTokens = keep
+
+        do {
+            try decodeTokens(Array(tokens[keep...]), context: context)
+        } catch {
+            forgetCache(memory)
+            throw error
+        }
+        cachedTokens = tokens
 
         guard let sampler = llama_sampler_chain_init(llama_sampler_chain_default_params()) else {
             throw LlamaError.contextFailed
@@ -174,11 +264,6 @@ final class LlamaEngine: @unchecked Sendable {
             // Fixed seed: a retry is reproducible from the log.
             llama_sampler_chain_add(sampler, llama_sampler_init_dist(1234))
         }
-
-        let promptResult = tokens.withUnsafeMutableBufferPointer { buffer in
-            llama_decode(context, llama_batch_get_one(buffer.baseAddress, Int32(buffer.count)))
-        }
-        guard promptResult == 0 else { throw LlamaError.decodeFailed(promptResult) }
 
         var output: [UInt8] = []
         var newTokens = 0
@@ -200,16 +285,19 @@ final class LlamaEngine: @unchecked Sendable {
                 stop = .loop
                 break
             }
-            var next = [token]
-            let stepResult = next.withUnsafeMutableBufferPointer { buffer in
-                llama_decode(context, llama_batch_get_one(buffer.baseAddress, 1))
+            do {
+                try decodeTokens([token], context: context)
+            } catch {
+                forgetCache(memory)
+                throw error
             }
-            guard stepResult == 0 else { throw LlamaError.decodeFailed(stepResult) }
+            cachedTokens.append(token)
         }
 
         return Generation(
             text: String(decoding: output, as: UTF8.self),
             promptTokens: promptTokens,
+            reusedTokens: reusedTokens,
             newTokens: newTokens,
             stop: stop,
             seconds: Date().timeIntervalSince(started)

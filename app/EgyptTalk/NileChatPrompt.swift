@@ -26,14 +26,24 @@ English: "My phone is dead."
 {"arabic": "موبايلي فاصل شحن", "arabizi": "mobayli fasel sha7n"}
 """#
 
+    /// D37: the part of every rendered prompt that never changes, which
+    /// LlamaEngine processes once at load and keeps in its KV cache. The cut is
+    /// after the blank line that closes the folded system text, just before
+    /// `English: "`: everything up to there is fixed, everything after depends
+    /// on the sentence. The cut does not have to land on a token boundary for
+    /// correctness: LlamaEngine tokenizes each full prompt exactly as before and
+    /// reuses only the leading tokens it shares with the cache.
+    static let fixedPrefix = "<start_of_turn>user\n" + instruction + "\n\n"
+
     /// Gemma 3 has no system role. The GGUF's own chat template
     /// (tokenizer.chat_template, read from the file header 2026-10-31) folds a
     /// system message into the first user turn as `system + "\n\n"` and trims the
     /// user content; this reproduces that rendering exactly as the bench saw it,
     /// minus the leading <bos>, which LlamaEngine prepends as a token because the
-    /// GGUF sets add_bos_token = False.
+    /// GGUF sets add_bos_token = False. The text is the same, character for
+    /// character, as before D37; only its first part is now named.
     static func render(english: String) -> String {
         let sentence = english.trimmingCharacters(in: .whitespacesAndNewlines)
-        return "<start_of_turn>user\n" + instruction + "\n\nEnglish: \"" + sentence + "\"<end_of_turn>\n<start_of_turn>model\n"
+        return fixedPrefix + "English: \"" + sentence + "\"<end_of_turn>\n<start_of_turn>model\n"
     }
 }

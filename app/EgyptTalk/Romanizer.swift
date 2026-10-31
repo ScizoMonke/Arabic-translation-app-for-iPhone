@@ -47,7 +47,14 @@ actor EgyptianRomanizer: Romanizer {
     func loadModel(path: String) async throws -> String {
         let description = try await engine.load(path: path)
         modelLoaded = true
-        return description
+        // D37: the fixed instruction goes into the KV cache now, once. If that
+        // fails the model still works, each sentence then pays the full prompt.
+        do {
+            let primed = try await engine.prime(prefix: NileChatPrompt.fixedPrefix)
+            return description + ", prefix cached: \(primed.tokens) tokens in \(Self.twoDecimals(primed.seconds)) s"
+        } catch {
+            return description + ", prefix NOT cached (\(error.localizedDescription)); every sentence pays the full prompt"
+        }
     }
 
     func render(heardEnglish: String) async throws -> Rendering {
@@ -84,7 +91,7 @@ actor EgyptianRomanizer: Romanizer {
             let generation = try await engine.generate(
                 prompt: prompt, maxNewTokens: Self.maxNewTokens, sampling: sampling)
             diagnostics.append(
-                "model \(sampling.label): \(generation.promptTokens) prompt + \(generation.newTokens) new tokens, "
+                "model \(sampling.label): \(generation.promptTokens) prompt (\(generation.reusedTokens) reused from cache) + \(generation.newTokens) new tokens, "
                 + "\(Self.twoDecimals(generation.seconds)) s, stop: \(generation.stop.rawValue)")
 
             switch Self.check(generation) {
